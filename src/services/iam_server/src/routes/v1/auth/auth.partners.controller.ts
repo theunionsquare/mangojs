@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { Controller, Middleware, Post, loggedMethod, utils } from '@mangojs/core'
 import dotenv from 'dotenv'
-import { IAMDefautContainer } from '../../../inversify.config'
+import { IAMDefaultContainer } from '../../../inversify.config'
 import { PartnerUserService } from '../../../services/partnerUser.service'
 import jwt from 'jsonwebtoken'
 import { Decorators } from '@mangojs/core'
@@ -18,14 +18,14 @@ const COOKIE_NAME = process.env.COOKIE_NAME
 
 // import adminUserService
 const partnerUserService =
-    IAMDefautContainer.resolve<PartnerUserService>(PartnerUserService)
+    IAMDefaultContainer.get<PartnerUserService>(PartnerUserService)
 
 // import authorization service
 const authService =
-    IAMDefautContainer.resolve<AuthorizationService>(AuthorizationService)
+    IAMDefaultContainer.get<AuthorizationService>(AuthorizationService)
 
 // import authorization decorators
-const AuthDecorators = IAMDefautContainer.resolve<Decorators.AuthorizationDecorators>(
+const AuthDecorators = IAMDefaultContainer.get<Decorators.AuthorizationDecorators>(
     Decorators.AuthorizationDecorators
 )
 

@@ -4,4 +4,4 @@ export * as models from './src/db/models'
 
 export { default as swaggerJson } from './swagger.json'
 
-export { IAMDefautContainer } from './src/inversify.config'
+export { IAMDefaultContainer } from './src/inversify.config'

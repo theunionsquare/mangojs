@@ -1,20 +1,17 @@
 import { inject, injectable } from 'inversify'
 import { IPersistenceContext } from './IPersistenceContext'
 import { IDatabaseManagerFactory } from '../databasemanager/IDatabaseManagerFactory'
-import { INVERSITY_TYPES } from '../types/inversifyTypes'
 import { Context } from './Context.generics'
 import mongoose from 'mongoose'
+import { INVERSITY_TYPES } from '../types/inversifyTypes'
 
 @injectable()
-class CockroachPersistenceContext implements IPersistenceContext {
-    private _databaseManagerFactory!: IDatabaseManagerFactory
+class DummyPersistenceContext implements IPersistenceContext {
 
     public constructor(
         @inject(INVERSITY_TYPES.DatabaseManagerFactory)
         entityManager: IDatabaseManagerFactory
     ) {
-        //console.log({}, "MongoosePersistenceContext: Starting up");
-        this._databaseManagerFactory = entityManager
     }
 
     /**
@@ -23,14 +20,10 @@ class CockroachPersistenceContext implements IPersistenceContext {
      * @returns
      */
     async inTransaction(context: Context<mongoose.Connection>): Promise<{}> {
-        console.log('Start Cockroach transaction')
+        console.log('Start dummy transaction')
         //TO DO: Start transaction and close it once done
-        const connection =
-            (await this._databaseManagerFactory.getConnection()) as mongoose.Connection
-        const a = context(connection)
-        console.log('End Cockroach transaction')
-        return a
+        return {}
     }
 }
 
-export { CockroachPersistenceContext }
+export { DummyPersistenceContext }

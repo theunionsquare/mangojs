@@ -9,7 +9,7 @@ import {
     Delete,
     Decorators,
 } from '@mangojs/core'
-import { IAMDefautContainer } from '../../../inversify.config'
+import { IAMDefaultContainer } from '../../../inversify.config'
 import { PartnerUserService } from '../../../services/partnerUser.service'
 import { AuthorizationService } from '../../../services/authorizationService'
 import { errors } from '@mangojs/core'
@@ -17,15 +17,16 @@ import { APITYPE } from '../../../types'
 
 // import adminUserService
 const partnerUserService =
-    IAMDefautContainer.resolve<PartnerUserService>(PartnerUserService)
+    IAMDefaultContainer.get<PartnerUserService>(PartnerUserService, { autobind: true })
 
 // import authorization service
 const authPartnerService =
-    IAMDefautContainer.resolve<AuthorizationService>(AuthorizationService)
+    IAMDefaultContainer.get<AuthorizationService>(AuthorizationService, { autobind: true })
 
 // import authorization decorators
-const AuthDecorators = IAMDefautContainer.resolve<AuthorizationDecorators>(
-    AuthorizationDecorators
+const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
+    AuthorizationDecorators,
+    { autobind: true }
 )
 
 @Controller('/api/iam/v1/partners')

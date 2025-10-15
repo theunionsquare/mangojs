@@ -10,7 +10,7 @@ import {
     Decorators,
 } from '@mangojs/core'
 import dotenv from 'dotenv'
-import { IAMDefautContainer } from '../../../inversify.config'
+import { IAMDefaultContainer } from '../../../inversify.config'
 import { AdminUserService } from '../../../services/adminUser.service'
 import { AuthorizationService } from '../../../services/authorizationService'
 import { errors } from '@mangojs/core'
@@ -22,14 +22,14 @@ dotenv.config()
 
 // import adminUserService
 const adminUserService =
-    IAMDefautContainer.resolve<AdminUserService>(AdminUserService)
+    IAMDefaultContainer.get<AdminUserService>(AdminUserService)
 
 // import authorization service
 const authService =
-    IAMDefautContainer.resolve<AuthorizationService>(AuthorizationService)
+    IAMDefaultContainer.get<AuthorizationService>(AuthorizationService)
 
 // import authorization decorators
-const AuthDecorators = IAMDefautContainer.resolve<AuthorizationDecorators>(
+const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
     AuthorizationDecorators
 )
 

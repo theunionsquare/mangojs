@@ -1,4 +1,4 @@
-import { inject, injectable, interfaces } from 'inversify'
+import { inject, injectable } from 'inversify'
 import { IPersistenceContext } from './IPersistenceContext'
 import { IDatabaseManagerFactory } from '../databasemanager/IDatabaseManagerFactory'
 import { INVERSITY_TYPES } from '../types/inversifyTypes'
