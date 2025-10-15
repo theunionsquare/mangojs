@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { utils } from '@mangojs/core'
 
-@Entity('admin_users')
+@Entity({name:'admin_users', schema: 'iam'})
 export class AdminUser {
     @PrimaryGeneratedColumn()
     id: number

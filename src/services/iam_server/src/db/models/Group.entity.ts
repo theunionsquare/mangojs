@@ -7,7 +7,7 @@ import {
 } from 'typeorm'
 import { Types, utils } from '@mangojs/core'
 
-@Entity('groups')
+@Entity({name: 'groups', schema: 'iam'})
 export class Group {
     @PrimaryGeneratedColumn()
     id: number

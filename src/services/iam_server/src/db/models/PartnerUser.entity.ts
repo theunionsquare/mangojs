@@ -8,7 +8,7 @@ import {
 } from 'typeorm'
 import { utils } from '@mangojs/core'
 
-@Entity('partner_users')
+@Entity({name: 'partner_users', schema: 'iam'})
 export class PartnerUser {
     @PrimaryGeneratedColumn()
     id: number
