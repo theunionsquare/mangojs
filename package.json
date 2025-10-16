@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/giusmento/mangojs.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "files": [
     "dist/**/*",
     "README.md",
