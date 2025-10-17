@@ -4,12 +4,12 @@ import {
   Loggers,
   persistanceContext,
   databasemanager,
-} from "@mangojs/core";
-import { IPersistenceContext } from "@mangojs/core";
-import { IDatabaseManagerFactory } from "@mangojs/core";
+} from "@giusmento/mangojs-core";
+import { IPersistenceContext } from "@giusmento/mangojs-core";
+import { IDatabaseManagerFactory } from "@giusmento/mangojs-core";
 
 import { AuthorizationService } from "./services/authorizationService";
-import { Containers } from "@mangojs/core";
+import { Containers } from "@giusmento/mangojs-core";
 
 const IAMDefaultContainer = Containers.getContainer();
 

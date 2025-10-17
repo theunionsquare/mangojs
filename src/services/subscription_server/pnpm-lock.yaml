@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@mangojs/core':
-        specifier: link:../../core
-        version: link:../../core
+      '@giusmento/mangojs-core':
+        specifier: link:../../../src/
+        version: link:../..
       cookie-parser:
         specifier: ^1.4.6
         version: 1.4.7

@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      '@mangojs/core':
-        specifier: link:../../core
-        version: link:../../core
+      '@giusmento/mangojs-core':
+        specifier: link:../../../src/
+        version: link:../..
       cors:
         specifier: ^2.8.5
         version: 2.8.5

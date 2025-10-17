@@ -5,11 +5,11 @@
  * REQUEST: POST /api/v1/adminUser
  */
 
-import { Types } from '@mangojs/core'
+import { Types } from "@giusmento/mangojs-core";
 
-export type Params = { uid: string }
+export type Params = { uid: string };
 
-export type RequestBody = { groups: Array<{ value: string; name: string }> }
+export type RequestBody = { groups: Array<{ value: string; name: string }> };
 
 /**
  * RESPONSE
@@ -17,4 +17,4 @@ export type RequestBody = { groups: Array<{ value: string; name: string }> }
  * @see
  */
 
-export type ResponseBody = Types.v1.api.response.response<{ ok: boolean }>
+export type ResponseBody = Types.v1.api.response.response<{ ok: boolean }>;

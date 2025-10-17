@@ -1,9 +1,9 @@
 /**
  * POST group
  */
-import type { Types } from '@mangojs/core/'
-import { IGroup } from '../../../../../db/models/Group.model'
-import { ResponseBodyData } from '..'
+import type { Types } from "@giusmento/mangojs-core/";
+import { IGroup } from "../../../../../db/models/Group.model";
+import { ResponseBodyData } from "..";
 
 /*
  * REQUEST
@@ -13,9 +13,9 @@ import { ResponseBodyData } from '..'
  */
 
 export type RequestBody = Pick<
-    IGroup,
-    'uid' | 'name' | 'description' | 'permissions'
->
+  IGroup,
+  "uid" | "name" | "description" | "permissions"
+>;
 
 /**
  * RESPONSE
@@ -23,4 +23,4 @@ export type RequestBody = Pick<
  * @see
  */
 
-export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>
+export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>;

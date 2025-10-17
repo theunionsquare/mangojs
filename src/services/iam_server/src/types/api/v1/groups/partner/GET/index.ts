@@ -1,8 +1,8 @@
 /**
  * Get Partner Group
  */
-import type { Types } from '@mangojs/core/'
-import { ResponseBodyData } from '..'
+import type { Types } from "@giusmento/mangojs-core/";
+import { ResponseBodyData } from "..";
 
 /*
  * REQUEST
@@ -11,7 +11,7 @@ import { ResponseBodyData } from '..'
  * REQUEST: GET /api/v1/groups/partner
  */
 
-export type RequestBody = {}
+export type RequestBody = {};
 
 /**
  * RESPONSE
@@ -19,4 +19,4 @@ export type RequestBody = {}
  * @see
  */
 
-export type ResponseBody = Types.v1.api.response.Success<ResponseBodyData>
+export type ResponseBody = Types.v1.api.response.Success<ResponseBodyData>;

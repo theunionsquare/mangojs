@@ -6,11 +6,11 @@ import {
   utils,
   errors,
   Post,
-} from "@mangojs/core";
+} from "@giusmento/mangojs-core";
 
 import { IAMDefaultContainer } from "../../../inversify.config";
 
-import { Types } from "@mangojs/core";
+import { Types } from "@giusmento/mangojs-core";
 import { GroupsService } from "../../../services/groups.service";
 import type { APITYPE } from "../../../types";
 

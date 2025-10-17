@@ -42,13 +42,13 @@ Enable the iam-service by running the template ./node_modules/@mango/core/instru
 ## Installation
 
 ```bash
-pnpm add @mangojs/core
+pnpm add @giusmento/mangojs-core
 ```
 
 Or with npm:
 
 ```bash
-npm install @mangojs/core
+npm install @giusmento/mangojs-core
 ```
 
 ## Quick Start
@@ -183,7 +183,7 @@ npm version major
 npm publish --access public
 ```
 
-> **Note**: For scoped packages like `@mangojs/core`, you need to use `--access public` flag for the first publish.
+> **Note**: For scoped packages like `@giusmento/mangojs-core`, you need to use `--access public` flag for the first publish.
 
 4. Push the version tag to GitHub:
 

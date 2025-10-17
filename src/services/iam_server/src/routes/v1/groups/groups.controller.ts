@@ -6,7 +6,7 @@ import {
   utils,
   errors,
   Delete,
-} from "@mangojs/core";
+} from "@giusmento/mangojs-core";
 
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { GroupsService } from "../../../services/groups.service";

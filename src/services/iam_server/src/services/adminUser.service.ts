@@ -1,7 +1,11 @@
 import { inject, injectable, LazyServiceIdentifier } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext, Types } from "@mangojs/core";
+import {
+  INVERSITY_TYPES,
+  IPersistenceContext,
+  Types,
+} from "@giusmento/mangojs-core";
 import { Repository, EntityManager } from "typeorm";
-import { errors, utils } from "@mangojs/core";
+import { errors, utils } from "@giusmento/mangojs-core";
 import { APITYPE } from "../types";
 
 import { AdminUser, IAdminUser } from "../db/models/AdminUser.entity";
