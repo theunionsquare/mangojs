@@ -1,5 +1,5 @@
-import { APITYPE } from '../../../..'
+import { api } from "../../../..";
 
-export * as GET from './GET'
+export * as GET from "./GET";
 
-export type ResponseBodyData = APITYPE.V1.adminUser.ResponseBodyData
+export type ResponseBodyData = api.v1.adminUser.ResponseBodyData;

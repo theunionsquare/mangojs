@@ -1,5 +1,5 @@
-import { Types } from '@mangojs/core'
-import { ResponseBodyData } from '..'
+import { Types } from "@giusmento/mangojs-core";
+import { ResponseBodyData } from "..";
 
 /*
  * REQUEST
@@ -7,9 +7,9 @@ import { ResponseBodyData } from '..'
  *
  * REQUEST: POST /api/v1/adminUser
  */
-export type Params = { magiclink: string }
+export type Params = { magiclink: string };
 
-export type RequestBody = {}
+export type RequestBody = {};
 
 /**
  * RESPONSE
@@ -17,4 +17,4 @@ export type RequestBody = {}
  * @see
  */
 
-export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>
+export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>;

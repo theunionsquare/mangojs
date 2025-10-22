@@ -1,3 +1,4 @@
-export * from './AdminUser.entity'
-export * from './PartnerUser.entity'
-export * from './Group.entity'
+export * from "./AdminUser.entity";
+export * from "./PartnerUser.entity";
+export * from "./Group.entity";
+export * from "./User.entity";

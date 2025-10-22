@@ -1,8 +1,12 @@
 import { inject, injectable, LazyServiceIdentifier } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext, Types } from "@mangojs/core";
+import {
+  INVERSITY_TYPES,
+  IPersistenceContext,
+  Types,
+} from "@giusmento/mangojs-core";
 import { Repository, EntityManager } from "typeorm";
-import { errors, utils } from "@mangojs/core";
-import { APITYPE } from "../types";
+import { errors, utils } from "@giusmento/mangojs-core";
+import { api } from "../types";
 
 import { AdminUser, IAdminUser } from "../db/models/AdminUser.entity";
 import { Group } from "../db/models/Group.entity";
@@ -55,8 +59,8 @@ export class AdminUserService {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const adminUser = await this.adminUserRepository.findOne({
-          where: { uid: adminUserId },
+        const adminUser = await em.findOneBy(AdminUser, {
+          uid: adminUserId,
           // relations: ['groups'] // Uncomment if you need groups
         });
 
@@ -112,8 +116,8 @@ export class AdminUserService {
    * @returns
    */
   public async getAdminUserByMagicLink(
-    params: APITYPE.V1.adminUser.magiclinks.GET.Params
-  ): Promise<APITYPE.V1.adminUser.magiclinks.ResponseBodyData> {
+    params: api.v1.adminUser.magiclinks.GET.Params
+  ): Promise<api.v1.adminUser.magiclinks.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by magic link
@@ -122,7 +126,7 @@ export class AdminUserService {
         });
         return response;
       }
-    )) as APITYPE.V1.adminUser.magiclinks.ResponseBodyData;
+    )) as api.v1.adminUser.magiclinks.ResponseBodyData;
     return response;
   }
 
@@ -133,13 +137,14 @@ export class AdminUserService {
    * @returns
    */
   public async activateAdminUser(
-    params: APITYPE.V1.adminUser.activate.POST.Params,
-    payload: APITYPE.V1.adminUser.activate.POST.RequestBody
-  ): Promise<APITYPE.V1.adminUser.activate.ResponseBodyData> {
+    params: api.v1.adminUser.activate.POST.Params,
+    payload: api.v1.adminUser.activate.POST.RequestBody
+  ): Promise<api.v1.adminUser.activate.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // update by magic link
-        const updateResult = await this.adminUserRepository.update(
+        const updateResult = await em.update(
+          AdminUser,
           { magicLink: params.magiclink },
           {
             ...payload,
@@ -153,7 +158,7 @@ export class AdminUserService {
         );
         return updateResult;
       }
-    )) as APITYPE.V1.adminUser.activate.ResponseBodyData;
+    )) as api.v1.adminUser.activate.ResponseBodyData;
     return response;
   }
 
@@ -161,8 +166,8 @@ export class AdminUserService {
    * Create Admin User
    */
   public async postAdminUser(
-    adminUser: APITYPE.V1.adminUser.POST.RequestBody
-  ): Promise<APITYPE.V1.adminUser.ResponseBodyData> {
+    adminUser: api.v1.adminUser.POST.RequestBody
+  ): Promise<api.v1.adminUser.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
@@ -215,7 +220,7 @@ export class AdminUserService {
         const response = await em.save(AdminUser, newAdminUser);
         return response;
       }
-    )) as APITYPE.V1.adminUser.ResponseBodyData;
+    )) as api.v1.adminUser.ResponseBodyData;
     return response;
   }
 
@@ -225,9 +230,9 @@ export class AdminUserService {
   public async getAdminUsers(): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const responseArray: Array<APITYPE.V1.adminUser.ResponseBodyData> = [];
+        const responseArray: Array<api.v1.adminUser.ResponseBodyData> = [];
 
-        const users = await this.adminUserRepository.find({
+        const users = await em.find(AdminUser, {
           relations: ["groups"],
         });
 
@@ -269,12 +274,13 @@ export class AdminUserService {
    * Update Admin User
    */
   public async updateAdminUser(
-    params: APITYPE.V1.adminUser.PUT.Params,
-    document: APITYPE.V1.adminUser.PUT.RequestBody
+    params: api.v1.adminUser.PUT.Params,
+    document: api.v1.adminUser.PUT.RequestBody
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const updateResult = await this.adminUserRepository.update(
+        const updateResult = await em.update(
+          AdminUser,
           { uid: params.uid },
           {
             firstName: document.firstName,
@@ -292,13 +298,13 @@ export class AdminUserService {
    * Update Admin Groups
    */
   public async updateGroupsToAdminUser(
-    params: APITYPE.V1.adminUser.groups.POST.Params,
-    document: APITYPE.V1.adminUser.groups.POST.RequestBody
+    params: api.v1.adminUser.groups.POST.Params,
+    document: api.v1.adminUser.groups.POST.RequestBody
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
-        const groups = await this.groupRepository.find({
+        const groups = await em.find(Group, {
           where: {
             userType: Types.entities.AuthUserType.ADMIN,
             uid: document.groups.map((gr: any) => gr.value) as any,
@@ -306,9 +312,8 @@ export class AdminUserService {
         });
 
         // find admin user
-        const adminUser = await this.adminUserRepository.findOne({
-          where: { uid: params.uid },
-          relations: ["groups"],
+        const adminUser = await em.findOneBy(AdminUser, {
+          uid: params.uid,
         });
 
         if (!adminUser) {
@@ -317,7 +322,7 @@ export class AdminUserService {
 
         // update groups
         adminUser.groups = groups;
-        const updateResult = await this.adminUserRepository.save(adminUser);
+        const updateResult = await em.save(adminUser);
         return updateResult;
       }
     );
@@ -328,11 +333,12 @@ export class AdminUserService {
    * Disable Admin User
    */
   public async disableAdminUser(
-    params: APITYPE.V1.adminUser.PUT.Params
+    params: api.v1.adminUser.PUT.Params
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const updateResult = await this.adminUserRepository.update(
+        const updateResult = await em.update(
+          AdminUser,
           { uid: params.uid },
           {
             status: "DISABLED",
@@ -350,11 +356,12 @@ export class AdminUserService {
    * Enable Admin User
    */
   public async enableAdminUser(
-    params: APITYPE.V1.adminUser.PUT.Params
+    params: api.v1.adminUser.PUT.Params
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const updateResult = await this.adminUserRepository.update(
+        const updateResult = await em.update(
+          AdminUser,
           { uid: params.uid },
           {
             status: "ENABLED",
@@ -372,11 +379,11 @@ export class AdminUserService {
    * Hard Delete Admin User
    */
   public async hardDeleteAdminUser(
-    params: APITYPE.V1.adminUser.PUT.Params
+    params: api.v1.adminUser.PUT.Params
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const deleteResult = await this.adminUserRepository.delete({
+        const deleteResult = await em.delete(AdminUser, {
           uid: params.uid,
         });
         return deleteResult;

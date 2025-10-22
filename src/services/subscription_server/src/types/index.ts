@@ -1,1 +1,1 @@
-export * as APITYPE from './api/v1'
+export * as api from "./api/v1";

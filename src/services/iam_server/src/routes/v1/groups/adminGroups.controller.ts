@@ -6,13 +6,13 @@ import {
   utils,
   errors,
   Post,
-} from "@mangojs/core";
+} from "@giusmento/mangojs-core";
 
 import { IAMDefaultContainer } from "../../../inversify.config";
 
-import { Types } from "@mangojs/core";
+import { Types } from "@giusmento/mangojs-core";
 import { GroupsService } from "../../../services/groups.service";
-import type { APITYPE } from "../../../types";
+import type { api } from "../../../types";
 
 // import adminGroupService
 const groupsService = IAMDefaultContainer.get<GroupsService>(GroupsService, {
@@ -59,14 +59,14 @@ export class AdminGroupController {
   @Get("/")
   @AuthDecorators.IsAuthorized()
   public async getAdminGroups(
-    req: Request<undefined, APITYPE.V1.groups.admin.GET.RequestBody>,
-    res: Response<APITYPE.V1.groups.admin.GET.ResponseBody>
-  ): Promise<Response<APITYPE.V1.groups.admin.GET.ResponseBody>> {
+    req: Request<undefined, api.v1.groups.admin.GET.RequestBody>,
+    res: Response<api.v1.groups.admin.GET.ResponseBody>
+  ): Promise<Response<api.v1.groups.admin.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       const adminGroups = (await groupsService.getGroups(
         Types.entities.AuthUserType.ADMIN
-      )) as Array<APITYPE.V1.groups.admin.ResponseBodyData>;
+      )) as Array<api.v1.groups.admin.ResponseBodyData>;
 
       const apiResponse = {
         ok: true,
@@ -112,9 +112,9 @@ export class AdminGroupController {
   @Post("/")
   @AuthDecorators.IsAuthorized()
   public async addAdminGroups(
-    req: Request<undefined, APITYPE.V1.groups.admin.POST.RequestBody>,
-    res: Response<APITYPE.V1.groups.admin.POST.ResponseBody>
-  ): Promise<Response<APITYPE.V1.groups.admin.POST.ResponseBody>> {
+    req: Request<undefined, api.v1.groups.admin.POST.RequestBody>,
+    res: Response<api.v1.groups.admin.POST.ResponseBody>
+  ): Promise<Response<api.v1.groups.admin.POST.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;

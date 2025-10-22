@@ -5,7 +5,7 @@ Configure a pnpm workspace monorepo project for building backend microservices u
 ## Project Requirements
 
 - **Package Manager**: pnpm with workspace support
-- **Framework**: MangoJS (`@mangojs/core`) as the core dependency
+- **Framework**: MangoJS (`@giusmento/mangojs-core`) as the core dependency
 - **Architecture**: Microservices - each workspace package is an independent microservice
 - **Structure**: Monorepo with shared configurations and independent service packages
 - **Workflow**: Automated build, test, and deployment workflows
@@ -176,7 +176,7 @@ Configure:
 After completing these tasks, the monorepo should:
 
 1.  Have a working pnpm workspace with multiple microservice packages
-2.  All services depend on `@mangojs/core` framework
+2.  All services depend on `@giusmento/mangojs-core` framework
 3.  Services can be developed, built, and tested independently or together
 4.  Shared code is properly organized and reusable
 5.  Clear documentation for developers to get started
@@ -213,7 +213,7 @@ pnpm test
 pnpm --filter @project/user-service add express
 
 # Add shared dependency to all services
-pnpm add -w @mangojs/core
+pnpm add -w @giusmento/mangojs-core
 ```
 
 ## Notes

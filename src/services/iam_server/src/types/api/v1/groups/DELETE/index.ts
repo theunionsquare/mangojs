@@ -1,9 +1,9 @@
 /**
  * Add new Admin Group
  */
-import type { Types } from '@mangojs/core/'
-import { IGroup } from '../../../../../db/models/Group.model'
-import { ResponseBodyData } from '..'
+import type { Types } from "@giusmento/mangojs-core/";
+import { IGroup } from "../../../../../db/models/Group.model";
+import { ResponseBodyData } from "..";
 
 /*
  * REQUEST
@@ -12,7 +12,7 @@ import { ResponseBodyData } from '..'
  * REQUEST: POST /api/v1/adminGroups
  */
 
-export type RequestBody = { uid: string }
+export type RequestBody = { uid: string };
 
 /**
  * RESPONSE
@@ -20,4 +20,4 @@ export type RequestBody = { uid: string }
  * @see
  */
 
-export type ResponseBody = { ok: boolean }
+export type ResponseBody = { ok: boolean };

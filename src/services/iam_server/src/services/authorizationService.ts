@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Auth, Types, errors } from "@mangojs/core";
+import { Auth, Types, errors } from "@giusmento/mangojs-core";
 import { inject, injectable } from "inversify";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -101,10 +101,10 @@ export class AuthorizationService implements Auth.IAuthProvider {
     try {
       const cookie = req.cookies[process.env.PARTNER_COOKIE_NAME || ""];
 
-      const verify: Types.auth.DecodedCookie<Types.auth.Cookie> = jwt.verify(
+      const verify = jwt.verify(
         cookie,
         this.partnerTokenSecret
-      );
+      ) as Types.auth.DecodedCookie<Types.auth.Cookie>;
 
       const authUser = await this.partnerUserService.getPartnerUser(
         verify.cookieData.id
@@ -171,10 +171,10 @@ export class AuthorizationService implements Auth.IAuthProvider {
     try {
       const cookie = req.cookies[process.env.USER_COOKIE_NAME || ""];
 
-      const verify: Types.auth.DecodedCookie<Types.auth.Cookie> = jwt.verify(
+      const verify = jwt.verify(
         cookie,
         this.userTokenSecret
-      );
+      ) as Types.auth.DecodedCookie<Types.auth.Cookie>;
 
       const authUser = await this.adminUserService.getAdminUser(
         verify.cookieData.id
@@ -255,10 +255,10 @@ export class AuthorizationService implements Auth.IAuthProvider {
     try {
       const cookie = req.cookies[process.env.ADMIN_COOKIE_NAME || ""];
 
-      const verify: Types.auth.DecodedCookie<Types.auth.Cookie> = jwt.verify(
+      const verify = jwt.verify(
         cookie,
         this.adminTokenSecret
-      );
+      ) as Types.auth.DecodedCookie<Types.auth.Cookie>;
 
       const authUser = await this.adminUserService.getAdminUser(
         verify.cookieData.id

@@ -1,5 +1,5 @@
-import { APITYPE } from '../../../..'
+import { api } from "../../../..";
 
-export * as POST from './POST'
+export * as POST from "./POST";
 
-export type ResponseBodyData = APITYPE.V1.adminUser.ResponseBodyData
+export type ResponseBodyData = api.v1.adminUser.ResponseBodyData;

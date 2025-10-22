@@ -6,11 +6,11 @@ import {
   utils,
   errors,
   Delete,
-} from "@mangojs/core";
+} from "@giusmento/mangojs-core";
 
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { GroupsService } from "../../../services/groups.service";
-import type { APITYPE } from "../../../types";
+import type { api } from "../../../types";
 
 // import adminGroupService
 const groupsService = IAMDefaultContainer.get<GroupsService>(GroupsService, {
@@ -57,15 +57,15 @@ export class GroupsController {
   @Get("/")
   @AuthDecorators.IsAuthorized()
   public async getGroups(
-    req: Request<undefined, APITYPE.V1.groups.GET.RequestBody>,
-    res: Response<APITYPE.V1.groups.GET.ResponseBody>
-  ): Promise<Response<APITYPE.V1.groups.GET.ResponseBody>> {
+    req: Request<undefined, api.v1.groups.GET.RequestBody>,
+    res: Response<api.v1.groups.GET.ResponseBody>
+  ): Promise<Response<api.v1.groups.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       const filter = {};
       const groups = (await groupsService.getAllGroups(
         filter
-      )) as Array<APITYPE.V1.groups.ResponseBodyData>;
+      )) as Array<api.v1.groups.ResponseBodyData>;
 
       const apiResponse = {
         ok: true,
@@ -111,9 +111,9 @@ export class GroupsController {
   @Delete("/")
   @AuthDecorators.IsAuthorized()
   public async addAdminGroups(
-    req: Request<undefined, APITYPE.V1.groups.DELETE.RequestBody>,
-    res: Response<APITYPE.V1.groups.DELETE.ResponseBody>
-  ): Promise<Response<APITYPE.V1.groups.DELETE.ResponseBody>> {
+    req: Request<undefined, api.v1.groups.DELETE.RequestBody>,
+    res: Response<api.v1.groups.DELETE.ResponseBody>
+  ): Promise<Response<api.v1.groups.DELETE.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
