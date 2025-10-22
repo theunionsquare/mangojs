@@ -15,7 +15,7 @@ export async function middlewareUserInfo(
   const authService = getContainer().get(INVERSITY_TYPES.AuthorizationContext, {
     autobind: true,
   }) as IAuthorization;
-  console.log(req.cookies, "REQUEST-COOKIE");
+  console.log(req.cookies, "middlewareUserInfo");
   try {
     // try validate User
     req.user = await authService.validateUserCredentials(req, res);
@@ -30,6 +30,6 @@ export async function middlewareUserInfo(
       }
     }
   }
-  console.log(req.user, "UserInfo");
+  console.log(req.user, "middlewareUserInfo response");
   next();
 }

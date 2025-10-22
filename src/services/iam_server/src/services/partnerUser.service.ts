@@ -30,9 +30,12 @@ export class PartnerUserService {
   ): Promise<IPartnerUser> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
+        // hash password
+        const hashedPassword = utils.hashedPassword(password);
         // get by email
-        const response = await this.partnerUserRepository.findOne({
-          where: { email: email },
+        const response = await em.findOneBy(PartnerUser, {
+          email: email,
+          password: hashedPassword,
         });
         if (!response) {
           throw new errors.APIError(401, "UNAUTHORIZED", "Unauthorized");

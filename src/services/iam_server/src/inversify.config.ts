@@ -23,7 +23,7 @@ IAMDefaultContainer.bind<IPersistenceContext>(
 /**
  * Bind Database connector - Postgres Implementation
  */
-import { AdminUser, Group, PartnerUser } from "./db/models";
+import { IAMEntities } from "./db/models";
 
 const POSTGRES_HOST = process.env.DATABASE_HOST || "localhost";
 const POSTGRES_PORT = Number(process.env.DATABASE_PORT) || 5432;
@@ -42,7 +42,7 @@ IAMDefaultContainer.bind<IDatabaseManagerFactory>(
       username: POSTGRES_USER,
       password: POSTGRES_PASSWORD,
     },
-    [AdminUser, PartnerUser, Group]
+    IAMEntities
   )
 );
 

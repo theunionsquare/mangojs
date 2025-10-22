@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../inversify.config";
 import { AdminUserService } from "./adminUser.service";
 import { PartnerUserService } from "./partnerUser.service";
+import { UserService } from "./user.service";
 
 dotenv.config();
 
@@ -21,9 +22,11 @@ export class AuthorizationService implements Auth.IAuthProvider {
   private userTokenSecret: string;
   private adminUserService: AdminUserService;
   private partnerUserService: PartnerUserService;
+  private userService: UserService;
 
-  public partnerCookie: { name: string };
   public adminCookie: { name: string };
+  public partnerCookie: { name: string };
+  public userCookie: { name: string };
 
   constructor() {
     // inject AdminUserService
@@ -36,6 +39,10 @@ export class AuthorizationService implements Auth.IAuthProvider {
       PartnerUserService,
       { autobind: true }
     );
+    // inject UserService
+    this.userService = IAMDefaultContainer.get<UserService>(UserService, {
+      autobind: true,
+    });
 
     this.adminTokenSecret = [
       process.env.ADMIN_COOKIE_KEY_FIRST,
@@ -55,6 +62,9 @@ export class AuthorizationService implements Auth.IAuthProvider {
     };
     this.adminCookie = {
       name: process.env.ADMIN_COOKIE_NAME || "mango",
+    };
+    this.userCookie = {
+      name: process.env.USER_COOKIE_NAME || "mango",
     };
   }
 
@@ -94,6 +104,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
       cookieName,
     };
   }
+
   public async validatePartnerCredentials(
     req: Request,
     res: Response
@@ -164,6 +175,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
       cookieName,
     };
   }
+
   public async validateUserCredentials(
     req: Request,
     res: Response
@@ -176,9 +188,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
         this.userTokenSecret
       ) as Types.auth.DecodedCookie<Types.auth.Cookie>;
 
-      const authUser = await this.adminUserService.getAdminUser(
-        verify.cookieData.id
-      );
+      const authUser = await this.userService.getUser(verify.cookieData.id);
       // TODO check user and prepare response
       const response = {
         userType: Types.entities.AuthUserType.USER,

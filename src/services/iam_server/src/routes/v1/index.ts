@@ -1,11 +1,11 @@
-import { PartnerControllers } from './partners'
-import { AdminControllers } from './admins'
-import { GroupControllers } from './groups'
-import { AuthControllers } from './auth'
+import { PartnerControllers } from "./partners";
+import { AdminControllers } from "./admins";
+import { GroupControllers } from "./groups";
+import { AuthControllers } from "./auth";
 
 export const v1 = [
-    ...PartnerControllers,
-    ...AdminControllers,
-    ...AuthControllers,
-    ...GroupControllers,
-]
+  ...PartnerControllers,
+  ...AdminControllers,
+  ...AuthControllers,
+  ...GroupControllers,
+];

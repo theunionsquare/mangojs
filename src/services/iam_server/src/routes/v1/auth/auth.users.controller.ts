@@ -8,7 +8,7 @@ import {
 } from "@giusmento/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
-import { PartnerUserService } from "../../../services/partnerUser.service";
+import { UserService } from "../../../services/user.service";
 import { Decorators } from "@giusmento/mangojs-core";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
@@ -20,9 +20,9 @@ dotenv.config();
 // envs
 const COOKIE_NAME = process.env.COOKIE_NAME;
 
-// import adminUserService
-const partnerUserService =
-  IAMDefaultContainer.get<PartnerUserService>(PartnerUserService);
+// import userService
+const userService =
+  IAMDefaultContainer.get<UserService>(UserService);
 
 // import authorization service
 const authService =
@@ -34,16 +34,16 @@ const AuthDecorators =
     Decorators.AuthorizationDecorators
   );
 
-@Controller("/api/iam/v1/auth/partners")
-export class AuthPartnerController {
+@Controller("/api/iam/v1/auth/users")
+export class AuthUserController {
   /**
    * @swagger
-   * /auth/partners/login:
+   * /auth/users/login:
    *  post:
-   *    summary: Login Partner users
-   *    description: Return cookies for partner users
+   *    summary: Login User
+   *    description: Return cookies for users
    *    tags:
-   *      - Auth Partner
+   *      - Auth User
    *    produces:
    *      - application/json
    *    requestBody:
@@ -77,12 +77,12 @@ export class AuthPartnerController {
   @Post("/login")
   public async getCredentials(
     req: Types.v1.api.request.Request<
-      api.v1.auth.partners.login.POST.RequestBody,
-      api.v1.auth.partners.login.POST.RequestBody
+      api.v1.auth.users.login.POST.RequestBody,
+      api.v1.auth.users.login.POST.RequestBody
     >,
-    res: Response<api.v1.auth.partners.login.POST.ResponseBody>
+    res: Response<api.v1.auth.users.login.POST.ResponseBody>
   ): Promise<Response<Types.apiResponses.Success<{}>>> {
-    console.log("Log-in partner");
+    console.log("Log-in user");
     const logRequest = new utils.LogRequest(res);
     try {
       // throw new errors.APIError(401, "");
@@ -92,24 +92,24 @@ export class AuthPartnerController {
       // validate request
 
       // check if user exists
-      const adminUser = await partnerUserService.partnerUserLogIn(
+      const user = await userService.userLogIn(
         body.email,
         body.password
       );
       //Creating cookie token
-      const cookie = authService.generatePartnerCredentials({
-        uid: adminUser.uid,
-        firstName: adminUser.uid,
-        lastName: adminUser.lastName,
-        email: adminUser.email,
+      const cookie = authService.generateUserCredentials({
+        uid: user.uid,
+        firstName: user.uid,
+        lastName: user.lastName,
+        email: user.email,
       });
 
       const authUser: Types.entities.AuthUser = {
-        uid: adminUser.uid,
-        firstName: adminUser.firstName,
-        lastName: adminUser.lastName,
-        email: adminUser.email,
-        userType: Types.entities.AuthUserType.PARTNER,
+        uid: user.uid,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        userType: Types.entities.AuthUserType.USER,
       };
 
       const apiResponse = {
@@ -133,12 +133,12 @@ export class AuthPartnerController {
 
   /**
    * @swagger
-   * /auth/partner/logout:
+   * /auth/users/logout:
    *  post:
-   *    summary: Logout Admin users
+   *    summary: Logout User
    *    description: Delete cookies and reset user connections
    *    tags:
-   *      - Auth Partner
+   *      - Auth User
    *    security:
    *      - adminCookieAuth: []
    *    produces:
@@ -161,7 +161,7 @@ export class AuthPartnerController {
     req: Request,
     res: Response<Types.apiResponses.Success<{}>>
   ): Promise<Response<Types.apiResponses.Success<{}>>> {
-    console.log("Log-in admin local");
+    console.log("Log-in user");
     const logRequest = new utils.LogRequest(res);
     try {
       let exists = true;
@@ -179,7 +179,7 @@ export class AuthPartnerController {
           message: "Logout Successful",
         },
       };
-      const cookieName = authService.partnerCookie.name;
+      const cookieName = authService.userCookie.name;
       // response 200 with null token
       return res.status(200).cookie(cookieName, null).send(apiResponse);
     } catch (error) {
@@ -188,7 +188,7 @@ export class AuthPartnerController {
   }
 
   @Post("/register")
-  public async registerAdminUser(
+  public async registerUser(
     req: Request,
     res: Response<Types.apiResponses.Success<{}>>
   ): Promise<Response<Types.apiResponses.Success<{}>>> {
@@ -196,7 +196,7 @@ export class AuthPartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
-      const response = await partnerUserService.postPartnerUser(body);
+      const response = await userService.postUser(body);
 
       // prepare response
       const apiResponse: Types.apiResponses.Success<{}> = {
@@ -213,12 +213,12 @@ export class AuthPartnerController {
   }
   /**
    * @swagger
-   * /auth/partner/verify:
+   * /auth/users/verify:
    *  post:
-   *    summary: Verify an Admin cookie
-   *    description: Verify if an Admin cookie is valid
+   *    summary: Verify a User cookie
+   *    description: Verify if a User cookie is valid
    *    tags:
-   *      - Auth Partner
+   *      - Auth User
    *    security:
    *      - adminCookieAuth: []
    *    produces:
@@ -243,7 +243,7 @@ export class AuthPartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
-      const authUser = await authService.validatePartnerCredentials(req, res);
+      const authUser = await authService.validateUserCredentials(req, res);
 
       // prepare response
       const apiResponse: Types.apiResponses.Success<{}> = {
