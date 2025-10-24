@@ -29,13 +29,14 @@ export class GroupsService {
         const responseArray: Array<api.v1.groups.ResponseBodyData> = [];
 
         // Convert filter if needed, for now use empty filter
-        const groups = await this.groupRepository.find(filter || {});
+        const groups = await em.find(Group, filter || {});
 
         for (const group of groups) {
           responseArray.push({
             userType: group.userType,
             uid: group.uid,
             name: group.name,
+            default: group.default,
             description: group.description,
             permissions: group.permissions,
           });
@@ -52,7 +53,7 @@ export class GroupsService {
   public async deleteGroup(uid: string): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const deleteResult = await this.groupRepository.delete({ uid });
+        const deleteResult = await em.delete(Group, { uid });
         return deleteResult;
       }
     );
@@ -67,7 +68,7 @@ export class GroupsService {
       async (em: EntityManager) => {
         const responseArray: Array<api.v1.groups.admin.ResponseBodyData> = [];
 
-        const groups = await this.groupRepository.find({
+        const groups = await em.find(Group, {
           where: { userType },
         });
 
@@ -94,14 +95,19 @@ export class GroupsService {
   ): Promise<api.v1.groups.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const newGroup = this.groupRepository.create({
+        // id default is not boolean set false
+        if (typeof groupData.default !== "boolean") {
+          groupData.default = false;
+        }
+        const newGroup = em.create(Group, {
           userType: userType,
           name: groupData.name,
+          default: groupData.default,
           description: groupData.description,
           permissions: groupData.permissions,
         });
 
-        const savedGroup = await this.groupRepository.save(newGroup);
+        const savedGroup = await em.save(newGroup);
 
         return {
           uid: savedGroup.uid,

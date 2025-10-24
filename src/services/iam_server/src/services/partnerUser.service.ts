@@ -5,6 +5,9 @@ import { errors, utils } from "@giusmento/mangojs-core";
 import { api } from "../types";
 
 import { PartnerUser, IPartnerUser } from "../db/models/PartnerUser.entity";
+import { Group, IGroup } from "../db/models/Group.entity";
+
+import { Types as coreTypes } from "@giusmento/mangojs-core";
 
 @injectable()
 export class PartnerUserService {
@@ -146,13 +149,21 @@ export class PartnerUserService {
           expDate.getTime() + 24 * 60 * 60 * 1000
         ); // 1 day
 
+        // fetch group entities
+        const groups = await em.find(Group, {
+          where: {
+            userType: coreTypes.entities.AuthUserType.USER,
+            uid: partnerUser.groups as any,
+          },
+        });
+
         // create partner user
         const newPartnerUser = this.partnerUserRepository.create({
           firstName: partnerUser.firstName,
           lastName: partnerUser.lastName,
           email: partnerUser.email,
           password: password,
-          groups: partnerUser.groups as string[],
+          groups: groups,
           isActive: true,
           isVerified: false,
           status: "PENDING",

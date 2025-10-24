@@ -9,6 +9,7 @@ import {
   BeforeInsert,
 } from "typeorm";
 import { utils } from "@giusmento/mangojs-core";
+import { Group } from "./Group.entity";
 
 @Entity({ name: "admin_users", schema: "iam" })
 export class AdminUser {
@@ -66,13 +67,11 @@ export class AdminUser {
   @UpdateDateColumn({ type: "timestamptz" })
   updatedAt: Date;
 
-  @ManyToMany("Group", "adminUsers", { cascade: true })
+  @ManyToMany(() => Group, { cascade: true })
   @JoinTable({
-    name: "admin_user_groups",
-    joinColumn: { name: "admin_user_id", referencedColumnName: "id" },
-    inverseJoinColumn: { name: "group_id", referencedColumnName: "id" },
+    name: "adminuser_groups",
   })
-  groups: any[];
+  groups: Group[];
 
   @BeforeInsert()
   generateUid() {

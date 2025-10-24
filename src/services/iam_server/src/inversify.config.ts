@@ -31,6 +31,8 @@ const POSTGRES_DB = process.env.DATABASE_DB || "";
 const POSTGRES_USER = process.env.DATABASE_USER || "";
 const POSTGRES_PASSWORD = process.env.DATABASE_PASSWORD || "";
 
+const syncronize = false;
+
 IAMDefaultContainer.bind<IDatabaseManagerFactory>(
   INVERSITY_TYPES.DatabaseManagerFactory
 ).toConstantValue(
@@ -42,7 +44,8 @@ IAMDefaultContainer.bind<IDatabaseManagerFactory>(
       username: POSTGRES_USER,
       password: POSTGRES_PASSWORD,
     },
-    IAMEntities
+    IAMEntities,
+    syncronize
   )
 );
 

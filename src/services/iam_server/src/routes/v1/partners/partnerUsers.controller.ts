@@ -33,16 +33,16 @@ const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
   { autobind: true }
 );
 
-@Controller("/api/iam/v1/partners")
-export class PartnerController {
+@Controller("/api/iam/v1/partners/users")
+export class PartnerUserController {
   /**
    * @swagger
-   * /api/iam/v1/partners/:
+   * /api/iam/v1/partners/users:
    *  get:
    *    summary: Get list of active partner users
-   *    description: Return a list of active admin users
+   *    description: Return a list of active partner users
    *    tags:
-   *      - Partners
+   *      - Partners, Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -51,7 +51,7 @@ export class PartnerController {
    *        application/json:
    *    responses:
    *      200:
-   *        description: An array containing admin users
+   *        description: An array containing partner users
    *        content:
    *          application/json:
    *            schema:
@@ -65,7 +65,7 @@ export class PartnerController {
    *
    */
   @Get("/")
-  //@Decorators.HasGroups(["PartnerAdmin"])
+  @AuthDecorators.IsAuthorized()
   public async getPartners(
     req: Request<undefined, api.v1.partners.GET.RequestBody>,
     res: Response<api.v1.partners.GET.ResponseBody>
@@ -89,7 +89,7 @@ export class PartnerController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/:
+   * /api/iam/v1/partners/users:
    *  post:
    *    summary: Create new partner users
    *    description: Creates a new partner user
@@ -103,7 +103,7 @@ export class PartnerController {
    *        application/json:
    *    responses:
    *      200:
-   *        description: The created admin user
+   *        description: The created partner user
    *        content:
    *          application/json:
    *            schema:
@@ -119,11 +119,11 @@ export class PartnerController {
    *
    */
   @Post("/")
-  public async addAdminUser(
+  public async addPartnerUser(
     req: Request<undefined, api.v1.partners.POST.RequestBody>,
     res: Response<api.v1.partners.POST.ResponseBody>
   ): Promise<Response<api.v1.partners.POST.ResponseBody>> {
-    console.log("add Admin User");
+    console.log("add Partner User");
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;

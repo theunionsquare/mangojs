@@ -4,16 +4,14 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  BeforeInsert,
+  ManyToMany,
+  JoinTable,
 } from "typeorm";
-import { utils } from "@giusmento/mangojs-core";
+import { Group } from "./Group.entity";
 
 @Entity({ name: "partner_users", schema: "iam" })
 export class PartnerUser {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ type: "uuid", unique: true })
+  @PrimaryGeneratedColumn("uuid")
   uid: string;
 
   @Column({ type: "varchar", length: 255 })
@@ -64,17 +62,14 @@ export class PartnerUser {
   @UpdateDateColumn({ type: "timestamptz" })
   updatedAt: Date;
 
-  @Column({ type: "simple-array", nullable: true })
-  groups: string[];
-
-  @BeforeInsert()
-  generateUid() {
-    this.uid = utils.generateUUID();
-  }
+  @ManyToMany(() => Group, { cascade: true })
+  @JoinTable({
+    name: "partneruser_groups",
+  })
+  groups: Group[];
 }
 
 export interface IPartnerUser {
-  id?: number;
   uid: string;
   firstName: string;
   lastName?: string;
@@ -92,5 +87,5 @@ export interface IPartnerUser {
   disabledAt?: Date;
   createdAt?: Date;
   updatedAt?: Date;
-  groups?: string[];
+  groups?: Group[];
 }

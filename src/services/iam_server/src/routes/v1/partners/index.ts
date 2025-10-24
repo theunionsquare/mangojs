@@ -1,3 +1,3 @@
-import { PartnerController } from './partners.controller'
+import { PartnerUserController } from "./partnerUsers.controller";
 
-export const PartnerControllers = [PartnerController]
+export const PartnerUserControllers = [PartnerUserController];

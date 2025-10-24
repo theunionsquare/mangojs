@@ -29,6 +29,7 @@ export class GroupsService {
             userType: group.userType,
             uid: group.uid,
             name: group.name,
+            default: group.default,
             description: group.description,
             permissions: group.permissions,
           });

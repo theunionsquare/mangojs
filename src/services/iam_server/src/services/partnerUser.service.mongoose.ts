@@ -9,7 +9,7 @@ import { errors, utils } from "@giusmento/mangojs-core";
 import PartnerUserSchema, {
   IPartnerUser,
 } from "../db/models/PartnerUser.model";
-import { PartnerUser } from "../types/adminPartner.type";
+import { PartnerUser } from "../types/entities/PartnerUser.type";
 import { api } from "../types";
 //import AdminGroupSchema, { IAdminGroup } from "../db/models/AdminGroup.model";
 

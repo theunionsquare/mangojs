@@ -7,22 +7,19 @@ import {
   Post,
   Put,
   Delete,
-  Decorators,
 } from "@giusmento/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
-import { AdminUserService } from "../../../services/adminUser.service";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
-import type { Types } from "@giusmento/mangojs-core";
-import { AdminUser } from "../../../types/entities/adminUser.type";
-import { api } from "../../../types";
+import type { Types as coreTypes } from "@giusmento/mangojs-core";
+import type { types as iamTypes } from "../../../../";
+import { UserService } from "../../../services/user.service";
 
 dotenv.config();
 
-// import adminUserService
-const adminUserService =
-  IAMDefaultContainer.get<AdminUserService>(AdminUserService);
+// import userService
+const userService = IAMDefaultContainer.get<UserService>(UserService);
 
 // import authorization service
 const authService =
@@ -33,16 +30,16 @@ const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
   AuthorizationDecorators
 );
 
-@Controller("/api/iam/v1/admins")
-export class AdminController {
+@Controller("/api/iam/v1/users")
+export class UserController {
   /**
    * @swagger
-   * /api/iam/v1/admins/:
+   * /api/iam/v1/users/:
    *  get:
-   *    summary: Get list of active admin users
-   *    description: Return a list of active admin users
+   *    summary: Get list of active users
+   *    description: Return a list of active users
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -67,20 +64,24 @@ export class AdminController {
   @Get("/")
   @AuthDecorators.IsAuthorized()
   //@Decorators.HasGroups(["Admin"])
-  public async getAdmins(
+  public async getUsers(
     req: Request,
-    res: Response<Types.apiResponses.Success<Array<AdminUser>>>
-  ): Promise<Response<Types.apiResponses.Success<Array<AdminUser>>>> {
+    res: Response<coreTypes.apiResponses.Success<Array<iamTypes.entities.User>>>
+  ): Promise<
+    Response<coreTypes.apiResponses.Success<Array<iamTypes.entities.User>>>
+  > {
     const logRequest = new utils.LogRequest(res);
     try {
-      const adminUsers: Array<AdminUser> =
-        (await adminUserService.getAdminUsers()) as Array<AdminUser>;
+      const users: Array<iamTypes.entities.User> =
+        (await userService.getUsers()) as Array<iamTypes.entities.User>;
 
-      const apiResponse: Types.apiResponses.Success<Array<AdminUser>> = {
+      const apiResponse: coreTypes.apiResponses.Success<
+        Array<iamTypes.entities.User>
+      > = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: adminUsers,
+        data: users,
       };
       return res.status(200).send(apiResponse);
     } catch (error: unknown) {
@@ -90,126 +91,12 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/magiclinks/{magiclink}:
-   *  get:
-   *    summary: Get Admin user by his magic link
-   *    description: Return a list of active admin users
-   *    tags:
-   *      - Admins
-   *    produces:
-   *      - application/json
-   *    requestBody:
-   *      required: true
-   *      content:
-   *        application/json:
-   *    responses:
-   *      200:
-   *        description: An array containing admin users
-   *        content:
-   *          application/json:
-   *            schema:
-   *              type: object
-   *              properties:
-   *                  id:
-   *                    type: string
-   *                    example: 12345
-   *      401:
-   *        description: Unauthorized
-   *
-   */
-  @Get("/magiclinks/:magiclink")
-  public async getAdminBymagicLink(
-    req: Types.v1.api.request.Request<
-      api.v1.adminUser.magiclinks.GET.Params,
-      api.v1.adminUser.magiclinks.GET.RequestBody
-    >,
-    res: Response<api.v1.adminUser.magiclinks.GET.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.magiclinks.GET.ResponseBody>> {
-    const logRequest = new utils.LogRequest(res);
-    try {
-      const adminUser = (await adminUserService.getAdminUserByMagicLink(
-        req.params
-      )) as api.v1.adminUser.magiclinks.ResponseBodyData;
-
-      const apiResponse: api.v1.adminUser.magiclinks.GET.ResponseBody = {
-        ok: true,
-        timestamp: logRequest.timestamp,
-        requestId: logRequest.requestId,
-        data: adminUser,
-      };
-
-      return res.status(200).send(apiResponse);
-    } catch (error) {
-      return errors.errorHandler(res, error as Error);
-    }
-  }
-
-  /**
-   * @swagger
-   * /api/iam/v1/admins/activate/{magiclink}:
-   *  get:
-   *    summary: Activate Admin user
-   *    description: Activate admin users
-   *    tags:
-   *      - Admins
-   *    produces:
-   *      - application/json
-   *    requestBody:
-   *      required: true
-   *      content:
-   *        application/json:
-   *    responses:
-   *      200:
-   *        description: An array containing admin users
-   *        content:
-   *          application/json:
-   *            schema:
-   *              type: object
-   *              properties:
-   *                  id:
-   *                    type: string
-   *                    example: 12345
-   *      401:
-   *        description: Unauthorized
-   *
-   */
-  @Post("/activate/:magiclink")
-  public async activateAdminBymagicLink(
-    req: Types.v1.api.request.Request<
-      api.v1.adminUser.activate.POST.Params,
-      api.v1.adminUser.activate.POST.RequestBody
-    >,
-    res: Response<api.v1.adminUser.activate.POST.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.activate.POST.ResponseBody>> {
-    const logRequest = new utils.LogRequest(res);
-    try {
-      req.requestTime;
-      const adminUser = (await adminUserService.activateAdminUser(
-        req.params,
-        req.body
-      )) as api.v1.adminUser.activate.ResponseBodyData;
-
-      const apiResponse: api.v1.adminUser.activate.POST.ResponseBody = {
-        ok: true,
-        timestamp: logRequest.timestamp,
-        requestId: logRequest.requestId,
-        data: adminUser,
-      };
-
-      return res.status(200).send(apiResponse);
-    } catch (error) {
-      return errors.errorHandler(res, error as Error);
-    }
-  }
-
-  /**
-   * @swagger
-   * /api/iam/v1/admins/:
+   * /api/iam/v1/users/:
    *  post:
-   *    summary: Create new admin users
-   *    description: Creates a new admin user
+   *    summary: Create new users
+   *    description: Creates a new user
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -234,20 +121,23 @@ export class AdminController {
    *
    */
   @Post("/")
-  public async addAdminUser(
-    req: Types.v1.api.request.Request<any, api.v1.adminUser.POST.RequestBody>,
-    res: Response<api.v1.adminUser.POST.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.POST.ResponseBody>> {
-    console.log("add Admin User");
+  public async addUser(
+    req: coreTypes.v1.api.request.Request<
+      any,
+      iamTypes.api.v1.users.POST.RequestBody
+    >,
+    res: Response<iamTypes.api.v1.users.POST.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.POST.ResponseBody>> {
+    console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
       console.log({ body }, "body");
-      const response = (await adminUserService.postAdminUser(
+      const response = (await userService.postUser(
         body
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
-      const apiResponse: api.v1.adminUser.POST.ResponseBody = {
+      const apiResponse: iamTypes.api.v1.users.POST.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
@@ -263,12 +153,127 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/{uid}:
-   *  post:
-   *    summary: Update admin users
-   *    description: Update  admin user
+   * /api/iam/v1/users/magiclinks/{magiclink}:
+   *  get:
+   *    summary: Get User by his magic link
+   *    description: Return a list of active users
    *    tags:
-   *      - Admins
+   *      - Users
+   *    produces:
+   *      - application/json
+   *    requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *    responses:
+   *      200:
+   *        description: An array containing admin users
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: object
+   *              properties:
+   *                  id:
+   *                    type: string
+   *                    example: 12345
+   *      401:
+   *        description: Unauthorized
+   *
+   */
+  @Get("/magiclinks/:magiclink")
+  @AuthDecorators.IsAuthorized()
+  public async getAdminBymagicLink(
+    req: coreTypes.v1.api.request.Request<
+      iamTypes.api.v1.adminUser.magiclinks.GET.Params,
+      iamTypes.api.v1.adminUser.magiclinks.GET.RequestBody
+    >,
+    res: Response<iamTypes.api.v1.users.magiclinks.GET.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.magiclinks.GET.ResponseBody>> {
+    const logRequest = new utils.LogRequest(res);
+    try {
+      const user = (await userService.getUserByMagicLink(
+        req.params
+      )) as iamTypes.api.v1.users.magiclinks.ResponseBodyData;
+
+      const apiResponse: iamTypes.api.v1.users.magiclinks.GET.ResponseBody = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: user,
+      };
+
+      return res.status(200).send(apiResponse);
+    } catch (error) {
+      return errors.errorHandler(res, error as Error);
+    }
+  }
+
+  /**
+   * @swagger
+   * /api/iam/v1/users/activate/{magiclink}:
+   *  get:
+   *    summary: Activate User
+   *    description: Activate users
+   *    tags:
+   *      - Users
+   *    produces:
+   *      - application/json
+   *    requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *    responses:
+   *      200:
+   *        description: An array containing admin users
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: object
+   *              properties:
+   *                  id:
+   *                    type: string
+   *                    example: 12345
+   *      401:
+   *        description: Unauthorized
+   *
+   */
+  @Post("/activate/:magiclink")
+  public async activateAdminBymagicLink(
+    req: coreTypes.v1.api.request.Request<
+      iamTypes.api.v1.adminUser.activate.POST.Params,
+      iamTypes.api.v1.adminUser.activate.POST.RequestBody
+    >,
+    res: Response<iamTypes.api.v1.adminUser.activate.POST.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.adminUser.activate.POST.ResponseBody>> {
+    const logRequest = new utils.LogRequest(res);
+    try {
+      req.requestTime;
+      const user = (await userService.activateUser(
+        req.params,
+        req.body
+      )) as iamTypes.api.v1.users.activate.ResponseBodyData;
+
+      const apiResponse: iamTypes.api.v1.users.activate.POST.ResponseBody = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: user,
+      };
+
+      return res.status(200).send(apiResponse);
+    } catch (error) {
+      return errors.errorHandler(res, error as Error);
+    }
+  }
+
+  /**
+   * @swagger
+   * /api/iam/v1/users/{uid}:
+   *  post:
+   *    summary: Update users
+   *    description: Update  user
+   *    tags:
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -293,23 +298,23 @@ export class AdminController {
    *
    */
   @Put("/:uid")
-  public async updateAdminUser(
-    req: Types.v1.api.request.Request<
-      api.v1.adminUser.PUT.Params,
-      api.v1.adminUser.PUT.RequestBody
+  public async updateUser(
+    req: coreTypes.v1.api.request.Request<
+      iamTypes.api.v1.users.PUT.Params,
+      iamTypes.api.v1.users.PUT.RequestBody
     >,
-    res: Response<api.v1.adminUser.PUT.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.PUT.ResponseBody>> {
-    console.log("add Admin User");
+    res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
+    console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await adminUserService.updateAdminUser(
+      const response = (await userService.updateUser(
         params,
         body
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
       const apiResponse = {
         ok: true,
@@ -326,12 +331,12 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/{uid}:
+   * /api/iam/v1/users/{uid}:
    *  post:
    *    summary: Add one or more group to a user
    *    description: Add one or more group to a user
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -356,23 +361,23 @@ export class AdminController {
    *
    */
   @Put("/:uid/groups")
-  public async updateGroupsToAdminUser(
-    req: Types.v1.api.request.Request<
-      api.v1.adminUser.groups.POST.Params,
-      api.v1.adminUser.groups.POST.RequestBody
+  public async updateGroupsToUser(
+    req: coreTypes.v1.api.request.Request<
+      iamTypes.api.v1.users.groups.POST.Params,
+      iamTypes.api.v1.users.groups.POST.RequestBody
     >,
-    res: Response<api.v1.adminUser.groups.POST.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.groups.POST.ResponseBody>> {
-    console.log("add Admin User");
+    res: Response<iamTypes.api.v1.users.groups.POST.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.groups.POST.ResponseBody>> {
+    console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await adminUserService.updateGroupsToAdminUser(
+      const response = (await userService.updateGroupsToUser(
         params,
         body
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
       const apiResponse = {
         ok: true,
@@ -389,12 +394,12 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/{uid}/disable:
+   * /api/iam/v1/users/{uid}/disable:
    *  post:
-   *    summary: Disable admin users
-   *    description: Disable  admin user
+   *    summary: Disable users
+   *    description: Disable  user
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -403,7 +408,7 @@ export class AdminController {
    *        application/json:
    *    responses:
    *      200:
-   *        description: The created admin user
+   *        description: Disabled user
    *        content:
    *          application/json:
    *            schema:
@@ -419,17 +424,17 @@ export class AdminController {
    *
    */
   @Post("/:uid/disable")
-  public async disableAdminUser(
-    req: Types.v1.api.request.Request<api.v1.adminUser.PUT.Params, {}>,
-    res: Response<api.v1.adminUser.PUT.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.PUT.ResponseBody>> {
-    console.log("add Admin User");
+  public async disableUser(
+    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
+    console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await adminUserService.disableAdminUser(
+      const response = (await userService.disableUser(
         params
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
       const apiResponse = {
         ok: true,
@@ -446,12 +451,12 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/{uid}/enable:
+   * /api/iam/v1/users/{uid}/enable:
    *  post:
-   *    summary: Enable admin users
-   *    description: Disable  admin user
+   *    summary: Enable users
+   *    description: Enable user
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -476,17 +481,17 @@ export class AdminController {
    *
    */
   @Post("/:uid/enable")
-  public async enableAdminUser(
-    req: Types.v1.api.request.Request<api.v1.adminUser.PUT.Params, {}>,
-    res: Response<api.v1.adminUser.PUT.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.PUT.ResponseBody>> {
-    console.log("add Admin User");
+  public async enableUser(
+    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
+    console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await adminUserService.enableAdminUser(
+      const response = (await userService.enableUser(
         params
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
       const apiResponse = {
         ok: true,
@@ -503,12 +508,12 @@ export class AdminController {
 
   /**
    * @swagger
-   * /api/iam/v1/admins/{uid}/enable:
-   *  post:
-   *    summary: Enable admin users
-   *    description: Disable  admin user
+   * /api/iam/v1/users/{uid}/delete/hard:
+   *  delete:
+   *    summary: Hard delete users
+   *    description: Hard delete user
    *    tags:
-   *      - Admins
+   *      - Users
    *    produces:
    *      - application/json
    *    requestBody:
@@ -517,7 +522,7 @@ export class AdminController {
    *        application/json:
    *    responses:
    *      200:
-   *        description: The created admin user
+   *        description: The user deletion confirmation
    *        content:
    *          application/json:
    *            schema:
@@ -533,17 +538,17 @@ export class AdminController {
    *
    */
   @Delete("/:uid/delete/hard")
-  public async hardAdminUser(
-    req: Types.v1.api.request.Request<api.v1.adminUser.PUT.Params, {}>,
-    res: Response<api.v1.adminUser.PUT.ResponseBody>
-  ): Promise<Response<api.v1.adminUser.PUT.ResponseBody>> {
-    console.log("add Admin User");
+  public async hardDeleteUser(
+    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
+    console.log("hard delete User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await adminUserService.hardDeleteAdminUser(
+      const response = (await userService.hardDeleteUser(
         params
-      )) as api.v1.adminUser.ResponseBodyData;
+      )) as iamTypes.api.v1.users.ResponseBodyData;
       // prepare response
       const apiResponse = {
         ok: true,

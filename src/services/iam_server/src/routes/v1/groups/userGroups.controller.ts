@@ -16,6 +16,7 @@ import { GroupsService } from "../../../services/groups.service";
 
 import type { api } from "../../../types";
 import { PartnerUser } from "../../../types/entities/PartnerUser.type";
+import { ResponseBodyData } from "../../../types/api/v1/users";
 
 dotenv.config();
 
@@ -30,14 +31,14 @@ const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
   { autobind: true }
 );
 
-@Controller("/api/iam/v1/groups/partner")
-export class PartnerGroupController {
+@Controller("/api/iam/v1/groups/user")
+export class UserGroupController {
   /**
    * @swagger
-   * /api/iam/v1/groups/partner:
+   * /api/iam/v1/groups/user:
    *  get:
-   *    summary: Get list of admin Group
-   *    description: Return a list of groups for admin users
+   *    summary: Get list of user Group
+   *    description: Return a list of groups for user users
    *    tags:
    *      - Groups
    *    produces:
@@ -63,21 +64,21 @@ export class PartnerGroupController {
    */
   @Get("/")
   @AuthDecorators.IsAuthorized()
-  public async getPartnerGroups(
-    req: Request<undefined, api.v1.groups.admin.GET.RequestBody>,
-    res: Response<api.v1.groups.admin.GET.ResponseBody>
-  ): Promise<Response<api.v1.groups.admin.GET.ResponseBody>> {
+  public async getUserGroups(
+    req: Request<undefined, api.v1.groups.user.GET.RequestBody>,
+    res: Response<api.v1.groups.user.GET.ResponseBody>
+  ): Promise<Response<api.v1.groups.user.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const partnerGroups = (await groupsService.getGroups(
-        Types.entities.AuthUserType.PARTNER
-      )) as Array<api.v1.groups.admin.ResponseBodyData>;
+      const userGroups = (await groupsService.getGroups(
+        Types.entities.AuthUserType.USER
+      )) as Array<api.v1.groups.user.ResponseBodyData>;
 
       const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: partnerGroups,
+        data: userGroups,
       };
       return res.status(200).send(apiResponse);
     } catch (error: unknown) {
@@ -87,9 +88,9 @@ export class PartnerGroupController {
 
   /**
    * @swagger
-   * /api/iam/v1/groups/partner:
+   * /api/iam/v1/groups/user:
    *  post:
-   *    summary: Create a group foro user admin
+   *    summary: Create a group for user
    *    description: the created group
    *    tags:
    *      - Groups
@@ -116,15 +117,15 @@ export class PartnerGroupController {
    */
   @Post("/")
   @AuthDecorators.IsAuthorized()
-  public async addPartnerGroup(
-    req: Request<undefined, api.v1.groups.partner.POST.RequestBody>,
-    res: Response<api.v1.groups.partner.POST.ResponseBody>
-  ): Promise<Response<api.v1.groups.partner.POST.ResponseBody>> {
+  public async addUserGroup(
+    req: Request<undefined, api.v1.groups.user.POST.RequestBody>,
+    res: Response<api.v1.groups.user.POST.ResponseBody>
+  ): Promise<Response<api.v1.groups.user.POST.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
-      const adminUsers = await groupsService.postGroup(
-        Types.entities.AuthUserType.PARTNER,
+      const userGroups = await groupsService.postGroup(
+        Types.entities.AuthUserType.USER,
         body
       );
 
@@ -132,7 +133,7 @@ export class PartnerGroupController {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: adminUsers,
+        data: userGroups,
       };
       return res.status(200).send(apiResponse);
     } catch (error: unknown) {

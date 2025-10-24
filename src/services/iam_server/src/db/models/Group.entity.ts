@@ -1,16 +1,10 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToMany,
-  BeforeInsert,
-} from "typeorm";
-import { Types, utils } from "@giusmento/mangojs-core";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Types } from "@giusmento/mangojs-core";
 
 @Entity({ name: "groups", schema: "iam" })
 export class Group {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  uid: string;
 
   @Column({
     type: "enum",
@@ -18,33 +12,24 @@ export class Group {
   })
   userType: Types.entities.AuthUserType;
 
-  @Column({ type: "uuid", unique: true })
-  uid: string;
-
   @Column({ type: "varchar", length: 255 })
   name: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "varchar", length: 255 })
   description: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "boolean" })
+  default: boolean;
+
+  @Column({ type: "varchar", length: 255 })
   permissions: string;
-
-  @ManyToMany("AdminUser", "groups")
-  adminUsers: any[];
-
-  @BeforeInsert()
-  generateUid() {
-    this.uid = utils.generateUUID();
-  }
 }
 
 export interface IGroup {
-  id?: number;
-  userType: Types.entities.AuthUserType;
   uid: string;
+  userType: Types.entities.AuthUserType;
   name: string;
   description: string;
+  default: boolean;
   permissions: string;
-  adminUsers?: any[];
 }

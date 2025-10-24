@@ -2,17 +2,17 @@ import { inject, injectable } from "inversify";
 import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
 import { Repository, EntityManager } from "typeorm";
 import { errors, utils } from "@giusmento/mangojs-core";
-import { api } from "../types";
+import { Types as coreTypes } from "@giusmento/mangojs-core";
+import type { types as iamTypes } from "../../";
 
 import { User, IUser } from "../db/models/User.entity";
+import { Group, IGroup } from "../db/models/Group.entity";
 
 @injectable()
 export class UserService {
   // Inject Persistance Context
   @inject(INVERSITY_TYPES.PersistenceContext)
   private _persistenceContext: IPersistenceContext;
-
-  private userRepository: Repository<User>;
 
   constructor() {
     // Initialize repositories when AppDataSource is ready
@@ -52,8 +52,8 @@ export class UserService {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const user = await this.userRepository.findOne({
-          where: { uid: userId },
+        const user = await em.findOneBy(User, {
+          uid: userId,
         });
 
         if (!user) {
@@ -62,7 +62,6 @@ export class UserService {
 
         return {
           uid: user.uid,
-          username: user.username,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
@@ -87,12 +86,12 @@ export class UserService {
       async (em: EntityManager) => {
         const responseArray: Array<any> = [];
 
-        const users = await this.userRepository.find();
+        // TO DO pagination and filters
+        const users = await em.find(User);
 
         for (const user of users) {
           responseArray.push({
             uid: user.uid,
-            username: user.username,
             email: user.email,
             age: user.age,
             phoneNumber: user.phoneNumber,
@@ -117,16 +116,40 @@ export class UserService {
   }
 
   /**
+   * Update User
+   */
+  public async updateUser(
+    params: iamTypes.api.v1.users.PUT.Params,
+    document: iamTypes.api.v1.users.PUT.RequestBody
+  ): Promise<{}> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        const updateResult = await em.update(
+          User,
+          { uid: params.uid },
+          {
+            firstName: document.firstName,
+            lastName: document.lastName,
+            phoneNumber: document.phoneNumber,
+          }
+        );
+        return updateResult;
+      }
+    );
+    return response;
+  }
+
+  /**
    * Create User
    */
   public async postUser(
-    user: api.v1.adminUser.POST.RequestBody
-  ): Promise<api.v1.adminUser.ResponseBodyData> {
+    user: iamTypes.api.v1.adminUser.POST.RequestBody
+  ): Promise<iamTypes.api.v1.adminUser.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
-        const isUnique = await this.userRepository.findOne({
-          where: { email: user.email },
+        const isUnique = await em.findOneBy(User, {
+          email: user.email,
         });
 
         if (isUnique) {
@@ -136,20 +159,32 @@ export class UserService {
         // set magic link
         const magicLink = utils.generateMagicLink();
         // set random password
-        const password = utils.generateRandomPassword();
+        const password = utils.hashedPassword(user.password);
         // set expiring date
         const expDate = new Date();
         const magicLinkExpireDate = new Date(
           expDate.getTime() + 24 * 60 * 60 * 1000
         ); // 1 day
 
+        // fetch group entities
+        const groups = await em.findOneBy(Group, {
+          userType: coreTypes.entities.AuthUserType.USER,
+          default: true,
+        });
+        if (!groups) {
+          throw new errors.APIError(
+            404,
+            "NOT_FOUND",
+            "Default group not found"
+          );
+        }
         // create user
-        const newUser = this.userRepository.create({
+        const newUser = em.create(User, {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
           password: password,
-          groups: user.groups as string[],
+          groups: [groups],
           isActive: true,
           isVerified: false,
           status: "PENDING",
@@ -157,10 +192,159 @@ export class UserService {
           magicLinkExpireDate,
         });
 
-        const response = await this.userRepository.save(newUser);
+        const response = await em.save(newUser);
         return response;
       }
-    )) as api.v1.adminUser.ResponseBodyData;
+    )) as iamTypes.api.v1.adminUser.ResponseBodyData;
+    return response;
+  }
+
+  /**
+   * Get User by magic link
+   * @param params
+   * @returns
+   */
+  public async getUserByMagicLink(
+    params: iamTypes.api.v1.users.magiclinks.GET.Params
+  ): Promise<iamTypes.api.v1.users.magiclinks.ResponseBodyData> {
+    const response = (await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        // get by magic link
+        const response = await em.findOneBy(User, {
+          magicLink: params.magiclink,
+        });
+        return response;
+      }
+    )) as iamTypes.api.v1.users.magiclinks.ResponseBodyData;
+    return response;
+  }
+
+  /**
+   * Activate User by magic link
+   * @param params
+   * @param payload
+   * @returns
+   */
+  public async activateUser(
+    params: iamTypes.api.v1.users.activate.POST.Params,
+    payload: iamTypes.api.v1.users.activate.POST.RequestBody
+  ): Promise<iamTypes.api.v1.users.activate.ResponseBodyData> {
+    const response = (await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        // update by magic link
+        const updateResult = await em.update(
+          User,
+          { magicLink: params.magiclink },
+          {
+            ...payload,
+            isActive: true,
+            isVerified: true,
+            status: "ENABLED",
+            verifiedAt: new Date(),
+            magicLink: null,
+            magicLinkExpireDate: null,
+          }
+        );
+        return updateResult;
+      }
+    )) as iamTypes.api.v1.users.activate.ResponseBodyData;
+    return response;
+  }
+  /**
+   * Update User Groups
+   */
+  public async updateGroupsToUser(
+    params: iamTypes.api.v1.users.groups.POST.Params,
+    document: iamTypes.api.v1.users.groups.POST.RequestBody
+  ): Promise<{}> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        // get group entities
+        const groups = await em.find(Group, {
+          where: {
+            userType: coreTypes.entities.AuthUserType.USER,
+            uid: document.groups.map((gr: any) => gr.value) as any,
+          },
+        });
+
+        // find admin user
+        const user = await em.findOneBy(User, {
+          uid: params.uid,
+        });
+
+        if (!user) {
+          throw new errors.APIError(404, "NOT_FOUND", "User not found");
+        }
+
+        // update groups
+        user.groups = groups;
+        const updateResult = await em.save(user);
+        return updateResult;
+      }
+    );
+    return response;
+  }
+
+  /**
+   * Disable User
+   */
+  public async disableUser(
+    params: iamTypes.api.v1.users.PUT.Params
+  ): Promise<{}> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        const updateResult = await em.update(
+          User,
+          { uid: params.uid },
+          {
+            status: "DISABLED",
+            isActive: false,
+            disabledAt: new Date(),
+          }
+        );
+        return updateResult;
+      }
+    );
+    return response;
+  }
+
+  /**
+   * Enable User
+   */
+  public async enableUser(
+    params: iamTypes.api.v1.users.PUT.Params
+  ): Promise<{}> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        const updateResult = await em.update(
+          User,
+          { uid: params.uid },
+          {
+            status: "ENABLED",
+            isActive: true,
+            disabledAt: null,
+          }
+        );
+        return updateResult;
+      }
+    );
+    return response;
+  }
+
+  /**
+   * Hard Delete User
+   */
+  public async hardDeleteUser(
+    params: iamTypes.api.v1.users.PUT.Params
+  ): Promise<{}> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        const deleteResult = await em.delete(User, {
+          uid: params.uid,
+        });
+        return deleteResult;
+      }
+    );
     return response;
   }
 }
