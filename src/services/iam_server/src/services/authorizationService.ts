@@ -3,7 +3,6 @@ import { Auth, Types, errors } from "@giusmento/mangojs-core";
 import { inject, injectable } from "inversify";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { IAMDefaultContainer } from "../inversify.config";
 import { AdminUserService } from "./adminUser.service";
 import { PartnerUserService } from "./partnerUser.service";
 import { UserService } from "./user.service";
@@ -28,21 +27,14 @@ export class AuthorizationService implements Auth.IAuthProvider {
   public partnerCookie: { name: string };
   public userCookie: { name: string };
 
-  constructor() {
-    // inject AdminUserService
-    this.adminUserService = IAMDefaultContainer.get<AdminUserService>(
-      AdminUserService,
-      { autobind: true }
-    );
-    // inject PartnerUserService
-    this.partnerUserService = IAMDefaultContainer.get<PartnerUserService>(
-      PartnerUserService,
-      { autobind: true }
-    );
-    // inject UserService
-    this.userService = IAMDefaultContainer.get<UserService>(UserService, {
-      autobind: true,
-    });
+  constructor(
+    @inject(AdminUserService) adminUserService: AdminUserService,
+    @inject(PartnerUserService) partnerUserService: PartnerUserService,
+    @inject(UserService) userService: UserService
+  ) {
+    this.adminUserService = adminUserService;
+    this.partnerUserService = partnerUserService;
+    this.userService = userService;
 
     this.adminTokenSecret = [
       process.env.ADMIN_COOKIE_KEY_FIRST,
@@ -117,9 +109,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
         this.partnerTokenSecret
       ) as Types.auth.DecodedCookie<Types.auth.Cookie>;
 
-      const authUser = await this.partnerUserService.getPartnerUser(
-        verify.cookieData.id
-      );
+      const authUser = await this.partnerUserService.get(verify.cookieData.id);
       // TODO check user and prepare response
       const response = {
         userType: Types.entities.AuthUserType.PARTNER,

@@ -4,14 +4,12 @@
  *
  * REQUEST: POST /api/v1/adminUser
  */
+
 import { Types } from "@giusmento/mangojs-core";
-import * as models from "../../../../../db/models";
 
 export type Params = { uid: string };
 
-export type RequestBody = Partial<
-  Pick<models.IUser, "firstName" | "lastName" | "phoneNumber">
->;
+export type RequestBody = { groups: Array<{ value: string; name: string }> };
 
 /**
  * RESPONSE

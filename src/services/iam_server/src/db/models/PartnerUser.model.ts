@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import mongoose, { Document, Schema } from "mongoose";
 import { IGroup } from "./Group.model";
 import { utils } from "@giusmento/mangojs-core";
@@ -21,7 +20,7 @@ export interface IPartnerUser extends Document {
   disabledAt: Date;
   createdAt: Date;
   updatedAt: Date;
-  groups: Array<{}>;
+  groups: Array<IGroup>;
 }
 
 const PartnerUserSchema: Schema = new Schema(
@@ -40,7 +39,7 @@ const PartnerUserSchema: Schema = new Schema(
     isVerified: { type: Schema.Types.Boolean, required: true },
     phoneNumber: { type: Schema.Types.String, required: false },
     password: { type: Schema.Types.String, required: false },
-    groups: [{ type: Schema.Types.String }],
+    groups: [{ type: Schema.Types.ObjectId, ref: "group" }],
     age: { type: Schema.Types.Number, required: false, default: 0 },
     magicLink: { type: Schema.Types.String },
     magicLinkExpireDate: { type: Date },

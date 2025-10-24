@@ -7,14 +7,26 @@
 
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "..";
-import { IPartnerUser } from "../../../../../db/models/PartnerUser.model";
+import * as models from "../../../../../db/models";
 
 export type RequestBody = Pick<
-  IPartnerUser,
-  "firstName" | "lastName" | "username" | "email" | "age"
-> & {
-  groups: [string];
-};
+  models.IPartner,
+  | "companyName"
+  | "email"
+  | "phoneNumber"
+  | "businessType"
+  | "taxId"
+  | "addressStreet"
+  | "addressCity"
+  | "addressState"
+  | "addressCountry"
+  | "addressPostalCode"
+  | "websiteUrl"
+  | "logoUrl"
+  | "subscriptionTier"
+  | "contractStartDate"
+  | "contractEndDate"
+>;
 
 /**
  * RESPONSE

@@ -92,7 +92,7 @@ export class AuthPartnerController {
       // validate request
 
       // check if user exists
-      const adminUser = await partnerUserService.partnerUserLogIn(
+      const adminUser = await partnerUserService.logIn(
         body.email,
         body.password
       );
@@ -196,7 +196,8 @@ export class AuthPartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
-      const response = await partnerUserService.postPartnerUser(body);
+      // TO DO: validate request change to admin
+      const response = await partnerUserService.post(body);
 
       // prepare response
       const apiResponse: Types.apiResponses.Success<{}> = {

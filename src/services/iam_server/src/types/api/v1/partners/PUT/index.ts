@@ -10,7 +10,24 @@ import * as models from "../../../../../db/models";
 export type Params = { uid: string };
 
 export type RequestBody = Partial<
-  Pick<models.IUser, "firstName" | "lastName" | "phoneNumber">
+  Pick<
+    models.IPartner,
+    | "companyName"
+    | "email"
+    | "phoneNumber"
+    | "businessType"
+    | "taxId"
+    | "addressStreet"
+    | "addressCity"
+    | "addressState"
+    | "addressCountry"
+    | "addressPostalCode"
+    | "websiteUrl"
+    | "logoUrl"
+    | "subscriptionTier"
+    | "contractStartDate"
+    | "contractEndDate"
+  >
 >;
 
 /**

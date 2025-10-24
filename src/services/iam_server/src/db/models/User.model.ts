@@ -21,7 +21,7 @@ export interface IUser extends Document {
   disabledAt: Date;
   createdAt: Date;
   updatedAt: Date;
-  groups: Array<{}>;
+  groups: Array<IGroup>;
 }
 
 const userSchema: Schema = new Schema(
@@ -40,7 +40,7 @@ const userSchema: Schema = new Schema(
     isVerified: { type: Schema.Types.Boolean, required: true },
     phoneNumber: { type: Schema.Types.String, required: false },
     password: { type: Schema.Types.String, required: false },
-    groups: [{ type: Schema.Types.String }],
+    groups: [{ type: Schema.Types.ObjectId, ref: "group" }],
     age: { type: Schema.Types.Number, required: false, default: 0 },
     magicLink: { type: Schema.Types.String },
     magicLinkExpireDate: { type: Date },

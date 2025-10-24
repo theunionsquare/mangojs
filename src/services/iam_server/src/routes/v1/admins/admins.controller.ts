@@ -7,12 +7,10 @@ import {
   Post,
   Put,
   Delete,
-  Decorators,
 } from "@giusmento/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AdminUserService } from "../../../services/adminUser.service";
-import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
 import type { Types } from "@giusmento/mangojs-core";
 import { AdminUser } from "../../../types/entities/adminUser.type";
@@ -23,10 +21,6 @@ dotenv.config();
 // import adminUserService
 const adminUserService =
   IAMDefaultContainer.get<AdminUserService>(AdminUserService);
-
-// import authorization service
-const authService =
-  IAMDefaultContainer.get<AuthorizationService>(AuthorizationService);
 
 // import authorization decorators
 const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(

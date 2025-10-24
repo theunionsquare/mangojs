@@ -6,11 +6,11 @@
  */
 
 import { Types } from "@giusmento/mangojs-core";
-import * as models from "../../../../../db/models";
+import * as models from "../../../../../../db/models";
 import { ResponseBodyData } from "..";
 
 export type RequestBody = Pick<
-  models.IUser,
+  models.IPartnerUser,
   "firstName" | "lastName" | "username" | "email" | "password" | "age"
 > & {
   groups: [string];

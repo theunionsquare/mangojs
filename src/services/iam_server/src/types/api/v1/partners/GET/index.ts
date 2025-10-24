@@ -1,5 +1,5 @@
 /**
- * Get Partners
+ * Get all Partners
  */
 import type { Types } from "@giusmento/mangojs-core/";
 import { ResponseBodyData } from "..";
@@ -8,7 +8,7 @@ import { ResponseBodyData } from "..";
  * REQUEST
  * @see
  *
- * REQUEST: POST /api/v1/groups
+ * REQUEST: GET /api/iam/v1/partners
  */
 
 export type RequestBody = {};

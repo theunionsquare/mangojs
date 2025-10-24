@@ -1,4 +1,4 @@
-import * as models from "../../../../db/models";
+import * as models from "../../../../../db/models";
 export * as POST from "./POST";
 export * as PUT from "./PUT";
 export * as groups from "./groups";
@@ -6,7 +6,7 @@ export * as magiclinks from "./magiclinks";
 export * as activate from "./activate";
 
 export type ResponseBodyData = Pick<
-  models.IUser,
+  models.IPartnerUser,
   | "uid"
   | "firstName"
   | "lastName"

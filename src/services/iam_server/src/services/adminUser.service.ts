@@ -8,8 +8,7 @@ import { Repository, EntityManager } from "typeorm";
 import { errors, utils } from "@giusmento/mangojs-core";
 import { api } from "../types";
 
-import { AdminUser, IAdminUser } from "../db/models/AdminUser.entity";
-import { Group } from "../db/models/Group.entity";
+import * as models from "../db/models";
 
 @injectable()
 export class AdminUserService {
@@ -17,8 +16,8 @@ export class AdminUserService {
   @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))
   private _persistenceContext: IPersistenceContext;
 
-  private adminUserRepository: Repository<AdminUser>;
-  private groupRepository: Repository<Group>;
+  private adminUserRepository: Repository<models.AdminUser>;
+  private groupRepository: Repository<models.Group>;
 
   constructor() {
     // Initialize repositories when AppDataSource is ready
@@ -33,11 +32,11 @@ export class AdminUserService {
   public async AdminUserLogIn(
     email: string,
     password: string
-  ): Promise<IAdminUser> {
+  ): Promise<models.IAdminUser> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by email
-        const response = await em.findOneBy(AdminUser, { email: email });
+        const response = await em.findOneBy(models.AdminUser, { email: email });
         //const response = await this.adminUserRepository.findOne({
         //    where: { email: email }
         //})
@@ -47,7 +46,7 @@ export class AdminUserService {
         return response;
       }
     );
-    return response as IAdminUser;
+    return response as models.IAdminUser;
   }
 
   /**
@@ -55,11 +54,11 @@ export class AdminUserService {
    * @param adminUserId
    * @returns
    */
-  public async getAdminUser(adminUserId: string): Promise<IAdminUser> {
+  public async getAdminUser(adminUserId: string): Promise<models.IAdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const adminUser = await em.findOneBy(AdminUser, {
+        const adminUser = await em.findOneBy(models.AdminUser, {
           uid: adminUserId,
           // relations: ['groups'] // Uncomment if you need groups
         });
@@ -90,7 +89,7 @@ export class AdminUserService {
           //}),
         };
       }
-    )) as IAdminUser;
+    )) as models.IAdminUser;
     return response;
   }
 
@@ -103,7 +102,9 @@ export class AdminUserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by username
-        const response = await em.findOneBy(AdminUser, { username: username });
+        const response = await em.findOneBy(models.AdminUser, {
+          username: username,
+        });
         return response;
       }
     );
@@ -144,7 +145,7 @@ export class AdminUserService {
       async (em: EntityManager) => {
         // update by magic link
         const updateResult = await em.update(
-          AdminUser,
+          models.AdminUser,
           { magicLink: params.magiclink },
           {
             ...payload,
@@ -172,7 +173,7 @@ export class AdminUserService {
       async (em: EntityManager) => {
         // search if email is unique
         console.log({ adminUser }, "search email");
-        const isUnique = await em.findOne(AdminUser, {
+        const isUnique = await em.findOne(models.AdminUser, {
           where: { email: adminUser.email },
         });
 
@@ -182,7 +183,7 @@ export class AdminUserService {
 
         // get group by uid
         console.log({ adminUser }, "search group UID");
-        const respGroup = await em.findOne(Group, {
+        const respGroup = await em.findOne(models.Group, {
           where: {
             userType: Types.entities.AuthUserType.ADMIN,
             uid: adminUser.groups as any,
@@ -204,7 +205,7 @@ export class AdminUserService {
         ); // 1 day
 
         // create admin user
-        const newAdminUser = em.create(AdminUser, {
+        const newAdminUser = em.create(models.AdminUser, {
           firstName: adminUser.firstName,
           lastName: adminUser.lastName,
           email: adminUser.email,
@@ -217,7 +218,7 @@ export class AdminUserService {
           magicLinkExpireDate,
         });
 
-        const response = await em.save(AdminUser, newAdminUser);
+        const response = await em.save(models.AdminUser, newAdminUser);
         return response;
       }
     )) as api.v1.adminUser.ResponseBodyData;
@@ -232,7 +233,7 @@ export class AdminUserService {
       async (em: EntityManager) => {
         const responseArray: Array<api.v1.adminUser.ResponseBodyData> = [];
 
-        const users = await em.find(AdminUser, {
+        const users = await em.find(models.AdminUser, {
           relations: ["groups"],
         });
 
@@ -280,7 +281,7 @@ export class AdminUserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          AdminUser,
+          models.AdminUser,
           { uid: params.uid },
           {
             firstName: document.firstName,
@@ -304,7 +305,7 @@ export class AdminUserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
-        const groups = await em.find(Group, {
+        const groups = await em.find(models.Group, {
           where: {
             userType: Types.entities.AuthUserType.ADMIN,
             uid: document.groups.map((gr: any) => gr.value) as any,
@@ -312,7 +313,7 @@ export class AdminUserService {
         });
 
         // find admin user
-        const adminUser = await em.findOneBy(AdminUser, {
+        const adminUser = await em.findOneBy(models.AdminUser, {
           uid: params.uid,
         });
 
@@ -338,7 +339,7 @@ export class AdminUserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          AdminUser,
+          models.AdminUser,
           { uid: params.uid },
           {
             status: "DISABLED",
@@ -361,7 +362,7 @@ export class AdminUserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          AdminUser,
+          models.AdminUser,
           { uid: params.uid },
           {
             status: "ENABLED",
@@ -383,7 +384,7 @@ export class AdminUserService {
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const deleteResult = await em.delete(AdminUser, {
+        const deleteResult = await em.delete(models.AdminUser, {
           uid: params.uid,
         });
         return deleteResult;

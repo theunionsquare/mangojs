@@ -50,10 +50,13 @@ IAMDefaultContainer.bind<IDatabaseManagerFactory>(
 );
 
 /**
- * Bind Authorization Context
+ * Bind Authorization Service (singleton for both direct and interface access)
  */
+IAMDefaultContainer.bind<AuthorizationService>(AuthorizationService)
+  .toSelf()
+  .inSingletonScope();
 IAMDefaultContainer.bind<Auth.IAuthProvider>(
   INVERSITY_TYPES.AuthorizationContext
-).to(AuthorizationService);
+).toService(AuthorizationService);
 
 export { IAMDefaultContainer };

@@ -5,8 +5,7 @@ import { errors, utils } from "@giusmento/mangojs-core";
 import { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../";
 
-import { User, IUser } from "../db/models/User.entity";
-import { Group, IGroup } from "../db/models/Group.entity";
+import * as models from "../db/models";
 
 @injectable()
 export class UserService {
@@ -24,13 +23,16 @@ export class UserService {
    * @param password
    * @returns
    */
-  public async userLogIn(email: string, password: string): Promise<IUser> {
+  public async userLogIn(
+    email: string,
+    password: string
+  ): Promise<models.IUser> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // hash password
         const hashedPassword = utils.hashedPassword(password);
         // get by email
-        const response = await em.findOneBy(User, {
+        const response = await em.findOneBy(models.User, {
           email: email,
           password: hashedPassword,
         });
@@ -40,7 +42,7 @@ export class UserService {
         return response;
       }
     );
-    return response as IUser;
+    return response as models.IUser;
   }
 
   /**
@@ -48,11 +50,11 @@ export class UserService {
    * @param userId
    * @returns
    */
-  public async getUser(userId: string): Promise<IUser> {
+  public async getUser(userId: string): Promise<models.IUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const user = await em.findOneBy(User, {
+        const user = await em.findOneBy(models.User, {
           uid: userId,
         });
 
@@ -74,7 +76,7 @@ export class UserService {
           groups: user.groups,
         };
       }
-    )) as IUser;
+    )) as models.IUser;
     return response;
   }
 
@@ -87,7 +89,7 @@ export class UserService {
         const responseArray: Array<any> = [];
 
         // TO DO pagination and filters
-        const users = await em.find(User);
+        const users = await em.find(models.User);
 
         for (const user of users) {
           responseArray.push({
@@ -125,7 +127,7 @@ export class UserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          User,
+          models.User,
           { uid: params.uid },
           {
             firstName: document.firstName,
@@ -143,12 +145,12 @@ export class UserService {
    * Create User
    */
   public async postUser(
-    user: iamTypes.api.v1.adminUser.POST.RequestBody
-  ): Promise<iamTypes.api.v1.adminUser.ResponseBodyData> {
+    user: iamTypes.api.v1.users.POST.RequestBody
+  ): Promise<iamTypes.api.v1.users.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
-        const isUnique = await em.findOneBy(User, {
+        const isUnique = await em.findOneBy(models.User, {
           email: user.email,
         });
 
@@ -167,7 +169,7 @@ export class UserService {
         ); // 1 day
 
         // fetch group entities
-        const groups = await em.findOneBy(Group, {
+        const groups = await em.findOneBy(models.Group, {
           userType: coreTypes.entities.AuthUserType.USER,
           default: true,
         });
@@ -179,7 +181,7 @@ export class UserService {
           );
         }
         // create user
-        const newUser = em.create(User, {
+        const newUser = em.create(models.User, {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
@@ -195,7 +197,7 @@ export class UserService {
         const response = await em.save(newUser);
         return response;
       }
-    )) as iamTypes.api.v1.adminUser.ResponseBodyData;
+    )) as iamTypes.api.v1.users.ResponseBodyData;
     return response;
   }
 
@@ -210,7 +212,7 @@ export class UserService {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by magic link
-        const response = await em.findOneBy(User, {
+        const response = await em.findOneBy(models.User, {
           magicLink: params.magiclink,
         });
         return response;
@@ -233,7 +235,7 @@ export class UserService {
       async (em: EntityManager) => {
         // update by magic link
         const updateResult = await em.update(
-          User,
+          models.User,
           { magicLink: params.magiclink },
           {
             ...payload,
@@ -260,7 +262,7 @@ export class UserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
-        const groups = await em.find(Group, {
+        const groups = await em.find(models.Group, {
           where: {
             userType: coreTypes.entities.AuthUserType.USER,
             uid: document.groups.map((gr: any) => gr.value) as any,
@@ -268,7 +270,7 @@ export class UserService {
         });
 
         // find admin user
-        const user = await em.findOneBy(User, {
+        const user = await em.findOneBy(models.User, {
           uid: params.uid,
         });
 
@@ -294,7 +296,7 @@ export class UserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          User,
+          models.User,
           { uid: params.uid },
           {
             status: "DISABLED",
@@ -317,7 +319,7 @@ export class UserService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
-          User,
+          models.User,
           { uid: params.uid },
           {
             status: "ENABLED",
@@ -339,7 +341,7 @@ export class UserService {
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const deleteResult = await em.delete(User, {
+        const deleteResult = await em.delete(models.User, {
           uid: params.uid,
         });
         return deleteResult;

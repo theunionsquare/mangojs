@@ -5,9 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
+  ManyToOne,
   JoinTable,
+  JoinColumn,
 } from "typeorm";
 import { Group } from "./Group.entity";
+import { Partner } from "./Partner.entity";
 
 @Entity({ name: "partner_users", schema: "iam" })
 export class PartnerUser {
@@ -67,6 +70,10 @@ export class PartnerUser {
     name: "partneruser_groups",
   })
   groups: Group[];
+
+  @ManyToOne(() => Partner, (partner) => partner.partnerUsers)
+  @JoinColumn({ name: "partnerId" })
+  partner: Partner;
 }
 
 export interface IPartnerUser {
@@ -88,4 +95,5 @@ export interface IPartnerUser {
   createdAt?: Date;
   updatedAt?: Date;
   groups?: Group[];
+  partner?: Partner;
 }
