@@ -21,8 +21,7 @@ dotenv.config();
 const COOKIE_NAME = process.env.COOKIE_NAME;
 
 // import userService
-const userService =
-  IAMDefaultContainer.get<UserService>(UserService);
+const userService = IAMDefaultContainer.get<UserService>(UserService);
 
 // import authorization service
 const authService =
@@ -77,11 +76,11 @@ export class AuthUserController {
   @Post("/login")
   public async getCredentials(
     req: Types.v1.api.request.Request<
-      api.v1.auth.users.login.POST.RequestBody,
+      undefined,
       api.v1.auth.users.login.POST.RequestBody
     >,
     res: Response<api.v1.auth.users.login.POST.ResponseBody>
-  ): Promise<Response<Types.apiResponses.Success<{}>>> {
+  ): Promise<Response<api.v1.auth.users.login.POST.ResponseBody>> {
     console.log("Log-in user");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -92,10 +91,7 @@ export class AuthUserController {
       // validate request
 
       // check if user exists
-      const user = await userService.userLogIn(
-        body.email,
-        body.password
-      );
+      const user = await userService.userLogIn(body.email, body.password);
       //Creating cookie token
       const cookie = authService.generateUserCredentials({
         uid: user.uid,
@@ -158,9 +154,9 @@ export class AuthUserController {
    */
   @Post("/logout")
   public async logout(
-    req: Request,
-    res: Response<Types.apiResponses.Success<{}>>
-  ): Promise<Response<Types.apiResponses.Success<{}>>> {
+    req: Request<undefined, api.v1.auth.users.logout.POST.RequestBody>,
+    res: Response<api.v1.auth.users.logout.POST.ResponseBody>
+  ): Promise<Response<api.v1.auth.users.logout.POST.ResponseBody>> {
     console.log("Log-in user");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -170,7 +166,7 @@ export class AuthUserController {
       //const response = await adminUserService.getAdminUser(body.username);
 
       // prepare response
-      const apiResponse: Types.apiResponses.Success<{}> = {
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
@@ -189,9 +185,9 @@ export class AuthUserController {
 
   @Post("/register")
   public async registerUser(
-    req: Request,
-    res: Response<Types.apiResponses.Success<{}>>
-  ): Promise<Response<Types.apiResponses.Success<{}>>> {
+    req: Request<undefined, api.v1.auth.users.register.POST.RequestBody>,
+    res: Response<api.v1.auth.users.register.POST.ResponseBody>
+  ): Promise<Response<api.v1.auth.users.register.POST.ResponseBody>> {
     console.log("register user");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -199,14 +195,24 @@ export class AuthUserController {
       const response = await userService.postUser(body);
 
       // prepare response
-      const apiResponse: Types.apiResponses.Success<{}> = {
+      const apiResponse: api.v1.auth.users.register.POST.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: { response },
+        data: {
+          authenticated: true,
+          message: "User registered successfully",
+          user: {
+            uid: response.uid,
+            firstName: response.firstName,
+            lastName: response.lastName,
+            email: response.email,
+            userType: Types.entities.AuthUserType.USER,
+          },
+        },
       };
 
-      return res.json(apiResponse);
+      return res.status(200).send(apiResponse);
     } catch (error) {
       return errors.errorHandler(res, error as Error);
     }
@@ -238,7 +244,10 @@ export class AuthUserController {
    */
   @Post("/verify")
   //@AuthDecorators.IsAuthorized()
-  public async verifyToken(req: Request, res: Response): Promise<Response> {
+  public async verifyToken(
+    req: Request<undefined, api.v1.auth.users.verify.POST.RequestBody>,
+    res: Response<api.v1.auth.users.verify.POST.ResponseBody>
+  ): Promise<Response<api.v1.auth.users.verify.POST.ResponseBody>> {
     console.log("verify token");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -246,27 +255,20 @@ export class AuthUserController {
       const authUser = await authService.validateUserCredentials(req, res);
 
       // prepare response
-      const apiResponse: Types.apiResponses.Success<{}> = {
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: {
-          isAuthenticated: true,
+          authenticated: true,
+          message: "Session is valid",
           user: authUser,
         },
       };
 
       return res.status(200).json(apiResponse);
     } catch (err) {
-      return res.status(400).json({
-        ok: false,
-        timestamp: logRequest.timestamp,
-        requestId: logRequest.requestId,
-        data: {
-          err: err.errMessage,
-          isAuthenticated: false,
-        },
-      });
+      return errors.errorHandler(res, err as Error);
     }
   }
 }
