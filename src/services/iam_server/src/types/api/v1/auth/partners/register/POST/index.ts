@@ -1,16 +1,30 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "../..";
+import { models } from "../../../../../../../..";
 
 /*
  *   REQUEST BODY
  *   @see
  *
- *   REQUEST: POST /api/auth/login
+ *   REQUEST: POST /api/auth/register
  */
 
-export type RequestBody = {
-  email: string;
-  password: string;
+export type RequestBody = Pick<
+  models.IPartner,
+  | "companyName"
+  | "businessType"
+  | "taxId"
+  | "email"
+  | "addressStreet"
+  | "addressCity"
+  | "addressState"
+  | "addressCountry"
+  | "addressPostalCode"
+> & {
+  user: Pick<
+    models.IPartnerUser,
+    "firstName" | "lastName" | "email" | "password" | "age" | "phoneNumber"
+  >;
 };
 
 /*

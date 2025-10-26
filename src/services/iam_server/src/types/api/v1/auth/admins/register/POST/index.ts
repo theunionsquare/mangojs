@@ -1,5 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "../..";
+import { models } from "../../../../../../../..";
 
 /*
  *   REQUEST BODY
@@ -8,10 +9,10 @@ import { ResponseBodyData } from "../..";
  *   REQUEST: POST /api/auth/login
  */
 
-export type RequestBody = {
-  email: string;
-  password: string;
-};
+export type RequestBody = Pick<
+  models.IAdminUser,
+  "firstName" | "lastName" | "email" | "password" | "age" | "phoneNumber"
+>;
 
 /*
  *   RESPONSE BODY
