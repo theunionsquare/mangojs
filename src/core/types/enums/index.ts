@@ -1,4 +1,3 @@
-export type a = {};
 export enum AuthUserType {
   ADMIN = "ADMIN",
   PARTNER = "PARTNER",
