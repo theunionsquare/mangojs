@@ -1,6 +1,6 @@
-import { Request as ExRequest } from 'express'
+import type { Request as ExRequest } from "express";
 
 export interface Request<P = { [key: string]: string }, ResBody = any>
-    extends ExRequest<P, any, ResBody> {
-    requestTime: string
+  extends ExRequest<P, any, ResBody> {
+  requestTime: string;
 }
