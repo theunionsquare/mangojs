@@ -10,10 +10,10 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./*": {
-      "import": "./dist/*.js",
-      "require": "./dist/*.js",
-      "types": "./dist/*.d.ts"
+    "./types/enums": {
+      "import": "./dist/core/types/enums/index.js",
+      "require": "./dist/core/types/enums/index.js",
+      "types": "./dist/core/types/enums/index.d.ts"
     }
   },
   "repository": {
@@ -25,6 +25,8 @@
   },
   "files": [
     "dist/**/*",
+    "docs/**/*",
+    "instructions/**/*",
     "README.md",
     "LICENSE"
   ],
@@ -39,18 +41,12 @@
     "nodejs",
     "backend",
     "framework",
-    "microservices",
-    "express",
-    "dependency-injection",
-    "code-injection",
-    "ai-development",
-    "database-agnostic",
-    "typescript"
+    "microservices"
   ],
   "author": "",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=22.0.0",
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@8.0.0",
