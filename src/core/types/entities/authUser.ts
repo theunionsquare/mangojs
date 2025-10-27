@@ -1,3 +1,5 @@
+import * as enums from "../enums";
+
 export interface AuthUserBase {
   uid: string;
   firstName: string;
@@ -6,11 +8,6 @@ export interface AuthUserBase {
 }
 
 export interface AuthUser extends AuthUserBase {
-  userType: AuthUserType;
-}
-
-export enum AuthUserType {
-  ADMIN = "ADMIN",
-  PARTNER = "PARTNER",
-  USER = "USER",
+  userType: enums.AuthUserType;
+  status: enums.UserStatus | enums.AdminUserStatus | enums.PartnerUserStatus;
 }

@@ -11,6 +11,7 @@ import {
 } from "typeorm";
 import { Group } from "./Group.entity";
 import { Partner } from "./Partner.entity";
+import { Types } from "@giusmento/mangojs-core";
 
 @Entity({ name: "partner_users", schema: "iam" })
 export class PartnerUser {
@@ -32,8 +33,11 @@ export class PartnerUser {
   @Column({ type: "varchar", length: 50, nullable: true })
   phoneNumber: string;
 
-  @Column({ type: "varchar", length: 50, default: "PENDING" })
-  status: string;
+  @Column({
+    type: "enum",
+    enum: Types.enums.PartnerUserStatus,
+  })
+  status: Types.enums.PartnerUserStatus;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   password: string;
@@ -83,7 +87,7 @@ export interface IPartnerUser {
   username?: string;
   email: string;
   phoneNumber?: string;
-  status: string;
+  status: Types.enums.PartnerUserStatus;
   password?: string;
   age?: number;
   isActive: boolean;

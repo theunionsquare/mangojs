@@ -17,9 +17,6 @@ import { api } from "../../../types";
 
 dotenv.config();
 
-// envs
-const COOKIE_NAME = process.env.COOKIE_NAME;
-
 // import adminUserService
 const adminUserService =
   IAMDefaultContainer.get<AdminUserService>(AdminUserService);
@@ -109,7 +106,8 @@ export class AuthAdminController {
         firstName: adminUser.firstName,
         lastName: adminUser.lastName,
         email: adminUser.email,
-        userType: Types.entities.AuthUserType.ADMIN,
+        userType: Types.enums.AuthUserType.ADMIN,
+        status: adminUser.status,
       };
 
       const apiResponse = {

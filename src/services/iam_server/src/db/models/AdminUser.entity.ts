@@ -6,17 +6,14 @@ import {
   UpdateDateColumn,
   ManyToMany,
   JoinTable,
-  BeforeInsert,
 } from "typeorm";
-import { utils } from "@giusmento/mangojs-core";
 import { Group } from "./Group.entity";
+
+import { Types } from "@giusmento/mangojs-core";
 
 @Entity({ name: "admin_users", schema: "iam" })
 export class AdminUser {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ type: "uuid", unique: true })
+  @PrimaryGeneratedColumn("uuid")
   uid: string;
 
   @Column({ type: "varchar", length: 255 })
@@ -34,8 +31,11 @@ export class AdminUser {
   @Column({ type: "varchar", length: 50, nullable: true })
   phoneNumber: string;
 
-  @Column({ type: "varchar", length: 50, default: "PENDING" })
-  status: string;
+  @Column({
+    type: "enum",
+    enum: Types.enums.AdminUserStatus,
+  })
+  status: Types.enums.AdminUserStatus;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   password: string;
@@ -72,22 +72,16 @@ export class AdminUser {
     name: "adminuser_groups",
   })
   groups: Group[];
-
-  @BeforeInsert()
-  generateUid() {
-    this.uid = utils.generateUUID();
-  }
 }
 
 export interface IAdminUser {
-  id?: number;
   uid: string;
   firstName: string;
   lastName?: string;
   username?: string;
   email: string;
   phoneNumber?: string;
-  status: string;
+  status: Types.enums.AdminUserStatus;
   password?: string;
   age?: number;
   isActive: boolean;

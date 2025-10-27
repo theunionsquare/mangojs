@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { AdminUserService } from "./adminUser.service";
 import { PartnerUserService } from "./partnerUser.service";
 import { UserService } from "./user.service";
+import { stat } from "fs";
 
 dotenv.config();
 
@@ -112,11 +113,12 @@ export class AuthorizationService implements Auth.IAuthProvider {
       const authUser = await this.partnerUserService.get(verify.cookieData.id);
       // TODO check user and prepare response
       const response = {
-        userType: Types.entities.AuthUserType.PARTNER,
+        userType: Types.enums.AuthUserType.PARTNER,
         uid: authUser.uid,
         firstName: authUser.firstName,
         lastName: authUser.lastName || "",
         email: authUser.email,
+        status: authUser.status,
         groups: authUser.groups,
       };
 
@@ -181,12 +183,13 @@ export class AuthorizationService implements Auth.IAuthProvider {
       const authUser = await this.userService.getUser(verify.cookieData.id);
       // TODO check user and prepare response
       const response = {
-        userType: Types.entities.AuthUserType.USER,
+        userType: Types.enums.AuthUserType.USER,
         uid: authUser.uid,
         firstName: authUser.firstName,
         lastName: authUser.lastName || "",
         email: authUser.email,
         groups: authUser.groups,
+        status: authUser.status,
       };
 
       return response;
@@ -265,12 +268,13 @@ export class AuthorizationService implements Auth.IAuthProvider {
       );
       // TODO check user and prepare response
       const response = {
-        userType: Types.entities.AuthUserType.ADMIN,
+        userType: Types.enums.AuthUserType.ADMIN,
         uid: authUser.uid,
         firstName: authUser.firstName,
         lastName: authUser.lastName || "",
         email: authUser.email,
         groups: authUser.groups,
+        status: authUser.status,
       };
 
       return response;

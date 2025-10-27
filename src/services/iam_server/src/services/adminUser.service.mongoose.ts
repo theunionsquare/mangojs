@@ -195,7 +195,7 @@ export class AdminUserService {
         // get group id
         console.log({ adminUser }, "search group UID");
         const respGroup = await AdminGroupSchema.findOne({
-          userType: Types.entities.AuthUserType.ADMIN,
+          userType: Types.enums.AuthUserType.ADMIN,
           uid: adminUser.groups,
         });
         // set group _id
@@ -306,7 +306,7 @@ export class AdminUserService {
       async (em: mongoose.Connection) => {
         // get group ids
         const grIds = await AdminGroupSchema.find({
-          userType: Types.entities.AuthUserType.ADMIN,
+          userType: Types.enums.AuthUserType.ADMIN,
           uid: document.groups.map((gr) => gr.value),
         });
 

@@ -71,7 +71,7 @@ export class UserGroupController {
     const logRequest = new utils.LogRequest(res);
     try {
       const userGroups = (await groupsService.getGroups(
-        Types.entities.AuthUserType.USER
+        Types.enums.AuthUserType.USER
       )) as Array<api.v1.groups.user.ResponseBodyData>;
 
       const apiResponse = {
@@ -125,7 +125,7 @@ export class UserGroupController {
     try {
       const body = req.body;
       const userGroups = await groupsService.postGroup(
-        Types.entities.AuthUserType.USER,
+        Types.enums.AuthUserType.USER,
         body
       );
 

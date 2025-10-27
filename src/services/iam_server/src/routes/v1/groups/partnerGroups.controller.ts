@@ -70,7 +70,7 @@ export class PartnerGroupController {
     const logRequest = new utils.LogRequest(res);
     try {
       const partnerGroups = (await groupsService.getGroups(
-        Types.entities.AuthUserType.PARTNER
+        Types.enums.AuthUserType.PARTNER
       )) as Array<api.v1.groups.admin.ResponseBodyData>;
 
       const apiResponse = {
@@ -124,7 +124,7 @@ export class PartnerGroupController {
     try {
       const body = req.body;
       const adminUsers = await groupsService.postGroup(
-        Types.entities.AuthUserType.PARTNER,
+        Types.enums.AuthUserType.PARTNER,
         body
       );
 

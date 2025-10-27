@@ -58,7 +58,7 @@ export class GroupsService {
   /**
    * Get list of Admin Groups
    */
-  public async getGroups(userType: Types.entities.AuthUserType): Promise<{}> {
+  public async getGroups(userType: Types.enums.AuthUserType): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: mongoose.Connection) => {
         const response: Array<api.v1.groups.admin.ResponseBodyData> = [];
@@ -83,7 +83,7 @@ export class GroupsService {
    * Post Admin Groups
    */
   public async postGroup(
-    userType: Types.entities.AuthUserType,
+    userType: Types.enums.AuthUserType,
     adminGroup: api.v1.groups.ResponseBodyData
   ): Promise<api.v1.groups.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(

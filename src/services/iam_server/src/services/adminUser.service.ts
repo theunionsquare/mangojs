@@ -151,7 +151,7 @@ export class AdminUserService {
             ...payload,
             isActive: true,
             isVerified: true,
-            status: "ENABLED",
+            status: Types.enums.AdminUserStatus.ACTIVE,
             verifiedAt: new Date(),
             magicLink: null,
             magicLinkExpireDate: null,
@@ -185,7 +185,7 @@ export class AdminUserService {
         console.log({ adminUser }, "search group UID");
         const respGroup = await em.findOne(models.Group, {
           where: {
-            userType: Types.entities.AuthUserType.ADMIN,
+            userType: Types.enums.AuthUserType.ADMIN,
             uid: adminUser.groups as any,
           },
         });
@@ -213,7 +213,7 @@ export class AdminUserService {
           groups: [respGroup],
           isActive: true,
           isVerified: false,
-          status: "PENDING",
+          status: Types.enums.AdminUserStatus.PENDING,
           magicLink,
           magicLinkExpireDate,
         });
@@ -307,7 +307,7 @@ export class AdminUserService {
         // get group entities
         const groups = await em.find(models.Group, {
           where: {
-            userType: Types.entities.AuthUserType.ADMIN,
+            userType: Types.enums.AuthUserType.ADMIN,
             uid: document.groups.map((gr: any) => gr.value) as any,
           },
         });
@@ -342,7 +342,7 @@ export class AdminUserService {
           models.AdminUser,
           { uid: params.uid },
           {
-            status: "DISABLED",
+            status: Types.enums.AdminUserStatus.DISABLED,
             isActive: false,
             disabledAt: new Date(),
           }
@@ -365,7 +365,7 @@ export class AdminUserService {
           models.AdminUser,
           { uid: params.uid },
           {
-            status: "ENABLED",
+            status: Types.enums.AdminUserStatus.ACTIVE,
             isActive: true,
             disabledAt: null,
           }

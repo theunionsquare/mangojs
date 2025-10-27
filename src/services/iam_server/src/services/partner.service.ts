@@ -1,5 +1,9 @@
 import { inject, injectable } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
+import {
+  INVERSITY_TYPES,
+  IPersistenceContext,
+  Types,
+} from "@giusmento/mangojs-core";
 import { EntityManager } from "typeorm";
 import { errors } from "@giusmento/mangojs-core";
 import { Partner, IPartner } from "../db/models/Partner.entity";
@@ -55,7 +59,7 @@ export class PartnerService {
           subscriptionTier: partner.subscriptionTier,
           contractStartDate: partner.contractStartDate,
           contractEndDate: partner.contractEndDate,
-          status: iamTypes.enums.PartnerStatus.PENDING,
+          status: Types.enums.PartnerStatus.PENDING,
           isVerified: false,
         });
 
@@ -172,7 +176,7 @@ export class PartnerService {
           Partner,
           { uid: params.uid },
           {
-            status: iamTypes.enums.PartnerStatus.DISABLED,
+            status: Types.enums.PartnerStatus.DISABLED,
             disabledAt: new Date(),
           }
         );
@@ -198,7 +202,7 @@ export class PartnerService {
           Partner,
           { uid: params.uid },
           {
-            status: iamTypes.enums.PartnerStatus.ACTIVE,
+            status: Types.enums.PartnerStatus.ACTIVE,
             disabledAt: null,
           }
         );

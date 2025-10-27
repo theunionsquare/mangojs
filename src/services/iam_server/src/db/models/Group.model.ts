@@ -3,7 +3,7 @@ import { ObjectId } from "mongodb";
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IGroup extends Document {
-  userType: Types.entities.AuthUserType;
+  userType: Types.enums.AuthUserType;
   uid: string;
   name: string;
   default: boolean;

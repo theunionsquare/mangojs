@@ -170,7 +170,7 @@ export class UserService {
 
         // fetch group entities
         const groups = await em.findOneBy(models.Group, {
-          userType: coreTypes.entities.AuthUserType.USER,
+          userType: coreTypes.enums.AuthUserType.USER,
           default: true,
         });
         if (!groups) {
@@ -189,7 +189,7 @@ export class UserService {
           groups: [groups],
           isActive: true,
           isVerified: false,
-          status: "PENDING",
+          status: coreTypes.enums.UserStatus.PENDING,
           magicLink,
           magicLinkExpireDate,
         });
@@ -241,7 +241,7 @@ export class UserService {
             ...payload,
             isActive: true,
             isVerified: true,
-            status: "ENABLED",
+            status: coreTypes.enums.UserStatus.ACTIVE,
             verifiedAt: new Date(),
             magicLink: null,
             magicLinkExpireDate: null,
@@ -264,7 +264,7 @@ export class UserService {
         // get group entities
         const groups = await em.find(models.Group, {
           where: {
-            userType: coreTypes.entities.AuthUserType.USER,
+            userType: coreTypes.enums.AuthUserType.USER,
             uid: document.groups.map((gr: any) => gr.value) as any,
           },
         });
@@ -299,7 +299,7 @@ export class UserService {
           models.User,
           { uid: params.uid },
           {
-            status: "DISABLED",
+            status: coreTypes.enums.UserStatus.DISABLED,
             isActive: false,
             disabledAt: new Date(),
           }
@@ -322,7 +322,7 @@ export class UserService {
           models.User,
           { uid: params.uid },
           {
-            status: "ENABLED",
+            status: coreTypes.enums.UserStatus.ACTIVE,
             isActive: true,
             disabledAt: null,
           }

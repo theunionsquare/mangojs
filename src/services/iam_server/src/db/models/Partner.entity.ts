@@ -7,7 +7,8 @@ import {
   OneToMany,
 } from "typeorm";
 import { PartnerUser } from "./PartnerUser.entity";
-import { PartnerStatus } from "../../types/enums/enums";
+
+import { Types } from "@giusmento/mangojs-core";
 
 @Entity({ name: "partners", schema: "iam" })
 export class Partner {
@@ -52,9 +53,9 @@ export class Partner {
 
   @Column({
     type: "enum",
-    enum: PartnerStatus,
+    enum: Types.enums.PartnerStatus,
   })
-  status: PartnerStatus;
+  status: Types.enums.PartnerStatus;
 
   @Column({ type: "boolean", default: false })
   isVerified: boolean;
@@ -98,7 +99,7 @@ export interface IPartner {
   addressPostalCode?: string;
   websiteUrl?: string;
   logoUrl?: string;
-  status: PartnerStatus;
+  status: Types.enums.PartnerStatus;
   isVerified: boolean;
   subscriptionTier?: string;
   contractStartDate?: Date;

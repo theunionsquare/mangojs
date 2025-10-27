@@ -65,7 +65,7 @@ export class AdminGroupController {
     const logRequest = new utils.LogRequest(res);
     try {
       const adminGroups = (await groupsService.getGroups(
-        Types.entities.AuthUserType.ADMIN
+        Types.enums.AuthUserType.ADMIN
       )) as Array<api.v1.groups.admin.ResponseBodyData>;
 
       const apiResponse = {
@@ -119,7 +119,7 @@ export class AdminGroupController {
     try {
       const body = req.body;
       const adminGroup = await groupsService.postGroup(
-        Types.entities.AuthUserType.ADMIN,
+        Types.enums.AuthUserType.ADMIN,
         body
       );
 

@@ -17,9 +17,6 @@ import { api } from "../../../types";
 
 dotenv.config();
 
-// envs
-const COOKIE_NAME = process.env.COOKIE_NAME;
-
 // import adminUserService
 const partnerUserService =
   IAMDefaultContainer.get<PartnerUserService>(PartnerUserService);
@@ -92,24 +89,25 @@ export class AuthPartnerController {
       // validate request
 
       // check if user exists
-      const adminUser = await partnerUserService.logIn(
+      const partnerUser = await partnerUserService.logIn(
         body.email,
         body.password
       );
       //Creating cookie token
       const cookie = authService.generatePartnerCredentials({
-        uid: adminUser.uid,
-        firstName: adminUser.uid,
-        lastName: adminUser.lastName,
-        email: adminUser.email,
+        uid: partnerUser.uid,
+        firstName: partnerUser.uid,
+        lastName: partnerUser.lastName,
+        email: partnerUser.email,
       });
 
       const authUser: Types.entities.AuthUser = {
-        uid: adminUser.uid,
-        firstName: adminUser.firstName,
-        lastName: adminUser.lastName,
-        email: adminUser.email,
-        userType: Types.entities.AuthUserType.PARTNER,
+        uid: partnerUser.uid,
+        firstName: partnerUser.firstName,
+        lastName: partnerUser.lastName,
+        email: partnerUser.email,
+        userType: Types.enums.AuthUserType.PARTNER,
+        status: partnerUser.status,
       };
 
       const apiResponse = {

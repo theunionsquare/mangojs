@@ -8,6 +8,7 @@ import {
   JoinTable,
 } from "typeorm";
 import { Group } from "./Group.entity";
+import { Types } from "@giusmento/mangojs-core";
 
 @Entity({ name: "users", schema: "iam" })
 export class User {
@@ -26,8 +27,11 @@ export class User {
   @Column({ type: "varchar", length: 50, nullable: true })
   phoneNumber: string;
 
-  @Column({ type: "varchar", length: 50, default: "PENDING" })
-  status: string;
+  @Column({
+    type: "enum",
+    enum: Types.enums.UserStatus,
+  })
+  status: Types.enums.UserStatus;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   password: string;
@@ -73,7 +77,7 @@ export interface IUser {
   username?: string;
   email: string;
   phoneNumber?: string;
-  status: string;
+  status: Types.enums.UserStatus;
   password?: string;
   age?: number;
   isActive: boolean;

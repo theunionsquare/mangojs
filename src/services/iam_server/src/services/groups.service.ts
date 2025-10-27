@@ -63,7 +63,7 @@ export class GroupsService {
   /**
    * Get list of Groups by UserType
    */
-  public async getGroups(userType: Types.entities.AuthUserType): Promise<{}> {
+  public async getGroups(userType: Types.enums.AuthUserType): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const responseArray: Array<api.v1.groups.admin.ResponseBodyData> = [];
@@ -90,7 +90,7 @@ export class GroupsService {
    * Create Group
    */
   public async postGroup(
-    userType: Types.entities.AuthUserType,
+    userType: Types.enums.AuthUserType,
     groupData: api.v1.groups.ResponseBodyData
   ): Promise<api.v1.groups.ResponseBodyData> {
     const response = (await this._persistenceContext.inTransaction(

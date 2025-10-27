@@ -8,9 +8,9 @@ export class Group {
 
   @Column({
     type: "enum",
-    enum: Types.entities.AuthUserType,
+    enum: Types.enums.AuthUserType,
   })
-  userType: Types.entities.AuthUserType;
+  userType: Types.enums.AuthUserType;
 
   @Column({ type: "varchar", length: 255 })
   name: string;
@@ -27,7 +27,7 @@ export class Group {
 
 export interface IGroup {
   uid: string;
-  userType: Types.entities.AuthUserType;
+  userType: Types.enums.AuthUserType;
   name: string;
   description: string;
   default: boolean;
