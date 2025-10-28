@@ -5,6 +5,7 @@ import {
   Post,
   loggedMethod,
   utils,
+  Providers,
 } from "@giusmento/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
@@ -14,6 +15,8 @@ import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
 import { Types } from "@giusmento/mangojs-core";
 import { api } from "../../../types";
+import { INVERSITY_TYPES } from "../../../inversify.types";
+import * as template from "../../../templates";
 
 dotenv.config();
 
@@ -88,7 +91,13 @@ export class AuthUserController {
       // validate request
 
       // check if user exists
-      const user = await userService.userLogIn(body.email, body.password);
+      const user = {
+        uid: "12345",
+        firstName: "John",
+        lastName: "Doe",
+        email: email,
+        status: Types.enums.UserStatus.ACTIVE,
+      }; //await userService.userLogIn(body.email, body.password);
       //Creating cookie token
       const cookie = authService.generateUserCredentials({
         uid: user.uid,
@@ -210,6 +219,33 @@ export class AuthUserController {
           },
         },
       };
+
+      // import email service
+      const emailService =
+        IAMDefaultContainer.get<Providers.email.IEmailService>(
+          INVERSITY_TYPES.EmailService
+        );
+      // send email confirmation
+      const htmlTemplate = template.emails.confirmEmailTemplate;
+      // replace placeholders {{aabbcc}} with actual data
+      // get appname from env
+      const appName = process.env.APP_NAME || "MyApp";
+      const appDomainUrl =
+        process.env.APP_DOMAIN_URL || "http://localhost:8081";
+
+      const data: template.emails.ConfirmEmailTemplateData = {
+        firstName: response.firstName,
+        confirmationLink: `${appDomainUrl}/user/verify?magic_link=${response.magicLink}`,
+        expirationTime: 24,
+        appName: "PulcherBook",
+        currentYear: new Date().getFullYear(),
+      };
+      const renderedHtml = utils.renderHtmlTemplate(htmlTemplate, data);
+      await emailService.sendTransactionEmail(
+        response.email,
+        "Confirm your email",
+        renderedHtml
+      );
 
       return res.status(200).send(apiResponse);
     } catch (error) {

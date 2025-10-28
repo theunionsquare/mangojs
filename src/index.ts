@@ -1,2 +1,2 @@
-export * from './core'
-export * as services from './services'
+export * from "./core";
+export * as services from "./services";

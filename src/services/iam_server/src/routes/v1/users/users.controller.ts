@@ -181,7 +181,6 @@ export class UserController {
    *
    */
   @Get("/magiclinks/:magiclink")
-  @AuthDecorators.IsAuthorized()
   public async getAdminBymagicLink(
     req: coreTypes.v1.api.request.Request<
       iamTypes.api.v1.adminUser.magiclinks.GET.Params,
@@ -195,6 +194,13 @@ export class UserController {
         req.params
       )) as iamTypes.api.v1.users.magiclinks.ResponseBodyData;
 
+      if (!user) {
+        throw new errors.APIError(
+          404,
+          "USER_MAGIC_LINK_NOT_FOUND",
+          "Magic link not found"
+        );
+      }
       const apiResponse: iamTypes.api.v1.users.magiclinks.GET.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,

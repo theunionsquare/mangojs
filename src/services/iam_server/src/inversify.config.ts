@@ -1,7 +1,7 @@
 import {
   Auth,
   INVERSITY_TYPES,
-  Loggers,
+  Providers,
   persistanceContext,
   databasemanager,
 } from "@giusmento/mangojs-core";
@@ -58,5 +58,9 @@ IAMDefaultContainer.bind<AuthorizationService>(AuthorizationService)
 IAMDefaultContainer.bind<Auth.IAuthProvider>(
   INVERSITY_TYPES.AuthorizationContext
 ).toService(AuthorizationService);
+
+IAMDefaultContainer.bind<Providers.email.IEmailService>(
+  INVERSITY_TYPES.EmailService
+).toConstantValue(new Providers.email.EmailServiceDummy());
 
 export { IAMDefaultContainer };
