@@ -7,6 +7,7 @@ export class EmailServiceBrevo implements IEmailService {
   brevoApiKey: string;
   senderEmail: string;
   senderName: string;
+  url: string;
   // constructor and other methods can be added here
   public constructor(
     senderEmail: string,
@@ -14,6 +15,7 @@ export class EmailServiceBrevo implements IEmailService {
     brevoApiKey: string
   ) {
     this.provider = "Brevo";
+    this.url = "https://api.brevo.com/v3/smtp/email";
     this.brevoApiKey = brevoApiKey;
     this.senderEmail = senderEmail;
     this.senderName = senderName;
@@ -21,25 +23,21 @@ export class EmailServiceBrevo implements IEmailService {
   async sendTransactionEmail(
     receiver: string,
     subject: string,
-    templatePath: string,
+    templateHtml: string,
     attachments?: Array<{ name: string; content: string }>
   ): Promise<{}> {
     // Implementation for sending transactional email using Brevo
-    console.log(`Sending transactional email using template: ${templatePath}`);
-    // TO DO: Integrate with Brevo API to send the email
-    // read template html from path
-    const templateHtml = ""; // Placeholder for template content
-    // send email logic here
+    console.log(`Sending transactional with Brevo service`);
     //http call
     const body = JSON.stringify({
       sender: { name: this.senderName, email: this.senderEmail },
       to: [{ email: receiver }],
       subject: subject,
-      htmlContent: templatePath,
+      htmlContent: templateHtml,
     });
     console.log(`Email sent using Brevo with template: ${body}`);
 
-    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    const response = await fetch(this.url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,8 +46,11 @@ export class EmailServiceBrevo implements IEmailService {
       body,
     });
     const responseData = await response.json();
-    console.log(`Response status: ${response.status}`);
-    console.log(`Response data:`, responseData);
+    console.log(
+      `Response status: ${response.status}`,
+      `Response data:`,
+      responseData
+    );
     return responseData;
   }
 }
