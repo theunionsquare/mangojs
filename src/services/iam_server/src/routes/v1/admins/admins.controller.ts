@@ -12,9 +12,11 @@ import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AdminUserService } from "../../../services/adminUser.service";
 import { errors } from "@giusmento/mangojs-core";
-import type { Types } from "@giusmento/mangojs-core";
 import { AdminUser } from "../../../types/entities/adminUser.type";
 import { api } from "../../../types";
+
+import type { Types } from "@giusmento/mangojs-core";
+import type { types as iamTypes } from "../../../../";
 
 dotenv.config();
 
@@ -121,15 +123,33 @@ export class AdminController {
   ): Promise<Response<api.v1.adminUser.magiclinks.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const adminUser = (await adminUserService.getAdminUserByMagicLink(
-        req.params
-      )) as api.v1.adminUser.magiclinks.ResponseBodyData;
-
+      const magiclink = req.params.magiclink;
+      const adminUser = await adminUserService.getAdminUserByMagicLink(
+        magiclink
+      );
+      const adminUserData: api.v1.adminUser.ResponseBodyData = {
+        uid: adminUser.uid,
+        email: adminUser.email,
+        age: adminUser.age,
+        phoneNumber: adminUser.phoneNumber,
+        firstName: adminUser.firstName,
+        lastName: adminUser.lastName,
+        status: adminUser.status,
+        isActive: adminUser.isActive,
+        isVerified: adminUser.isVerified,
+        magicLink: adminUser.magicLink,
+        magicLinkExpireDate: adminUser.magicLinkExpireDate,
+        disabledAt: adminUser.disabledAt,
+        createdAt: adminUser.createdAt,
+        updatedAt: adminUser.updatedAt,
+        verifiedAt: adminUser.verifiedAt,
+        groups: adminUser.groups,
+      };
       const apiResponse: api.v1.adminUser.magiclinks.GET.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: adminUser,
+        data: adminUserData,
       };
 
       return res.status(200).send(apiResponse);
@@ -178,16 +198,36 @@ export class AdminController {
     const logRequest = new utils.LogRequest(res);
     try {
       req.requestTime;
+      const magiclink = req.params.magiclink;
       const adminUser = (await adminUserService.activateAdminUser(
-        req.params,
+        magiclink,
         req.body
       )) as api.v1.adminUser.activate.ResponseBodyData;
+
+      const adminUserData: api.v1.adminUser.ResponseBodyData = {
+        uid: adminUser.uid,
+        email: adminUser.email,
+        age: adminUser.age,
+        phoneNumber: adminUser.phoneNumber,
+        firstName: adminUser.firstName,
+        lastName: adminUser.lastName,
+        status: adminUser.status,
+        isActive: adminUser.isActive,
+        isVerified: adminUser.isVerified,
+        magicLink: adminUser.magicLink,
+        magicLinkExpireDate: adminUser.magicLinkExpireDate,
+        disabledAt: adminUser.disabledAt,
+        createdAt: adminUser.createdAt,
+        updatedAt: adminUser.updatedAt,
+        verifiedAt: adminUser.verifiedAt,
+        groups: adminUser.groups,
+      };
 
       const apiResponse: api.v1.adminUser.activate.POST.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: adminUser,
+        data: adminUserData,
       };
 
       return res.status(200).send(apiResponse);
@@ -237,15 +277,38 @@ export class AdminController {
     try {
       const body = req.body;
       console.log({ body }, "body");
-      const response = (await adminUserService.postAdminUser(
-        body
-      )) as api.v1.adminUser.ResponseBodyData;
+
+      const adminUser: iamTypes.entities.adminUser.AdminUserPost = {
+        email: body.email,
+        firstName: body.firstName,
+        lastName: body.lastName,
+      };
+      const response = await adminUserService.postAdminUser(adminUser);
       // prepare response
+      const adminUserData: api.v1.adminUser.ResponseBodyData = {
+        uid: response.uid,
+        email: response.email,
+        age: response.age,
+        phoneNumber: response.phoneNumber,
+        firstName: response.firstName,
+        lastName: response.lastName,
+        status: response.status,
+        isActive: response.isActive,
+        isVerified: response.isVerified,
+        magicLink: response.magicLink,
+        magicLinkExpireDate: response.magicLinkExpireDate,
+        disabledAt: response.disabledAt,
+        createdAt: response.createdAt,
+        updatedAt: response.updatedAt,
+        verifiedAt: response.verifiedAt,
+        groups: response.groups,
+      };
+
       const apiResponse: api.v1.adminUser.POST.ResponseBody = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: response,
+        data: adminUserData,
       };
 
       return res.status(200).send(apiResponse);
@@ -300,9 +363,15 @@ export class AdminController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
+      const uid = params.uid;
+      const updateData = {
+        firstName: body.firstName,
+        lastName: body.lastName,
+      };
+      // call service to update admin user
       const response = (await adminUserService.updateAdminUser(
-        params,
-        body
+        uid,
+        updateData
       )) as api.v1.adminUser.ResponseBodyData;
       // prepare response
       const apiResponse = {
@@ -363,8 +432,10 @@ export class AdminController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
+      // uid from params
+      const uid = params.uid;
       const response = (await adminUserService.updateGroupsToAdminUser(
-        params,
+        uid,
         body
       )) as api.v1.adminUser.ResponseBodyData;
       // prepare response
@@ -421,8 +492,10 @@ export class AdminController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
+      // uid from params
+      const uid = params.uid;
       const response = (await adminUserService.disableAdminUser(
-        params
+        uid
       )) as api.v1.adminUser.ResponseBodyData;
       // prepare response
       const apiResponse = {
@@ -478,8 +551,10 @@ export class AdminController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
+      // uid from params
+      const uid = params.uid;
       const response = (await adminUserService.enableAdminUser(
-        params
+        uid
       )) as api.v1.adminUser.ResponseBodyData;
       // prepare response
       const apiResponse = {
@@ -535,8 +610,10 @@ export class AdminController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
+      // uid from params
+      const uid = params.uid;
       const response = (await adminUserService.hardDeleteAdminUser(
-        params
+        uid
       )) as api.v1.adminUser.ResponseBodyData;
       // prepare response
       const apiResponse = {

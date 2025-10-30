@@ -9,6 +9,7 @@ import { errors, utils } from "@giusmento/mangojs-core";
 import { api } from "../types";
 
 import * as models from "../db/models";
+import type { types as iamTypes } from "../../";
 
 @injectable()
 export class AdminUserService {
@@ -24,19 +25,24 @@ export class AdminUserService {
   }
 
   /**
-   * LogIn AdminUser
-   * @param username
-   * @param password
-   * @returns
+   * Login - Authenticate an admin user with email and password
+   *
+   * @param email - The admin user's email address
+   * @param password - The admin user's password
+   * @returns Promise resolving to the authenticated admin user object
+   * @throws {APIError} 401 UNAUTHORIZED if credentials are invalid
    */
   public async AdminUserLogIn(
     email: string,
     password: string
-  ): Promise<models.IAdminUser> {
-    const response = await this._persistenceContext.inTransaction(
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by email
-        const response = await em.findOneBy(models.AdminUser, { email: email });
+        const response = await em.findOneBy(models.AdminUser, {
+          email,
+          password,
+        });
         //const response = await this.adminUserRepository.findOne({
         //    where: { email: email }
         //})
@@ -45,21 +51,25 @@ export class AdminUserService {
         }
         return response;
       }
-    );
-    return response as models.IAdminUser;
+    )) as iamTypes.entities.adminUser.AdminUser;
+    return response;
   }
 
   /**
-   * Get AdminUser
-   * @param adminUserId
-   * @returns
+   * Get Admin User - Retrieve a single admin user by their unique identifier
+   *
+   * @param uid - The unique identifier (uid) of the admin user
+   * @returns Promise resolving to the admin user object with their details
+   * @throws {APIError} 404 NOT_FOUND if the admin user does not exist
    */
-  public async getAdminUser(adminUserId: string): Promise<models.IAdminUser> {
+  public async getAdminUser(
+    uid: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
         const adminUser = await em.findOneBy(models.AdminUser, {
-          uid: adminUserId,
+          uid,
           // relations: ['groups'] // Uncomment if you need groups
         });
 
@@ -89,17 +99,20 @@ export class AdminUserService {
           //}),
         };
       }
-    )) as models.IAdminUser;
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Get AdminUser by username
-   * @param username
-   * @returns
+   * Get Admin User By Username - Retrieve an admin user by their username
+   *
+   * @param username - The username of the admin user
+   * @returns Promise resolving to the admin user object
    */
-  public async getAdminUserByUsername(username: string): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async getAdminUserByUsername(
+    username: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by username
         const response = await em.findOneBy(models.AdminUser, {
@@ -107,46 +120,50 @@ export class AdminUserService {
         });
         return response;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Get AdminUser by magic link
-   * @param params
-   * @returns
+   * Get Admin User By Magic Link - Retrieve an admin user by their magic link token
+   *
+   * @param magicLink - The magic link token
+   * @returns Promise resolving to the admin user object associated with the magic link
+   * @description Used during account activation or password reset flows
    */
   public async getAdminUserByMagicLink(
-    params: api.v1.adminUser.magiclinks.GET.Params
-  ): Promise<api.v1.adminUser.magiclinks.ResponseBodyData> {
+    magicLink: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by magic link
-        const response = await this.adminUserRepository.findOne({
-          where: { magicLink: params.magiclink },
+        const response = await em.findOneBy(models.AdminUser, {
+          magicLink,
         });
         return response;
       }
-    )) as api.v1.adminUser.magiclinks.ResponseBodyData;
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Activate AdminUser by magic link
-   * @param params
-   * @param payload
-   * @returns
+   * Activate Admin User - Activate an admin user account using their magic link
+   *
+   * @param magicLink - The magic link token
+   * @param payload - Object containing additional admin user information to update during activation
+   * @returns Promise resolving to the activation result
+   * @description Sets admin user status to ACTIVE, marks as verified, clears magic link, and updates verification timestamp
    */
   public async activateAdminUser(
-    params: api.v1.adminUser.activate.POST.Params,
-    payload: api.v1.adminUser.activate.POST.RequestBody
-  ): Promise<api.v1.adminUser.activate.ResponseBodyData> {
+    magicLink: string,
+    payload: Partial<api.v1.adminUser.activate.POST.RequestBody>
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // update by magic link
         const updateResult = await em.update(
           models.AdminUser,
-          { magicLink: params.magiclink },
+          { magicLink },
           {
             ...payload,
             isActive: true,
@@ -159,16 +176,22 @@ export class AdminUserService {
         );
         return updateResult;
       }
-    )) as api.v1.adminUser.activate.ResponseBodyData;
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Create Admin User
+   * Post Admin User - Create a new admin user with auto-generated credentials and magic link
+   *
+   * @param adminUser - The admin user data including firstName, lastName, email, and groups
+   * @returns Promise resolving to the created admin user object
+   * @throws {APIError} 409 CONFLICT if email already exists
+   * @throws {APIError} 404 NOT_FOUND if the specified group does not exist
+   * @description Generates a random password and magic link for account activation. The magic link expires in 24 hours.
    */
   public async postAdminUser(
-    adminUser: api.v1.adminUser.POST.RequestBody
-  ): Promise<api.v1.adminUser.ResponseBodyData> {
+    adminUser: iamTypes.entities.adminUser.AdminUserPost
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
@@ -186,7 +209,7 @@ export class AdminUserService {
         const respGroup = await em.findOne(models.Group, {
           where: {
             userType: Types.enums.AuthUserType.ADMIN,
-            uid: adminUser.groups as any,
+            default: true,
           },
         });
 
@@ -221,17 +244,21 @@ export class AdminUserService {
         const response = await em.save(models.AdminUser, newAdminUser);
         return response;
       }
-    )) as api.v1.adminUser.ResponseBodyData;
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Get list of active Admin Users
+   * Get Admin Users - Retrieve all admin users in the system
+   *
+   * @returns Promise resolving to an array of all admin user objects with complete details including groups, status, and timestamps
    */
-  public async getAdminUsers(): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async getAdminUsers(): Promise<
+    Array<iamTypes.entities.adminUser.AdminUser>
+  > {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const responseArray: Array<api.v1.adminUser.ResponseBodyData> = [];
+        const responseArray: Array<iamTypes.entities.adminUser.AdminUser> = [];
 
         const users = await em.find(models.AdminUser, {
           relations: ["groups"],
@@ -255,54 +282,58 @@ export class AdminUserService {
             createdAt: adminUser.createdAt,
             updatedAt: adminUser.updatedAt,
             verifiedAt: adminUser.verifiedAt,
-            groups: adminUser.groups?.map((gr: any) => {
-              return {
-                uid: gr.uid,
-                name: gr.name,
-                description: gr.description,
-                permissions: gr.permissions,
-              };
-            }),
+            groups: adminUser.groups,
           });
         }
         return responseArray;
       }
-    );
+    )) as Array<iamTypes.entities.adminUser.AdminUser>;
     return response;
   }
 
   /**
-   * Update Admin User
+   * Update Admin User - Update admin user profile information
+   *
+   * @param uid - The admin user's uid
+   * @param document - Object containing the fields to update (firstName, lastName, phoneNumber)
+   * @returns Promise resolving to the update result
    */
   public async updateAdminUser(
-    params: api.v1.adminUser.PUT.Params,
-    document: api.v1.adminUser.PUT.RequestBody
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string,
+    document: Partial<iamTypes.entities.adminUser.AdminUserPost>
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
+        // putAdminUser
+        const putAdminUser = {
+          firstName: document.firstName,
+          lastName: document.lastName,
+        };
         const updateResult = await em.update(
           models.AdminUser,
-          { uid: params.uid },
-          {
-            firstName: document.firstName,
-            lastName: document.lastName,
-            phoneNumber: document.phoneNumber,
-          }
+          { uid },
+          putAdminUser
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Update Admin Groups
+   * Update Groups - Update the group memberships for an admin user
+   *
+   * @param uid - The admin user's uid
+   * @param document - Object containing the new groups to assign to the admin user
+   * @returns Promise resolving to the updated admin user object
+   * @throws {APIError} 404 NOT_FOUND if the admin user does not exist
+   * @description Replaces the admin user's existing groups with the new set of groups
    */
   public async updateGroupsToAdminUser(
-    params: api.v1.adminUser.groups.POST.Params,
-    document: api.v1.adminUser.groups.POST.RequestBody
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string,
+    document: Partial<api.v1.adminUser.groups.POST.RequestBody>
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
         const groups = await em.find(models.Group, {
@@ -314,7 +345,7 @@ export class AdminUserService {
 
         // find admin user
         const adminUser = await em.findOneBy(models.AdminUser, {
-          uid: params.uid,
+          uid,
         });
 
         if (!adminUser) {
@@ -326,21 +357,25 @@ export class AdminUserService {
         const updateResult = await em.save(adminUser);
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Disable Admin User
+   * Disable Admin User - Disable an admin user account
+   *
+   * @param uid - The admin user's uid
+   * @returns Promise resolving to the update result
+   * @description Sets admin user status to DISABLED, marks as inactive, and records the disable timestamp
    */
   public async disableAdminUser(
-    params: api.v1.adminUser.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.AdminUser,
-          { uid: params.uid },
+          { uid },
           {
             status: Types.enums.AdminUserStatus.DISABLED,
             isActive: false,
@@ -349,21 +384,25 @@ export class AdminUserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Enable Admin User
+   * Enable Admin User - Enable an admin user account
+   *
+   * @param uid - The admin user's uid
+   * @returns Promise resolving to the update result
+   * @description Sets admin user status to ACTIVE, marks as active, and clears the disable timestamp
    */
   public async enableAdminUser(
-    params: api.v1.adminUser.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.AdminUser,
-          { uid: params.uid },
+          { uid },
           {
             status: Types.enums.AdminUserStatus.ACTIVE,
             isActive: true,
@@ -372,24 +411,28 @@ export class AdminUserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 
   /**
-   * Hard Delete Admin User
+   * Hard Delete Admin User - Permanently delete an admin user account
+   *
+   * @param uid - The admin user's uid
+   * @returns Promise resolving to the delete result
+   * @description Performs a hard delete - the admin user record is permanently removed and cannot be recovered
    */
   public async hardDeleteAdminUser(
-    params: api.v1.adminUser.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.adminUser.AdminUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const deleteResult = await em.delete(models.AdminUser, {
-          uid: params.uid,
+          uid,
         });
         return deleteResult;
       }
-    );
+    )) as iamTypes.entities.adminUser.AdminUser;
     return response;
   }
 }

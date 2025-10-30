@@ -236,7 +236,10 @@ export class AuthAdminController {
    */
   @Post("/verify")
   @AuthDecorators.IsAuthorized()
-  public async verifyToken(req: Request, res: Response): Promise<Response> {
+  public async verifyToken(
+    req: Request,
+    res: Response<api.v1.auth.partners.verify.POST.ResponseBody>
+  ): Promise<Response<api.v1.auth.partners.verify.POST.ResponseBody>> {
     console.log("verify token");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -244,22 +247,20 @@ export class AuthAdminController {
       const authUser = await authService.validateAdminCredentials(req, res);
 
       // prepare response
-      const apiResponse: Types.apiResponses.Success<{}> = {
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: {
-          isAuthenticated: true,
+          authenticated: true,
+          message: "Session is valid",
           user: authUser,
         },
       };
 
       return res.status(200).json(apiResponse);
     } catch (err) {
-      return res.status(400).json({
-        isAuthenticated: false,
-        data: err,
-      });
+      return errors.errorHandler(res, err as Error);
     }
   }
 

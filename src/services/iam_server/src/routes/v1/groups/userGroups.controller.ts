@@ -15,7 +15,7 @@ import { Types } from "@giusmento/mangojs-core";
 import { GroupsService } from "../../../services/groups.service";
 
 import type { api } from "../../../types";
-import { PartnerUser } from "../../../types/entities/PartnerUser.type";
+import { PartnerUser } from "../../../types/entities/partnerUser.type";
 import { ResponseBodyData } from "../../../types/api/v1/users";
 
 dotenv.config();
@@ -70,9 +70,10 @@ export class UserGroupController {
   ): Promise<Response<api.v1.groups.user.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const userGroups = (await groupsService.getGroups(
-        Types.enums.AuthUserType.USER
-      )) as Array<api.v1.groups.user.ResponseBodyData>;
+      const userGroups = await groupsService.getGroups(
+        Types.enums.AuthUserType.USER,
+        {}
+      );
 
       const apiResponse = {
         ok: true,

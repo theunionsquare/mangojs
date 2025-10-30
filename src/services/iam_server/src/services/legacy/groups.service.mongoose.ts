@@ -5,8 +5,8 @@ import {
   Types,
 } from "@giusmento/mangojs-core";
 import mongoose from "mongoose";
-import GroupSchema from "../db/models/Group.model";
-import { api } from "../types";
+import GroupSchema from "../../db/models/Group.model";
+import { api } from "../../types";
 
 @injectable()
 export class GroupsService {

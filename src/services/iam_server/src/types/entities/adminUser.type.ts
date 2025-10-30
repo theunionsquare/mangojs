@@ -1,8 +1,11 @@
-import { IGroup } from "../../db/models/Group.model";
+import { models } from "../../..";
+import { DeleteEntityResult } from "./common.type";
 
-export interface AdminUser {
-  uid: string;
-  firstName: string;
-  lastName: string;
-  groups: Array<IGroup>;
-}
+// Define PartnerUser type based on the PartnerUser model
+export type AdminUser = Omit<models.AdminUser, "password">;
+
+// Define AdminUserPost type for creating new AdminUsers
+export type AdminUserPost = Pick<AdminUser, "firstName" | "lastName" | "email">;
+
+// Define AdminUserDelete type for creating new AdminUsers
+export type AdminUserDelete = DeleteEntityResult;

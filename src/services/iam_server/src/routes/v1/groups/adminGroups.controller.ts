@@ -64,10 +64,10 @@ export class AdminGroupController {
   ): Promise<Response<api.v1.groups.admin.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const adminGroups = (await groupsService.getGroups(
-        Types.enums.AuthUserType.ADMIN
-      )) as Array<api.v1.groups.admin.ResponseBodyData>;
-
+      const adminGroups = await groupsService.getGroups(
+        Types.enums.AuthUserType.ADMIN,
+        {}
+      );
       const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,

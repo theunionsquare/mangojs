@@ -64,7 +64,7 @@ export class PartnerController {
   ): Promise<Response<iamTypes.api.v1.partners.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const partners = await partnerService.getAll();
+      const partners = await partnerService.getAll({});
 
       const apiResponse: iamTypes.api.v1.partners.GET.ResponseBody = {
         ok: true,
@@ -196,7 +196,20 @@ export class PartnerController {
     try {
       const body = req.body;
       console.log({ body }, "body");
-      const response = await partnerService.post(body);
+
+      const postPartner = {
+        companyName: body.companyName,
+        addressCity: body.addressCity,
+        addressCountry: body.addressCountry,
+        addressState: body.addressState,
+        addressStreet: body.addressStreet,
+        addressPostalCode: body.addressPostalCode,
+        phoneNumber: body.phoneNumber,
+        email: body.email,
+        businessType: body.businessType,
+        taxId: body.taxId,
+      };
+      const response = await partnerService.post(postPartner);
 
       // prepare response
       const apiResponse: iamTypes.api.v1.partners.POST.ResponseBody = {
@@ -257,9 +270,11 @@ export class PartnerController {
     try {
       const body = req.body;
       const params = req.params;
-      console.log({ body, params }, "update partner");
+      // uid from params
+      const uid = params.uid;
 
-      await partnerService.update(params, body);
+      console.log({ body, params }, "update partner");
+      await partnerService.update(uid, body);
 
       // prepare response
       const apiResponse: iamTypes.api.v1.partners.PUT.ResponseBody = {
@@ -313,7 +328,10 @@ export class PartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      await partnerService.disable(params);
+      // uid from params
+      const uid = params.uid;
+
+      await partnerService.disable(uid);
 
       // prepare response
       const apiResponse: iamTypes.api.v1.partners.PUT.ResponseBody = {
@@ -367,7 +385,10 @@ export class PartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      await partnerService.enable(params);
+      // uid from params
+      const uid = params.uid;
+
+      await partnerService.enable(uid);
 
       // prepare response
       const apiResponse: iamTypes.api.v1.partners.PUT.ResponseBody = {
@@ -423,7 +444,10 @@ export class PartnerController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      await partnerService.hardDelete(params);
+      // uid from params
+      const uid = params.uid;
+
+      await partnerService.hardDelete(uid);
 
       // prepare response
       const apiResponse: iamTypes.api.v1.partners.PUT.ResponseBody = {

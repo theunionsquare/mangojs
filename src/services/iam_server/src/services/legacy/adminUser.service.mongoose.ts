@@ -6,10 +6,10 @@ import {
 } from "@giusmento/mangojs-core";
 import mongoose from "mongoose";
 import { errors, utils } from "@giusmento/mangojs-core";
-import { api } from "../types";
+import { api } from "../../types";
 
-import AdminUserSchema, { IAdminUser } from "../db/models/AdminUser.model";
-import AdminGroupSchema from "../db/models/Group.model";
+import AdminUserSchema, { IAdminUser } from "../../db/models/AdminUser.model";
+import AdminGroupSchema from "../../db/models/Group.model";
 
 @injectable()
 export class AdminUserService {
@@ -241,7 +241,6 @@ export class AdminUserService {
         for (const adminUser of users) {
           response.push({
             uid: adminUser.uid,
-            username: adminUser.username,
             email: adminUser.email,
             age: adminUser.age,
             phoneNumber: adminUser.phoneNumber,

@@ -12,7 +12,7 @@ import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
-import type { Types as coreTypes } from "@giusmento/mangojs-core";
+import type { Types } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../../../";
 import { UserService } from "../../../services/user.service";
 
@@ -65,27 +65,24 @@ export class UserController {
   @AuthDecorators.IsAuthorized()
   //@Decorators.HasGroups(["Admin"])
   public async getUsers(
-    req: Request,
-    res: Response<coreTypes.apiResponses.Success<Array<iamTypes.entities.User>>>
-  ): Promise<
-    Response<coreTypes.apiResponses.Success<Array<iamTypes.entities.User>>>
-  > {
+    req: Request<undefined, iamTypes.entities.common.filter>,
+    res: Response<iamTypes.api.v1.users.GET.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const users: Array<iamTypes.entities.User> =
-        (await userService.getUsers()) as Array<iamTypes.entities.User>;
+      // get filter from params
+      const filter = req.params;
+      const users = await userService.getUsers(filter);
 
-      const apiResponse: coreTypes.apiResponses.Success<
-        Array<iamTypes.entities.User>
-      > = {
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: users,
       };
       return res.status(200).send(apiResponse);
-    } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+    } catch (error) {
+      return errors.errorHandler(res, error);
     }
   }
 
@@ -122,8 +119,8 @@ export class UserController {
    */
   @Post("/")
   public async addUser(
-    req: coreTypes.v1.api.request.Request<
-      any,
+    req: Types.v1.api.request.Request<
+      undefined,
       iamTypes.api.v1.users.POST.RequestBody
     >,
     res: Response<iamTypes.api.v1.users.POST.ResponseBody>
@@ -132,12 +129,20 @@ export class UserController {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
+      // validate body
+      const userPost = {
+        email: body.email,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        username: body.username,
+        password: body.password,
+        age: body.age,
+        groups: [],
+      };
       console.log({ body }, "body");
-      const response = (await userService.postUser(
-        body
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      const response = await userService.postUser(userPost);
       // prepare response
-      const apiResponse: iamTypes.api.v1.users.POST.ResponseBody = {
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
@@ -182,16 +187,19 @@ export class UserController {
    */
   @Get("/magiclinks/:magiclink")
   public async getAdminBymagicLink(
-    req: coreTypes.v1.api.request.Request<
-      iamTypes.api.v1.adminUser.magiclinks.GET.Params,
-      iamTypes.api.v1.adminUser.magiclinks.GET.RequestBody
+    req: Types.v1.api.request.Request<
+      iamTypes.api.v1.users.magiclinks.GET.Params,
+      iamTypes.api.v1.users.magiclinks.GET.RequestBody
     >,
     res: Response<iamTypes.api.v1.users.magiclinks.GET.ResponseBody>
   ): Promise<Response<iamTypes.api.v1.users.magiclinks.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
+      // get magic link from params
+      const { magiclink } = req.params;
+      // get user by magic link
       const user = (await userService.getUserByMagicLink(
-        req.params
+        magiclink
       )) as iamTypes.api.v1.users.magiclinks.ResponseBodyData;
 
       if (!user) {
@@ -245,28 +253,39 @@ export class UserController {
    */
   @Post("/activate/:magiclink")
   public async activateAdminBymagicLink(
-    req: coreTypes.v1.api.request.Request<
-      iamTypes.api.v1.adminUser.activate.POST.Params,
-      iamTypes.api.v1.adminUser.activate.POST.RequestBody
+    req: Types.v1.api.request.Request<
+      iamTypes.api.v1.users.activate.POST.Params,
+      iamTypes.api.v1.users.activate.POST.RequestBody
     >,
-    res: Response<iamTypes.api.v1.adminUser.activate.POST.ResponseBody>
-  ): Promise<Response<iamTypes.api.v1.adminUser.activate.POST.ResponseBody>> {
+    res: Response<iamTypes.api.v1.users.activate.POST.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.users.activate.POST.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
       req.requestTime;
-      const user = (await userService.activateUser(
-        req.params,
-        req.body
-      )) as iamTypes.api.v1.users.activate.ResponseBodyData;
+      // get magiclink from params and body
+      const magiclink = req.params.magiclink;
+      const user = await userService.activateUser(magiclink, req.body);
 
-      const apiResponse: iamTypes.api.v1.users.activate.POST.ResponseBody = {
+      // set cookie
+      //Creating cookie token
+      const cookie = authService.generateUserCredentials({
+        uid: user.uid,
+        firstName: user.uid,
+        lastName: user.lastName,
+        email: user.email,
+      });
+
+      const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: user,
       };
 
-      return res.status(200).send(apiResponse);
+      return res
+        .status(200)
+        .cookie(cookie.cookieName, cookie.data.token, cookie.data.tokenOptions)
+        .send(apiResponse);
     } catch (error) {
       return errors.errorHandler(res, error as Error);
     }
@@ -305,7 +324,7 @@ export class UserController {
    */
   @Put("/:uid")
   public async updateUser(
-    req: coreTypes.v1.api.request.Request<
+    req: Types.v1.api.request.Request<
       iamTypes.api.v1.users.PUT.Params,
       iamTypes.api.v1.users.PUT.RequestBody
     >,
@@ -317,10 +336,7 @@ export class UserController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await userService.updateUser(
-        params,
-        body
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      const response = await userService.updateUser(params, body);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -368,7 +384,7 @@ export class UserController {
    */
   @Put("/:uid/groups")
   public async updateGroupsToUser(
-    req: coreTypes.v1.api.request.Request<
+    req: Types.v1.api.request.Request<
       iamTypes.api.v1.users.groups.POST.Params,
       iamTypes.api.v1.users.groups.POST.RequestBody
     >,
@@ -380,10 +396,12 @@ export class UserController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await userService.updateGroupsToUser(
-        params,
-        body
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      // get uid from params
+      const { uid } = params;
+      const partialUser: Partial<iamTypes.entities.user.User> = {
+        groups: [],
+      };
+      const response = await userService.updateGroupsToUser(uid, partialUser);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -431,16 +449,16 @@ export class UserController {
    */
   @Post("/:uid/disable")
   public async disableUser(
-    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    req: Types.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
     res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
   ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
     console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await userService.disableUser(
-        params
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      //get uid from params
+      const { uid } = params;
+      const response = await userService.disableUser(uid);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -488,16 +506,16 @@ export class UserController {
    */
   @Post("/:uid/enable")
   public async enableUser(
-    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    req: Types.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
     res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
   ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
     console.log("add User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await userService.enableUser(
-        params
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      //get uid from params
+      const { uid } = params;
+      const response = await userService.enableUser(uid);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -545,16 +563,16 @@ export class UserController {
    */
   @Delete("/:uid/delete/hard")
   public async hardDeleteUser(
-    req: coreTypes.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
+    req: Types.v1.api.request.Request<iamTypes.api.v1.users.PUT.Params, {}>,
     res: Response<iamTypes.api.v1.users.PUT.ResponseBody>
   ): Promise<Response<iamTypes.api.v1.users.PUT.ResponseBody>> {
     console.log("hard delete User");
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await userService.hardDeleteUser(
-        params
-      )) as iamTypes.api.v1.users.ResponseBodyData;
+      //get uid from params
+      const { uid } = params;
+      const response = await userService.hardDeleteUser(uid);
       // prepare response
       const apiResponse = {
         ok: true,

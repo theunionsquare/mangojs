@@ -62,19 +62,31 @@ export class PartnerUserController {
   @Get("/")
   @AuthDecorators.IsAuthorized()
   public async getPartners(
-    req: Request<undefined, api.v1.partners.GET.RequestBody>,
-    res: Response<api.v1.partners.GET.ResponseBody>
-  ): Promise<Response<api.v1.partners.GET.ResponseBody>> {
+    req: Request<undefined, api.v1.partners.users.GET.RequestBody>,
+    res: Response<api.v1.partners.users.GET.ResponseBody>
+  ): Promise<Response<api.v1.partners.users.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const partnerUsers = await partnerUserService.getAll();
-
+      const partnerUsers = await partnerUserService.getAll({});
+      // prepare response
+      const partnerUsersResponse = partnerUsers.map((user) => {
+        return {
+          uid: user.uid,
+          email: user.email,
+          age: user.age,
+          phoneNumber: user.phoneNumber,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          status: user.status,
+          isActive: user.isActive,
+        };
+      });
       const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: partnerUsers,
-      } as api.v1.partners.GET.ResponseBody;
+        data: partnerUsersResponse,
+      } as api.v1.partners.users.GET.ResponseBody;
 
       return res.status(200).send(apiResponse);
     } catch (error: unknown) {
@@ -180,17 +192,16 @@ export class PartnerUserController {
   > {
     const logRequest = new utils.LogRequest(res);
     try {
-      const user = (await partnerUserService.getByMagicLink(
-        req.params
-      )) as iamTypes.api.v1.partners.users.magiclinks.ResponseBodyData;
+      // magic link from params
+      const magicLink = req.params.magiclink;
+      const user = await partnerUserService.getByMagicLink(magicLink);
 
-      const apiResponse: iamTypes.api.v1.partners.users.magiclinks.GET.ResponseBody =
-        {
-          ok: true,
-          timestamp: logRequest.timestamp,
-          requestId: logRequest.requestId,
-          data: user,
-        };
+      const apiResponse = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: user,
+      };
 
       return res.status(200).send(apiResponse);
     } catch (error) {
@@ -240,18 +251,21 @@ export class PartnerUserController {
     const logRequest = new utils.LogRequest(res);
     try {
       req.requestTime;
-      const user = (await partnerUserService.activate(
-        req.params,
-        req.body
-      )) as iamTypes.api.v1.partners.users.activate.ResponseBodyData;
+      // magic link from params
+      const magicLink = req.params.magiclink;
+      // post user
+      const postUser = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      };
+      const user = await partnerUserService.activate(magicLink, postUser);
 
-      const apiResponse: iamTypes.api.v1.partners.users.activate.POST.ResponseBody =
-        {
-          ok: true,
-          timestamp: logRequest.timestamp,
-          requestId: logRequest.requestId,
-          data: user,
-        };
+      const apiResponse = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: user,
+      };
 
       return res.status(200).send(apiResponse);
     } catch (error) {
@@ -304,10 +318,14 @@ export class PartnerUserController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await partnerUserService.update(
-        params,
-        body
-      )) as iamTypes.api.v1.partners.users.ResponseBodyData;
+      // uid from params
+      const uid = params.uid;
+      // post user
+      const putUser = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+      };
+      await partnerUserService.update(uid, putUser);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -369,10 +387,11 @@ export class PartnerUserController {
       const body = req.body;
       const params = req.params;
       console.log({ body }, "body");
-      const response = (await partnerUserService.updateGroups(
-        params,
-        body
-      )) as iamTypes.api.v1.partners.users.ResponseBodyData;
+      // uid from params
+      const uid = params.uid;
+      // TO DO: update groups
+      const updateGroups = {};
+      await partnerUserService.updateGroups(uid, updateGroups);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -430,9 +449,9 @@ export class PartnerUserController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await partnerUserService.disable(
-        params
-      )) as iamTypes.api.v1.partners.users.ResponseBodyData;
+      // uid from params
+      const uid = params.uid;
+      const response = await partnerUserService.disable(uid);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -490,9 +509,9 @@ export class PartnerUserController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await partnerUserService.enable(
-        params
-      )) as iamTypes.api.v1.partners.users.ResponseBodyData;
+      // uid from params
+      const uid = params.uid;
+      const response = await partnerUserService.enable(uid);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -550,9 +569,9 @@ export class PartnerUserController {
     const logRequest = new utils.LogRequest(res);
     try {
       const params = req.params;
-      const response = (await partnerUserService.hardDelete(
-        params
-      )) as iamTypes.api.v1.partners.users.ResponseBodyData;
+      // uid from params
+      const uid = params.uid;
+      await partnerUserService.hardDelete(uid);
       // prepare response
       const apiResponse = {
         ok: true,

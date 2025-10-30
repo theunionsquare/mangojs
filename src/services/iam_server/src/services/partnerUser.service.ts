@@ -5,7 +5,7 @@ import { errors, utils } from "@giusmento/mangojs-core";
 import { api } from "../types";
 
 import * as models from "../db/models";
-import { Group, IGroup } from "../db/models/Group.entity";
+import { Group } from "../db/models/Group.entity";
 
 import { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../";
@@ -23,7 +23,7 @@ export class PartnerUserService {
   }
 
   /**
-   * Authenticate a partner user with email and password
+   * Login - Authenticate a partner user with email and password
    *
    * @param email - The partner user's email address
    * @param password - The partner user's password (will be hashed for comparison)
@@ -33,8 +33,8 @@ export class PartnerUserService {
   public async logIn(
     email: string,
     password: string
-  ): Promise<models.IPartnerUser> {
-    const response = await this._persistenceContext.inTransaction(
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // hash password
         const hashedPassword = utils.hashedPassword(password);
@@ -48,18 +48,20 @@ export class PartnerUserService {
         }
         return response;
       }
-    );
-    return response as models.IPartnerUser;
+    )) as iamTypes.entities.partnerUser.PartnerUser;
+    return response;
   }
 
   /**
-   * Retrieve a single partner user by their unique identifier
+   * Get - Retrieve a single partner user by their unique identifier
    *
    * @param partnerUserId - The unique identifier (uid) of the partner user
    * @returns Promise resolving to the partner user object with their details
    * @throws {APIError} 404 NOT_FOUND if the partner user does not exist
    */
-  public async get(partnerUserId: string): Promise<models.IPartnerUser> {
+  public async get(
+    partnerUserId: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
@@ -86,21 +88,24 @@ export class PartnerUserService {
           groups: partnerUser.groups,
         };
       }
-    )) as models.IPartnerUser;
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Retrieve all partner users in the system
+   * Get All - Retrieve all partner users in the system
    *
+   * @param filter - Filter criteria for querying partner users
    * @returns Promise resolving to an array of all partner user objects with complete details including groups, status, and timestamps
    */
-  public async getAll(): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async getAll(
+    filter: iamTypes.entities.common.filter
+  ): Promise<Array<iamTypes.entities.partnerUser.PartnerUser>> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const responseArray: Array<any> = [];
 
-        const users = await this.partnerUserRepository.find();
+        const users = await this.partnerUserRepository.find(filter);
 
         for (const partnerUser of users) {
           responseArray.push({
@@ -125,26 +130,26 @@ export class PartnerUserService {
         }
         return responseArray;
       }
-    );
+    )) as Array<iamTypes.entities.partnerUser.PartnerUser>;
     return response;
   }
 
   /**
-   * Create a new partner user with auto-generated credentials and magic link
+   * Post - Create a new partner user with auto-generated credentials and magic link
    *
-   * @param partnerUser - The partner user data including firstName, lastName, email, and groups
+   * @param partnerData - The partner user data including firstName, lastName, email, and groups
    * @returns Promise resolving to the created partner user object
    * @throws {APIError} 409 CONFLICT if email already exists
    * @description Generates a random password and magic link for account activation. The magic link expires in 24 hours.
    */
   public async post(
-    partnerUser: api.v1.partners.users.POST.RequestBody
-  ): Promise<api.v1.partners.users.ResponseBodyData> {
+    partnerData: iamTypes.entities.partnerUser.PartnerUserPost
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
-        const isUnique = await this.partnerUserRepository.findOne({
-          where: { email: partnerUser.email },
+        const isUnique = await em.findOneBy(models.PartnerUser, {
+          email: partnerData.email,
         });
 
         if (isUnique) {
@@ -164,16 +169,16 @@ export class PartnerUserService {
         // fetch group entities
         const groups = await em.find(Group, {
           where: {
-            userType: coreTypes.enums.AuthUserType.USER,
-            uid: partnerUser.groups as any,
+            userType: coreTypes.enums.AuthUserType.PARTNER,
+            default: true,
           },
         });
 
         // create partner user
-        const newPartnerUser = this.partnerUserRepository.create({
-          firstName: partnerUser.firstName,
-          lastName: partnerUser.lastName,
-          email: partnerUser.email,
+        const newPartnerUser = em.create(models.PartnerUser, {
+          firstName: partnerData.firstName,
+          lastName: partnerData.lastName,
+          email: partnerData.email,
           password: password,
           groups: groups,
           isActive: true,
@@ -183,29 +188,30 @@ export class PartnerUserService {
           magicLinkExpireDate,
         });
 
-        const response = await this.partnerUserRepository.save(newPartnerUser);
+        const response = await em.save(newPartnerUser);
+
         return response;
       }
-    )) as api.v1.partners.users.ResponseBodyData;
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Update partner user profile information
+   * Update - Update partner user profile information
    *
-   * @param params - Object containing the user's uid
+   * @param uid - The user's uid
    * @param document - Object containing the fields to update (firstName, lastName, phoneNumber)
    * @returns Promise resolving to the update result
    */
   public async update(
-    params: iamTypes.api.v1.users.PUT.Params,
-    document: iamTypes.api.v1.users.PUT.RequestBody
+    uid: string,
+    document: Partial<iamTypes.entities.partnerUser.PartnerUser>
   ): Promise<{}> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.PartnerUser,
-          { uid: params.uid },
+          { uid },
           {
             firstName: document.firstName,
             lastName: document.lastName,
@@ -219,45 +225,45 @@ export class PartnerUserService {
   }
 
   /**
-   * Retrieve a partner user by their magic link token
+   * Get By Magic Link - Retrieve a partner user by their magic link token
    *
-   * @param params - Object containing the magic link token
+   * @param magicLink - The magic link token
    * @returns Promise resolving to the partner user object associated with the magic link
    * @description Used during account activation or password reset flows
    */
   public async getByMagicLink(
-    params: iamTypes.api.v1.partners.users.magiclinks.GET.Params
-  ): Promise<iamTypes.api.v1.partners.users.magiclinks.ResponseBodyData> {
+    magicLink: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by magic link
         const response = await em.findOneBy(models.PartnerUser, {
-          magicLink: params.magiclink,
+          magicLink,
         });
         return response;
       }
-    )) as iamTypes.api.v1.partners.users.magiclinks.ResponseBodyData;
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Activate a partner user account using their magic link
+   * Activate - Activate a partner user account using their magic link
    *
-   * @param params - Object containing the magic link token
+   * @param magicLink - The magic link token
    * @param payload - Object containing additional user information to update during activation
    * @returns Promise resolving to the activation result
    * @description Sets user status to ENABLED, marks as verified, clears magic link, and updates verification timestamp
    */
   public async activate(
-    params: iamTypes.api.v1.partners.users.activate.POST.Params,
-    payload: iamTypes.api.v1.partners.users.activate.POST.RequestBody
-  ): Promise<iamTypes.api.v1.partners.users.activate.ResponseBodyData> {
+    magicLink: string,
+    payload: Partial<iamTypes.entities.partnerUser.PartnerUser>
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // update by magic link
         const updateResult = await em.update(
           models.PartnerUser,
-          { magicLink: params.magiclink },
+          { magicLink },
           {
             ...payload,
             isActive: true,
@@ -270,23 +276,23 @@ export class PartnerUserService {
         );
         return updateResult;
       }
-    )) as iamTypes.api.v1.partners.users.activate.ResponseBodyData;
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
   /**
-   * Update the group memberships for a partner user
+   * Update Groups - Update the group memberships for a partner user
    *
-   * @param params - Object containing the user's uid
+   * @param uid - The user's uid
    * @param document - Object containing the new groups to assign to the user
    * @returns Promise resolving to the updated user object
    * @throws {APIError} 404 NOT_FOUND if the user does not exist
    * @description Replaces the user's existing groups with the new set of groups
    */
   public async updateGroups(
-    params: iamTypes.api.v1.partners.users.groups.POST.Params,
-    document: iamTypes.api.v1.partners.users.groups.POST.RequestBody
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string,
+    document: Partial<iamTypes.entities.partnerUser.PartnerUser>
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
         const groups = await em.find(Group, {
@@ -298,7 +304,7 @@ export class PartnerUserService {
 
         // find admin user
         const user = await em.findOneBy(models.PartnerUser, {
-          uid: params.uid,
+          uid,
         });
 
         if (!user) {
@@ -310,25 +316,25 @@ export class PartnerUserService {
         const updateResult = await em.save(user);
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Disable a partner user account
+   * Disable - Disable a partner user account
    *
-   * @param params - Object containing the user's uid
+   * @param uid - The user's uid
    * @returns Promise resolving to the update result
    * @description Sets user status to DISABLED, marks as inactive, and records the disable timestamp
    */
   public async disable(
-    params: iamTypes.api.v1.partners.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.PartnerUser,
-          { uid: params.uid },
+          { uid },
           {
             status: coreTypes.enums.PartnerUserStatus.DISABLED,
             isActive: false,
@@ -337,25 +343,25 @@ export class PartnerUserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Enable a partner user account
+   * Enable - Enable a partner user account
    *
-   * @param params - Object containing the user's uid
+   * @param uid - The user's uid
    * @returns Promise resolving to the update result
    * @description Sets user status to ENABLED, marks as active, and clears the disable timestamp
    */
   public async enable(
-    params: iamTypes.api.v1.partners.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.PartnerUser,
-          { uid: params.uid },
+          { uid },
           {
             status: coreTypes.enums.PartnerUserStatus.ACTIVE,
             isActive: true,
@@ -364,28 +370,28 @@ export class PartnerUserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 
   /**
-   * Permanently delete a partner user from the database
+   * Hard Delete - Permanently delete a partner user account
    *
-   * @param params - Object containing the user's uid
+   * @param uid - The user's uid
    * @returns Promise resolving to the delete result
    * @description Performs a hard delete - the user record is permanently removed and cannot be recovered
    */
   public async hardDelete(
-    params: iamTypes.api.v1.partners.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const deleteResult = await em.delete(models.PartnerUser, {
-          uid: params.uid,
+          uid,
         });
         return deleteResult;
       }
-    );
+    )) as iamTypes.entities.partnerUser.PartnerUser;
     return response;
   }
 }

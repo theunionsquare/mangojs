@@ -1,4 +1,5 @@
 import * as models from "../../../../db/models";
+export * as GET from "./GET";
 export * as POST from "./POST";
 export * as PUT from "./PUT";
 export * as groups from "./groups";

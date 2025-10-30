@@ -89,15 +89,8 @@ export class AuthUserController {
       const body = req.body;
       const email = body.email || "";
       // validate request
-
       // check if user exists
-      const user = {
-        uid: "12345",
-        firstName: "John",
-        lastName: "Doe",
-        email: email,
-        status: Types.enums.UserStatus.ACTIVE,
-      }; //await userService.userLogIn(body.email, body.password);
+      const user = await userService.userLogIn(body.email, body.password);
       //Creating cookie token
       const cookie = authService.generateUserCredentials({
         uid: user.uid,
@@ -287,6 +280,7 @@ export class AuthUserController {
     const logRequest = new utils.LogRequest(res);
     try {
       const body = req.body;
+      // validate user credentials
       const authUser = await authService.validateUserCredentials(req, res);
 
       // prepare response

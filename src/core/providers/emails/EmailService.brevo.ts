@@ -35,7 +35,7 @@ export class EmailServiceBrevo implements IEmailService {
       subject: subject,
       htmlContent: templateHtml,
     });
-    console.log(`Email sent using Brevo with template: ${body}`);
+    //console.log(`Email sent using Brevo with template: ${body}`);
 
     const response = await fetch(this.url, {
       method: "POST",

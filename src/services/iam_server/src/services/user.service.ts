@@ -18,16 +18,18 @@ export class UserService {
   }
 
   /**
-   * LogIn User
-   * @param email
-   * @param password
-   * @returns
+   * Login - Authenticate a user with email and password
+   *
+   * @param email - The user's email address
+   * @param password - The user's password (will be hashed for comparison)
+   * @returns Promise resolving to the authenticated user object
+   * @throws {APIError} 401 UNAUTHORIZED if credentials are invalid
    */
   public async userLogIn(
     email: string,
     password: string
-  ): Promise<models.IUser> {
-    const response = await this._persistenceContext.inTransaction(
+  ): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // hash password
         const hashedPassword = utils.hashedPassword(password);
@@ -41,16 +43,18 @@ export class UserService {
         }
         return response;
       }
-    );
-    return response as models.IUser;
+    )) as iamTypes.entities.user.User;
+    return response;
   }
 
   /**
-   * Get User
-   * @param userId
-   * @returns
+   * Get User - Retrieve a single user by their unique identifier
+   *
+   * @param userId - The unique identifier (uid) of the user
+   * @returns Promise resolving to the user object with their details
+   * @throws {APIError} 404 NOT_FOUND if the user does not exist
    */
-  public async getUser(userId: string): Promise<models.IUser> {
+  public async getUser(userId: string): Promise<iamTypes.entities.user.User> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
@@ -76,20 +80,24 @@ export class UserService {
           groups: user.groups,
         };
       }
-    )) as models.IUser;
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Get list of Users
+   * Get Users - Retrieve all users in the system
+   *
+   * @returns Promise resolving to an array of all user objects with complete details including groups, status, and timestamps
    */
-  public async getUsers(): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async getUsers(
+    filter: iamTypes.entities.common.filter
+  ): Promise<Array<iamTypes.entities.user.User>> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const responseArray: Array<any> = [];
 
         // TO DO pagination and filters
-        const users = await em.find(models.User);
+        const users = await em.find(models.User, filter);
 
         for (const user of users) {
           responseArray.push({
@@ -113,18 +121,22 @@ export class UserService {
         }
         return responseArray;
       }
-    );
+    )) as Array<iamTypes.entities.user.User>;
     return response;
   }
 
   /**
-   * Update User
+   * Update User - Update user profile information
+   *
+   * @param params - Object containing the user's uid
+   * @param document - Object containing the fields to update (firstName, lastName, phoneNumber)
+   * @returns Promise resolving to the update result
    */
   public async updateUser(
     params: iamTypes.api.v1.users.PUT.Params,
     document: iamTypes.api.v1.users.PUT.RequestBody
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  ): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.User,
@@ -137,16 +149,22 @@ export class UserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Create User
+   * Post User - Create a new user with auto-generated credentials and magic link
+   *
+   * @param user - The user data including firstName, lastName, email, and password
+   * @returns Promise resolving to the created user object
+   * @throws {APIError} 409 CONFLICT if email already exists
+   * @throws {APIError} 404 NOT_FOUND if default group does not exist
+   * @description Generates a magic link for account activation. The magic link expires in 24 hours.
    */
   public async postUser(
-    user: iamTypes.api.v1.users.POST.RequestBody
-  ): Promise<iamTypes.api.v1.users.ResponseBodyData> {
+    user: iamTypes.entities.user.UserPost
+  ): Promise<iamTypes.entities.user.User> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // search if email is unique
@@ -197,46 +215,50 @@ export class UserService {
         const response = await em.save(newUser);
         return response;
       }
-    )) as iamTypes.api.v1.users.ResponseBodyData;
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Get User by magic link
-   * @param params
-   * @returns
+   * Get User By Magic Link - Retrieve a user by their magic link token
+   *
+   * @param magicLink - The magic link token
+   * @returns Promise resolving to the user object associated with the magic link
+   * @description Used during account activation or password reset flows
    */
   public async getUserByMagicLink(
-    params: iamTypes.api.v1.users.magiclinks.GET.Params
-  ): Promise<iamTypes.api.v1.users.magiclinks.ResponseBodyData> {
+    magicLink: string
+  ): Promise<iamTypes.entities.user.User> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by magic link
         const response = await em.findOneBy(models.User, {
-          magicLink: params.magiclink,
+          magicLink,
         });
         return response;
       }
-    )) as iamTypes.api.v1.users.magiclinks.ResponseBodyData;
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Activate User by magic link
-   * @param params
-   * @param payload
-   * @returns
+   * Activate User - Activate a user account using their magic link
+   *
+   * @param magicLink - The magic link token
+   * @param payload - Object containing additional user information to update during activation
+   * @returns Promise resolving to the activation result
+   * @description Sets user status to ACTIVE, marks as verified, clears magic link, and updates verification timestamp
    */
   public async activateUser(
-    params: iamTypes.api.v1.users.activate.POST.Params,
-    payload: iamTypes.api.v1.users.activate.POST.RequestBody
-  ): Promise<iamTypes.api.v1.users.activate.ResponseBodyData> {
+    magicLink: string,
+    payload: Partial<iamTypes.entities.user.User>
+  ): Promise<iamTypes.entities.user.User> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // update by magic link
         const updateResult = await em.update(
           models.User,
-          { magicLink: params.magiclink },
+          { magicLink },
           {
             ...payload,
             isActive: true,
@@ -249,17 +271,23 @@ export class UserService {
         );
         return updateResult;
       }
-    )) as iamTypes.api.v1.users.activate.ResponseBodyData;
+    )) as iamTypes.entities.user.User;
     return response;
   }
   /**
-   * Update User Groups
+   * Update Groups - Update the group memberships for a user
+   *
+   * @param uid - The user's uid
+   * @param document - Object containing the new groups to assign to the user
+   * @returns Promise resolving to the updated user object
+   * @throws {APIError} 404 NOT_FOUND if the user does not exist
+   * @description Replaces the user's existing groups with the new set of groups
    */
   public async updateGroupsToUser(
-    params: iamTypes.api.v1.users.groups.POST.Params,
-    document: iamTypes.api.v1.users.groups.POST.RequestBody
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string,
+    document: Partial<iamTypes.entities.user.User>
+  ): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get group entities
         const groups = await em.find(models.Group, {
@@ -271,7 +299,7 @@ export class UserService {
 
         // find admin user
         const user = await em.findOneBy(models.User, {
-          uid: params.uid,
+          uid,
         });
 
         if (!user) {
@@ -283,21 +311,23 @@ export class UserService {
         const updateResult = await em.save(user);
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Disable User
+   * Disable User - Disable a user account
+   *
+   * @param uid - The user's uid
+   * @returns Promise resolving to the update result
+   * @description Sets user status to DISABLED, marks as inactive, and records the disable timestamp
    */
-  public async disableUser(
-    params: iamTypes.api.v1.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async disableUser(uid: string): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.User,
-          { uid: params.uid },
+          { uid },
           {
             status: coreTypes.enums.UserStatus.DISABLED,
             isActive: false,
@@ -306,21 +336,23 @@ export class UserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Enable User
+   * Enable User - Enable a user account
+   *
+   * @param uid - The user's uid
+   * @returns Promise resolving to the update result
+   * @description Sets user status to ACTIVE, marks as active, and clears the disable timestamp
    */
-  public async enableUser(
-    params: iamTypes.api.v1.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+  public async enableUser(uid: string): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const updateResult = await em.update(
           models.User,
-          { uid: params.uid },
+          { uid },
           {
             status: coreTypes.enums.UserStatus.ACTIVE,
             isActive: true,
@@ -329,24 +361,28 @@ export class UserService {
         );
         return updateResult;
       }
-    );
+    )) as iamTypes.entities.user.User;
     return response;
   }
 
   /**
-   * Hard Delete User
+   * Hard Delete User - Permanently delete a user account
+   *
+   * @param uid - The user's uid
+   * @returns Promise resolving to the delete result
+   * @description Performs a hard delete - the user record is permanently removed and cannot be recovered
    */
   public async hardDeleteUser(
-    params: iamTypes.api.v1.users.PUT.Params
-  ): Promise<{}> {
-    const response = await this._persistenceContext.inTransaction(
+    uid: string
+  ): Promise<iamTypes.entities.user.User> {
+    const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const deleteResult = await em.delete(models.User, {
-          uid: params.uid,
+          uid,
         });
         return deleteResult;
       }
-    );
+    )) as iamTypes.entities.user.User;
     return response;
   }
 }

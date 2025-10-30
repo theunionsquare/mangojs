@@ -6,7 +6,8 @@ import dotenv from "dotenv";
 import { AdminUserService } from "./adminUser.service";
 import { PartnerUserService } from "./partnerUser.service";
 import { UserService } from "./user.service";
-import { stat } from "fs";
+
+import type { types as iamTypes } from "../../";
 
 dotenv.config();
 
@@ -62,11 +63,9 @@ export class AuthorizationService implements Auth.IAuthProvider {
   }
 
   // Partner
-  public generatePartnerCredentials(data: Types.entities.AuthUserBase): {
-    type: Types.auth.CredentialType;
-    data: any;
-    cookieName: string;
-  } {
+  public generatePartnerCredentials(
+    data: iamTypes.entities.authUser.UserBase
+  ): iamTypes.entities.authUser.AuthResponse {
     const cookieName = process.env.PARTNER_COOKIE_NAME || "mango";
     const tokenOptions = {
       domain: process.env.PARTNER_COOKIE_DOMAIN || null, // a string indicating the domain of the cookie (no default).
@@ -101,7 +100,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
   public async validatePartnerCredentials(
     req: Request,
     res: Response
-  ): Promise<Types.entities.AuthUser> {
+  ): Promise<iamTypes.entities.authUser.User> {
     try {
       const cookie = req.cookies[process.env.PARTNER_COOKIE_NAME || ""];
 
@@ -132,11 +131,9 @@ export class AuthorizationService implements Auth.IAuthProvider {
   }
 
   // User
-  public generateUserCredentials(data: Types.entities.AuthUserBase): {
-    type: Types.auth.CredentialType;
-    data: any;
-    cookieName: string;
-  } {
+  public generateUserCredentials(
+    data: iamTypes.entities.authUser.UserBase
+  ): iamTypes.entities.authUser.AuthResponse {
     const cookieName = process.env.USER_COOKIE_NAME || "mango";
     const tokenOptions = {
       domain: process.env.USER_COOKIE_DOMAIN || null, // a string indicating the domain of the cookie (no default).
@@ -171,7 +168,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
   public async validateUserCredentials(
     req: Request,
     res: Response
-  ): Promise<Types.entities.AuthUser> {
+  ): Promise<iamTypes.entities.authUser.User> {
     try {
       const cookie = req.cookies[process.env.USER_COOKIE_NAME || ""];
 
@@ -207,11 +204,9 @@ export class AuthorizationService implements Auth.IAuthProvider {
    * @param expiresIn number: (sec)
    * @returns
    */
-  public generateAdminCredentials(data: Types.entities.AuthUserBase): {
-    type: Types.auth.CredentialType;
-    data: Types.auth.SignedCookie;
-    cookieName: string;
-  } {
+  public generateAdminCredentials(
+    data: iamTypes.entities.authUser.UserBase
+  ): iamTypes.entities.authUser.AuthResponse {
     const cookieName = process.env.ADMIN_COOKIE_NAME || "mango";
     const tokenOptions = {
       domain: process.env.ADMIN_COOKIE_DOMAIN || null, // a string indicating the domain of the cookie (no default).
@@ -254,7 +249,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
   public async validateAdminCredentials(
     req: Request,
     res: Response
-  ): Promise<Types.entities.AuthUser> {
+  ): Promise<iamTypes.entities.authUser.User> {
     try {
       const cookie = req.cookies[process.env.ADMIN_COOKIE_NAME || ""];
 
