@@ -1,6 +1,6 @@
 {
   "name": "@giusmento/mangojs-core",
-  "version": "0.0.1-17",
+  "version": "0.0.1-18",
   "description": "A lightweight Node.js backend framework for microservices with code injection, Express API integration, and AI-driven development support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
