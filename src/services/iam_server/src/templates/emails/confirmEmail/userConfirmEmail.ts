@@ -1,11 +1,12 @@
-export type ConfirmEmailTemplateData = {
+export type UserConfirmEmailTemplateData = {
   firstName: string;
   confirmationLink: string;
   expirationTime: number; // in hours
   appName: string;
   currentYear: number;
 };
-export const confirmEmailTemplate = `<!DOCTYPE html>
+
+export const userConfirmEmailTemplate = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

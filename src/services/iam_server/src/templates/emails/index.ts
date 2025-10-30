@@ -1,1 +1,2 @@
-export * from "./confirmEmail/confirmEmail";
+export * from "./confirmEmail/userConfirmEmail";
+export * from "./partnerConfirmEmail";

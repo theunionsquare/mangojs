@@ -1,5 +1,11 @@
 import { Request, Response } from "express";
-import { Controller, Post, utils } from "@giusmento/mangojs-core";
+import {
+  Controller,
+  INVERSITY_TYPES,
+  Post,
+  Providers,
+  utils,
+} from "@giusmento/mangojs-core";
 import dotenv from "dotenv";
 import { Decorators } from "@giusmento/mangojs-core";
 import { errors } from "@giusmento/mangojs-core";
@@ -11,6 +17,7 @@ import { PartnerUserService } from "../../../services/partnerUser.service";
 import { PartnerService } from "../../../services/partner.service";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { GroupsService } from "../../../services";
+import { template } from "../../../..";
 
 dotenv.config();
 
@@ -210,19 +217,8 @@ export class AuthPartnerController {
         Types.enums.AuthUserType.PARTNER,
         { name: "Owner" }
       );
-      // 2. create partner user entity
-      const partnerUser = {
-        firstName: body.user.firstName,
-        lastName: body.user.lastName,
-        email: body.user.email,
-        password: body.user.password,
-        age: body.user.age,
-        phoneNumber: body.user.phoneNumber,
-        groups: [],
-      };
 
-      const rspUser = await partnerUserService.post(partnerUser);
-
+      // 1. Create Partner
       const partner = {
         companyName: body.companyName,
         businessType: body.businessType,
@@ -234,13 +230,54 @@ export class AuthPartnerController {
         addressState: body.addressState,
         addressCountry: body.addressCountry,
         addressPostalCode: body.addressPostalCode,
-        ownerUserId: rspUser.uid,
       };
       const responsePartner = await partnerService.post(partner);
 
-      // 2. create partner entity
+      // 2. create partner user entity
+      const partnerUser = {
+        firstName: body.user.firstName,
+        lastName: body.user.lastName,
+        email: body.user.email,
+        password: body.user.password,
+        age: body.user.age,
+        phoneNumber: body.user.phoneNumber,
+        groups: partnerOwnerGroup,
+        partner: responsePartner,
+      };
+
+      const responseUser = await partnerUserService.post(partnerUser);
 
       // 3. send email with credentials
+      // import email service
+      const emailService =
+        IAMDefaultContainer.get<Providers.email.IEmailService>(
+          INVERSITY_TYPES.EmailService
+        );
+      // send email confirmation
+      const htmlTemplate = template.emails.partnerConfirmEmailTemplate;
+      // replace placeholders {{aabbcc}} with actual data
+      // get appname from env
+      const appName = process.env.APP_NAME || "MyApp";
+      const appDomainUrl =
+        process.env.APP_DOMAIN_URL || "http://localhost:8081";
+
+      const data: template.emails.PartnerConfirmEmailTemplateData = {
+        companyName: responsePartner.companyName,
+        taxId: responsePartner.taxId,
+        firstName: responseUser.firstName,
+        businessType: responsePartner.businessType,
+        confirmationLink: `${appDomainUrl}/partner/verify?magic_link=${responseUser.magicLink}`,
+        expirationTime: 24,
+        appName: appName,
+        currentYear: new Date().getFullYear(),
+      };
+      const renderedHtml = utils.renderHtmlTemplate(htmlTemplate, data);
+      await emailService.sendTransactionEmail(
+        responseUser.email,
+        "Confirm your email",
+        renderedHtml
+      );
+
       // prepare response
       const apiResponse = {
         ok: true,
@@ -250,17 +287,17 @@ export class AuthPartnerController {
           authenticated: true,
           message: "Partner registered successfully",
           user: {
-            uid: rspUser.uid,
-            firstName: rspUser.firstName,
-            lastName: rspUser.lastName,
-            email: rspUser.email,
+            uid: responseUser.uid,
+            firstName: responseUser.firstName,
+            lastName: responseUser.lastName,
+            email: responseUser.email,
             userType: Types.enums.AuthUserType.PARTNER,
-            status: rspUser.status,
+            status: responseUser.status,
           },
         },
       };
 
-      return res.json(apiResponse);
+      return res.status(200).json(apiResponse);
     } catch (error) {
       return errors.errorHandler(res, error as Error);
     }

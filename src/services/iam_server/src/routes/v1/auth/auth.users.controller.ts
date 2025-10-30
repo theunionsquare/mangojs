@@ -157,7 +157,7 @@ export class AuthUserController {
     req: Request<undefined, api.v1.auth.users.logout.POST.RequestBody>,
     res: Response<api.v1.auth.users.logout.POST.ResponseBody>
   ): Promise<Response<api.v1.auth.users.logout.POST.ResponseBody>> {
-    console.log("Log-in user");
+    console.log("Log-out user");
     const logRequest = new utils.LogRequest(res);
     try {
       let exists = true;
@@ -213,20 +213,21 @@ export class AuthUserController {
         },
       };
 
+      // TO DO migrate to emit event based system
       // import email service
       const emailService =
         IAMDefaultContainer.get<Providers.email.IEmailService>(
           INVERSITY_TYPES.EmailService
         );
       // send email confirmation
-      const htmlTemplate = template.emails.confirmEmailTemplate;
+      const htmlTemplate = template.emails.userConfirmEmailTemplate;
       // replace placeholders {{aabbcc}} with actual data
       // get appname from env
       const appName = process.env.APP_NAME || "MyApp";
       const appDomainUrl =
         process.env.APP_DOMAIN_URL || "http://localhost:8081";
 
-      const data: template.emails.ConfirmEmailTemplateData = {
+      const data: template.emails.UserConfirmEmailTemplateData = {
         firstName: response.firstName,
         confirmationLink: `${appDomainUrl}/user/verify?magic_link=${response.magicLink}`,
         expirationTime: 24,

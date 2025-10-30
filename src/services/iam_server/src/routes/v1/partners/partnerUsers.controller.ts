@@ -180,7 +180,6 @@ export class PartnerUserController {
    *
    */
   @Get("/magiclinks/:magiclink")
-  @AuthDecorators.IsAuthorized()
   public async getPartnerUserBymagicLink(
     req: coreTypes.v1.api.request.Request<
       iamTypes.api.v1.partners.users.magiclinks.GET.Params,

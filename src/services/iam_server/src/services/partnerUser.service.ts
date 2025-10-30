@@ -1,8 +1,7 @@
 import { inject, injectable } from "inversify";
 import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
-import { Repository, EntityManager } from "typeorm";
+import { EntityManager } from "typeorm";
 import { errors, utils } from "@giusmento/mangojs-core";
-import { api } from "../types";
 
 import * as models from "../db/models";
 import { Group } from "../db/models/Group.entity";
@@ -15,8 +14,6 @@ export class PartnerUserService {
   // Inject Persistance Context
   @inject(INVERSITY_TYPES.PersistenceContext)
   private _persistenceContext: IPersistenceContext;
-
-  private partnerUserRepository: Repository<models.PartnerUser>;
 
   constructor() {
     // Initialize repositories when AppDataSource is ready
@@ -65,8 +62,8 @@ export class PartnerUserService {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const partnerUser = await this.partnerUserRepository.findOne({
-          where: { uid: partnerUserId },
+        const partnerUser = await em.findOneBy(models.PartnerUser, {
+          uid: partnerUserId,
         });
 
         if (!partnerUser) {
@@ -105,7 +102,7 @@ export class PartnerUserService {
       async (em: EntityManager) => {
         const responseArray: Array<any> = [];
 
-        const users = await this.partnerUserRepository.find(filter);
+        const users = await em.find(models.PartnerUser, filter);
 
         for (const partnerUser of users) {
           responseArray.push({
@@ -159,20 +156,12 @@ export class PartnerUserService {
         // set magic link
         const magicLink = utils.generateMagicLink();
         // set random password
-        const password = utils.generateRandomPassword();
+        const password = utils.hashedPassword(partnerData.password);
         // set expiring date
         const expDate = new Date();
         const magicLinkExpireDate = new Date(
           expDate.getTime() + 24 * 60 * 60 * 1000
         ); // 1 day
-
-        // fetch group entities
-        const groups = await em.find(Group, {
-          where: {
-            userType: coreTypes.enums.AuthUserType.PARTNER,
-            default: true,
-          },
-        });
 
         // create partner user
         const newPartnerUser = em.create(models.PartnerUser, {
@@ -180,12 +169,13 @@ export class PartnerUserService {
           lastName: partnerData.lastName,
           email: partnerData.email,
           password: password,
-          groups: groups,
+          groups: partnerData.groups,
           isActive: true,
           isVerified: false,
           status: coreTypes.enums.PartnerUserStatus.PENDING,
           magicLink,
           magicLinkExpireDate,
+          partner: partnerData.partner,
         });
 
         const response = await em.save(newPartnerUser);
