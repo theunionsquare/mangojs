@@ -58,8 +58,9 @@ export class UserService {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const user = await em.findOneBy(models.User, {
-          uid: userId,
+        const user = await em.getRepository(models.User).findOne({
+          where: { uid: userId },
+          relations: ["groups"],
         });
 
         if (!user) {
@@ -77,7 +78,12 @@ export class UserService {
           createdAt: user.createdAt,
           updatedAt: user.updatedAt,
           verifiedAt: user.verifiedAt,
-          groups: user.groups,
+          groups: user.groups.map((group) => ({
+            uid: group.uid,
+            name: group.name,
+            description: group.description,
+            permissions: group.permissions,
+          })),
         };
       }
     )) as iamTypes.entities.user.User;

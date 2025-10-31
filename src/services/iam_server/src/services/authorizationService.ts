@@ -8,6 +8,7 @@ import { PartnerUserService } from "./partnerUser.service";
 import { UserService } from "./user.service";
 
 import type { types as iamTypes } from "../../";
+import { partner } from "../types/entities";
 
 dotenv.config();
 
@@ -119,6 +120,7 @@ export class AuthorizationService implements Auth.IAuthProvider {
         email: authUser.email,
         status: authUser.status,
         groups: authUser.groups,
+        partnerUid: authUser.partner?.uid,
       };
 
       return response;

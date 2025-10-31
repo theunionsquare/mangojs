@@ -29,6 +29,7 @@ export class AuthorizationDecorators {
         next: NextFunction
       ) => {
         try {
+          console.log("target:", target, propertyKey, descriptor);
           console.log("Start IsAuthorized decorator");
           await authService.validateAdminCredentials(req, res);
           req.headers["isAuthorized"] = "true";

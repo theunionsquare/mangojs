@@ -20,6 +20,10 @@ export * as Decorators from "./decorators";
 // TO DO: Remove it
 export * from "./decorators";
 
+// CACHE
+export * as cache from "./cache";
+export { Cache } from "./cache";
+
 // AUTHENTICATION INTERFACES
 export * as Auth from "./auth";
 

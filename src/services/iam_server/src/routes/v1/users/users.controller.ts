@@ -3,7 +3,7 @@ import {
   Controller,
   Get,
   utils,
-  AuthorizationDecorators,
+  Decorators,
   Post,
   Put,
   Delete,
@@ -12,9 +12,10 @@ import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { errors } from "@giusmento/mangojs-core";
-import type { Types } from "@giusmento/mangojs-core";
+import { Types } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../../../";
 import { UserService } from "../../../services/user.service";
+import { ClassHasUserType } from "../../../../../../core/decorators/auth";
 
 dotenv.config();
 
@@ -24,11 +25,6 @@ const userService = IAMDefaultContainer.get<UserService>(UserService);
 // import authorization service
 const authService =
   IAMDefaultContainer.get<AuthorizationService>(AuthorizationService);
-
-// import authorization decorators
-const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
-  AuthorizationDecorators
-);
 
 @Controller("/api/iam/v1/users")
 export class UserController {
@@ -62,8 +58,7 @@ export class UserController {
    *
    */
   @Get("/")
-  @AuthDecorators.IsAuthorized()
-  //@Decorators.HasGroups(["Admin"])
+  @Decorators.auth.HasGroups(["User-Default"])
   public async getUsers(
     req: Request<undefined, iamTypes.entities.common.filter>,
     res: Response<iamTypes.api.v1.users.GET.ResponseBody>

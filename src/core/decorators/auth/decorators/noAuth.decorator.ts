@@ -1,4 +1,4 @@
-import { MetadataKeys } from "../../utils/metadata.keys";
+import { MetadataKeys } from "../../../utils/metadata.keys";
 
 /**
  * Method decorator that removes all authorization requirements from a method.

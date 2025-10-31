@@ -9,5 +9,7 @@ export enum MetadataKeys {
     MIDDLEWARE = 'express:middleware',
     // AUTHORIZATION
     AUTHORIZATION = 'server:authorization',
+    AUTHORIZATION_OR_MODE = 'server:authorization:or_mode',
+    AUTHORIZATION_VALIDATORS = 'server:authorization:validators',
     AUTHENTICATION_HANDLERS = 'auth:authentication',
 }

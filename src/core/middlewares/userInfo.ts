@@ -2,6 +2,7 @@ import { IAuthorization } from "../auth/IAuthorization";
 import type { NextFunction } from "express";
 import { getContainer } from "../container";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import { partner } from "../../services/iam_server/src/types/entities";
 
 /**
  * Populate req.user with an object containing the user
@@ -30,6 +31,17 @@ export async function middlewareUserInfo(
       }
     }
   }
-  console.log(req.user, "middlewareUserInfo response");
+  const response = {
+    user: {
+      uid: req.user?.uid,
+      userType: req.user?.userType,
+      email: req.user?.email,
+      firstName: req.user?.firstName,
+      lastName: req.user?.lastName,
+      groups: req.user?.groups,
+      partnerUid: req.user?.partnerUid,
+    },
+  };
+  console.log(response, "middlewareUserInfo response");
   next();
 }

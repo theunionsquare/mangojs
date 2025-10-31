@@ -1,4 +1,4 @@
-import { Types } from "../../";
+import { Types } from "../../../";
 
 /**
  * Class decorator that applies user type authorization to all methods in a class.

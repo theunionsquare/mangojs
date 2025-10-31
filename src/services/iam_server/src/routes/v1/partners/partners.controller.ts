@@ -7,6 +7,7 @@ import {
   Post,
   Put,
   Delete,
+  Decorators,
 } from "@giusmento/mangojs-core";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { PartnerService } from "../../../services/partner.service";
@@ -109,7 +110,10 @@ export class PartnerController {
    *        description: Unauthorized
    */
   @Get("/:uid")
-  @AuthDecorators.IsAuthorized()
+  @Decorators.auth.RequiresOwnership("partner", {
+    userField: "partnerUid",
+    paramName: "uid",
+  })
   public async getPartner(
     req: coreTypes.v1.api.request.Request<
       iamTypes.api.v1.partners.uid.GET.Params,

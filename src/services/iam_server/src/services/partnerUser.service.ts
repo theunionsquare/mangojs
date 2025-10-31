@@ -8,6 +8,7 @@ import { Group } from "../db/models/Group.entity";
 
 import { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../";
+import { partner } from "../types/entities";
 
 @injectable()
 export class PartnerUserService {
@@ -57,13 +58,14 @@ export class PartnerUserService {
    * @throws {APIError} 404 NOT_FOUND if the partner user does not exist
    */
   public async get(
-    partnerUserId: string
+    uid: string
   ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // get by uid
-        const partnerUser = await em.findOneBy(models.PartnerUser, {
-          uid: partnerUserId,
+        const partnerUser = await em.getRepository(models.PartnerUser).findOne({
+          where: { uid },
+          relations: ["groups", "partner"],
         });
 
         if (!partnerUser) {
@@ -72,7 +74,6 @@ export class PartnerUserService {
 
         return {
           uid: partnerUser.uid,
-          username: partnerUser.username,
           email: partnerUser.email,
           firstName: partnerUser.firstName,
           lastName: partnerUser.lastName,
@@ -83,6 +84,7 @@ export class PartnerUserService {
           updatedAt: partnerUser.updatedAt,
           verifiedAt: partnerUser.verifiedAt,
           groups: partnerUser.groups,
+          partner: partnerUser.partner,
         };
       }
     )) as iamTypes.entities.partnerUser.PartnerUser;
