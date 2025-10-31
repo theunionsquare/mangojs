@@ -1,2 +1,5 @@
 export { HasUserType } from './hasUserType.decorator'
 export { HasGroups } from './hasGroups.decorator'
+export { RequiresAccess } from './requiresAccess.decorator'
+export { ClassHasUserType } from './classHasUserType.decorator'
+export { NoAuth } from './noAuth.decorator'

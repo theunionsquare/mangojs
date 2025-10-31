@@ -4,9 +4,11 @@ import {
   Get,
   utils,
   AuthorizationDecorators,
+  Decorators,
   Post,
   Put,
   Delete,
+  Types,
 } from "@giusmento/mangojs-core";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { PartnerUserService } from "../../../services/partnerUser.service";
@@ -60,8 +62,10 @@ export class PartnerUserController {
    *
    */
   @Get("/")
-  @AuthDecorators.IsAuthorized()
-  public async getPartners(
+  @Decorators.auth.RequiresAccess({
+    [Types.enums.AuthUserType.PARTNER]: ["partner_admin"],
+  })
+  public async getPartnerUsers(
     req: Request<undefined, api.v1.partners.users.GET.RequestBody>,
     res: Response<api.v1.partners.users.GET.ResponseBody>
   ): Promise<Response<api.v1.partners.users.GET.ResponseBody>> {
