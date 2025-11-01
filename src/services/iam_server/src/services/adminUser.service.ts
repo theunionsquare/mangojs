@@ -282,6 +282,7 @@ export class AdminUserService {
             createdAt: adminUser.createdAt,
             updatedAt: adminUser.updatedAt,
             verifiedAt: adminUser.verifiedAt,
+            resetPasswordAtLogin: false,
             groups: adminUser.groups,
           });
         }

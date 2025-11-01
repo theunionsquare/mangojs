@@ -6,8 +6,9 @@
  */
 import { Types } from "@giusmento/mangojs-core";
 import * as models from "../../../../../../db/models";
+import { RequestDefaultParams } from "..";
 
-export type Params = { uid: string };
+export type Params = RequestDefaultParams & { uid: string };
 
 export type RequestBody = Partial<
   Pick<models.IPartnerUser, "firstName" | "lastName" | "phoneNumber">

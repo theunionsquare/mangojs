@@ -9,6 +9,7 @@ import { Group } from "../db/models/Group.entity";
 import { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../";
 import { partner } from "../types/entities";
+import { In } from "typeorm";
 
 @injectable()
 export class PartnerUserService {
@@ -98,13 +99,17 @@ export class PartnerUserService {
    * @returns Promise resolving to an array of all partner user objects with complete details including groups, status, and timestamps
    */
   public async getAll(
+    partnerUid: string,
     filter: iamTypes.entities.common.filter
   ): Promise<Array<iamTypes.entities.partnerUser.PartnerUser>> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         const responseArray: Array<any> = [];
 
-        const users = await em.find(models.PartnerUser, filter);
+        const users = await em.find(models.PartnerUser, {
+          where: { partner: { uid: partnerUid } },
+          ...filter,
+        });
 
         for (const partnerUser of users) {
           responseArray.push({
@@ -142,6 +147,7 @@ export class PartnerUserService {
    * @description Generates a random password and magic link for account activation. The magic link expires in 24 hours.
    */
   public async post(
+    partnerUid: string,
     partnerData: iamTypes.entities.partnerUser.PartnerUserPost
   ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = (await this._persistenceContext.inTransaction(
@@ -154,30 +160,46 @@ export class PartnerUserService {
         if (isUnique) {
           throw new errors.APIError(409, "CONFLICT", "Email already exists");
         }
+        // search partner
+        const partner = await em.findOneBy(models.Partner, {
+          uid: partnerUid,
+        });
+        if (!partner) {
+          throw new errors.APIError(404, "NOT_FOUND", "Partner not found");
+        }
 
         // set magic link
         const magicLink = utils.generateMagicLink();
-        // set random password
-        const password = utils.hashedPassword(partnerData.password);
+        // set password
+        let resetPasswordAtLogin = false;
+        if (!partnerData.password) {
+          partnerData.password = utils.generateRandomPassword(12);
+          resetPasswordAtLogin = true;
+        } else {
+        }
+        const hashedPassword = utils.hashedPassword(partnerData.password);
         // set expiring date
-        const expDate = new Date();
+        const magicLinkExpiretime = parseInt(
+          process.env.MAGIC_LINK_EXPIRE_TIME || "86400000"
+        );
         const magicLinkExpireDate = new Date(
-          expDate.getTime() + 24 * 60 * 60 * 1000
-        ); // 1 day
+          new Date().getTime() + magicLinkExpiretime
+        );
 
         // create partner user
         const newPartnerUser = em.create(models.PartnerUser, {
           firstName: partnerData.firstName,
           lastName: partnerData.lastName,
           email: partnerData.email,
-          password: password,
+          password: hashedPassword,
           groups: partnerData.groups,
           isActive: true,
           isVerified: false,
           status: coreTypes.enums.PartnerUserStatus.PENDING,
           magicLink,
           magicLinkExpireDate,
-          partner: partnerData.partner,
+          resetPasswordAtLogin,
+          partner: partner,
         });
 
         const response = await em.save(newPartnerUser);

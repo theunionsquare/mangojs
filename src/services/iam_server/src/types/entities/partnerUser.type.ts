@@ -7,7 +7,7 @@ export type PartnerUser = models.PartnerUser;
 // Define PartnerUserPost type for creating new PartnerUsers
 export type PartnerUserPost = Pick<
   PartnerUser,
-  "firstName" | "lastName" | "email" | "password" | "groups" | "partner"
+  "firstName" | "lastName" | "email" | "password" | "groups"
 >;
 
 // Define PartnerUserDelete type for creating new PartnerUsers

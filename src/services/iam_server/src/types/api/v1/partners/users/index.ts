@@ -6,6 +6,10 @@ export * as groups from "./groups";
 export * as magiclinks from "./magiclinks";
 export * as activate from "./activate";
 
+export type RequestDefaultParams = {
+  partnerUid: string;
+};
+
 export type ResponseBodyData = Pick<
   models.IPartnerUser,
   | "uid"

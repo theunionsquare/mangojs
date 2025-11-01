@@ -63,6 +63,9 @@ export class User {
   @UpdateDateColumn({ type: "timestamptz" })
   updatedAt: Date;
 
+  @UpdateDateColumn({ type: "boolean", default: false })
+  resetPasswordAtLogin: boolean;
+
   @ManyToMany(() => Group, { cascade: true })
   @JoinTable({
     name: "user_groups",
@@ -88,5 +91,6 @@ export interface IUser {
   disabledAt?: Date;
   createdAt?: Date;
   updatedAt?: Date;
+  resetPasswordAtLogin: boolean;
   groups?: Group[];
 }

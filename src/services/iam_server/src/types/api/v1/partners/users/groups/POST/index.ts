@@ -6,8 +6,9 @@
  */
 
 import { Types } from "@giusmento/mangojs-core";
+import { RequestDefaultParams } from "../..";
 
-export type Params = { uid: string };
+export type Params = RequestDefaultParams & { uid: string };
 
 export type RequestBody = { groups: Array<{ value: string; name: string }> };
 

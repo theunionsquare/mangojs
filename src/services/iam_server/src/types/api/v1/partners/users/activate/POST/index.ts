@@ -1,5 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "..";
+import { RequestDefaultParams } from "../..";
 
 /*
  * REQUEST
@@ -7,7 +8,7 @@ import { ResponseBodyData } from "..";
  *
  * REQUEST: POST /api/v1/adminUser
  */
-export type Params = { magiclink: string };
+export type Params = RequestDefaultParams & { magiclink: string };
 
 export type RequestBody = {
   firstName: string;

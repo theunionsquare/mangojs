@@ -30,11 +30,11 @@ const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
   { autobind: true }
 );
 
-@Controller("/api/iam/v1/partners/users")
+@Controller("/api/iam/v1/partners/:partnerUid/users")
 export class PartnerUserController {
   /**
    * @swagger
-   * /api/iam/v1/partners/users:
+   * /api/iam/v1/partners/:partnerUid/users:
    *  get:
    *    summary: Get list of active partner users
    *    description: Return a list of active partner users
@@ -62,16 +62,17 @@ export class PartnerUserController {
    *
    */
   @Get("/")
-  @Decorators.auth.RequiresAccess({
-    [Types.enums.AuthUserType.PARTNER]: ["partner_admin"],
-  })
   public async getPartnerUsers(
-    req: Request<undefined, api.v1.partners.users.GET.RequestBody>,
+    req: Request<
+      api.v1.partners.users.GET.Params,
+      api.v1.partners.users.GET.RequestBody
+    >,
     res: Response<api.v1.partners.users.GET.ResponseBody>
   ): Promise<Response<api.v1.partners.users.GET.ResponseBody>> {
     const logRequest = new utils.LogRequest(res);
     try {
-      const partnerUsers = await partnerUserService.getAll({});
+      const partnerUid = req.params.partnerUid;
+      const partnerUsers = await partnerUserService.getAll(partnerUid, {});
       // prepare response
       const partnerUsersResponse = partnerUsers.map((user) => {
         return {
@@ -131,15 +132,19 @@ export class PartnerUserController {
    */
   @Post("/")
   public async addPartnerUser(
-    req: Request<undefined, api.v1.partners.users.POST.RequestBody>,
+    req: Request<
+      api.v1.partners.users.POST.RequestParams,
+      api.v1.partners.users.POST.RequestBody
+    >,
     res: Response<api.v1.partners.users.POST.ResponseBody>
   ): Promise<Response<api.v1.partners.users.POST.ResponseBody>> {
     console.log("add Partner User");
     const logRequest = new utils.LogRequest(res);
     try {
+      const partnerUid = req.params.partnerUid;
       const body = req.body;
       console.log({ body }, "body");
-      const response = await partnerUserService.post(body);
+      const response = await partnerUserService.post(partnerUid, body);
       // prepare response
       const apiResponse = {
         ok: true,

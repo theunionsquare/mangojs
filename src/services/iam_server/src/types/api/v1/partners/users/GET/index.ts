@@ -2,7 +2,7 @@
  * Get all Partner Users
  */
 import type { Types } from "@giusmento/mangojs-core/";
-import { ResponseBodyData } from "..";
+import { RequestDefaultParams, ResponseBodyData } from "..";
 
 /*
  * REQUEST
@@ -10,6 +10,8 @@ import { ResponseBodyData } from "..";
  *
  * REQUEST: GET /api/iam/v1/partners
  */
+
+export type Params = RequestDefaultParams;
 
 export type RequestBody = {};
 

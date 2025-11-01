@@ -7,7 +7,9 @@
 
 import { Types } from "@giusmento/mangojs-core";
 import * as models from "../../../../../../db/models";
-import { ResponseBodyData } from "..";
+import { RequestDefaultParams, ResponseBodyData } from "..";
+
+export type RequestParams = RequestDefaultParams & {};
 
 export type RequestBody = Pick<
   models.IPartnerUser,

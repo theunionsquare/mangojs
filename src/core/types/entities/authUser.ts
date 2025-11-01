@@ -5,6 +5,7 @@ export interface AuthUserBase {
   firstName: string;
   lastName: string;
   email: string;
+  partnerUid?: string;
 }
 
 export interface AuthUser extends AuthUserBase {

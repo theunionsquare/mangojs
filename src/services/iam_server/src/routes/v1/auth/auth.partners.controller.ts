@@ -242,10 +242,12 @@ export class AuthPartnerController {
         age: body.user.age,
         phoneNumber: body.user.phoneNumber,
         groups: partnerOwnerGroup,
-        partner: responsePartner,
       };
 
-      const responseUser = await partnerUserService.post(partnerUser);
+      const responseUser = await partnerUserService.post(
+        responsePartner.uid,
+        partnerUser
+      );
 
       // 3. send email with credentials
       // import email service
