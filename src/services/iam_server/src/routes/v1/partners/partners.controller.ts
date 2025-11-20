@@ -15,6 +15,7 @@ import { errors } from "@giusmento/mangojs-core";
 
 import type { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../../../";
+import { Or } from "typeorm";
 
 // import partnerService
 const partnerService = IAMDefaultContainer.get<PartnerService>(PartnerService, {

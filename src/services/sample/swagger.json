@@ -1,0 +1,26 @@
+{
+    "swaggerDefinition": {
+        "openapi": "3.0.0",
+        "info": {
+            "title": "Auth Server",
+            "version": "1.0.0",
+            "description": "AuthServer API Description"
+        },
+        "servers": [
+            {
+                "url": "http://localhost:3001",
+                "description": "auth server address"
+            }
+        ],
+        "components": {
+            "securitySchemes": {
+                "adminCookieAuth": {
+                    "type": "apiKey",
+                    "in": "cookie",
+                    "name": "JSESSIONID"
+                }
+            }
+        }
+    },
+    "apis": ["**/src/routes/**/*.ts"]
+}

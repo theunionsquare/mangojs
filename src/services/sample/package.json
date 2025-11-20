@@ -1,0 +1,25 @@
+{
+    "name": "sample",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc --incremental",
+        "start": "npx ts-node-dev src/index.ts --inspect",
+        "start:dev": "npx ts-node-dev src/index.ts",
+        "swagger": "tsoa spec"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.12.1",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "@giusmento/mangojs-core": "0.0.1-22",
+        "inversify": "^7.10.2",
+        "helmet": "^7.0.0",
+        "jsonwebtoken": "^9.0.2",
+        "pg": "^8.16.3",
+        "typeorm": "^0.3.26"
+    }
+}

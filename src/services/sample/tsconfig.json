@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "lib": ["es2022"],
+        "module": "commonjs",
+        "target": "es2022",
+        "types": ["reflect-metadata"],
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "outDir": ".build",
+        "sourceMap": true
+    },
+
+    "exclude": ["tests/*.test.ts"]
+}
