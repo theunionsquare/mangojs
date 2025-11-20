@@ -1,6 +1,6 @@
 import { IAuthorization } from "../auth/IAuthorization";
 import type { Response, NextFunction } from "express";
-import { getContainer } from "../container";
+import * as containers from "../container";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import type * as Types from "../types";
 import { MiddlewareUserInfo } from "../types/entities/middlewareUserInfo.type";
@@ -25,9 +25,9 @@ export async function middlewareUserInfo(
   res: Response,
   next: NextFunction
 ) {
-  const authService = getContainer().get(INVERSITY_TYPES.AuthorizationContext, {
-    autobind: true,
-  }) as IAuthorization;
+  const authService = containers
+    .getContainer()
+    .get(INVERSITY_TYPES.AuthorizationContext) as IAuthorization;
 
   const validationMethods = [
     authService.validateUserCredentials,

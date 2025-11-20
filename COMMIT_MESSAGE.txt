@@ -1,0 +1,190 @@
+feat: implement OR logic for auth decorators and refactor cache to core module
+
+BREAKING CHANGES:
+- Auth decorators moved to `decorators/` subfolder
+- Cache functionality extracted to generic `/core/cache/` module
+- AuthCache replaced with generic Cache<T> class
+
+Major Features:
+=============
+
+1. OR Logic for Authorization Decorators (@OrAuth)
+   - Added @OrAuth() decorator to enable OR logic between multiple auth checks
+   - Supports flexible authorization: (Admin OR Owner) OR (Special Group)
+   - Works with all auth decorators: @HasUserType, @HasGroups, @RequiresAccess, @RequiresOwnership
+   - Default remains AND logic for backward compatibility
+
+2. New Authorization Decorators
+   - @RequiresOwnership: Validates resource ownership (prevents horizontal privilege escalation)
+     * Supports single-value and array-based ownership checks
+     * Custom validation logic support
+     * Flexible parameter sources (params, query, body)
+   - @OrAuth: Enables OR mode between multiple decorators
+   - Enhanced @RequiresAccess with wildcard support for userTypes
+
+3. Generic Cache Module (Reusable)
+   - Extracted cache from auth to `/core/cache/` for application-wide use
+   - Generic Cache<T> class with full type safety
+   - TTL-based expiration with LRU eviction
+   - Pattern-based cache invalidation
+   - Performance metrics (hit rate, cache statistics)
+   - Can be used for: database queries, API responses, computed results, etc.
+
+4. Auth Configuration System (AuthConfig)
+   - Global configuration for all auth decorators
+   - Per-decorator configuration overrides
+   - Configurable user context extraction
+   - Custom error handlers
+   - Conditional audit logging support
+   - Cache configuration (TTL, max size)
+
+5. Authorization Orchestrator
+   - Centralized authorization logic with AND/OR mode support
+   - Result caching with configurable TTL
+   - Detailed error reporting with user context
+   - Conditional audit logging based on configuration
+   - Performance optimized with cache hit/miss tracking
+
+Core Architecture Improvements:
+==============================
+
+Cache System:
+- NEW: /core/cache/Cache.ts - Generic TTL cache with LRU eviction
+- NEW: /core/cache/index.ts - Cache module exports
+- NEW: /core/decorators/auth/core/authCacheUtils.ts - Auth-specific cache utilities
+- REMOVED: /core/decorators/auth/core/authCache.ts (split into generic + auth-specific)
+
+Auth Decorators Reorganization:
+- MOVED: All decorators to /core/decorators/auth/decorators/ subfolder
+  * hasUserType.decorator.ts → decorators/hasUserType.decorator.ts
+  * hasGroups.decorator.ts → decorators/hasGroups.decorator.ts
+  * requiresAccess.decorator.ts → decorators/requiresAccess.decorator.ts
+  * classHasUserType.decorator.ts → decorators/classHasUserType.decorator.ts
+  * noAuth.decorator.ts → decorators/noAuth.decorator.ts
+- NEW: decorators/orAuth.decorator.ts
+- NEW: decorators/requiresOwnership.decorator.ts
+
+Auth Core System:
+- NEW: /core/decorators/auth/core/authOrchestrator.ts - Authorization orchestration engine
+- NEW: /core/decorators/auth/core/authConfig.ts - Global auth configuration
+- NEW: /core/decorators/auth/core/authErrors.ts - Structured error handling
+- NEW: /core/decorators/auth/core/authCacheUtils.ts - Auth-specific cache utilities
+
+Features & Enhancements:
+======================
+
+Authorization:
+- Flexible AND/OR logic composition for complex authorization rules
+- Resource ownership validation with horizontal privilege escalation prevention
+- Wildcard support in RequiresAccess decorator (e.g., userTypes: ['*'])
+- Custom validation functions for complex ownership logic
+- Detailed error messages with actual vs expected values
+- User context extraction with configurable paths
+
+Caching:
+- Result caching for expensive authorization checks
+- Configurable TTL per decorator or globally
+- Cache hit/miss tracking in audit logs
+- Pattern-based cache invalidation (e.g., clear all entries for a user)
+- Automatic cleanup of expired entries
+- LRU eviction when max size is reached
+
+Logging & Debugging:
+- Conditional audit logging (respects enableAuditLog config)
+- Cache status indicators in logs: [CACHED], [COMPUTED]
+- Detailed error context with user type and groups
+- Per-decorator or global audit log configuration
+- Structured error format for better debugging
+
+Configuration:
+- Global auth configuration via AuthConfig.configure()
+- Per-decorator overrides for fine-grained control
+- Custom user context extractors
+- Custom error handlers per endpoint
+- Environment-aware configuration
+
+Usage Examples:
+==============
+
+OR Logic:
+```typescript
+// Admin OR Owner can update
+@OrAuth()
+@HasUserType([AuthUserType.ADMIN])
+@RequiresOwnership("partner")
+async updatePartner(@Param("partnerId") partnerId: string) {}
+```
+
+Ownership Validation:
+```typescript
+// Prevent horizontal privilege escalation
+@RequiresOwnership("partner")
+async getPartnerData(@Param("partnerId") partnerId: string) {}
+
+// Multi-tenant access
+@RequiresOwnership("organization", {
+  userField: "organizationIds",
+  arrayField: true
+})
+async getOrgData(@Param("organizationId") id: string) {}
+```
+
+Generic Cache:
+```typescript
+import { Cache } from '@giusmento/mangojs-core';
+
+const userCache = new Cache<UserData>({ ttl: 300000, maxSize: 10000 });
+userCache.set('user:123', userData);
+const cached = userCache.get('user:123');
+```
+
+Auth Configuration:
+```typescript
+AuthConfig.configure({
+  userObjectPath: "session.user",
+  enableAuditLog: true,
+  cacheValidationResults: true,
+  cacheTTL: 300000
+});
+```
+
+Documentation:
+=============
+- CACHE_REFACTORING.md - Complete cache refactoring guide
+- CONDITIONAL_AUDIT_LOGGING.md - Audit logging configuration guide
+- src/core/cache/QUICK_REFERENCE.md - Cache usage examples
+- src/core/decorators/auth/ROADMAP.md - Auth system development roadmap
+
+Statistics:
+==========
+- 27 files changed
+- 3,433 insertions(+), 359 deletions(-)
+- 14 new files added
+- 3 files removed
+- 10 files moved/reorganized
+
+Testing & Compatibility:
+=======================
+- ✅ Backward compatible (AND mode is default)
+- ✅ TypeScript compilation successful
+- ✅ All existing decorators work without changes
+- ✅ No breaking changes to public API (exports maintained)
+- ✅ Comprehensive examples in documentation
+
+Migration Notes:
+===============
+- Import paths unchanged (re-exported from index.ts)
+- Cache module available at: import { Cache } from '@giusmento/mangojs-core'
+- Auth cache utilities: import { authCache, generateCacheKey } from '@giusmento/mangojs-core'
+- AuthConfig class for global configuration
+- Enable audit logging: AuthConfig.configure({ enableAuditLog: true })
+
+Related Controllers Updated:
+===========================
+- src/services/iam_server/src/routes/v1/partners/partners.controller.ts
+- src/services/iam_server/src/routes/v1/users/users.controller.ts
+- src/services/iam_server/src/services/authorizationService.ts
+- src/services/iam_server/src/services/partnerUser.service.ts
+- src/services/iam_server/src/services/user.service.ts
+
+Co-authored-by: GitHub Copilot

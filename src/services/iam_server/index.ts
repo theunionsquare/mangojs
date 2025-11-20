@@ -1,4 +1,5 @@
-import { Container } from "inversify";
+export { IAMDefaultContainer } from "./src/inversify.config";
+export { IAMContainerManager } from "./src/inversify.config";
 
 export * as routes from "./src/routes";
 export * as services from "./src/services";
@@ -9,5 +10,3 @@ export * as types from "./src/types";
 export * as template from "./src/templates";
 
 export { default as swaggerJson } from "./swagger.json";
-
-export { IAMDefaultContainer } from "./src/inversify.config";

@@ -62,6 +62,10 @@ export class PartnerUserController {
    *
    */
   @Get("/")
+  @Decorators.auth.RequiresOwnership("partner", {
+    userField: "partnerUid",
+    paramName: "partnerUid",
+  })
   public async getPartnerUsers(
     req: Request<
       api.v1.partners.users.GET.Params,

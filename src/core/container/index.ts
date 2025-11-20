@@ -1,26 +1,40 @@
-import { Container } from 'inversify'
-import { INVERSITY_TYPES } from '..'
-import { ILoggerFactory, LoggerPino } from '../loggers'
+import { Container, ContainerModule } from "inversify";
+import { ContainerManager } from "./ContainerManager";
+import { addCoreModule } from "./modules";
+import { ILoggerFactory } from "../loggers/ILoggerFactory";
+import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import { LoggerPino } from "../loggers";
 
 /**
- * Create binding container
+ * Global parent container manager with shared dependencies
  */
+const parentContainerManager = new ContainerManager();
+const parentContainer = new Container();
 
-let defaultContainer: Container | undefined = undefined
+/**
+ * Get the parent container manager (contains shared dependencies like logger)
+ */
+export const getContainer = (): ContainerManager => {
+  const container = parentContainerManager.getContainer();
+  addCoreModule(container);
+  return parentContainerManager;
+};
 
-export const getContainer = (): Container => {
-    if (defaultContainer === undefined) {
-        defaultContainer = new Container()
-        defaultContainer
-            .bind<ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)
-            .toConstantValue(new LoggerPino('server', 'debug'))
-    }
-    return defaultContainer
-}
+export const getContainerManager = (): ContainerManager => {
+  addCoreModule(parentContainerManager.getContainer());
+  return parentContainerManager;
+};
 
-//const DefaultContainer = new Container();
-//DefaultContainer.bind<ILoggerFactory>(
-//  INVERSITY_TYPES.LoggerFactory
-//).toConstantValue(new LoggerPino("server", "debug"));
+/**
+ * Create a child container for a microservice
+ * Child containers inherit parent bindings and can override them
+ * @param modules - Modules to load into the child container
+ */
+export const createChild = (parent?: ContainerManager): ContainerManager => {
+  return new ContainerManager(
+    parent ? parent.getContainer() : parentContainerManager.getContainer()
+  );
+};
 
-//export { DefaultContainer };
+export { ContainerManager } from "./ContainerManager";
+export * from "./modules";
