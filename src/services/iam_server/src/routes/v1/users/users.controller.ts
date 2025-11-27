@@ -132,9 +132,7 @@ export class UserController {
         email: body.email,
         firstName: body.firstName,
         lastName: body.lastName,
-        username: body.username,
         password: body.password,
-        age: body.age,
         groups: [],
       };
       console.log({ body }, "body");

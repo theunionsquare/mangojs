@@ -1,5 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "..";
+import { AdminUserActivate } from "../../../../../entities/adminUser.type";
 
 /*
  * REQUEST
@@ -9,11 +10,7 @@ import { ResponseBodyData } from "..";
  */
 export type Params = { magiclink: string };
 
-export type RequestBody = {
-  firstName: string;
-  lastName: string;
-  password: string;
-};
+export type RequestBody = AdminUserActivate;
 
 /**
  * RESPONSE

@@ -5,13 +5,11 @@
  * REQUEST: POST /api/v1/adminUser
  */
 import { Types } from "@giusmento/mangojs-core";
-import { IAdminUser } from "../../../../../db/models/AdminUser.model";
+import { AdminUserPut } from "../../../../entities/adminUser.type";
 
 export type Params = { uid: string };
 
-export type RequestBody = Partial<
-  Pick<IAdminUser, "firstName" | "lastName" | "phoneNumber">
->;
+export type RequestBody = AdminUserPut;
 
 /**
  * RESPONSE

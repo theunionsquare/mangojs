@@ -175,7 +175,7 @@ export class PartnerUserService {
           lastName: partnerUser.lastName,
           email: partnerUser.email,
           password: password,
-          groups: partnerUser.groups,
+          //groups: partnerUser.groups,
           isActive: true,
           isVerified: false,
           status: "PENDING",

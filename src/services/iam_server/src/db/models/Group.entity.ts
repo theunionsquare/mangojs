@@ -23,6 +23,9 @@ export class Group {
 
   @Column({ type: "varchar", length: 255 })
   permissions: string;
+
+  @Column({ type: "boolean", default: true })
+  isVisible: boolean;
 }
 
 export interface IGroup {
@@ -32,4 +35,5 @@ export interface IGroup {
   description: string;
   default: boolean;
   permissions: string;
+  isVisible: boolean;
 }

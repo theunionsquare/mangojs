@@ -1,1 +1,1 @@
-export * as POST from './POST'
+export * as PUT from "./PUT";

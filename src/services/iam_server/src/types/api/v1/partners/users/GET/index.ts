@@ -2,7 +2,11 @@
  * Get all Partner Users
  */
 import type { Types } from "@giusmento/mangojs-core/";
-import { RequestDefaultParams, ResponseBodyData } from "..";
+import {
+  RequestDefaultParams,
+  RequestDefaultParamsSingle,
+  ResponseBodyData,
+} from "..";
 
 /*
  * REQUEST
@@ -12,6 +16,7 @@ import { RequestDefaultParams, ResponseBodyData } from "..";
  */
 
 export type Params = RequestDefaultParams;
+export type ParamsSingle = RequestDefaultParamsSingle;
 
 export type RequestBody = {};
 
@@ -24,3 +29,6 @@ export type RequestBody = {};
 export type ResponseBody = Types.v1.api.response.response<
   Array<ResponseBodyData>
 >;
+
+export type ResponseBodySingle =
+  Types.v1.api.response.response<ResponseBodyData>;

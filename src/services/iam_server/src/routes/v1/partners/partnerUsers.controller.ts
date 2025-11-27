@@ -17,6 +17,8 @@ import { api } from "../../../types";
 
 import type { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../../../";
+import { user } from "../../../types/entities";
+import { group } from "console";
 
 // import adminUserService
 const partnerUserService = IAMDefaultContainer.get<PartnerUserService>(
@@ -87,7 +89,16 @@ export class PartnerUserController {
           firstName: user.firstName,
           lastName: user.lastName,
           status: user.status,
+          groups: user.groups.map((group) => ({
+            uid: group.uid,
+            name: group.name,
+          })),
           isActive: user.isActive,
+          isVerified: user.isVerified,
+          disabledAt: user.disabledAt,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+          verifiedAt: user.verifiedAt,
         };
       });
       const apiResponse = {
@@ -95,7 +106,7 @@ export class PartnerUserController {
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: partnerUsersResponse,
-      } as api.v1.partners.users.GET.ResponseBody;
+      };
 
       return res.status(200).send(apiResponse);
     } catch (error: unknown) {
@@ -105,7 +116,77 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users:
+   * /api/iam/v1/partners/:partnerUid/users:
+   *  get:
+   *    summary: Get list of active partner users
+   *    description: Return a list of active partner users
+   *    tags:
+   *      - Partners, Users
+   *    produces:
+   *      - application/json
+   *    requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *    responses:
+   *      200:
+   *        description: An array containing partner users
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: object
+   *              properties:
+   *                  id:
+   *                    type: string
+   *                    example: 12345
+   *      401:
+   *        description: Unauthorized
+   *
+   */
+  @Get("/:userUid")
+  @Decorators.auth.RequiresOwnership("partner", {
+    userField: "partnerUid",
+    paramName: "partnerUid",
+  })
+  public async getPartnerUserByUid(
+    req: Request<
+      api.v1.partners.users.GET.ParamsSingle,
+      api.v1.partners.users.GET.RequestBody
+    >,
+    res: Response<api.v1.partners.users.GET.ResponseBodySingle>
+  ): Promise<Response<api.v1.partners.users.GET.ResponseBodySingle>> {
+    const logRequest = new utils.LogRequest(res);
+    try {
+      const partnerUid = req.params.partnerUid;
+      const userUid = req.params.userUid;
+      const partnerUser = await partnerUserService.get(userUid);
+      // prepare response
+      const partnerUserResponse = {
+        uid: partnerUser.uid,
+        email: partnerUser.email,
+        age: partnerUser.age,
+        phoneNumber: partnerUser.phoneNumber,
+        firstName: partnerUser.firstName,
+        lastName: partnerUser.lastName,
+        status: partnerUser.status,
+        isActive: partnerUser.isActive,
+      };
+      const apiResponse = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: partnerUserResponse,
+      } as api.v1.partners.users.GET.ResponseBodySingle;
+
+      return res.status(200).send(apiResponse);
+    } catch (error: unknown) {
+      return errors.errorHandler(res, error as Error);
+    }
+  }
+
+  /**
+   * @swagger
+   * /api/iam/v1/partners/:partnerUid/users:
    *  post:
    *    summary: Create new partner users
    *    description: Creates a new partner user
@@ -165,7 +246,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/magiclinks/{magiclink}:
+   * /api/iam/v1/partners/:partnerUid/users/:user/magiclinks/{magiclink}:
    *  get:
    *    summary: Get Partner User by his magic link
    *    description: Return a list of active partner users
@@ -213,7 +294,7 @@ export class PartnerUserController {
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: user,
-      };
+      } as iamTypes.api.v1.partners.users.magiclinks.GET.ResponseBody;
 
       return res.status(200).send(apiResponse);
     } catch (error) {
@@ -223,7 +304,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/activate/{magiclink}:
+   * /api/iam/v1/partners/:partnerUid/users/:user/activate/{magiclink}:
    *  post:
    *    summary: Activate Partner users
    *    description: Activate partner users
@@ -277,7 +358,7 @@ export class PartnerUserController {
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
         data: user,
-      };
+      } as iamTypes.api.v1.partners.users.magiclinks.GET.ResponseBody;
 
       return res.status(200).send(apiResponse);
     } catch (error) {
@@ -287,7 +368,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/{uid}:
+   * /api/iam/v1/partners/:partnerUid/users/{uid}:
    *  put:
    *    summary: Update partner users
    *    description: Update partner user
@@ -337,13 +418,13 @@ export class PartnerUserController {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
       };
-      await partnerUserService.update(uid, putUser);
+      const response = await partnerUserService.update(uid, putUser);
       // prepare response
       const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: { ok: true },
+        data: response,
       };
 
       return res.status(200).send(apiResponse);
@@ -354,7 +435,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/{uid}/groups:
+   * /api/iam/v1/partners/:partnerUid/users/:uid/groups
    *  put:
    *    summary: Add one or more group to a partner user
    *    description: Add one or more group to a partner user
@@ -386,13 +467,11 @@ export class PartnerUserController {
   @Put("/:uid/groups")
   public async updateGroupsToPartnerUser(
     req: coreTypes.v1.api.request.Request<
-      iamTypes.api.v1.partners.users.groups.POST.Params,
-      iamTypes.api.v1.partners.users.groups.POST.RequestBody
+      iamTypes.api.v1.partners.users.groups.PUT.Params,
+      iamTypes.api.v1.partners.users.groups.PUT.RequestBody
     >,
-    res: Response<iamTypes.api.v1.partners.users.groups.POST.ResponseBody>
-  ): Promise<
-    Response<iamTypes.api.v1.partners.users.groups.POST.ResponseBody>
-  > {
+    res: Response<iamTypes.api.v1.partners.users.groups.PUT.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.partners.users.groups.PUT.ResponseBody>> {
     console.log("update groups for Partner User");
     const logRequest = new utils.LogRequest(res);
     try {
@@ -401,9 +480,8 @@ export class PartnerUserController {
       console.log({ body }, "body");
       // uid from params
       const uid = params.uid;
-      // TO DO: update groups
-      const updateGroups = {};
-      await partnerUserService.updateGroups(uid, updateGroups);
+      // update groups
+      await partnerUserService.updateGroups(uid, body);
       // prepare response
       const apiResponse = {
         ok: true,
@@ -420,7 +498,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/{uid}/disable:
+   * /api/iam/v1/partners/:partnerUid/users/:uid/disable:
    *  post:
    *    summary: Disable partner users
    *    description: Disable partner user
@@ -469,7 +547,7 @@ export class PartnerUserController {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: { ok: true },
+        data: response,
       };
 
       return res.status(200).send(apiResponse);
@@ -480,7 +558,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/{uid}/enable:
+   * /api/iam/v1/partners/:partnerUid/users/:uid/enable:
    *  post:
    *    summary: Enable partner users
    *    description: Enable partner user
@@ -529,7 +607,7 @@ export class PartnerUserController {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: { ok: true },
+        data: response,
       };
 
       return res.status(200).send(apiResponse);
@@ -540,7 +618,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/users/{uid}/delete/hard:
+   * /api/iam/v1/partners/:partnerUid/users/:uid/delete/hard:
    *  delete:
    *    summary: Hard delete partner users
    *    description: Hard delete partner user
@@ -572,11 +650,11 @@ export class PartnerUserController {
   @Delete("/:uid/delete/hard")
   public async hardDeletePartnerUser(
     req: coreTypes.v1.api.request.Request<
-      iamTypes.api.v1.partners.users.PUT.Params,
+      iamTypes.api.v1.partners.users.DELETE.Params,
       {}
     >,
-    res: Response<iamTypes.api.v1.partners.users.PUT.ResponseBody>
-  ): Promise<Response<iamTypes.api.v1.partners.users.PUT.ResponseBody>> {
+    res: Response<iamTypes.api.v1.partners.users.DELETE.ResponseBody>
+  ): Promise<Response<iamTypes.api.v1.partners.users.DELETE.ResponseBody>> {
     console.log("hard delete Partner User");
     const logRequest = new utils.LogRequest(res);
     try {

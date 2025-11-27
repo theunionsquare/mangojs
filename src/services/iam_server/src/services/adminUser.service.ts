@@ -336,11 +336,12 @@ export class AdminUserService {
   ): Promise<iamTypes.entities.adminUser.AdminUser> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
+        // TODO: fix group with the new type
         // get group entities
         const groups = await em.find(models.Group, {
           where: {
             userType: Types.enums.AuthUserType.ADMIN,
-            uid: document.groups.map((gr: any) => gr.value) as any,
+            //uid: document.groups.map((gr: any) => gr.value) as any,
           },
         });
 

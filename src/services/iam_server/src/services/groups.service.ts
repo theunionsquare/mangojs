@@ -43,6 +43,7 @@ export class GroupsService {
             default: group.default,
             description: group.description,
             permissions: group.permissions,
+            isVisible: group.isVisible,
           });
         }
         return responseArray;
@@ -97,6 +98,7 @@ export class GroupsService {
             permissions: group.permissions,
             userType: group.userType,
             default: group.default,
+            isVisible: group.isVisible,
           });
         }
         return responseArray;

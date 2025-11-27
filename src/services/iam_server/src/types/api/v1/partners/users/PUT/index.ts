@@ -5,14 +5,15 @@
  * REQUEST: POST /api/v1/adminUser
  */
 import { Types } from "@giusmento/mangojs-core";
-import * as models from "../../../../../../db/models";
 import { RequestDefaultParams } from "..";
+import {
+  PartnerUser,
+  PartnerUserPut,
+} from "../../../../../entities/partnerUser.type";
 
 export type Params = RequestDefaultParams & { uid: string };
 
-export type RequestBody = Partial<
-  Pick<models.IPartnerUser, "firstName" | "lastName" | "phoneNumber">
->;
+export type RequestBody = PartnerUserPut;
 
 /**
  * RESPONSE
@@ -20,4 +21,4 @@ export type RequestBody = Partial<
  * @see
  */
 
-export type ResponseBody = Types.v1.api.response.response<{ ok: boolean }>;
+export type ResponseBody = Types.v1.api.response.response<PartnerUser>;

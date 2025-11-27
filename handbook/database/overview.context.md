@@ -47,25 +47,26 @@ export class User {
   @PrimaryGeneratedColumn("uuid")
   uid: string;
 
-  @Column({ type: "varchar", length: 255 })
+  @Column({ name: "email", type: "varchar", length: 255 })
   @Index()
   email: string;
 
-  @Column({ type: "varchar", length: 255 })
+  @Column({ name: "name", type: "varchar", length: 255 })
   name: string;
 
   @Column({
+    name: "status",
     type: "enum",
     enum: ["ACTIVE", "INACTIVE", "SUSPENDED"],
     default: "ACTIVE",
   })
   status: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+  @CreateDateColumn({ name: "created_at" })
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+  @UpdateDateColumn({ name: "updated_at" })
+  updatedAt: Date;
 }
 ```
 
@@ -130,13 +131,13 @@ id: string;  // Note: bigint is string in TypeScript
 Define a table column.
 
 ```typescript
-@Column({ type: "varchar", length: 255 })
+@Column({ name: "name", type: "varchar", length: 255 })
 name: string;
 
-@Column({ type: "text", nullable: true })
+@Column({ name: "description", type: "text", nullable: true })
 description?: string;
 
-@Column({ type: "int", default: 0 })
+@Column({ name: "view_count", type: "int", default: 0 })
 viewCount: number;
 ```
 
@@ -144,26 +145,27 @@ viewCount: number;
 
 ```typescript
 // String
-@Column({ type: "varchar", length: 255 })
+@Column({ name: "name", type: "varchar", length: 255 })
 name: string;
 
-@Column({ type: "text" })
+@Column({ name: "description", type: "text" })
 description: string;
 
 // Number
-@Column({ type: "int" })
+@Column({ name: "count", type: "int" })
 count: number;
 
 // Boolean
-@Column({ type: "boolean", default: false })
+@Column({ name: "is_active", type: "boolean", default: false })
 isActive: boolean;
 
 // Date/Time
-@Column({ type: "timestamp" })
+@Column({ name: "created_at", type: "timestamp" })
 createdAt: Date;
 
 // Enum
 @Column({
+  name: "status",
   type: "enum",
   enum: ["ACTIVE", "INACTIVE"],
   default: "ACTIVE"
@@ -171,7 +173,7 @@ createdAt: Date;
 status: string;
 
 // Nullable
-@Column({ nullable: true })
+@Column({ name: "optional_fields", nullable: true })
 optionalField?: string;
 ```
 
@@ -203,10 +205,10 @@ email: string;
 @Entity("posts")
 @Index(["userId", "postId"])  // ← Composite index
 export class Post {
-  @Column()
+  @Column({name: "user_id"})
   userId: string;
 
-  @Column()
+  @Column({name: "post_id",})
   postId: string;
 }
 ```
@@ -347,6 +349,8 @@ Use this checklist when creating or modifying the database layer:
 - [ ] Timestamps use `@CreateDateColumn()` and `@UpdateDateColumn()`
 - [ ] Frequently queried fields have `@Index()` decorator
 - [ ] Entity exported from `src/db/models/index.ts`
+- [ ] Use camel-case for entity name `creationAt`, `firstName`,`lastName`
+- [ ] Use snake-case for database colums name `creation_at`, `first_name`,`last_name`
 
 **Relationships**
 
@@ -378,6 +382,6 @@ Use this checklist when creating or modifying the database layer:
 
 - Always add uuid as primary key for security and distributed systems
 - Add @Index when needed for frequently queried fields
-- Entity naming conventions: Use singular words (User, not Users)
+- Entity naming conventions: Use singular words (User, not Users), snake case for databse columns(fist_name, not firstName), canel case for entity name (fistName, not first_name)
 - Create TypeORM migration once all entities have been created
 - Avoid business logic in entities - keep them as pure data models

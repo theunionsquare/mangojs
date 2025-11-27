@@ -1,4 +1,5 @@
 import { Types } from "@giusmento/mangojs-core";
+import { AuthResponse } from "../../../../../../entities/auth.type";
 
 /*
  *   REQUEST BODY
@@ -16,6 +17,6 @@ export type RequestBody = {};
  *   RESPONSE: 200 OK
  */
 
-export type ResponseBodyData = { authenticated: boolean; message: string };
+export type ResponseBodyData = AuthResponse;
 
 export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>;

@@ -16,7 +16,28 @@ export type PartnerPost = Pick<
   | "addressCountry"
   | "addressPostalCode"
   | "businessType"
-  | "taxId"
+  | "taxCode"
+>;
+
+export type PartnerPut = Partial<
+  Pick<
+    models.IPartner,
+    | "companyName"
+    | "email"
+    | "phoneNumber"
+    | "businessType"
+    | "taxCode"
+    | "addressStreet"
+    | "addressCity"
+    | "addressState"
+    | "addressCountry"
+    | "addressPostalCode"
+    | "websiteUrl"
+    | "logoUrl"
+    | "subscriptionTier"
+    | "contractStartDate"
+    | "contractEndDate"
+  >
 >;
 
 // Define PartnerDelete type for creating new Partners

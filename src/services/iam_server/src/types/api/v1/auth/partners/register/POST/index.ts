@@ -1,6 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "../..";
-import { models } from "../../../../../../../..";
+import { AuthPartnerRegister } from "../../../../../../entities/auth.type";
 
 /*
  *   REQUEST BODY
@@ -9,23 +9,7 @@ import { models } from "../../../../../../../..";
  *   REQUEST: POST /api/auth/register
  */
 
-export type RequestBody = Pick<
-  models.IPartner,
-  | "companyName"
-  | "businessType"
-  | "taxId"
-  | "email"
-  | "addressStreet"
-  | "addressCity"
-  | "addressState"
-  | "addressCountry"
-  | "addressPostalCode"
-> & {
-  user: Pick<
-    models.IPartnerUser,
-    "firstName" | "lastName" | "email" | "password" | "age" | "phoneNumber"
-  >;
-};
+export type RequestBody = AuthPartnerRegister;
 
 /*
  *   RESPONSE BODY

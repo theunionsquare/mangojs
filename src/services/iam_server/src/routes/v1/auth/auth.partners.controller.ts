@@ -18,6 +18,7 @@ import { PartnerService } from "../../../services/partner.service";
 import { AuthorizationService } from "../../../services/authorizationService";
 import { GroupsService } from "../../../services";
 import { template } from "../../../..";
+import { partner } from "../../../types/entities";
 
 dotenv.config();
 
@@ -197,7 +198,17 @@ export class AuthPartnerController {
       return errors.errorHandler(res, error as Error);
     }
   }
-
+  /**
+   * @swagger
+   * /auth/partners/register:
+   *  post:
+   *    summary: Register Partner users
+   *    description: Register a new partner and partner user
+   *    tags:
+   *      - Auth Partner
+   *    produces:
+   *      - application/json
+   **/
   @Post("/register")
   public async registerPartnerUser(
     req: Types.v1.api.request.Request<
@@ -217,12 +228,20 @@ export class AuthPartnerController {
         Types.enums.AuthUserType.PARTNER,
         { name: "Owner" }
       );
+      // check if group exists
+      if (partnerOwnerGroup.length === 0) {
+        throw new errors.APIError(
+          500,
+          "INTERNAL_SERVER_ERROR",
+          "Partner Owner group not found"
+        );
+      }
 
       // 1. Create Partner
       const partner = {
         companyName: body.companyName,
         businessType: body.businessType,
-        taxId: body.taxId,
+        taxCode: body.taxCode,
         email: body.email,
         phoneNumber: body.user.phoneNumber,
         addressStreet: body.addressStreet,
@@ -265,10 +284,10 @@ export class AuthPartnerController {
 
       const data: template.emails.PartnerConfirmEmailTemplateData = {
         companyName: responsePartner.companyName,
-        taxId: responsePartner.taxId,
+        taxCode: responsePartner.taxCode,
         firstName: responseUser.firstName,
         businessType: responsePartner.businessType,
-        confirmationLink: `${appDomainUrl}/partner/verify?magic_link=${responseUser.magicLink}`,
+        confirmationLink: `${appDomainUrl}/partner/verify?uid=${responsePartner.uid}&magic_link=${responseUser.magicLink}`,
         expirationTime: 24,
         appName: appName,
         currentYear: new Date().getFullYear(),
@@ -288,6 +307,10 @@ export class AuthPartnerController {
         data: {
           authenticated: true,
           message: "Partner registered successfully",
+          partner: {
+            uid: responsePartner.uid,
+            name: responsePartner.companyName,
+          },
           user: {
             uid: responseUser.uid,
             firstName: responseUser.firstName,

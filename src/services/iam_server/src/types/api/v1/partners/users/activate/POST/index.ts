@@ -1,6 +1,7 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "..";
 import { RequestDefaultParams } from "../..";
+import { PartnerUserActivate } from "../../../../../../entities/partnerUser.type";
 
 /*
  * REQUEST
@@ -10,11 +11,7 @@ import { RequestDefaultParams } from "../..";
  */
 export type Params = RequestDefaultParams & { magiclink: string };
 
-export type RequestBody = {
-  firstName: string;
-  lastName: string;
-  password: string;
-};
+export type RequestBody = PartnerUserActivate;
 
 /**
  * RESPONSE

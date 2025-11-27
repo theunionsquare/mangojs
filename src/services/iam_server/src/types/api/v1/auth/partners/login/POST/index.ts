@@ -1,5 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "../..";
+import { AuthLogin } from "../../../../../../entities/auth.type";
 
 /*
  *   REQUEST BODY
@@ -8,10 +9,7 @@ import { ResponseBodyData } from "../..";
  *   REQUEST: POST /api/auth/login
  */
 
-export type RequestBody = {
-  email: string;
-  password: string;
-};
+export type RequestBody = AuthLogin;
 
 /*
  *   RESPONSE BODY

@@ -8,13 +8,9 @@
 import { Types } from "@giusmento/mangojs-core";
 import { IAdminUser } from "../../../../../db/models/AdminUser.model";
 import { ResponseBodyData } from "..";
+import { AdminUserPost } from "../../../../entities/adminUser.type";
 
-export type RequestBody = Pick<
-  IAdminUser,
-  "firstName" | "lastName" | "username" | "email" | "password" | "age"
-> & {
-  groups: [string];
-};
+export type RequestBody = AdminUserPost;
 
 /**
  * RESPONSE

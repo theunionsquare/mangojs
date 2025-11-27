@@ -4,13 +4,14 @@
  *
  * REQUEST: POST /api/v1/adminUser
  */
-
 import { Types } from "@giusmento/mangojs-core";
-import { RequestDefaultParams } from "../..";
+import * as models from "../../../../../../db/models";
+import { RequestDefaultParams } from "..";
+import { PartnerUser } from "../../../../../entities/partnerUser.type";
 
 export type Params = RequestDefaultParams & { uid: string };
 
-export type RequestBody = { groups: Array<{ value: string; name: string }> };
+export type RequestBody = undefined;
 
 /**
  * RESPONSE

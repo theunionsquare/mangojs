@@ -1,6 +1,6 @@
 export type PartnerConfirmEmailTemplateData = {
   companyName: string;
-  taxId: string;
+  taxCode: string;
   firstName: string;
   businessType: string;
   confirmationLink: string;
@@ -176,7 +176,7 @@ export const partnerConfirmEmailTemplate = `<!DOCTYPE html>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Tax ID:</div>
-                    <div class="info-value">{{taxId}}</div>
+                    <div class="info-value">{{taxCode}}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Business Type:</div>

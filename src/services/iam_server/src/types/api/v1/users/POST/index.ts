@@ -6,15 +6,10 @@
  */
 
 import { Types } from "@giusmento/mangojs-core";
-import * as models from "../../../../../db/models";
 import { ResponseBodyData } from "..";
+import { UserPost } from "../../../../entities/user.type";
 
-export type RequestBody = Pick<
-  models.IUser,
-  "firstName" | "lastName" | "username" | "email" | "password" | "age"
-> & {
-  groups: [string];
-};
+export type RequestBody = UserPost;
 
 /**
  * RESPONSE

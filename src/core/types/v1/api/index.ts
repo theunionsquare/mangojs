@@ -23,7 +23,7 @@ export interface Base {
 // Example: Request<{ id: string }, { name: string }, { filter: string }>
 // represents a request with path param 'id', body with 'name', and query param 'filter'
 export interface Request<P = any, B = any, Q = any>
-  extends ExpressRequest<P, B, Q> {
+  extends ExpressRequest<P, any, B, Q> {
   // Additional response-specific properties
 }
 

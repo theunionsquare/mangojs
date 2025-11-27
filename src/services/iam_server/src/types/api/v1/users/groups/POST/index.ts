@@ -6,10 +6,11 @@
  */
 
 import { Types } from "@giusmento/mangojs-core";
+import { GroupManageForUser } from "../../../../../entities/group.type";
 
 export type Params = { uid: string };
 
-export type RequestBody = { groups: Array<{ value: string; name: string }> };
+export type RequestBody = GroupManageForUser;
 
 /**
  * RESPONSE

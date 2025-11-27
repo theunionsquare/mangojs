@@ -212,7 +212,7 @@ export class PartnerController {
         phoneNumber: body.phoneNumber,
         email: body.email,
         businessType: body.businessType,
-        taxId: body.taxId,
+        taxCode: body.taxCode,
       };
       const response = await partnerService.post(postPartner);
 

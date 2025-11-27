@@ -196,10 +196,10 @@ export class AdminUserService {
         console.log({ adminUser }, "search group UID");
         const respGroup = await AdminGroupSchema.findOne({
           userType: Types.enums.AuthUserType.ADMIN,
-          uid: adminUser.groups,
+          //uid: adminUser.groups,
         });
         // set group _id
-        adminUser.groups = [respGroup._id as string];
+        //adminUser.groups = [respGroup._id as unknown as string];
         // set magic link
         const magicLink = utils.generateMagicLink();
         // set random password
@@ -214,7 +214,7 @@ export class AdminUserService {
           lastName: adminUser.lastName,
           email: adminUser.email,
           password: password,
-          groups: adminUser.groups,
+          //groups: adminUser.groups,
           isActive: true,
           isVerified: false,
           status: "PENDING",
@@ -306,7 +306,7 @@ export class AdminUserService {
         // get group ids
         const grIds = await AdminGroupSchema.find({
           userType: Types.enums.AuthUserType.ADMIN,
-          uid: document.groups.map((gr) => gr.value),
+          //uid: document.groups.map((gr) => gr.value),
         });
 
         const users = await AdminUserSchema.updateOne(

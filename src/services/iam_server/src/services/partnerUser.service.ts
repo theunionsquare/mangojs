@@ -104,35 +104,30 @@ export class PartnerUserService {
   ): Promise<Array<iamTypes.entities.partnerUser.PartnerUser>> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const responseArray: Array<any> = [];
-
         const users = await em.find(models.PartnerUser, {
           where: { partner: { uid: partnerUid } },
+          relations: ["groups"],
           ...filter,
         });
 
-        for (const partnerUser of users) {
-          responseArray.push({
-            uid: partnerUser.uid,
-            username: partnerUser.username,
-            email: partnerUser.email,
-            age: partnerUser.age,
-            phoneNumber: partnerUser.phoneNumber,
-            firstName: partnerUser.firstName,
-            lastName: partnerUser.lastName,
-            status: partnerUser.status,
-            isActive: partnerUser.isActive,
-            isVerified: partnerUser.isVerified,
-            magicLink: partnerUser.magicLink,
-            magicLinkExpireDate: partnerUser.magicLinkExpireDate,
-            disabledAt: partnerUser.disabledAt,
-            createdAt: partnerUser.createdAt,
-            updatedAt: partnerUser.updatedAt,
-            verifiedAt: partnerUser.verifiedAt,
-            groups: partnerUser.groups,
-          });
-        }
-        return responseArray;
+        const response = users.map((user) => ({
+          uid: user.uid,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          status: user.status,
+          isActive: user.isActive,
+          isVerified: user.isVerified,
+          createdAt: user.createdAt,
+          updatedAt: user.updatedAt,
+          verifiedAt: user.verifiedAt,
+          groups: user.groups.map((group) => ({
+            uid: group.uid,
+            name: group.name,
+          })),
+        }));
+
+        return response;
       }
     )) as Array<iamTypes.entities.partnerUser.PartnerUser>;
     return response;
@@ -192,13 +187,13 @@ export class PartnerUserService {
           lastName: partnerData.lastName,
           email: partnerData.email,
           password: hashedPassword,
-          groups: partnerData.groups,
           isActive: true,
           isVerified: false,
           status: coreTypes.enums.PartnerUserStatus.PENDING,
           magicLink,
           magicLinkExpireDate,
           resetPasswordAtLogin,
+          groups: partnerData.groups,
           partner: partner,
         });
 
@@ -220,22 +215,28 @@ export class PartnerUserService {
   public async update(
     uid: string,
     document: Partial<iamTypes.entities.partnerUser.PartnerUser>
-  ): Promise<{}> {
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        const updateResult = await em.update(
-          models.PartnerUser,
-          { uid },
-          {
-            firstName: document.firstName,
-            lastName: document.lastName,
-            phoneNumber: document.phoneNumber,
-          }
-        );
-        return updateResult;
+        const partnerUser = await em.findOne(models.PartnerUser, {
+          where: { uid },
+        });
+        if (!partnerUser) {
+          throw new errors.APIError(404, "NOT_FOUND", "Partner user not found");
+        }
+
+        const response = Object.assign(partnerUser, {
+          firstName: document.firstName,
+          lastName: document.lastName,
+          phoneNumber: document.phoneNumber,
+        });
+
+        await em.save(response);
+
+        return response;
       }
     );
-    return response;
+    return response as iamTypes.entities.partnerUser.PartnerUser;
   }
 
   /**
@@ -294,39 +295,112 @@ export class PartnerUserService {
     return response;
   }
   /**
-   * Update Groups - Update the group memberships for a partner user
+   * Update Groups - Update the groups assigned to a partner user
    *
    * @param uid - The user's uid
-   * @param document - Object containing the new groups to assign to the user
+   * @param document - Object containing groups to add, remove, or set
    * @returns Promise resolving to the updated user object
    * @throws {APIError} 404 NOT_FOUND if the user does not exist
-   * @description Replaces the user's existing groups with the new set of groups
+   * @description Allows adding, removing, or setting groups for the user. Only one operation can be performed at a time.
    */
   public async updateGroups(
     uid: string,
-    document: Partial<iamTypes.entities.partnerUser.PartnerUser>
+    document: iamTypes.entities.group.GroupManageForUser
   ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    // validate input
+    if (
+      !document ||
+      (document.add === undefined &&
+        document.remove === undefined &&
+        document.set === undefined)
+    ) {
+      throw new errors.APIError(
+        400,
+        "BAD_REQUEST",
+        "No groups provided for update"
+      );
+    }
+    // reject if more than one operation is provided
+    const operations = [
+      document.add ? 1 : 0,
+      document.remove ? 1 : 0,
+      document.set ? 1 : 0,
+    ].reduce((a, b) => a + b, 0);
+    if (operations !== 1) {
+      throw new errors.APIError(
+        400,
+        "BAD_REQUEST",
+        "Only one operation (add, remove, set) can be performed at a time"
+      );
+    }
+
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        // get group entities
-        const groups = await em.find(Group, {
-          where: {
+        // get all groups entities in the request
+        const allGroupUids: string[] = [];
+        if (document.add) {
+          allGroupUids.push(...document.add);
+        }
+        if (document.remove) {
+          allGroupUids.push(...document.remove);
+        }
+        if (document.set) {
+          allGroupUids.push(...document.set);
+        }
+
+        // fetch group entities
+        const groups = await em
+          .getRepository(Group)
+          .createQueryBuilder("group")
+          .where("group.userType = :userType AND group.uid IN (:...uids)", {
             userType: coreTypes.enums.AuthUserType.PARTNER,
-            uid: document.groups.map((gr: any) => gr.value) as any,
-          },
-        });
+            uids: allGroupUids,
+          })
+          .getMany();
+
+        // reject if group is owner
+        const ownerGroup = groups.find(
+          (g) => g.name.toLocaleLowerCase() === "owner"
+        );
+        if (ownerGroup) {
+          throw new errors.APIError(
+            400,
+            "BAD_REQUEST",
+            "Cannot modify owner group"
+          );
+        }
 
         // find admin user
-        const user = await em.findOneBy(models.PartnerUser, {
-          uid,
+        const user = await em.findOne(models.PartnerUser, {
+          where: { uid },
+          relations: ["groups"],
         });
 
         if (!user) {
           throw new errors.APIError(404, "NOT_FOUND", "User not found");
         }
 
-        // update groups
-        user.groups = groups;
+        // update groups based on operation
+        if (document.add) {
+          const groupsToAdd = groups.filter((g) =>
+            document.add!.includes(g.uid)
+          );
+          user.groups = Array.from(
+            new Set([...(user.groups || []), ...groupsToAdd])
+          );
+        } else if (document.remove) {
+          const groupsToRemoveUids = new Set(document.remove);
+          user.groups = (user.groups || []).filter(
+            (g) => !groupsToRemoveUids.has(g.uid)
+          );
+        } else if (document.set) {
+          const groupsToSet = groups.filter((g) =>
+            document.set!.includes(g.uid)
+          );
+          user.groups = groupsToSet;
+        }
+
+        // save updated user
         const updateResult = await em.save(user);
         return updateResult;
       }

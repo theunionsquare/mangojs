@@ -7,5 +7,17 @@ export type AdminUser = Omit<models.AdminUser, "password">;
 // Define AdminUserPost type for creating new AdminUsers
 export type AdminUserPost = Pick<AdminUser, "firstName" | "lastName" | "email">;
 
+// Define AdminUserPost type for creating new AdminUsers
+export type AdminUserPut = Pick<
+  AdminUser,
+  "firstName" | "lastName" | "phoneNumber"
+>;
+
 // Define AdminUserDelete type for creating new AdminUsers
 export type AdminUserDelete = DeleteEntityResult;
+
+export type AdminUserActivate = {
+  firstName: string;
+  lastName: string;
+  password: string;
+};

@@ -48,9 +48,10 @@ import { Request, Response } from "express";
 import type * as PBTypes from "@giusmento/pulcherbook-types"; // Shared types
 import { ShopService } from "../../../services";
 import { errors, utils } from "@giusmento/mangojs-core";
+import { serviceNameContainer } from "../../../inversify.config.ts"  
 
 // Resolve service OUTSIDE controller class
-const shopService = Containers.getContainer().get<ShopService>(ShopService, {
+const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 
@@ -102,7 +103,10 @@ export class ShopController {
 
 ```typescript
 // ✅ Correct - resolve outside class
-const shopService = Containers.getContainer().get<ShopService>(ShopService, {
+import { serviceNameContainer } from "../../../inversify.config.ts"  
+
+// Resolve service OUTSIDE controller class
+const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 
@@ -194,8 +198,10 @@ import {
 } from "@giusmento/mangojs-core";
 import type * as PBTypes from "@giusmento/pulcherbook-types";
 import { ShopService } from "../../../services";
+import { serviceNameContainer } from "../../../inversify.config.ts"  
 
-const shopService = Containers.getContainer().get<ShopService>(ShopService, {
+// Resolve service OUTSIDE controller class
+const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 

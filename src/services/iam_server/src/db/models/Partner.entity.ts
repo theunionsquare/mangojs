@@ -22,7 +22,7 @@ export class Partner {
   businessType: string;
 
   @Column({ type: "varchar", length: 100, unique: true, nullable: true })
-  taxId: string;
+  taxCode: string;
 
   @Column({ type: "varchar", length: 255, unique: true })
   email: string;
@@ -89,7 +89,7 @@ export interface IPartner {
   uid: string;
   companyName: string;
   businessType?: string;
-  taxId?: string;
+  taxCode: string;
   email: string;
   phoneNumber?: string;
   addressStreet?: string;

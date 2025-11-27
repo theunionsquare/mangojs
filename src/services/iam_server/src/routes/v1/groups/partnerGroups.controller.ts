@@ -62,7 +62,6 @@ export class PartnerGroupController {
    *
    */
   @Get("/")
-  @AuthDecorators.IsAuthorized()
   public async getPartnerGroups(
     req: Request<undefined, api.v1.groups.admin.GET.RequestBody>,
     res: Response<api.v1.groups.admin.GET.ResponseBody>
@@ -71,7 +70,7 @@ export class PartnerGroupController {
     try {
       const partnerGroups = await groupsService.getGroups(
         Types.enums.AuthUserType.PARTNER,
-        {}
+        { isVisible: true }
       );
       const apiResponse = {
         ok: true,

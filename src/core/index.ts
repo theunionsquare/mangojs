@@ -64,6 +64,9 @@ export {
 // PERSISTENCE CONTEXT
 export * as persistanceContext from "./persistence";
 
+// export Clients
+export * as clients from "./clients";
+
 // Export Types
 export * as Types from "./types";
 

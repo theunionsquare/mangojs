@@ -33,20 +33,32 @@ export class PartnerService {
   ): Promise<iamTypes.entities.partner.Partner> {
     const response = (await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
-        // search if taxId is unique
+        // check if taxCode is provided
+        if (!partner.taxCode) {
+          throw new errors.APIError(400, "BAD_REQUEST", "Tax Code is required");
+        }
+        // search if taxCode is unique
         const isUnique = await em.findOneBy(Partner, {
-          taxId: partner.taxId,
+          taxCode: partner.taxCode,
         });
 
         if (isUnique) {
           throw new errors.APIError(409, "CONFLICT", "Tax ID already exists");
+        }
+        // search if email is unique
+        const isEmailUnique = await em.findOneBy(Partner, {
+          email: partner.email,
+        });
+
+        if (isEmailUnique) {
+          throw new errors.APIError(409, "CONFLICT", "Email already exists");
         }
 
         // create partner
         const newPartner = em.create(Partner, {
           companyName: partner.companyName,
           businessType: partner.businessType,
-          taxId: partner.taxId,
+          taxCode: partner.taxCode,
           email: partner.email,
           phoneNumber: partner.phoneNumber,
           addressStreet: partner.addressStreet,
@@ -135,7 +147,7 @@ export class PartnerService {
           {
             companyName: document.companyName,
             businessType: document.businessType,
-            taxId: document.taxId,
+            taxCode: document.taxCode,
             email: document.email,
             phoneNumber: document.phoneNumber,
             addressStreet: document.addressStreet,

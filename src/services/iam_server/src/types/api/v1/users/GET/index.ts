@@ -22,3 +22,5 @@ export type RequestBody = {};
 export type ResponseBody = Types.v1.api.response.response<
   Array<ResponseBodyData>
 >;
+export type ResponseBodySingle =
+  Types.v1.api.response.response<ResponseBodyData>;

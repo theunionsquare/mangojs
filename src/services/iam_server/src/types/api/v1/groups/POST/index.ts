@@ -2,8 +2,8 @@
  * POST group
  */
 import type { Types } from "@giusmento/mangojs-core/";
-import { IGroup } from "../../../../../db/models/Group.model";
 import { ResponseBodyData } from "..";
+import { GroupPost } from "../../../../entities/group.type";
 
 /*
  * REQUEST
@@ -12,10 +12,7 @@ import { ResponseBodyData } from "..";
  * REQUEST: POST /api/v1/groups
  */
 
-export type RequestBody = Pick<
-  IGroup,
-  "uid" | "name" | "description" | "permissions"
->;
+export type RequestBody = GroupPost;
 
 /**
  * RESPONSE

@@ -78,7 +78,7 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
         return AppDataSource.manager;
       }
     } catch (e) {
-      const message = `Can't connect to ${this.connection}`;
+      const message = `Can't connect to ${this.connection["host"]}: ${e}`;
       this.logger.error({ e }, message);
       throw new ConnectionError(message);
     }

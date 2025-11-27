@@ -17,12 +17,12 @@ export type ResponseBodyData = Pick<
   | "status"
   | "isActive"
   | "isVerified"
-  | "magicLink"
-  | "magicLinkExpireDate"
   | "verifiedAt"
   | "disabledAt"
   | "createdAt"
   | "updatedAt"
 > & {
-  groups: Array<Pick<IGroup, "uid" | "name" | "description" | "permissions">>;
+  groups: Array<{ uid: string; name: string }>;
+  magicLink?: string;
+  magicLinkExpireDate?: Date;
 };

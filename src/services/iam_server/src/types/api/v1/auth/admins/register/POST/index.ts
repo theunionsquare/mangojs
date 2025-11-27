@@ -1,6 +1,6 @@
 import { Types } from "@giusmento/mangojs-core";
 import { ResponseBodyData } from "../..";
-import { models } from "../../../../../../../..";
+import { AuthAdminRegister } from "../../../../../../entities/auth.type";
 
 /*
  *   REQUEST BODY
@@ -9,10 +9,7 @@ import { models } from "../../../../../../../..";
  *   REQUEST: POST /api/auth/login
  */
 
-export type RequestBody = Pick<
-  models.IAdminUser,
-  "firstName" | "lastName" | "email" | "password" | "age" | "phoneNumber"
->;
+export type RequestBody = AuthAdminRegister;
 
 /*
  *   RESPONSE BODY

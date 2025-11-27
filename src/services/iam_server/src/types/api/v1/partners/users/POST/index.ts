@@ -6,17 +6,12 @@
  */
 
 import { Types } from "@giusmento/mangojs-core";
-import * as models from "../../../../../../db/models";
 import { RequestDefaultParams, ResponseBodyData } from "..";
+import { PartnerUserPost } from "../../../../../entities/partnerUser.type";
 
 export type RequestParams = RequestDefaultParams & {};
 
-export type RequestBody = Pick<
-  models.IPartnerUser,
-  "firstName" | "lastName" | "username" | "email" | "password" | "age"
-> & {
-  groups: [string];
-};
+export type RequestBody = PartnerUserPost;
 
 /**
  * RESPONSE
