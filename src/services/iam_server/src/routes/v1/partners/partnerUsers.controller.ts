@@ -9,16 +9,16 @@ import {
   Put,
   Delete,
   Types,
+  INVERSITY_TYPES,
 } from "@giusmento/mangojs-core";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { PartnerUserService } from "../../../services/partnerUser.service";
 import { errors } from "@giusmento/mangojs-core";
 import { api } from "../../../types";
+import { template } from "../../../..";
 
-import type { Types as coreTypes } from "@giusmento/mangojs-core";
+import type { Types as coreTypes, Providers } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../../../";
-import { user } from "../../../types/entities";
-import { group } from "console";
 
 // import adminUserService
 const partnerUserService = IAMDefaultContainer.get<PartnerUserService>(
@@ -26,17 +26,11 @@ const partnerUserService = IAMDefaultContainer.get<PartnerUserService>(
   { autobind: true }
 );
 
-// import authorization decorators
-const AuthDecorators = IAMDefaultContainer.get<AuthorizationDecorators>(
-  AuthorizationDecorators,
-  { autobind: true }
-);
-
 @Controller("/api/iam/v1/partners/:partnerUid/users")
 export class PartnerUserController {
   /**
    * @swagger
-   * /api/iam/v1/partners/:partnerUid/users:
+   * /api/iam/v1/partners/:partnerUid/users
    *  get:
    *    summary: Get list of active partner users
    *    description: Return a list of active partner users
@@ -116,7 +110,7 @@ export class PartnerUserController {
 
   /**
    * @swagger
-   * /api/iam/v1/partners/:partnerUid/users:
+   * /api/iam/v1/partners/:partnerUid/users/:userUid
    *  get:
    *    summary: Get list of active partner users
    *    description: Return a list of active partner users
@@ -229,13 +223,128 @@ export class PartnerUserController {
       const partnerUid = req.params.partnerUid;
       const body = req.body;
       console.log({ body }, "body");
-      const response = await partnerUserService.post(partnerUid, body);
+      const responseUser = await partnerUserService.post(partnerUid, body);
+
+      // sebd email with magic link here
+      // import email service
+      const emailService =
+        IAMDefaultContainer.get<Providers.email.IEmailService>(
+          INVERSITY_TYPES.EmailService
+        );
+
+      // send email confirmation
+      const htmlTemplate = template.emails.userConfirmEmailTemplate;
+      const appName = process.env.APP_NAME || "MyApp";
+      const appDomainUrl =
+        process.env.APP_DOMAIN_URL || "http://localhost:8081";
+
+      const data: template.emails.UserConfirmEmailTemplateData = {
+        firstName: responseUser.firstName,
+        confirmationLink: `${appDomainUrl}/partner/verify?uid=${partnerUid}&magic_link=${responseUser.magicLink}`,
+        expirationTime: 24,
+        appName: appName,
+        currentYear: new Date().getFullYear().toString(),
+      };
+      const renderedHtml = utils.renderHtmlTemplate(htmlTemplate, data);
+      await emailService.sendTransactionEmail(
+        responseUser.email,
+        "Confirm your email",
+        renderedHtml
+      );
+
       // prepare response
       const apiResponse = {
         ok: true,
         timestamp: logRequest.timestamp,
         requestId: logRequest.requestId,
-        data: response,
+        data: responseUser,
+      };
+
+      return res.status(200).send(apiResponse);
+    } catch (error) {
+      return errors.errorHandler(res, error as Error);
+    }
+  }
+
+  /**
+   * @swagger
+   * /api/iam/v1/partners/:partnerUid/users/:uid/resend-confirmation:
+   *  post:
+   *    summary: Resend confirmation email to partner user
+   *    description: Resends the confirmation email to a partner user
+   *    tags:
+   *      - Partners
+   *    produces:
+   *      - application/json
+   *    requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *    responses:
+   *      200:
+   *        description: The created partner user
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: object
+   *              properties:
+   *                  uid:
+   *                    type: string
+   *                    example: 12345
+   *                  firstName:
+   *                    type
+   *      401:
+   *        description: Unauthorized
+   *
+   */
+  @Post("/:uid/resend-confirmation")
+  public async resendConfirmationEmail(
+    req: Request<
+      api.v1.partners.users.POST.RequestParams,
+      api.v1.partners.users.POST.RequestBody
+    >,
+    res: Response<api.v1.partners.users.POST.ResponseBody>
+  ): Promise<Response<api.v1.partners.users.POST.ResponseBody>> {
+    const logRequest = new utils.LogRequest(res);
+    try {
+      const partnerUid = req.params.partnerUid;
+      const uid = req.params.uid;
+      const body = req.body;
+      console.log({ body }, "body");
+      const responseUser = await partnerUserService.updateMagicLink(uid);
+
+      // send email with magic link here
+      // import email service
+      const emailService =
+        IAMDefaultContainer.get<Providers.email.IEmailService>(
+          INVERSITY_TYPES.EmailService
+        );
+
+      // send email confirmation
+      const htmlTemplate = template.emails.userConfirmEmailTemplate;
+      const appName = process.env.APP_NAME || "MyApp";
+      const appDomainUrl = process.env.APP_DOMAIN_URL;
+
+      const data: template.emails.UserConfirmEmailTemplateData = {
+        firstName: responseUser.firstName,
+        confirmationLink: `${appDomainUrl}/partner/verify?uid=${partnerUid}&magic_link=${responseUser.magicLink}`,
+        expirationTime: 24,
+        appName: appName,
+        currentYear: new Date().getFullYear().toString(),
+      };
+      const renderedHtml = utils.renderHtmlTemplate(htmlTemplate, data);
+      await emailService.sendTransactionEmail(
+        responseUser.email,
+        "Confirm your email",
+        renderedHtml
+      );
+
+      // prepare response
+      const apiResponse = {
+        ok: true,
+        timestamp: logRequest.timestamp,
+        requestId: logRequest.requestId,
+        data: responseUser,
       };
 
       return res.status(200).send(apiResponse);

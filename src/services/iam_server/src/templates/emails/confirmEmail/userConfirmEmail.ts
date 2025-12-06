@@ -3,7 +3,7 @@ export type UserConfirmEmailTemplateData = {
   confirmationLink: string;
   expirationTime: number; // in hours
   appName: string;
-  currentYear: number;
+  currentYear: string;
 };
 
 export const userConfirmEmailTemplate = `<!DOCTYPE html>

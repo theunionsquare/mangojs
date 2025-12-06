@@ -34,6 +34,14 @@ The Controller Layer handles HTTP requests and responses. This is the **outermos
 
 Controllers use **API types** from the shared types package (monorepo) or local types (standalone). API types are organized by endpoint path and HTTP method.
 
+The controller endpoint follows the followign rules:
+
+- 1st position: Endpoints starts with `/api`
+- 2nd position: include the srvice short name e.g. `/partner/` for partner-service
+- 3rd position: has the endpoint version `/v1/` for version 1
+
+Example: `/api/partner/v1/` -> v1 version of api endpoint for partner service
+
 > **📖 See:** [Type Organization Guide](../architecture/type.context.md) for complete API type setup, structure, and examples.
 
 ### Step 2: Create Controller
@@ -48,14 +56,14 @@ import { Request, Response } from "express";
 import type * as PBTypes from "@giusmento/pulcherbook-types"; // Shared types
 import { ShopService } from "../../../services";
 import { errors, utils } from "@giusmento/mangojs-core";
-import { serviceNameContainer } from "../../../inversify.config.ts"  
+import { serviceNameContainer } from "../../../inversify.config.ts";
 
 // Resolve service OUTSIDE controller class
 const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 
-@Controller("/api/v1/shops")
+@Controller("/api/{short-service-name}/v1/shops")
 export class ShopController {
   // Add methods here - see examples below
 }
@@ -89,7 +97,7 @@ export const routes = [
 Defines the base path for all routes in the controller:
 
 ```typescript
-@Controller("/api/v1/shops")
+@Controller("/api/{short-service-name}/v1/shops")
 export class ShopController {
   // All routes start with /api/v1/shops
 }
@@ -103,14 +111,14 @@ export class ShopController {
 
 ```typescript
 // ✅ Correct - resolve outside class
-import { serviceNameContainer } from "../../../inversify.config.ts"  
+import { serviceNameContainer } from "../../../inversify.config.ts";
 
 // Resolve service OUTSIDE controller class
 const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 
-@Controller("/api/v1/shops")
+@Controller("/api/{short-service-name}/v1/shops")
 export class ShopController {
   @Get("/")
   public async getShops(req: Request, res: Response) {
@@ -120,7 +128,7 @@ export class ShopController {
 }
 
 // ❌ Wrong - don't resolve inside class
-@Controller("/api/v1/shops")
+@Controller("/api/{short-service-name}/v1/shops")
 export class ShopController {
   private shopService = Containers.getContainer().get<ShopService>(ShopService);
 }
@@ -153,6 +161,7 @@ import { Request, Response } from "@giusmento/mangojs-core";
 ```
 
 Always specify all three generic parameters for `Request` in order:
+
 1. **Params**: Route parameters type
 2. **Body**: Request body type
 3. **Query**: Query parameters type (use `QueryParams` in the types definition)
@@ -198,14 +207,14 @@ import {
 } from "@giusmento/mangojs-core";
 import type * as PBTypes from "@giusmento/pulcherbook-types";
 import { ShopService } from "../../../services";
-import { serviceNameContainer } from "../../../inversify.config.ts"  
+import { serviceNameContainer } from "../../../inversify.config.ts";
 
 // Resolve service OUTSIDE controller class
 const shopService = serviceNameContainer.get<ShopService>(ShopService, {
   autobind: true,
 });
 
-@Controller("/api/v1/shops")
+@Controller("/api/{short-service-name}/v1/shops")
 export class ShopController {
   /**
    * @swagger
@@ -545,6 +554,7 @@ Use this checklist when creating or modifying controllers:
 - [ ] No business logic in controller methods
 - [ ] No direct database access
 - [ ] Controller exported and registered in routes array
+- [ ] The Controller endpoint prefix starts with /api/{short-service-name}/v1/\* where short-service-name is the service short name
 
 **Type Safety**
 

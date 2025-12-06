@@ -9,7 +9,7 @@ import { Types } from "@giusmento/mangojs-core";
 import { RequestDefaultParams, ResponseBodyData } from "..";
 import { PartnerUserPost } from "../../../../../entities/partnerUser.type";
 
-export type RequestParams = RequestDefaultParams & {};
+export type RequestParams = RequestDefaultParams & { uid: string };
 
 export type RequestBody = PartnerUserPost;
 

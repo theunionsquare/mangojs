@@ -72,6 +72,8 @@ export * as Types from "./types";
 
 export * as Providers from "./providers";
 
+export * as mappers from "./mappers";
+
 // export Request and REsponse API wrappers
 export { Request } from "./types/v1/api";
 export { Response } from "./types/v1/api";

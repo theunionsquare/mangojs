@@ -232,7 +232,7 @@ export class AuthUserController {
         confirmationLink: `${appDomainUrl}/user/verify?magic_link=${response.magicLink}`,
         expirationTime: 24,
         appName: "PulcherBook",
-        currentYear: new Date().getFullYear(),
+        currentYear: new Date().getFullYear().toString(),
       };
       const renderedHtml = utils.renderHtmlTemplate(htmlTemplate, data);
       await emailService.sendTransactionEmail(

@@ -10,6 +10,7 @@ import { Types as coreTypes } from "@giusmento/mangojs-core";
 import type { types as iamTypes } from "../../";
 import { partner } from "../types/entities";
 import { In } from "typeorm";
+import { magiclinks } from "../types/api/v1/adminUser";
 
 @injectable()
 export class PartnerUserService {
@@ -229,6 +230,41 @@ export class PartnerUserService {
           firstName: document.firstName,
           lastName: document.lastName,
           phoneNumber: document.phoneNumber,
+        });
+
+        await em.save(response);
+
+        return response;
+      }
+    );
+    return response as iamTypes.entities.partnerUser.PartnerUser;
+  }
+
+  /**
+   * Update MagicLink - Update partner user magic link
+   *
+   * @param uid - The user's uid
+   * @param document - Object containing the fields to update (firstName, lastName, phoneNumber)
+   * @returns Promise resolving to the update result
+   */
+  public async updateMagicLink(
+    uid: string
+  ): Promise<iamTypes.entities.partnerUser.PartnerUser> {
+    const response = await this._persistenceContext.inTransaction(
+      async (em: EntityManager) => {
+        const partnerUser = await em.findOne(models.PartnerUser, {
+          where: { uid },
+        });
+        if (!partnerUser) {
+          throw new errors.APIError(404, "NOT_FOUND", "Partner user not found");
+        }
+
+        const response = Object.assign(partnerUser, {
+          magicLink: utils.generateMagicLink(),
+          magicLinkExpireDate: new Date(
+            new Date().getTime() +
+              parseInt(process.env.MAGIC_LINK_EXPIRE_TIME || "86400000")
+          ),
         });
 
         await em.save(response);

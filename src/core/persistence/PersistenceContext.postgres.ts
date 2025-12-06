@@ -3,7 +3,6 @@ import { IPersistenceContext } from "./IPersistenceContext";
 import { IDatabaseManagerFactory } from "../databasemanager/IDatabaseManagerFactory";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import { Context } from "./Context.generics";
-import mongoose from "mongoose";
 import { EntityManager } from "typeorm";
 
 @injectable()
