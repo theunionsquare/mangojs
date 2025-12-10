@@ -10,6 +10,13 @@ export interface Base {
   requestId: string;
 }
 
+export interface PaginatedData<T> {
+  items: T[];
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+}
+
 // Generic Request interface that extends Express Request with masked ResBody
 // This interface simplifies Express's Request<P, ResBody, ReqBody, ReqQuery> by:
 // - Hiding the ResBody (response body) parameter by fixing it to 'any'
