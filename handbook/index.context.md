@@ -15,6 +15,7 @@ MangoJS is a lightweight Node.js backend framework for building microservices wi
 - **Microservice Architecture**: Designed for distributed systems
 - **Database Agnostic**: Use any database or ORM of your choice
 - **Type-Safe**: Full TypeScript support with strict typing
+- **Scheduled Tasks**: Cron-based task scheduling with lifecycle hooks
 - **AI Development Ready**: Optimized patterns for AI-assisted development
 
 ---
@@ -99,6 +100,10 @@ Choose your learning path based on your goal:
 
 - [Error Handling Guide](./common/error-handling.context.md)
 
+**Scheduled Tasks**
+
+- [Scheduler Guide](./scheduler/overview.context.md)
+
 **Troubleshooting**
 
 - [Troubleshooting Guide](./guides/troubleshooting.context.md) ⚠️ When stuck
@@ -128,6 +133,12 @@ Choose your learning path based on your goal:
 - **[Overview & Examples](./controller/overview.context.md)** - Complete guide with inline examples
 - **[Checklist](./controller/checklist.context.md)** - Validation checklist
 
+### Scheduler (Background Tasks)
+
+**Purpose**: Execute time-based tasks using cron expressions
+
+- **[Overview & Examples](./scheduler/overview.context.md)** - Complete scheduler guide with examples
+
 ---
 
 ## 🏗️ Architecture & Patterns
@@ -136,6 +147,7 @@ Choose your learning path based on your goal:
 - **[Dependency Injection](./architecture/injection.context.md)** - Inversify configuration
 - **[Decorators Reference](./architecture/decorators.context.md)** - All decorators explained
 - **[Type Organization](./architecture/type.context.md)** - TypeScript type patterns
+- **[Scheduler](./scheduler/overview.context.md)** - Background task scheduling
 
 ---
 
@@ -169,10 +181,14 @@ Need to build a service?
 ├─ Getting errors?
 │  └─> Check: Troubleshooting Guide → Review checklists
 │
+├─ Adding scheduled tasks?
+│  └─> Read: Scheduler Guide → Create task class → Configure ServerBuilder
+│
 └─ Need specific patterns?
    ├─ Decorators? → Decorators Reference
    ├─ Types? → Type Organization Guide
    ├─ DI? → Dependency Injection Guide
+   ├─ Scheduler? → Scheduler Guide
    └─ Errors? → Error Handling Guide
 ```
 
@@ -272,6 +288,28 @@ export class UserController {
 }
 ```
 
+**Scheduled Task Pattern**:
+
+```typescript
+import { Schedule, ScheduledTask, INVERSITY_TYPES, ILoggerFactory } from '@giusmento/mangojs-core';
+import { injectable, inject } from 'inversify';
+
+@Schedule('0 0 * * *')  // Daily at midnight
+@injectable()
+export class CleanupTask extends ScheduledTask {
+  @inject(INVERSITY_TYPES.LoggerFactory)
+  private loggerFactory: ILoggerFactory;
+
+  async run(): Promise<void> {
+    // Task logic here
+  }
+
+  onStart(): void { }
+  onComplete(): void { }
+  onError(error: Error): void { }
+}
+```
+
 **See [Code Templates](./common/code-templates.context.md) for:**
 
 - Complete service boilerplate
@@ -279,6 +317,7 @@ export class UserController {
 - Entity templates
 - All transaction patterns
 - Type definitions
+- Scheduled task boilerplate
 
 ---
 

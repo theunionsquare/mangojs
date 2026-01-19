@@ -5,16 +5,20 @@ import { IApplicationPreCheck } from '../types'
 import swaggerUi from 'swagger-ui-express'
 import { middlewareRequestTime } from '../middlewares/requestTime'
 import { middlewareUserInfo } from '../middlewares/userInfo'
+import { ScheduleRegistry } from '../scheduler/ScheduleRegistry'
+import { ScheduledTaskConstructor } from '../scheduler/types'
 
 export class ServerBuilder {
     private __port: number = 3000
     private __name: string = 'default'
     private __routes: any[] = []
+    private __tasks: ScheduledTaskConstructor[] = []
     private __userAuthentication: boolean = false
     private __expressUseHandlers: any[] = []
     private __check: IApplicationPreCheck | undefined
     private __enableSwagger: boolean = false
     private __swaggerSpec: {} = {}
+    private __scheduleRegistry: ScheduleRegistry | undefined
     express: ApplicationExpress | undefined
 
     constructor() {
@@ -63,6 +67,16 @@ export class ServerBuilder {
             )
         }
 
+        // Initialize and start scheduled tasks
+        if (this.__tasks.length > 0) {
+            this.__scheduleRegistry = new ScheduleRegistry()
+            for (const taskClass of this.__tasks) {
+                this.__scheduleRegistry.register(taskClass)
+            }
+            this.__scheduleRegistry.startAll()
+            console.log(`Scheduler started with ${this.__tasks.length} task(s)`)
+        }
+
         return this
     }
     public setCheck(check: IApplicationPreCheck) {
@@ -83,6 +97,15 @@ export class ServerBuilder {
     public setRoutes(routes: any[]) {
         this.__routes = routes
         return this
+    }
+
+    public setTasks(tasks: ScheduledTaskConstructor[]) {
+        this.__tasks = tasks
+        return this
+    }
+
+    public getScheduleRegistry(): ScheduleRegistry | undefined {
+        return this.__scheduleRegistry
     }
 
     public setUserAuthentication(enable: boolean) {

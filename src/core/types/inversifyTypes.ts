@@ -6,6 +6,7 @@ const INVERSITY_TYPES = {
   ApplicationPreCheck: Symbol.for("ApplicationPreCheck"),
   SetUpDatabaseAction: Symbol.for("SetUpDatabaseAction"),
   EmailService: Symbol.for("EmailService"),
+  ScheduleRegistry: Symbol.for("ScheduleRegistry"),
 };
 
 export { INVERSITY_TYPES };

@@ -42,7 +42,7 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
 
   async getConnection(): Promise<{}> {
     try {
-      this.logger.debug({ host: this.connection }, "POSTGRES-START-CONNECTION");
+      this.logger.debug("POSTGRES-START-CONNECTION");
 
       if ("url" in this.connection) {
         this.logger.debug("POSTGRES-URL");

@@ -77,3 +77,7 @@ export * as mappers from "./mappers";
 // export Request and REsponse API wrappers
 export { Request } from "./types/v1/api";
 export { Response } from "./types/v1/api";
+
+// SCHEDULER
+export * as Scheduler from "./scheduler";
+export { Schedule, ScheduledTask, ScheduleRegistry } from "./scheduler";

@@ -12,4 +12,8 @@ export enum MetadataKeys {
     AUTHORIZATION_OR_MODE = 'server:authorization:or_mode',
     AUTHORIZATION_VALIDATORS = 'server:authorization:validators',
     AUTHENTICATION_HANDLERS = 'auth:authentication',
+    // SCHEDULER
+    SCHEDULE_CRON = 'scheduler:cron',
+    SCHEDULE_OPTIONS = 'scheduler:options',
+    SCHEDULE_METADATA = 'scheduler:metadata',
 }

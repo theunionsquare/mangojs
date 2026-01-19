@@ -46,6 +46,11 @@
 **Description**: Use when you need to handle errors, throw API exceptions, or implement error response patterns
 - Read: [@giusmento/mangojs-core/handbook/common/error-handling.context.md](@giusmento/mangojs-core/handbook/common/error-handling.context.md) - Error patterns
 
+## Scheduler & Background Tasks
+**Keywords**: scheduler, scheduled tasks, cron, background jobs, tasks, @Schedule, ScheduledTask, worker thread
+**Description**: Use when you need to create scheduled background tasks, configure cron jobs, or run periodic operations
+- Read: [@giusmento/mangojs-core/handbook/scheduler/overview.context.md](@giusmento/mangojs-core/handbook/scheduler/overview.context.md) - Complete scheduler guide
+
 ## Best Practices
 **Keywords**: best practices, conventions, naming, optimization, performance, security
 **Description**: Use when you need guidance on coding standards, naming conventions, performance optimization, or security
