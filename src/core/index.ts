@@ -81,3 +81,11 @@ export { Response } from "./types/v1/api";
 // SCHEDULER
 export * as Scheduler from "./scheduler";
 export { Schedule, ScheduledTask, ScheduleRegistry } from "./scheduler";
+
+// QUEUE
+export * as Queue from "./queue";
+export { QueueClient, QueueManager, QueueWorker } from "./queue";
+export type { IQueueClient, IQueueWorkerHandler, RedisConfig, JobOptions, JobData, WorkerOptions, QueueWorkerConstructor } from "./queue";
+
+// BUILDERS
+export { WorkerBuilder } from "./builders/WorkerBuilder";

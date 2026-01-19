@@ -51,6 +51,11 @@
 **Description**: Use when you need to create scheduled background tasks, configure cron jobs, or run periodic operations
 - Read: [@giusmento/mangojs-core/handbook/scheduler/overview.context.md](@giusmento/mangojs-core/handbook/scheduler/overview.context.md) - Complete scheduler guide
 
+## Queue System & Workers
+**Keywords**: queue, bullmq, redis, workers, background jobs, async, QueueClient, QueueManager, WorkerBuilder, @QueueWorker
+**Description**: Use when you need to implement distributed job processing, message queues, or background workers for tasks like email sending, report generation, or long-running operations
+- Read: [@giusmento/mangojs-core/handbook/queue/overview.context.md](@giusmento/mangojs-core/handbook/queue/overview.context.md) - Complete queue system guide
+
 ## Best Practices
 **Keywords**: best practices, conventions, naming, optimization, performance, security
 **Description**: Use when you need guidance on coding standards, naming conventions, performance optimization, or security

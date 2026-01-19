@@ -7,6 +7,9 @@ const INVERSITY_TYPES = {
   SetUpDatabaseAction: Symbol.for("SetUpDatabaseAction"),
   EmailService: Symbol.for("EmailService"),
   ScheduleRegistry: Symbol.for("ScheduleRegistry"),
+  // Queue
+  QueueClient: Symbol.for("QueueClient"),
+  QueueManager: Symbol.for("QueueManager"),
 };
 
 export { INVERSITY_TYPES };
