@@ -15,7 +15,8 @@ import { Photo } from "./db/models/Photo";
 
 dotenv.config();
 
-const serviceContainer = Containers.getContainer();
+const containerManager = Containers.getContainer();
+const serviceContainer = containerManager.getContainer();
 
 /**
  * Bind Logger Service
@@ -34,8 +35,8 @@ serviceContainer
       {
         url: "postgresql://mangojs:0eb4zSRWa6oMfFrXHA2IRA@house-mongojs-13972.j77.aws-eu-central-1.cockroachlabs.cloud:26257/defaultdb",
       },
-      [Photo]
-    )
+      [Photo],
+    ),
   );
 
 /**
