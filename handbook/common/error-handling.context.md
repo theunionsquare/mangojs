@@ -9,7 +9,7 @@ Standardized error handling patterns for consistent API responses.
 Always use `errors.APIError` from MangoJS core:
 
 ```typescript
-import { errors } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
 
 throw new errors.APIError(statusCode, errorCode, message);
 ```

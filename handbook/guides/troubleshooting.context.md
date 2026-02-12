@@ -93,8 +93,8 @@ serviceContainer
   .toConstantValue(
     new databasemanager.cockroach.CockRoachDBManagerFactory(
       { url: process.env.DATABASE_URL },
-      [User, Post, Comment] // ← Add all entities here
-    )
+      [User, Post, Comment], // ← Add all entities here
+    ),
   );
 ```
 
@@ -394,12 +394,12 @@ public async createUser(data) {
 
 ## Import Errors
 
-### Error: "Cannot find module '@giusmento/mangojs-core'"
+### Error: "Cannot find module '@theunionsquare/mangojs-core'"
 
 **Symptom**:
 
 ```
-Cannot find module '@giusmento/mangojs-core' or its corresponding type declarations
+Cannot find module '@theunionsquare/mangojs-core' or its corresponding type declarations
 ```
 
 **Cause**: MangoJS core not installed
@@ -407,7 +407,7 @@ Cannot find module '@giusmento/mangojs-core' or its corresponding type declarati
 **Solution**:
 
 ```bash
-npm install @giusmento/mangojs-core
+npm install @theunionsquare/mangojs-core
 ```
 
 ---
@@ -578,12 +578,10 @@ const users = await em.find(models.User, {
 ## Still Stuck?
 
 1. **Check the reference implementations**:
-
    - IAM Service: `src/services/iam_server/src/`
    - Sample Service: `src/services/sample/src/`
 
 2. **Review the guides**:
-
    - [Database Layer](../database/overview.context.md)
    - [Service Layer](../service/overview.context.md)
    - [Controller Layer](../controller/overview.context.md)

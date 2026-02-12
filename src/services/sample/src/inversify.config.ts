@@ -10,7 +10,6 @@ import { IPersistenceContext } from "@theunionsquare/mangojs-core";
 import { IDatabaseManagerFactory } from "@theunionsquare/mangojs-core";
 
 import dotenv from "dotenv";
-import e from "express";
 import { Photo } from "./db/models/Photo";
 
 dotenv.config();

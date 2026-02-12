@@ -52,8 +52,8 @@ import {
   errors,
   INVERSITY_TYPES,
   IPersistenceContext,
-} from "@giusmento/mangojs-core";
-import type * as PBTypes from "@giusmento/pulcherbook-types"; // Shared types
+} from "@theunionsquare/mangojs-core";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types"; // Shared types
 import * as models from "../db/models";
 
 // Type aliases for cleaner code
@@ -163,7 +163,7 @@ All type definitions, organization, and patterns are documented in the [Type Org
 ### Import Pattern (Monorepo)
 
 ```typescript
-import type * as PBTypes from "@giusmento/pulcherbook-types";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 
 // Type aliases from shared package
 type Shop = PBTypes.partner.entities.Shop;
@@ -186,8 +186,8 @@ import {
   errors,
   INVERSITY_TYPES,
   IPersistenceContext,
-} from "@giusmento/mangojs-core";
-import type * as PBTypes from "@giusmento/pulcherbook-types"; // Shared types package
+} from "@theunionsquare/mangojs-core";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types"; // Shared types package
 import * as models from "../db/models";
 
 // Type aliases for cleaner code (from shared types)
@@ -218,7 +218,7 @@ export class ShopService {
           throw new errors.APIError(
             400,
             "BAD_REQUEST",
-            "Shop name and partner UID are required"
+            "Shop name and partner UID are required",
           );
         }
 
@@ -234,7 +234,7 @@ export class ShopService {
           throw new errors.APIError(
             409,
             "CONFLICT",
-            "Shop with this name already exists for this partner"
+            "Shop with this name already exists for this partner",
           );
         }
 
@@ -246,7 +246,7 @@ export class ShopService {
         await em.save(shop);
 
         return shop;
-      }
+      },
     );
     return response as Shop;
   }
@@ -270,7 +270,7 @@ export class ShopService {
         }
 
         return shop;
-      }
+      },
     );
     return response as Shop;
   }
@@ -289,7 +289,7 @@ export class ShopService {
           order: { created_at: "DESC" },
         });
         return shops;
-      }
+      },
     );
     return response as Shop[];
   }
@@ -318,7 +318,7 @@ export class ShopService {
         await em.save(shop);
 
         return shop;
-      }
+      },
     );
     return response as Shop;
   }
@@ -363,7 +363,7 @@ export class ShopService {
         }
 
         return shop;
-      }
+      },
     );
     return response as Shop;
   }
@@ -377,7 +377,7 @@ export class ShopService {
 Always use `APIError` from MangoJS core for throwing errors.
 
 ```typescript
-import { errors } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
 
 throw new errors.APIError(statusCode, errorCode, message);
 ```

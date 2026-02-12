@@ -100,7 +100,7 @@ Create `package.json` for the service as a workspace package.
 
 ```json
 {
-  "name": "@giusmento/mangojs-{service-name}",
+  "name": "@theunionsquare/mangojs-{service-name}",
   "version": "0.1.0",
   "description": "{Service description}",
   "main": "dist/index.js",
@@ -112,7 +112,7 @@ Create `package.json` for the service as a workspace package.
     "dev": "nodemon --watch src --exec ts-node src/index.ts"
   },
   "dependencies": {
-    "@giusmento/mangojs-core": "workspace:*",
+    "@theunionsquare/mangojs-core": "", #search the latest version
     "express": "^4.18.2",
     "inversify": "^6.0.1",
     "reflect-metadata": "^0.1.13",
@@ -131,7 +131,7 @@ Create `package.json` for the service as a workspace package.
 
 **Key Configuration:**
 
-- **Name**: Use scoped package format `@giusmento/mangojs-{service-name}`
+- **Name**: Use scoped package format `@theunionsquare/mangojs-{service-name}`
 - **Version**: Start at `0.1.0` for new services
 - **Main**: Points to compiled output in `dist/`
 - **Dependencies**: Use `workspace:*` for monorepo packages
@@ -222,7 +222,7 @@ pnpm install
 This command will:
 
 - Install dependencies for all workspace packages
-- Link local workspace packages (e.g., `@giusmento/mangojs-core`)
+- Link local workspace packages (e.g., `@theunionsquare/mangojs-core`)
 - Create `node_modules` in the service directory
 - Update `pnpm-lock.yaml`
 
@@ -235,29 +235,24 @@ This command will:
 Verify the following before proceeding:
 
 - ✅ **Directory structure matches template**
-
   - All required directories exist
   - Index files created in appropriate locations
 
 - ✅ **package.json is valid**
-
   - Service name follows convention
-  - Dependencies include `@giusmento/mangojs-core`
+  - Dependencies include `@theunionsquare/mangojs-core`
   - Scripts are defined (build, start, start:dev)
 
 - ✅ **tsconfig.json extends root config**
-
   - Path to root tsconfig is correct (usually `../../../tsconfig.json`)
   - outDir and rootDir are set correctly
 
 - ✅ **Environment configuration complete**
-
   - `.env.example` exists with all required variables
   - No `.env` file committed to git
   - All sensitive values are blank in example
 
 - ✅ **Dependencies installed successfully**
-
   - `pnpm install` completed without errors
   - `node_modules` directory exists
   - Service appears in workspace package list

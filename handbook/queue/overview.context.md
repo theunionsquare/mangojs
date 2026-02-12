@@ -84,31 +84,41 @@ The `QueueClient` is used by API services to add jobs to queues. It only produce
 
 ```typescript
 interface IQueueClient {
-  addJob<T>(queueName: string, jobName: string, data: T, options?: JobOptions): Promise<string>
-  addBulk<T>(queueName: string, jobs: JobData<T>[]): Promise<string[]>
-  getJobStatus(queueName: string, jobId: string): Promise<JobStatus | null>
-  getQueueStatus(queueName: string): Promise<QueueStatus>
-  close(): Promise<void>
+  addJob<T>(
+    queueName: string,
+    jobName: string,
+    data: T,
+    options?: JobOptions,
+  ): Promise<string>;
+  addBulk<T>(queueName: string, jobs: JobData<T>[]): Promise<string[]>;
+  getJobStatus(queueName: string, jobId: string): Promise<JobStatus | null>;
+  getQueueStatus(queueName: string): Promise<QueueStatus>;
+  close(): Promise<void>;
 }
 ```
 
 ### Job Options
 
-| Option             | Type                                     | Description                        |
-| ------------------ | ---------------------------------------- | ---------------------------------- |
-| `delay`            | `number`                                 | Delay before processing (ms)       |
-| `attempts`         | `number`                                 | Number of retry attempts           |
-| `backoff`          | `{ type: 'fixed' \| 'exponential', delay: number }` | Retry backoff strategy |
-| `priority`         | `number`                                 | Job priority (lower = higher)      |
-| `removeOnComplete` | `boolean \| number`                      | Remove after completion            |
-| `removeOnFail`     | `boolean \| number`                      | Remove after failure               |
-| `jobId`            | `string`                                 | Unique job ID (prevents duplicates)|
+| Option             | Type                                                | Description                         |
+| ------------------ | --------------------------------------------------- | ----------------------------------- |
+| `delay`            | `number`                                            | Delay before processing (ms)        |
+| `attempts`         | `number`                                            | Number of retry attempts            |
+| `backoff`          | `{ type: 'fixed' \| 'exponential', delay: number }` | Retry backoff strategy              |
+| `priority`         | `number`                                            | Job priority (lower = higher)       |
+| `removeOnComplete` | `boolean \| number`                                 | Remove after completion             |
+| `removeOnFail`     | `boolean \| number`                                 | Remove after failure                |
+| `jobId`            | `string`                                            | Unique job ID (prevents duplicates) |
 
 ### Usage in Controller
 
 ```typescript
-import { Controller, Post, injectable, inject } from "@giusmento/mangojs-core";
-import { INVERSITY_TYPES, IQueueClient } from "@giusmento/mangojs-core";
+import {
+  Controller,
+  Post,
+  injectable,
+  inject,
+} from "@theunionsquare/mangojs-core";
+import { INVERSITY_TYPES, IQueueClient } from "@theunionsquare/mangojs-core";
 
 @Controller("/api/v1/tasks")
 @injectable()
@@ -126,7 +136,7 @@ export class TaskController {
       {
         attempts: 3,
         backoff: { type: "exponential", delay: 1000 },
-      }
+      },
     );
 
     return res.status(202).json({ jobId, status: "queued" });
@@ -150,21 +160,19 @@ export class TaskController {
 ### Container Setup (API Service)
 
 ```typescript
-import { QueueClient, INVERSITY_TYPES } from "@giusmento/mangojs-core";
+import { QueueClient, INVERSITY_TYPES } from "@theunionsquare/mangojs-core";
 import { Container } from "inversify";
 
 const container = new Container();
 
 // Bind QueueClient
-container
-  .bind<IQueueClient>(INVERSITY_TYPES.QueueClient)
-  .toConstantValue(
-    new QueueClient({
-      host: process.env.REDIS_HOST || "localhost",
-      port: parseInt(process.env.REDIS_PORT || "6379"),
-      password: process.env.REDIS_PASSWORD,
-    })
-  );
+container.bind<IQueueClient>(INVERSITY_TYPES.QueueClient).toConstantValue(
+  new QueueClient({
+    host: process.env.REDIS_HOST || "localhost",
+    port: parseInt(process.env.REDIS_PORT || "6379"),
+    password: process.env.REDIS_PASSWORD,
+  }),
+);
 ```
 
 ---
@@ -181,18 +189,18 @@ The `@QueueWorker` decorator marks a class as a queue worker handler.
 
 ### Parameters
 
-| Parameter   | Type            | Description                              |
-| ----------- | --------------- | ---------------------------------------- |
-| `queueName` | `string`        | Name of the queue to consume from        |
-| `options`   | `WorkerOptions` | Optional configuration object            |
+| Parameter   | Type            | Description                       |
+| ----------- | --------------- | --------------------------------- |
+| `queueName` | `string`        | Name of the queue to consume from |
+| `options`   | `WorkerOptions` | Optional configuration object     |
 
 ### Worker Options
 
-| Option           | Type     | Default | Description                           |
-| ---------------- | -------- | ------- | ------------------------------------- |
-| `concurrency`    | `number` | `1`     | Number of jobs to process concurrently|
-| `lockDuration`   | `number` | `30000` | Lock timeout in milliseconds          |
-| `maxStalledCount`| `number` | `1`     | Max times job can stall before failing|
+| Option            | Type     | Default | Description                            |
+| ----------------- | -------- | ------- | -------------------------------------- |
+| `concurrency`     | `number` | `1`     | Number of jobs to process concurrently |
+| `lockDuration`    | `number` | `30000` | Lock timeout in milliseconds           |
+| `maxStalledCount` | `number` | `1`     | Max times job can stall before failing |
 
 ---
 
@@ -202,28 +210,32 @@ All workers must implement this interface.
 
 ```typescript
 interface IQueueWorkerHandler<T = any> {
-  process(job: Job<T>): Promise<any>
-  onCompleted?(job: Job<T>, result: any): void
-  onFailed?(job: Job<T>, error: Error): void
-  onProgress?(job: Job<T>, progress: number | object): void
+  process(job: Job<T>): Promise<any>;
+  onCompleted?(job: Job<T>, result: any): void;
+  onFailed?(job: Job<T>, error: Error): void;
+  onProgress?(job: Job<T>, progress: number | object): void;
 }
 ```
 
 ### Lifecycle Hooks
 
-| Method                    | When Called                 | Use Case                        |
-| ------------------------- | --------------------------- | ------------------------------- |
-| `process(job)`            | On each job execution       | Main job logic (required)       |
-| `onCompleted(job, result)`| After successful processing | Cleanup, notifications, metrics |
-| `onFailed(job, error)`    | When processing fails       | Error handling, alerts          |
-| `onProgress(job, progress)`| When progress is updated   | Progress tracking               |
+| Method                      | When Called                 | Use Case                        |
+| --------------------------- | --------------------------- | ------------------------------- |
+| `process(job)`              | On each job execution       | Main job logic (required)       |
+| `onCompleted(job, result)`  | After successful processing | Cleanup, notifications, metrics |
+| `onFailed(job, error)`      | When processing fails       | Error handling, alerts          |
+| `onProgress(job, progress)` | When progress is updated    | Progress tracking               |
 
 ---
 
 ## Worker Example
 
 ```typescript
-import { QueueWorker, IQueueWorkerHandler, INVERSITY_TYPES } from "@giusmento/mangojs-core";
+import {
+  QueueWorker,
+  IQueueWorkerHandler,
+  INVERSITY_TYPES,
+} from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 import { Job } from "bullmq";
 
@@ -263,7 +275,11 @@ export class EmailWorker implements IQueueWorkerHandler<EmailJobData> {
     console.error(`Job ${job.id} failed: ${error.message}`);
   }
 
-  private async sendEmail(to: string, subject: string, body: string): Promise<void> {
+  private async sendEmail(
+    to: string,
+    subject: string,
+    body: string,
+  ): Promise<void> {
     // Email sending implementation
   }
 }
@@ -277,23 +293,23 @@ The `WorkerBuilder` creates and runs worker services, similar to `ServerBuilder`
 
 ### Methods
 
-| Method                          | Description                              |
-| ------------------------------- | ---------------------------------------- |
-| `setName(name: string)`         | Set worker service name                  |
-| `setRedisConfig(config)`        | Set Redis connection configuration       |
-| `setWorkers(workers[])`         | Set worker classes to register           |
-| `setContainer(container)`       | Set Inversify container for DI           |
-| `setCheck(check)`               | Set pre-check handler                    |
-| `build()`                       | Build the worker service                 |
-| `run()`                         | Start the worker service                 |
-| `shutdown()`                    | Gracefully shutdown workers              |
-| `getQueueManager()`             | Get QueueManager instance                |
+| Method                    | Description                        |
+| ------------------------- | ---------------------------------- |
+| `setName(name: string)`   | Set worker service name            |
+| `setRedisConfig(config)`  | Set Redis connection configuration |
+| `setWorkers(workers[])`   | Set worker classes to register     |
+| `setContainer(container)` | Set Inversify container for DI     |
+| `setCheck(check)`         | Set pre-check handler              |
+| `build()`                 | Build the worker service           |
+| `run()`                   | Start the worker service           |
+| `shutdown()`              | Gracefully shutdown workers        |
+| `getQueueManager()`       | Get QueueManager instance          |
 
 ### Worker Service Setup
 
 ```typescript
 // worker/src/index.ts
-import { WorkerBuilder } from "@giusmento/mangojs-core";
+import { WorkerBuilder } from "@theunionsquare/mangojs-core";
 import { EmailWorker } from "./workers/email.worker";
 import { ReportWorker } from "./workers/report.worker";
 import { container } from "./inversify.config";
@@ -324,19 +340,19 @@ The `QueueManager` is used internally by `WorkerBuilder` but can be accessed for
 
 ### Methods
 
-| Method                       | Return Type                        | Description                        |
-| ---------------------------- | ---------------------------------- | ---------------------------------- |
-| `register(workerClass)`      | `void`                             | Register a worker class            |
-| `startAll()`                 | `void`                             | Start all registered workers       |
-| `stopAll()`                  | `Promise<void>`                    | Stop all registered workers        |
-| `start(queueName)`           | `void`                             | Start a specific worker            |
-| `stop(queueName)`            | `Promise<void>`                    | Stop a specific worker             |
-| `getQueueStatus(queueName)`  | `Promise<QueueStatus>`             | Get queue statistics               |
-| `getWorkersStatus()`         | `WorkerStatusInfo[]`               | Get all workers status             |
-| `pauseQueue(queueName)`      | `Promise<void>`                    | Pause a queue                      |
-| `resumeQueue(queueName)`     | `Promise<void>`                    | Resume a paused queue              |
-| `cleanQueue(queueName, ...)`  | `Promise<void>`                    | Clean completed/failed jobs        |
-| `close()`                    | `Promise<void>`                    | Close all connections              |
+| Method                       | Return Type            | Description                  |
+| ---------------------------- | ---------------------- | ---------------------------- |
+| `register(workerClass)`      | `void`                 | Register a worker class      |
+| `startAll()`                 | `void`                 | Start all registered workers |
+| `stopAll()`                  | `Promise<void>`        | Stop all registered workers  |
+| `start(queueName)`           | `void`                 | Start a specific worker      |
+| `stop(queueName)`            | `Promise<void>`        | Stop a specific worker       |
+| `getQueueStatus(queueName)`  | `Promise<QueueStatus>` | Get queue statistics         |
+| `getWorkersStatus()`         | `WorkerStatusInfo[]`   | Get all workers status       |
+| `pauseQueue(queueName)`      | `Promise<void>`        | Pause a queue                |
+| `resumeQueue(queueName)`     | `Promise<void>`        | Resume a paused queue        |
+| `cleanQueue(queueName, ...)` | `Promise<void>`        | Clean completed/failed jobs  |
+| `close()`                    | `Promise<void>`        | Close all connections        |
 
 ---
 
@@ -388,7 +404,7 @@ await this.queueClient.addJob(
       type: "exponential",
       delay: 2000, // 2s, 4s, 8s, 16s, 32s
     },
-  }
+  },
 );
 ```
 
@@ -400,7 +416,7 @@ await this.queueClient.addJob(
   "notification-queue",
   "send-reminder",
   { userId: "123" },
-  { delay: 5 * 60 * 1000 }
+  { delay: 5 * 60 * 1000 },
 );
 ```
 

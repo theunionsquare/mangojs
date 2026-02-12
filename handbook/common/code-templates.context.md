@@ -25,7 +25,7 @@ import {
   errors,
   INVERSITY_TYPES,
   IPersistenceContext,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import * as models from "../db/models";
 import { types } from "../types";
 
@@ -45,13 +45,13 @@ export class EntityNameService {
    * @throws {APIError} 404 NOT_FOUND if not found
    */
   public async methodName(
-    data: types.entities.entityname.EntityNamePost
+    data: types.entities.entityname.EntityNamePost,
   ): Promise<types.entities.entityname.EntityName> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         // Business logic here
         return result;
-      }
+      },
     );
     return response as types.entities.entityname.EntityName;
   }
@@ -71,12 +71,18 @@ export { EntityNameService } from "./entityname.service";
 **Basic Controller Structure:**
 
 ```typescript
-import { Controller, Get, Post, Put, Delete } from "@giusmento/mangojs-core";
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+} from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 import { ServiceContainer } from "../../../inversify.config";
 import { EntityNameService } from "../../../services";
 import { types } from "../../../types";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 
 // Resolve service OUTSIDE controller class
 const entityNameService =
@@ -97,7 +103,7 @@ export class EntityNameController {
   @Get("/")
   public async getAll(
     req: Request,
-    res: Response<types.api.v1.resourcename.GET.ResponseBody>
+    res: Response<types.api.v1.resourcename.GET.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -183,8 +189,8 @@ serviceContainer
   .toConstantValue(
     new databasemanager.cockroach.CockRoachDBManagerFactory(
       { url: process.env.DATABASE_URL },
-      [EntityName] // ← Add entity here
-    )
+      [EntityName], // ← Add entity here
+    ),
   );
 ```
 
@@ -210,7 +216,7 @@ export type EntityNamePut = Partial<Pick<EntityName, "field1" | "field2">>;
 **API Types (`src/types/api/v1/resourcename/index.ts`):**
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 export type ResponseBodyData = {
   uid: string;
@@ -228,7 +234,7 @@ export * as DELETE from "./DELETE";
 **GET Types (`src/types/api/v1/resourcename/GET/index.ts`):**
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 
 export type Params = { id?: string };
@@ -241,7 +247,7 @@ export type ResponseBody = Types.v1.api.response.response<
 **POST Types (`src/types/api/v1/resourcename/POST/index.ts`):**
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 
 export type Params = {};

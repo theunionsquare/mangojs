@@ -59,7 +59,12 @@ These decorators control access to endpoints based on user authentication and pe
 ### Basic Usage
 
 ```typescript
-import { Controller, Get, Decorators, Types } from "@giusmento/mangojs-core";
+import {
+  Controller,
+  Get,
+  Decorators,
+  Types,
+} from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 
 @Controller("/api/v1/users/") // � Class decorator (routing)

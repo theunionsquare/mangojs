@@ -24,7 +24,7 @@ A blog post API with these endpoints:
 
 ```bash
 # Install MangoJS core
-npm install @giusmento/mangojs-core
+npm install @theunionsquare/mangojs-core
 
 # Install dependencies
 npm install inversify reflect-metadata typeorm express
@@ -89,20 +89,7 @@ export { Post } from "./Post";
 
 ### 1.3 Register Entity
 
-**File**: `src/inversify.config.ts`
-
-```typescript
-import { Post } from "./db/models";
-
-serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
-  .toConstantValue(
-    new databasemanager.cockroach.CockRoachDBManagerFactory(
-      { url: process.env.DATABASE_URL },
-      [Post] // ← Add entity here
-    )
-  );
-```
+Entities are registered in the Inversify configuration. See **Step 4** for the complete `inversify.config.ts` setup where entities are passed to the `DatabaseManagerFactory`.
 
 ✅ **Database layer complete!**
 
@@ -141,7 +128,7 @@ import {
   errors,
   INVERSITY_TYPES,
   IPersistenceContext,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import * as models from "../db/models";
 import { types } from "../types";
 
@@ -156,7 +143,7 @@ export class PostService {
    * Create Post - Create a new blog post
    */
   public async createPost(
-    data: types.entities.post.PostPost
+    data: types.entities.post.PostPost,
   ): Promise<types.entities.post.Post> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
@@ -165,7 +152,7 @@ export class PostService {
           throw new errors.APIError(
             400,
             "BAD_REQUEST",
-            "Title and content are required"
+            "Title and content are required",
           );
         }
 
@@ -177,7 +164,7 @@ export class PostService {
         await em.save(post);
 
         return post;
-      }
+      },
     );
     return response as types.entities.post.Post;
   }
@@ -191,7 +178,7 @@ export class PostService {
         return await em.find(models.Post, {
           order: { created_at: "DESC" },
         });
-      }
+      },
     );
     return response as types.entities.post.Post[];
   }
@@ -211,7 +198,7 @@ export class PostService {
         }
 
         return post;
-      }
+      },
     );
     return response as types.entities.post.Post;
   }
@@ -221,7 +208,7 @@ export class PostService {
    */
   public async updatePost(
     id: string,
-    data: types.entities.post.PostPut
+    data: types.entities.post.PostPut,
   ): Promise<types.entities.post.Post> {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
@@ -237,7 +224,7 @@ export class PostService {
         await em.save(post);
 
         return post;
-      }
+      },
     );
     return response as types.entities.post.Post;
   }
@@ -280,7 +267,7 @@ export { PostService } from "./post.service";
 **File**: `src/types/api/v1/posts/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 export type ResponseBodyData = {
   uid: string;
@@ -301,7 +288,7 @@ export * as DELETE from "./DELETE";
 **File**: `src/types/api/v1/posts/GET/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 
 export type Params = { id?: string };
@@ -314,7 +301,7 @@ export type ResponseBody = Types.v1.api.response.response<
 **File**: `src/types/api/v1/posts/POST/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 
 export type Params = {};
@@ -329,7 +316,7 @@ export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>;
 **File**: `src/types/api/v1/posts/PUT/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 
 export type Params = { id: string };
@@ -344,7 +331,7 @@ export type ResponseBody = Types.v1.api.response.response<ResponseBodyData>;
 **File**: `src/types/api/v1/posts/DELETE/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 export type Params = { id: string };
 export type RequestBody = {};
@@ -365,12 +352,12 @@ import {
   Put,
   Delete,
   Decorators,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 import { ServiceContainer } from "../../../inversify.config";
 import { PostService } from "../../../services";
 import { types } from "../../../types";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 
 const postService = ServiceContainer.get<PostService>(PostService);
 
@@ -386,7 +373,7 @@ export class PostController {
   @Get("/")
   public async getPosts(
     req: Request,
-    res: Response<types.api.v1.posts.GET.ResponseBody>
+    res: Response<types.api.v1.posts.GET.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -413,7 +400,7 @@ export class PostController {
   @Get("/:id")
   public async getPost(
     req: Request<types.api.v1.posts.GET.Params>,
-    res: Response<types.api.v1.posts.GET.ResponseBody>
+    res: Response<types.api.v1.posts.GET.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -441,7 +428,7 @@ export class PostController {
   @Post("/")
   public async createPost(
     req: Request<{}, {}, types.api.v1.posts.POST.RequestBody>,
-    res: Response<types.api.v1.posts.POST.ResponseBody>
+    res: Response<types.api.v1.posts.POST.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -472,7 +459,7 @@ export class PostController {
       {},
       types.api.v1.posts.PUT.RequestBody
     >,
-    res: Response<types.api.v1.posts.PUT.ResponseBody>
+    res: Response<types.api.v1.posts.PUT.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -501,7 +488,7 @@ export class PostController {
   @Decorators.auth.HasGroups(["Admin"])
   public async deletePost(
     req: Request<types.api.v1.posts.DELETE.Params>,
-    res: Response<types.api.v1.posts.DELETE.ResponseBody>
+    res: Response<types.api.v1.posts.DELETE.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -541,7 +528,75 @@ export { routes } from "./v1";
 
 ---
 
-## Step 4: Test Your API
+## Step 4: Inversify Configuration
+
+### 4.1 Configure Database + PersistenceContext
+
+**File**: `src/inversify.config.ts`
+
+```typescript
+import {
+  persistanceContext,
+  Auth,
+  INVERSITY_TYPES,
+  Loggers,
+  databasemanager,
+  Containers,
+} from "@theunionsquare/mangojs-core";
+import { IPersistenceContext } from "@theunionsquare/mangojs-core";
+import { IDatabaseManagerFactory } from "@theunionsquare/mangojs-core";
+
+import dotenv from "dotenv";
+import { Post } from "./db/models";
+
+dotenv.config();
+
+const containerManager = Containers.getContainer();
+const serviceContainer = containerManager.getContainer();
+
+/**
+ * Bind Logger Service
+ */
+serviceContainer
+  .bind<Loggers.ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)
+  .toConstantValue(new Loggers.LoggerPino("server", "debug"));
+
+/**
+ * Bind Database connector
+ */
+serviceContainer
+  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
+  .toConstantValue(
+    new databasemanager.cockroach.CockRoachDBManagerFactory(
+      { url: process.env.DATABASE_URL },
+      [Post], // Register all your entities here
+    ),
+  );
+
+/**
+ * Bind Persistence Context
+ */
+serviceContainer
+  .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
+  .to(persistanceContext.CockroachPersistenceContext);
+
+export { serviceContainer };
+```
+
+**Key bindings explained:**
+
+| Binding                  | Purpose                                               |
+| ------------------------ | ----------------------------------------------------- |
+| `LoggerFactory`          | Provides logging throughout the application           |
+| `DatabaseManagerFactory` | Configures database connection and registers entities |
+| `PersistenceContext`     | Manages transactions via `inTransaction()` method     |
+| `AuthorizationContext`   | Validates authentication tokens (optional)            |
+
+✅ **Inversify configuration complete!**
+
+---
+
+## Step 5: Test Your API
 
 ### Start the server:
 

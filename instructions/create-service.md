@@ -4,7 +4,7 @@ You are tasked with creating a new microservice from scratch or updating an alre
 
 **Your Guide**: Use [`handbook/`](../handbook/index.context.md) as your primary reference for implementation patterns and best practices.
 
-**Reference Sample**: Use `@giusmento/mangojs-core/services/sample` as the base template for structure and configuration.
+**Reference Sample**: Use `@theunionsquare/mangojs-core/services/sample` as the base template for structure and configuration.
 
 ## ⚠️ CRITICAL RULES (HIGH PRIORITY)
 

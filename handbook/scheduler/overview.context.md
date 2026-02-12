@@ -90,7 +90,7 @@ import {
   ScheduledTask,
   INVERSITY_TYPES,
   ILoggerFactory,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 
 @Schedule("0 0 * * *") // Run daily at midnight
@@ -139,7 +139,7 @@ Enable the scheduler by passing tasks to `ServerBuilder.setTasks()`.
 ### Setup
 
 ```typescript
-import { ServerBuilder } from "@giusmento/mangojs-core";
+import { ServerBuilder } from "@theunionsquare/mangojs-core";
 import { tasks } from "./tasks";
 import { routes } from "./routes";
 
@@ -177,7 +177,7 @@ src/
 
 ```typescript
 // tasks/cleanup.task.ts
-import { Schedule, ScheduledTask } from "@giusmento/mangojs-core";
+import { Schedule, ScheduledTask } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 
 @Schedule("0 0 * * *") // Daily at midnight
@@ -238,7 +238,7 @@ const registry = serverBuilder.getScheduleRegistry();
 const allTasks = registry.getTasks();
 console.log(
   "Registered tasks:",
-  allTasks.map((t) => t.name)
+  allTasks.map((t) => t.name),
 );
 
 // Get specific task

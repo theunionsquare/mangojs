@@ -51,11 +51,16 @@ Use the [Controller Template](../common/code-templates.context.md#controller-tem
 **File**: `services/{service-name}/src/routes/v1/shops/shop.controller.ts`
 
 ```typescript
-import { Controller, Get, Post, Containers } from "@giusmento/mangojs-core";
+import {
+  Controller,
+  Get,
+  Post,
+  Containers,
+} from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
-import type * as PBTypes from "@giusmento/pulcherbook-types"; // Shared types
+import type * as PBTypes from "@theunionsquare/pulcherbook-types"; // Shared types
 import { ShopService } from "../../../services";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 import { serviceNameContainer } from "../../../inversify.config.ts";
 
 // Resolve service OUTSIDE controller class
@@ -154,10 +159,10 @@ Controllers use **API types** organized by endpoint path structure. API types ar
 
 ### Using Types in Controller (Monorepo)
 
-**Important**: Always import `Request` and `Response` from `@giusmento/mangojs-core`, not from `express`:
+**Important**: Always import `Request` and `Response` from `@theunionsquare/mangojs-core`, not from `express`:
 
 ```typescript
-import { Request, Response } from "@giusmento/mangojs-core";
+import { Request, Response } from "@theunionsquare/mangojs-core";
 ```
 
 Always specify all three generic parameters for `Request` in order:
@@ -204,8 +209,8 @@ import {
   Response,
   errors,
   utils,
-} from "@giusmento/mangojs-core";
-import type * as PBTypes from "@giusmento/pulcherbook-types";
+} from "@theunionsquare/mangojs-core";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 import { ShopService } from "../../../services";
 import { serviceNameContainer } from "../../../inversify.config.ts";
 
@@ -240,7 +245,7 @@ export class ShopController {
       PBTypes.partner.api.v1.shops.GET.RequestBody,
       PBTypes.partner.api.v1.shops.GET.QueryParams
     >,
-    res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -279,7 +284,7 @@ export class ShopController {
       PBTypes.partner.api.v1.shops.GET.RequestBody,
       PBTypes.partner.api.v1.shops.GET.QueryParams
     >,
-    res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -325,7 +330,7 @@ export class ShopController {
       PBTypes.partner.api.v1.shops.POST.RequestBody,
       PBTypes.partner.api.v1.shops.POST.QueryParams
     >,
-    res: Response<PBTypes.partner.api.v1.shops.POST.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.shops.POST.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -361,7 +366,7 @@ export class ShopController {
       PBTypes.partner.api.v1.shops.PUT.RequestBody,
       PBTypes.partner.api.v1.shops.PUT.QueryParams
     >,
-    res: Response<PBTypes.partner.api.v1.shops.PUT.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.shops.PUT.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -394,7 +399,7 @@ export class ShopController {
       PBTypes.partner.api.v1.shops.DELETE.RequestBody,
       PBTypes.partner.api.v1.shops.DELETE.QueryParams
     >,
-    res: Response<PBTypes.partner.api.v1.shops.DELETE.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.shops.DELETE.ResponseBody>,
   ): Promise<Response> {
     const logRequest = new utils.LogRequest(res);
     try {
@@ -559,7 +564,7 @@ Use this checklist when creating or modifying controllers:
 **Type Safety**
 
 - [ ] API types defined in shared package (`packages/types/{service}/api/v1/`) or local types
-- [ ] Request and Response are imported from `@giusmento/mangojs-core`, not from `express`:
+- [ ] Request and Response are imported from `@theunionsquare/mangojs-core`, not from `express`:
 - [ ] Each HTTP method has `Params`, `RequestBody`, `ResponseBody`
 - [ ] `ResponseBodyData` type derived from entity
 - [ ] Controllers use API types from shared package (`PBTypes.{service}.api.v1.{resource}`)

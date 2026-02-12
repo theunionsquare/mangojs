@@ -11,92 +11,51 @@ A lightweight Node.js backend framework for building microservices with simplici
 - **Database Agnostic**: Use any database or ORM of your choice
 - **AI Development Ready**: Dedicated prompts and patterns for AI-assisted development
 
-## 🚀 Quick Start: Start Developing with MangoJS
+## Start Developing with Mango
 
-MangoJS is an AI-responsive backend framework. It allows you to build complex microservice architectures with the simplicity of generative AI.
+Mango is an AI responsive backend framework. It allows to build complex microservice architecture with the simplicity of generative AI.
 
-### Step 1: Create a New Project
+From an empty repository ask your AI to start creating a nodejs project
 
-From an empty directory, initialize a new Node.js project:
-
-```bash
-mkdir my-project
-cd my-project
-pnpm init
+```prompt
+Create a nodejs project with typescript
 ```
 
-### Step 2: Install MangoJS
+Add mangojs
 
-Install MangoJS directly from GitHub:
-
-```bash
-pnpm add github:theunionsquare/mangojs
+```
+pnpm link ../mangojs/
 ```
 
-Or from npm (when published):
+use the pre-defined prompts to builf your application
+
+```prompt
+Start a mangojs application usign the template ./node_modules/@mango/core/instructions/start-monorepo-project.md
+```
+
+Enable IAM service
+
+```prompt
+Enable the iam-service by running the template ./node_modules/@mango/core/instructions/enable-iam-service.md
+```
+
+## Installation
 
 ```bash
 pnpm add @theunionsquare/mangojs-core
 ```
 
-### Step 3: Set Up the Monorepo Structure
+Or with npm:
 
-Ask your AI assistant to configure the monorepo:
-
-```prompt
-Start a MangoJS application using the template at:
-./node_modules/@theunionsquare/mangojs-core/instructions/start-monorepo-project.md
+```bash
+npm install @theunionsquare/mangojs-core
 ```
 
-This will create:
-- `services/` - Directory for your microservices
-- `packages/shared/` - Shared utilities and types
-- `pnpm-workspace.yaml` - Workspace configuration
-- `tsconfig.json` - Base TypeScript configuration
-- `.gitignore`, `.env.example`, `README.md`
+## Quick Start
 
-### Step 4: Create Your First Service
-
-Use the AI prompt to create a microservice:
-
-```prompt
-Create a new microservice using the template at:
-./node_modules/@theunionsquare/mangojs-core/instructions/create-service.md
+```typescript
+// Coming soon - framework implementation in progress
 ```
-
-### Step 5: Enable IAM Service (Optional)
-
-Add identity and access management:
-
-```prompt
-Enable the IAM service using the template at:
-./node_modules/@theunionsquare/mangojs-core/instructions/enable-iam-service.md
-```
-
-## 📖 AI Instructions
-
-MangoJS comes with pre-built AI prompts located in `instructions/`:
-
-| Instruction | Description |
-|-------------|-------------|
-| `start-monorepo-project.md` | Set up pnpm workspace monorepo structure |
-| `create-service.md` | Create a new microservice |
-| `enable-iam-service.md` | Add identity & access management |
-| `review-artifacts.md` | Review and document code |
-
-## 📚 Handbook
-
-Detailed documentation is available in `handbook/`:
-
-- **Quick Start**: `handbook/quick-start-tutorial.context.md`
-- **Controllers**: `handbook/controller/overview.context.md`
-- **Services**: `handbook/service/overview.context.md`
-- **Database**: `handbook/database/overview.context.md`
-- **Architecture**: `handbook/architecture/overview.context.md`
-- **Dependency Injection**: `handbook/architecture/injection.context.md`
-- **Decorators**: `handbook/architecture/decorators.context.md`
-- **Scheduler**: `handbook/scheduler/overview.context.md`
-- **Queue System**: `handbook/queue/overview.context.md`
 
 ## Project Structure
 
@@ -108,24 +67,23 @@ mangojs/
 │   ├── middleware/    # Built-in middleware
 │   ├── types/         # TypeScript type definitions
 │   └── utils/         # Utility functions
-├── instructions/      # AI prompts for scaffolding
-├── handbook/          # Detailed documentation
-└── dist/              # Compiled output (generated)
+├── examples/          # Example applications
+└── dist/             # Compiled output (generated)
 ```
 
 ## Development
 
 ### Prerequisites
 
-- Node.js >= 23.0.0
-- pnpm >= 10.0.0
+- Node.js >= 18.0.0
+- pnpm >= 8.0.0
 
 ### Setup
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/theunionsquare/mangojs.git
+git clone https://github.com/yourusername/mangojs.git
 cd mangojs
 ```
 
@@ -183,4 +141,4 @@ MIT
 
 ## Support
 
-For issues and questions, please open an issue on [GitHub](https://github.com/theunionsquare/mangojs/issues).
+For issues and questions, please open an issue on [GitHub](https://github.com/yourusername/mangojs/issues).

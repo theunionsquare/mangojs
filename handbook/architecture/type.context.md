@@ -225,8 +225,10 @@ import type { ShopSpecialHoursPost, ShopSpecialHoursPut } from "../entities";
  * Service layer: Create special hours request
  * Extends API POST type but converts special_date from string to Date
  */
-export interface CreateSpecialHoursRequest
-  extends Omit<ShopSpecialHoursPost, "special_date"> {
+export interface CreateSpecialHoursRequest extends Omit<
+  ShopSpecialHoursPost,
+  "special_date"
+> {
   shop_uid: string; // Added by controller from route params
   special_date: Date; // Converted from API string to Date
 }
@@ -235,8 +237,10 @@ export interface CreateSpecialHoursRequest
  * Service layer: Update special hours request
  * Extends API PUT type but converts special_date from string to Date
  */
-export interface UpdateSpecialHoursRequest
-  extends Omit<ShopSpecialHoursPut, "special_date"> {
+export interface UpdateSpecialHoursRequest extends Omit<
+  ShopSpecialHoursPut,
+  "special_date"
+> {
   special_date?: Date; // Converted from API string to Date
 }
 ```
@@ -279,7 +283,7 @@ types/api/v1/working-hours/POST/index.ts
 **File**: `packages/types/partner/api/v1/working-hours/POST/index.ts`
 
 ```typescript
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ShopWorkingHoursPost } from "../../../../entities";
 import { ResponseBodyData } from "..";
 
@@ -318,7 +322,7 @@ export type ResponseBodyData = ShopWorkingHours; // Derived from entity
 ### Import Pattern
 
 ```typescript
-import type * as PBTypes from "@giusmento/pulcherbook-types";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 
 // Service layer types (namespaced)
 type CreateShopRequest = PBTypes.partner.requests.shop.CreateShopRequest;
@@ -328,7 +332,7 @@ type UpdateShopRequest = PBTypes.partner.requests.shop.UpdateShopRequest;
 ### Service Method Example
 
 ```typescript
-import type * as PBTypes from "@giusmento/pulcherbook-types";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 
 type CreateWorkingHoursRequest =
   PBTypes.partner.requests.workingHours.CreateWorkingHoursRequest;
@@ -341,7 +345,7 @@ export class WorkingHoursService {
    * @returns Promise resolving to the created working hours
    */
   public async create(
-    data: CreateWorkingHoursRequest
+    data: CreateWorkingHoursRequest,
   ): Promise<PBTypes.partner.entities.ShopWorkingHours> {
     // Service implementation
     return workingHours;
@@ -356,7 +360,7 @@ export class WorkingHoursService {
 ### Import Pattern
 
 ```typescript
-import type * as PBTypes from "@giusmento/pulcherbook-types";
+import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 ```
 
 ### Controller Method Example
@@ -371,7 +375,7 @@ export class WorkingHoursController {
       PBTypes.partner.api.v1.workingHours.POST.Params,
       PBTypes.partner.api.v1.workingHours.POST.RequestBody
     >,
-    res: Response<PBTypes.partner.api.v1.workingHours.POST.ResponseBody>
+    res: Response<PBTypes.partner.api.v1.workingHours.POST.ResponseBody>,
   ): Promise<Response<PBTypes.partner.api.v1.workingHours.POST.ResponseBody>> {
     const { shop_uid } = req.params;
     const data: ShopWorkingHoursPost = req.body;

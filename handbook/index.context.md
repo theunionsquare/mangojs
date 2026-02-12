@@ -29,13 +29,11 @@ Choose your learning path based on your goal:
 **Goal**: Build your first service from scratch
 
 1. **[Quick Start Tutorial](./quick-start-tutorial.context.md)** ⭐ START HERE
-
    - 15-minute hands-on tutorial
    - Build a complete blog post service
    - Learn all core patterns
 
 2. **[Architecture Overview](./architecture/overview.context.md)**
-
    - Understand onion architecture
    - Learn layer responsibilities
 
@@ -50,26 +48,22 @@ Choose your learning path based on your goal:
 **Step-by-step workflow:**
 
 1. **[Service Setup](./guides/service-setup.context.md)** ⭐ START HERE
-
    - Initialize package structure
    - Configure TypeScript and dependencies
    - Set up environment variables
    - Create basic entry points
 
 2. **[Database Layer](./database/overview.context.md)**
-
    - Define TypeORM entities
    - Set up relationships
    - Create migrations
 
 3. **[Service Layer](./service/overview.context.md)**
-
    - Implement business logic
    - Use transactions properly
    - Handle errors with APIError
 
 4. **[Controller Layer](./controller/overview.context.md)**
-
    - Create HTTP endpoints
    - Apply authorization
    - Define API types
@@ -199,7 +193,6 @@ Need to build a service?
 Study complete, working examples:
 
 - **[IAM Service](../src/services/iam_server/src/)** - Full authentication service
-
   - Complex relationships and business logic
   - Authorization patterns
   - Database: `src/services/iam_server/src/db/models/`
@@ -256,7 +249,7 @@ export class UserService {
         const user = em.create(models.User, data);
         await em.save(user);
         return user;
-      }
+      },
     );
     return response as User;
   }
@@ -291,10 +284,15 @@ export class UserController {
 **Scheduled Task Pattern**:
 
 ```typescript
-import { Schedule, ScheduledTask, INVERSITY_TYPES, ILoggerFactory } from '@giusmento/mangojs-core';
-import { injectable, inject } from 'inversify';
+import {
+  Schedule,
+  ScheduledTask,
+  INVERSITY_TYPES,
+  ILoggerFactory,
+} from "@theunionsquare/mangojs-core";
+import { injectable, inject } from "inversify";
 
-@Schedule('0 0 * * *')  // Daily at midnight
+@Schedule("0 0 * * *") // Daily at midnight
 @injectable()
 export class CleanupTask extends ScheduledTask {
   @inject(INVERSITY_TYPES.LoggerFactory)
@@ -304,9 +302,9 @@ export class CleanupTask extends ScheduledTask {
     // Task logic here
   }
 
-  onStart(): void { }
-  onComplete(): void { }
-  onError(error: Error): void { }
+  onStart(): void {}
+  onComplete(): void {}
+  onError(error: Error): void {}
 }
 ```
 
