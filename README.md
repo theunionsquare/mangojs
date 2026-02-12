@@ -105,127 +105,31 @@ pnpm run build
 pnpm run dev
 ```
 
-## Publishing to GitHub and npm
+## Release Process
 
-### 1. Prepare Your Repository
+### Creating a New Release
 
-Ensure your code is committed:
+1. Ensure your code is committed and pushed to the repository.
 
-```bash
-git add .
-git commit -m "Initial commit"
-```
-
-### 2. Create GitHub Repository
-
-1. Go to [GitHub](https://github.com) and create a new repository named `mangojs`
-2. **Do not** initialize with README (you already have one)
-
-### 3. Push to GitHub
+2. Create a new release (bumps version, creates git tag, and creates GitHub release):
 
 ```bash
-# Add GitHub as remote
-git remote add origin https://github.com/yourusername/mangojs.git
-
-# Push to GitHub
-git push -u origin main
+pnpm release
 ```
 
-### 4. Update package.json
+This uses [release-it](https://github.com/release-it/release-it) to:
+- Bump the version in `package.json`
+- Create a git commit and tag
+- Push to GitHub
+- Create a GitHub release
 
-Update the repository URL in [package.json](package.json):
-
-```json
-{
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/mangojs.git"
-  }
-}
-```
-
-### 5. Publishing to npm Registry
-
-#### First-time Setup
-
-1. Create an npm account at [npmjs.com](https://www.npmjs.com)
-
-2. Login via CLI:
+3. Publish to GitHub Package Registry:
 
 ```bash
-npm login
+pnpm publish
 ```
 
-#### Publishing a Version
-
-1. Ensure your code is built:
-
-```bash
-pnpm run build
-```
-
-2. Update version (choose one):
-
-```bash
-# Patch version (0.1.0 -> 0.1.1)
-npm version patch
-
-# Minor version (0.1.0 -> 0.2.0)
-npm version minor
-
-# Major version (0.1.0 -> 1.0.0)
-npm version major
-```
-
-3. Publish to npm:
-
-```bash
-npm publish --access public
-```
-
-> **Note**: For scoped packages like `@theunionsquare/mangojs-core`, you need to use `--access public` flag for the first publish.
-
-4. Push the version tag to GitHub:
-
-```bash
-git push --follow-tags
-```
-
-### 6. Automated Publishing with GitHub Actions (Optional)
-
-Create `.github/workflows/publish.yml`:
-
-```yaml
-name: Publish to npm
-
-on:
-  release:
-    types: [created]
-
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
-      - run: pnpm install
-      - run: pnpm run build
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-```
-
-Add your npm token to GitHub Secrets:
-
-1. Generate token at npmjs.com → Access Tokens
-2. Add to GitHub repo: Settings → Secrets → New repository secret
-3. Name it `NPM_TOKEN`
+> **Note**: You need to be authenticated with GitHub Package Registry. Ensure your `.npmrc` is configured and you have a valid `GITHUB_TOKEN`.
 
 ## Contributing
 
