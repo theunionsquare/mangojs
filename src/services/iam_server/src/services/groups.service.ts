@@ -3,7 +3,7 @@ import {
   INVERSITY_TYPES,
   IPersistenceContext,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { EntityManager } from "typeorm";
 import * as models from "../db/models";
 import { types as iamTypes } from "../../";

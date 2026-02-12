@@ -1,12 +1,12 @@
 import { inject, injectable } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
+import { INVERSITY_TYPES, IPersistenceContext } from "@theunionsquare/mangojs-core";
 import { EntityManager } from "typeorm";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 
 import * as models from "../db/models";
 import { Group } from "../db/models/Group.entity";
 
-import { Types as coreTypes } from "@giusmento/mangojs-core";
+import { Types as coreTypes } from "@theunionsquare/mangojs-core";
 import type { types as iamTypes } from "../../";
 import { partner } from "../types/entities";
 import { In } from "typeorm";

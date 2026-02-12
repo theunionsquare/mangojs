@@ -1,4 +1,4 @@
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { AuthResponse } from "../../../../../../entities/auth.type";
 
 /*

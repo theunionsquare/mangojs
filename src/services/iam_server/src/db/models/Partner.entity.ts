@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { PartnerUser } from "./PartnerUser.entity";
 
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 @Entity({ name: "partners", schema: "iam" })
 export class Partner {

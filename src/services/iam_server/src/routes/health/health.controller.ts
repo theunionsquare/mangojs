@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Controller, Get, Use, loggedMethod } from "@giusmento/mangojs-core";
+import { Controller, Get, Use, loggedMethod } from "@theunionsquare/mangojs-core";
 
 @Controller("/api/iam/v1/health")
 export class HealthController {

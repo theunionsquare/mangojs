@@ -4,7 +4,7 @@
  *
  * REQUEST: POST /api/v1/adminUser
  */
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { PartnerPut } from "../../../../entities/partner.type";
 
 export type Params = { uid: string };

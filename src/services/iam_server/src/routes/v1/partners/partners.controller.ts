@@ -8,12 +8,12 @@ import {
   Put,
   Delete,
   Decorators,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { PartnerService } from "../../../services/partner.service";
-import { errors } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
 
-import type { Types as coreTypes } from "@giusmento/mangojs-core";
+import type { Types as coreTypes } from "@theunionsquare/mangojs-core";
 import type { types as iamTypes } from "../../../../";
 import { Or } from "typeorm";
 

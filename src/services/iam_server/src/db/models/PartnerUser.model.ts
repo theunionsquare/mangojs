@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { IGroup } from "./Group.model";
-import { utils } from "@giusmento/mangojs-core";
+import { utils } from "@theunionsquare/mangojs-core";
 
 export interface IPartnerUser extends Document {
   uid: string;

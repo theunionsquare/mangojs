@@ -8,7 +8,7 @@ import {
   JoinTable,
 } from "typeorm";
 import { Group } from "./Group.entity";
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 @Entity({ name: "users", schema: "iam" })
 export class User {

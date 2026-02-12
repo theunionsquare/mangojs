@@ -10,14 +10,14 @@ import {
   Delete,
   Types,
   INVERSITY_TYPES,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { PartnerUserService } from "../../../services/partnerUser.service";
-import { errors } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
 import { api } from "../../../types";
 import { template } from "../../../..";
 
-import type { Types as coreTypes, Providers } from "@giusmento/mangojs-core";
+import type { Types as coreTypes, Providers } from "@theunionsquare/mangojs-core";
 import type { types as iamTypes } from "../../../../";
 
 // import adminUserService

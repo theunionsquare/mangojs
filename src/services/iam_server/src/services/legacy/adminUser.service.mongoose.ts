@@ -3,9 +3,9 @@ import {
   INVERSITY_TYPES,
   IPersistenceContext,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import mongoose from "mongoose";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 import { api } from "../../types";
 
 import AdminUserSchema, { IAdminUser } from "../../db/models/AdminUser.model";

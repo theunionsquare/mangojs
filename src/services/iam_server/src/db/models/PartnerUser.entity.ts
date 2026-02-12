@@ -11,7 +11,7 @@ import {
 } from "typeorm";
 import { Group } from "./Group.entity";
 import { Partner } from "./Partner.entity";
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 @Entity({ name: "partner_users", schema: "iam" })
 export class PartnerUser {

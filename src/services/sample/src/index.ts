@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { ServerBuilder } from "@giusmento/mangojs-core";
+import { ServerBuilder } from "@theunionsquare/mangojs-core";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import cors from "cors";

@@ -5,14 +5,14 @@ import {
   Post,
   loggedMethod,
   utils,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AdminUserService } from "../../../services/adminUser.service";
-import { Decorators } from "@giusmento/mangojs-core";
+import { Decorators } from "@theunionsquare/mangojs-core";
 import { AuthorizationService } from "../../../services/authorizationService";
-import { errors } from "@giusmento/mangojs-core";
-import { Types } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { api } from "../../../types";
 
 dotenv.config();

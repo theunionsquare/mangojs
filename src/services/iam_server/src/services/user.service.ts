@@ -1,8 +1,8 @@
 import { inject, injectable } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
+import { INVERSITY_TYPES, IPersistenceContext } from "@theunionsquare/mangojs-core";
 import { Repository, EntityManager } from "typeorm";
-import { errors, utils } from "@giusmento/mangojs-core";
-import { Types as coreTypes } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
+import { Types as coreTypes } from "@theunionsquare/mangojs-core";
 import type { types as iamTypes } from "../../";
 
 import * as models from "../db/models";

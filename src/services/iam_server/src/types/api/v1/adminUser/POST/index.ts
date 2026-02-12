@@ -5,7 +5,7 @@
  * REQUEST: POST /api/v1/adminUser
  */
 
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { IAdminUser } from "../../../../../db/models/AdminUser.model";
 import { ResponseBodyData } from "..";
 import { AdminUserPost } from "../../../../entities/adminUser.type";

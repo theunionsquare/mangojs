@@ -5,9 +5,9 @@ import {
   Loggers,
   databasemanager,
   Containers,
-} from "@giusmento/mangojs-core";
-import { IPersistenceContext } from "@giusmento/mangojs-core";
-import { IDatabaseManagerFactory } from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
+import { IPersistenceContext } from "@theunionsquare/mangojs-core";
+import { IDatabaseManagerFactory } from "@theunionsquare/mangojs-core";
 
 import dotenv from "dotenv";
 import e from "express";

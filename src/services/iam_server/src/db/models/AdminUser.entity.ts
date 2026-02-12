@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Group } from "./Group.entity";
 
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 @Entity({ name: "admin_users", schema: "iam" })
 export class AdminUser {

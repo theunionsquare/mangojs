@@ -1,4 +1,4 @@
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { ResponseBodyData } from "..";
 import { RequestDefaultParams } from "../..";
 import { PartnerUserActivate } from "../../../../../../entities/partnerUser.type";

@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { INVERSITY_TYPES, IPersistenceContext } from "@giusmento/mangojs-core";
+import { INVERSITY_TYPES, IPersistenceContext } from "@theunionsquare/mangojs-core";
 import mongoose from "mongoose";
-import { errors, utils } from "@giusmento/mangojs-core";
+import { errors, utils } from "@theunionsquare/mangojs-core";
 //import { AdminUser } from "../types/adminUser.type";
 //import { api } from "../types";
 //import { AdminGroupService } from "./AdminGroup.service";

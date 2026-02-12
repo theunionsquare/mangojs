@@ -1,7 +1,7 @@
 /**
  * Get Partner Group
  */
-import type { Types } from "@giusmento/mangojs-core/";
+import type { Types } from "@theunionsquare/mangojs-core/";
 import { ResponseBodyData } from "..";
 
 /*

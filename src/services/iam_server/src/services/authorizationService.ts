@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Auth, Types, errors } from "@giusmento/mangojs-core";
+import { Auth, Types, errors } from "@theunionsquare/mangojs-core";
 import { inject, injectable } from "inversify";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";

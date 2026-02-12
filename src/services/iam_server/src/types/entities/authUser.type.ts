@@ -1,4 +1,4 @@
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 
 // Define PartnerUser type based on the PartnerUser model
 export type User = Types.entities.AuthUser;

@@ -1,7 +1,7 @@
 /**
  * Get all groups
  */
-import type { Types } from "@giusmento/mangojs-core/";
+import type { Types } from "@theunionsquare/mangojs-core/";
 import { IGroup } from "../../../../../db/models/Group.model";
 import { ResponseBodyData } from "..";
 

@@ -1,4 +1,4 @@
-import * as core from "@giusmento/mangojs-core";
+import * as core from "@theunionsquare/mangojs-core";
 
 export * as login from "./login";
 export * as logout from "./logout";

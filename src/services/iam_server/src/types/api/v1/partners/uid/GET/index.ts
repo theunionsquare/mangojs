@@ -1,7 +1,7 @@
 /**
  * Get single Partner by uid
  */
-import type { Types } from "@giusmento/mangojs-core/";
+import type { Types } from "@theunionsquare/mangojs-core/";
 import * as models from "../../../../../../db/models";
 
 /*

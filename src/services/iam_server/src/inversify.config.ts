@@ -7,7 +7,7 @@ import {
   databasemanager,
   IPersistenceContext,
   IDatabaseManagerFactory,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 
 import { AuthorizationService } from "./services/authorizationService";
 import { IAMEntities } from "./db/models";

@@ -9,7 +9,7 @@ import {
   Delete,
   Types,
   errors,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { AuthorizationService } from "../../../services/authorizationService";

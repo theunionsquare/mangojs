@@ -1,7 +1,7 @@
 /**
  * Get all Partner Users
  */
-import type { Types } from "@giusmento/mangojs-core/";
+import type { Types } from "@theunionsquare/mangojs-core/";
 import {
   RequestDefaultParams,
   RequestDefaultParamsSingle,

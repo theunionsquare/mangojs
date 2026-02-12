@@ -5,7 +5,7 @@ import {
   loggedMethod,
   Decorators,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { serviceContainer } from "../../../inversify.config";
 import { DomainService } from "../../../service/domain.service";
 

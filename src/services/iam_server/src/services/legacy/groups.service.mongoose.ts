@@ -3,7 +3,7 @@ import {
   INVERSITY_TYPES,
   IPersistenceContext,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import mongoose from "mongoose";
 import GroupSchema from "../../db/models/Group.model";
 import { api } from "../../types";

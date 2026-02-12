@@ -3,7 +3,7 @@ import {
   INVERSITY_TYPES,
   IPersistenceContext,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { DataSource, EntityManager } from "typeorm";
 import { Photo } from "../db/models/Photo";
 

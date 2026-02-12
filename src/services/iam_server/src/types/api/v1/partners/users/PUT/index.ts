@@ -4,7 +4,7 @@
  *
  * REQUEST: POST /api/v1/adminUser
  */
-import { Types } from "@giusmento/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { RequestDefaultParams } from "..";
 import {
   PartnerUser,

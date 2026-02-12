@@ -6,14 +6,14 @@ import {
   loggedMethod,
   utils,
   Providers,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import dotenv from "dotenv";
 import { IAMDefaultContainer } from "../../../inversify.config";
 import { UserService } from "../../../services/user.service";
-import { Decorators } from "@giusmento/mangojs-core";
+import { Decorators } from "@theunionsquare/mangojs-core";
 import { AuthorizationService } from "../../../services/authorizationService";
-import { errors } from "@giusmento/mangojs-core";
-import { Types } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { api } from "../../../types";
 import { INVERSITY_TYPES } from "../../../inversify.types";
 import * as template from "../../../templates";

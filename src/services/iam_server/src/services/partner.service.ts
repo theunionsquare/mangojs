@@ -3,9 +3,9 @@ import {
   INVERSITY_TYPES,
   IPersistenceContext,
   Types,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import { EntityManager } from "typeorm";
-import { errors } from "@giusmento/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
 import { Partner, IPartner } from "../db/models/Partner.entity";
 
 import { types as iamTypes } from "../../";

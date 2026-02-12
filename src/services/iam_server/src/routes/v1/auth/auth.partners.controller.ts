@@ -5,11 +5,11 @@ import {
   Post,
   Providers,
   utils,
-} from "@giusmento/mangojs-core";
+} from "@theunionsquare/mangojs-core";
 import dotenv from "dotenv";
-import { Decorators } from "@giusmento/mangojs-core";
-import { errors } from "@giusmento/mangojs-core";
-import { Types } from "@giusmento/mangojs-core";
+import { Decorators } from "@theunionsquare/mangojs-core";
+import { errors } from "@theunionsquare/mangojs-core";
+import { Types } from "@theunionsquare/mangojs-core";
 import { api } from "../../../types";
 
 import { IAMDefaultContainer } from "../../../inversify.config";
