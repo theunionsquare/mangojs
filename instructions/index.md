@@ -3,88 +3,88 @@
 ## Quick Start & Setup
 **Keywords**: getting started, new service, setup, initialize, scaffold, bootstrap, create service
 **Description**: Use when you need to set up a new MangoJS service from scratch or learn the framework basics
-- Read: [@giusmento/mangojs-core/handbook/quick-start-tutorial.context.md](@giusmento/mangojs-core/handbook/quick-start-tutorial.context.md) - Complete beginner tutorial
-- Read: [@giusmento/mangojs-core/handbook/guides/service-setup.context.md](@giusmento/mangojs-core/handbook/guides/service-setup.context.md) - Production service setup
+- Read: [@theunionsquare/mangojs-core/handbook/quick-start-tutorial.context.md](@theunionsquare/mangojs-core/handbook/quick-start-tutorial.context.md) - Complete beginner tutorial
+- Read: [@theunionsquare/mangojs-core/handbook/guides/service-setup.context.md](@theunionsquare/mangojs-core/handbook/guides/service-setup.context.md) - Production service setup
 
 ## Controllers & Endpoints
 **Keywords**: controllers, endpoints, api, routes, http, rest, request, response
 **Description**: Use when you need to create HTTP endpoints, handle requests/responses, or work with API routing
-- Read: [@giusmento/mangojs-core/handbook/controller/overview.context.md](@giusmento/mangojs-core/handbook/controller/overview.context.md) - Complete controller guide with examples
+- Read: [@theunionsquare/mangojs-core/handbook/controller/overview.context.md](@theunionsquare/mangojs-core/handbook/controller/overview.context.md) - Complete controller guide with examples
 
 ## Services & Business Logic
 **Keywords**: services, business logic, transactions, orchestration, methods
 **Description**: Use when you need to implement business logic, manage transactions, or orchestrate database operations
-- Read: [@giusmento/mangojs-core/handbook/service/overview.context.md](@giusmento/mangojs-core/handbook/service/overview.context.md) - Service layer patterns
+- Read: [@theunionsquare/mangojs-core/handbook/service/overview.context.md](@theunionsquare/mangojs-core/handbook/service/overview.context.md) - Service layer patterns
 
 ## Database & Models
 **Keywords**: database, models, entities, orm, typeorm, migrations, relationships, schema
 **Description**: Use when you need to create database entities, define relationships, or generate migrations
-- Read: [@giusmento/mangojs-core/handbook/database/overview.context.md](@giusmento/mangojs-core/handbook/database/overview.context.md) - Database layer with TypeORM
+- Read: [@theunionsquare/mangojs-core/handbook/database/overview.context.md](@theunionsquare/mangojs-core/handbook/database/overview.context.md) - Database layer with TypeORM
 
 ## Architecture & Design
 **Keywords**: architecture, design, patterns, onion architecture, layers, structure
 **Description**: Use when you need to understand the overall framework architecture, layer responsibilities, or design patterns
-- Read: [@giusmento/mangojs-core/handbook/architecture/overview.context.md](@giusmento/mangojs-core/handbook/architecture/overview.context.md) - Framework architecture
+- Read: [@theunionsquare/mangojs-core/handbook/architecture/overview.context.md](@theunionsquare/mangojs-core/handbook/architecture/overview.context.md) - Framework architecture
 
 ## Dependency Injection
 **Keywords**: dependency injection, di, inversify, container, inject, injectable
 **Description**: Use when you need to configure dependency injection, understand the IoC container, or inject services
-- Read: [@giusmento/mangojs-core/handbook/architecture/injection.context.md](@giusmento/mangojs-core/handbook/architecture/injection.context.md) - DI setup and patterns
+- Read: [@theunionsquare/mangojs-core/handbook/architecture/injection.context.md](@theunionsquare/mangojs-core/handbook/architecture/injection.context.md) - DI setup and patterns
 
 ## Decorators
 **Keywords**: decorators, @Controller, @Get, @Post, @Auth, @Middleware, annotations
 **Description**: Use when you need to apply routing decorators, add authentication, or configure middleware
-- Read: [@giusmento/mangojs-core/handbook/architecture/decorators.context.md](@giusmento/mangojs-core/handbook/architecture/decorators.context.md) - All decorators explained
+- Read: [@theunionsquare/mangojs-core/handbook/architecture/decorators.context.md](@theunionsquare/mangojs-core/handbook/architecture/decorators.context.md) - All decorators explained
 
 ## Types & TypeScript
 **Keywords**: types, typescript, interfaces, type safety, api types, entity types
 **Description**: Use when you need to define API types, organize type definitions, or ensure type safety
-- Read: [@giusmento/mangojs-core/handbook/architecture/type.context.md](@giusmento/mangojs-core/handbook/architecture/type.context.md) - Type organization patterns
+- Read: [@theunionsquare/mangojs-core/handbook/architecture/type.context.md](@theunionsquare/mangojs-core/handbook/architecture/type.context.md) - Type organization patterns
 
 ## Error Handling
 **Keywords**: errors, error handling, exceptions, APIError, try catch, error responses
 **Description**: Use when you need to handle errors, throw API exceptions, or implement error response patterns
-- Read: [@giusmento/mangojs-core/handbook/common/error-handling.context.md](@giusmento/mangojs-core/handbook/common/error-handling.context.md) - Error patterns
+- Read: [@theunionsquare/mangojs-core/handbook/common/error-handling.context.md](@theunionsquare/mangojs-core/handbook/common/error-handling.context.md) - Error patterns
 
 ## Scheduler & Background Tasks
 **Keywords**: scheduler, scheduled tasks, cron, background jobs, tasks, @Schedule, ScheduledTask, worker thread
 **Description**: Use when you need to create scheduled background tasks, configure cron jobs, or run periodic operations
-- Read: [@giusmento/mangojs-core/handbook/scheduler/overview.context.md](@giusmento/mangojs-core/handbook/scheduler/overview.context.md) - Complete scheduler guide
+- Read: [@theunionsquare/mangojs-core/handbook/scheduler/overview.context.md](@theunionsquare/mangojs-core/handbook/scheduler/overview.context.md) - Complete scheduler guide
 
 ## Queue System & Workers
 **Keywords**: queue, bullmq, redis, workers, background jobs, async, QueueClient, QueueManager, WorkerBuilder, @QueueWorker
 **Description**: Use when you need to implement distributed job processing, message queues, or background workers for tasks like email sending, report generation, or long-running operations
-- Read: [@giusmento/mangojs-core/handbook/queue/overview.context.md](@giusmento/mangojs-core/handbook/queue/overview.context.md) - Complete queue system guide
+- Read: [@theunionsquare/mangojs-core/handbook/queue/overview.context.md](@theunionsquare/mangojs-core/handbook/queue/overview.context.md) - Complete queue system guide
 
 ## Best Practices
 **Keywords**: best practices, conventions, naming, optimization, performance, security
 **Description**: Use when you need guidance on coding standards, naming conventions, performance optimization, or security
-- Read: [@giusmento/mangojs-core/handbook/common/best-practices.context.md](@giusmento/mangojs-core/handbook/common/best-practices.context.md) - Coding standards
+- Read: [@theunionsquare/mangojs-core/handbook/common/best-practices.context.md](@theunionsquare/mangojs-core/handbook/common/best-practices.context.md) - Coding standards
 
 ## Code Templates & Boilerplate
 **Keywords**: templates, boilerplate, examples, starter code, copy paste, scaffold
 **Description**: Use when you need ready-to-use code templates, boilerplate patterns, or copy-paste examples
-- Read: [@giusmento/mangojs-core/handbook/common/code-templates.context.md](@giusmento/mangojs-core/handbook/common/code-templates.context.md) - Ready-to-use code
+- Read: [@theunionsquare/mangojs-core/handbook/common/code-templates.context.md](@theunionsquare/mangojs-core/handbook/common/code-templates.context.md) - Ready-to-use code
 
 ## Troubleshooting & Debugging
 **Keywords**: troubleshooting, debugging, errors, issues, problems, stuck, not working
 **Description**: Use when you encounter errors, bugs, or issues and need help diagnosing and fixing them
-- Read: [@giusmento/mangojs-core/handbook/guides/troubleshooting.context.md](@giusmento/mangojs-core/handbook/guides/troubleshooting.context.md) - Common issues and solutions
+- Read: [@theunionsquare/mangojs-core/handbook/guides/troubleshooting.context.md](@theunionsquare/mangojs-core/handbook/guides/troubleshooting.context.md) - Common issues and solutions
 
 ## Artifacts & Generated Files
 **Keywords**: artifacts, generated files, build output, compiled code
 **Description**: Use when you need to understand build artifacts, generated files, or compiled code output
-- Read: [@giusmento/mangojs-core/handbook/common/artifacts.context.md](@giusmento/mangojs-core/handbook/common/artifacts.context.md) - Understanding artifacts
+- Read: [@theunionsquare/mangojs-core/handbook/common/artifacts.context.md](@theunionsquare/mangojs-core/handbook/common/artifacts.context.md) - Understanding artifacts
 
 ## Resources & External Docs
 **Keywords**: resources, external docs, links, references, documentation
 **Description**: Use when you need links to external documentation like TypeORM, Inversify, or Express
-- Read: [@giusmento/mangojs-core/handbook/resources.context.md](@giusmento/mangojs-core/handbook/resources.context.md) - External documentation links
+- Read: [@theunionsquare/mangojs-core/handbook/resources.context.md](@theunionsquare/mangojs-core/handbook/resources.context.md) - External documentation links
 
 ## Overview & Index
 **Keywords**: overview, index, guide, documentation, help, start
 **Description**: Use when you need an overview of all documentation or want to navigate the handbook structure
-- Read: [@giusmento/mangojs-core/handbook/index.context.md](@giusmento/mangojs-core/handbook/index.context.md) - Main documentation index
+- Read: [@theunionsquare/mangojs-core/handbook/index.context.md](@theunionsquare/mangojs-core/handbook/index.context.md) - Main documentation index
 
 ## Create a new service
 **Keywords**: create new service, create new entity
