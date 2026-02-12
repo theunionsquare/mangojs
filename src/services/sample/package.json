@@ -15,7 +15,7 @@
     "packageManager": "pnpm@10.12.1",
     "dependencies": {
         "cors": "^2.8.5",
-        "@theunionsquare/mangojs-core": "0.0.1-22",
+        "@theunionsquare/mangojs-core": "0.0.1-2",
         "inversify": "^7.10.2",
         "helmet": "^7.0.0",
         "jsonwebtoken": "^9.0.2",
