@@ -1,7 +1,4 @@
-<h1 align="center">
-  <img src="https://mangojs.tech/logo.png" alt="MangoJS Logo" width="32" style="vertical-align: middle;" />
-  MangoJS
-</h1>
+<h1 align="center">🥭 MangoJS</h1>
 
 <p align="center">
   <strong>The AI-First Backend Framework</strong><br/>
@@ -51,39 +48,40 @@ MangoJS + AI = Complete service architecture with controllers, services, and dat
 
 ## Architecture
 
-MangoJS follows **Onion Architecture** with dependencies flowing inward:
+<h3 align="center">MangoJS Onion Architecture</h3>
 
 <table align="center">
   <tr>
-    <td align="center" style="padding: 16px;">
-      <h3>🌐 Controllers</h3>
-      <code>HTTP Layer</code><br/>
-      <sub>Routes, validation, responses</sub>
+    <td>
+      <strong>Controller Layer (Outer)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← HTTP/API</em><br/>
+      • <code>@Controller()</code>, <code>@Get()</code>, <code>@Post()</code><br/>
+      • Request/Response handling<br/>
+      • Call services
     </td>
   </tr>
   <tr>
-    <td align="center"><b>⬇️</b></td>
+    <td align="center"><em>depends on</em><br/>⬇️</td>
   </tr>
   <tr>
-    <td align="center" style="padding: 16px;">
-      <h3>⚙️ Services</h3>
-      <code>Business Logic</code><br/>
-      <sub>Transactions, rules, orchestration</sub>
+    <td>
+      <strong>Service Layer (Middle)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← Business Logic</em><br/>
+      • <code>@injectable()</code> classes<br/>
+      • Validation & business rules<br/>
+      • Transaction orchestration
     </td>
   </tr>
   <tr>
-    <td align="center"><b>⬇️</b></td>
+    <td align="center"><em>depends on</em><br/>⬇️</td>
   </tr>
   <tr>
-    <td align="center" style="padding: 16px;">
-      <h3>🗃️ Database Models</h3>
-      <code>Data Layer</code><br/>
-      <sub>Entities, repositories, queries</sub>
+    <td>
+      <strong>Database Layer (Core)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← Data Models</em><br/>
+      • <code>@Entity()</code> declarations<br/>
+      • TypeORM relationships<br/>
+      • Pure domain objects
     </td>
   </tr>
 </table>
-
-<p align="center"><sub><i>Dependencies flow inward → Inner layers never depend on outer layers</i></sub></p>
 
 ---
 
