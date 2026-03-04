@@ -70,7 +70,7 @@ export * as clients from "./clients";
 // Export Types
 export * as Types from "./types";
 
-export * as Providers from "./providers";
+export * as Integrations from "./integrations";
 
 export * as mappers from "./mappers";
 

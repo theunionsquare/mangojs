@@ -31,18 +31,18 @@ MangoJS + AI = Complete service architecture with controllers, services, and dat
 
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **AI-First Development** | Built-in handbook and patterns optimized for AI code generation |
-| **Onion Architecture** | Clean separation: Controllers → Services → Database |
-| **Dependency Injection** | Powered by Inversify for testable, maintainable code |
-| **Type Safety** | 100% TypeScript with strict typing throughout |
-| **Database Agnostic** | Use any database with TypeORM integration |
-| **Production Ready** | Auto-generated Swagger docs, error handling, logging |
-| **Microservice Patterns** | Distributed systems support out of the box |
-| **Built-in Auth** | Decorators for authentication and permissions |
-| **Background Jobs** | BullMQ queues and cron scheduling included |
-| **Worker Threads** | CPU-intensive task support |
+| Feature                   | Description                                                     |
+| ------------------------- | --------------------------------------------------------------- |
+| **AI-First Development**  | Built-in handbook and patterns optimized for AI code generation |
+| **Onion Architecture**    | Clean separation: Controllers → Services → Database             |
+| **Dependency Injection**  | Powered by Inversify for testable, maintainable code            |
+| **Type Safety**           | 100% TypeScript with strict typing throughout                   |
+| **Database Agnostic**     | Use any database with TypeORM integration                       |
+| **Production Ready**      | Auto-generated Swagger docs, error handling, logging            |
+| **Microservice Patterns** | Distributed systems support out of the box                      |
+| **Built-in Auth**         | Decorators for authentication and permissions                   |
+| **Background Jobs**       | BullMQ queues and cron scheduling included                      |
+| **Worker Threads**        | CPU-intensive task support                                      |
 
 ---
 
@@ -90,10 +90,11 @@ MangoJS + AI = Complete service architecture with controllers, services, and dat
 MangoJS includes a comprehensive handbook optimized for AI assistants:
 
 ```prompt
-Start a mangojs application using the handbook at ./node_modules/@theunionsquare/mangojs-core/handbook
+Start a mangojs application using the handbook
 ```
 
 The handbook provides:
+
 - Code templates for common patterns
 - Best practices and conventions
 - Step-by-step tutorials
