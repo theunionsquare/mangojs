@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.ts"],
+  "out": "./docs-site/latest",
+  "plugin": ["typedoc-theme-fresh"],
+  "theme": "fresh",
+  "name": "MangoJS",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "readme": "./README.md",
+  "navigationLinks": {
+    "GitHub": "https://github.com/theunionsquare/mangojs",
+    "NPM": "https://www.npmjs.com/package/@theunionsquare/mangojs-core"
+  },
+  "tsconfig": "./tsconfig.json",
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": false
+  }
+}

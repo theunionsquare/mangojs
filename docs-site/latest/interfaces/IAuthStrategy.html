@@ -1,0 +1,403 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>IAuthStrategy | MangoJS - v0.0.1-4</title><meta name="description" content="Documentation for MangoJS"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script><style type="text/css">
+/* typedoc-theme-fresh */
+
+/* @view-transition {
+  navigation: auto;
+} */
+
+:root {
+  --light-color-background: #fafafe;
+  --light-color-background-active: #eaeced;
+  --light-color-text: #222222;
+  --light-color-text-aside: #5e5e5e;
+
+  --dark-color-background: #1a1a1c;
+  --dark-color-background-active: #2f2f2b;
+  --dark-color-text: #dfdfd6;
+  --dark-color-text-aside: #b0b0b0;
+
+  --dim-header-height: 2.5rem;
+  --dim-footer-height: 0px;
+
+  --light-code-background: #ffffff18;
+  --dark-code-background: #00000018;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  & > .container.container-main {
+    margin: 0 auto;
+    margin-top: var(--dim-header-height);
+    --dim-container-main-margin-y: 0px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  ::selection {
+    background-color: #11111a20;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background-color: #bbbbff48;
+  }
+}
+
+:root[data-theme="light"] {
+  ::selection {
+    background-color: #11111a20;
+  }
+}
+
+:root[data-theme="dark"] {
+  ::selection {
+    background-color: #bbbbff48;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+.tsd-page-toolbar {
+  position: fixed;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-background) 80%, transparent) 60%,
+    transparent
+  );
+  backdrop-filter: blur(2px);
+  border-bottom: none;
+
+  .title {
+    font-weight: 500;
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 0;
+    margin-right: auto;
+
+    &:hover {
+      color: var(--color-contrast-text);
+      text-decoration: none;
+    }
+  }
+
+  .tsd-theme-toggle {
+    display: flex;
+    position: relative;
+    margin-right: 12px;
+    color: var(--color-text-aside);
+    
+    select {
+      cursor: pointer;
+      border: 1px solid var(--color-background-active);
+      border-radius: 4px;
+      padding: 6px 8px;
+      padding-left: 32px;  /* Space for the icon */
+      font-size: 14px;
+      background: transparent;
+      transition: background-color 200ms;
+      color: var(--color-text-aside);
+      
+      /* for Firefox and Chrome: these are inconsistent */
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      
+      &:hover {
+        background-color: var(--color-background-active);
+      }
+    }
+  }
+}
+
+.tsd-widget {
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: auto;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 200ms;
+  color: var(--color-text-aside);
+  opacity: 100%;
+
+  &:hover {
+    background-color: var(--color-background-active);
+  }
+}
+
+#tsd-search-results {
+  & > li {
+    padding-inline: 6px;
+    transition: background-color 200ms;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.col-content {
+  overflow: hidden;
+  padding-block: 24px;
+
+  & > .tsd-typography {
+    padding-bottom: 24px;
+  }
+}
+
+.col-sidebar {
+  top: var(--dim-header-height);  /* Relevant for tablet layout. */
+}
+
+.site-menu {
+  top: var(--dim-header-height);
+  padding-block: 24px;
+  box-sizing: border-box;
+}
+
+.page-menu {
+  top: var(--dim-header-height);
+  padding-block: 48px 24px;
+  box-sizing: border-box;
+}
+
+.tsd-navigation,
+.tsd-page-navigation {
+  > details {
+    margin-bottom: 8px;
+  }
+
+  a {
+    border-radius: 4px;
+    padding-inline: 6px;
+    margin-bottom: 2px;
+  }
+  a:hover {
+    text-decoration: none;
+    background-color: var(--color-background-active);
+  }
+  a.current {
+    background-color: var(--color-background-active);
+    span {
+      color: var(--color-contrast-text);
+    }
+  }
+}
+
+.tsd-navigation {
+  & > a {
+    /* Top-level navigation anchor. */
+    margin-block: 16px;
+    font-size: 18px;
+    background: transparent !important;
+    padding: 0;
+    
+    &:hover {
+      color: var(--color-contrast-text);
+    }
+  }
+}
+
+.tsd-page-navigation {
+  border-left: 1px solid var(--color-background-active);
+  padding-left: 4px;
+  padding-block: 4px;
+}
+
+.tsd-page-navigation-section {
+  & > summary > svg {
+    margin-right: 0;
+  }
+  & > div {
+    margin-left: 24px;
+  }
+}
+
+.tsd-page-title {
+  color: var(--color-contrast-text);
+}
+
+h1 > code.tsd-tag {
+  margin-left: 12px;
+}
+
+code.tsd-tag {
+  display: inline-block;
+  transform: translateY(-0.1em);
+  background: var(--color-background-secondary);
+  border: 0;
+  border-radius: 8px;
+  padding: 2px 4px;
+}
+
+.tsd-breadcrumb {
+  margin-bottom: 12px;
+  li:after {
+    content: " › ";
+    opacity: 0.4;
+  }
+  li:last-of-type::after {
+    content: "";
+  }
+}
+
+.tsd-signature,
+.tsd-signatures .tsd-signature {
+  border: 0;
+  border-radius: 8px;
+  background: var(--color-background-secondary);
+  font-weight: 500;
+  padding: 10px 8px;
+  line-height: 1.3;
+}
+
+.tsd-anchor-icon {
+  color: var(--color-text-aside);
+  padding-bottom: 1px;
+}
+
+.tsd-kind-icon {
+  filter: grayscale(0.5) opacity(0.8);
+}
+
+/* Accordion icon */
+.tsd-accordion-summary > svg {
+  color: var(--color-text-aside);
+  opacity: 50%;
+  stroke-width: 1px;
+  transition: transform 200ms ease-in-out;
+}
+
+.tsd-accordion-summary > svg:has(+ h2) {
+  height: 24px;
+  width: 24px;
+}
+
+/* Desktop sizing */
+@media (min-width: 1200px) {
+  .container-main {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 2.5fr) minmax(0, 17rem);
+  }
+
+  .site-menu {
+    padding-right: 8px;
+  }
+  .page-menu {
+    padding-left: 24px;
+  }
+
+  .tsd-widget.menu {
+    display: none;
+  }
+}
+
+/* Tablet sizing */
+@media (min-width: 770px) and (max-width: 1199px) {
+  .page-menu {
+    padding-block: 24px 24px;
+  }
+  .site-menu {
+    padding-block: 0 24px;
+    margin-top: 0;
+  }
+
+  .tsd-widget.menu {
+    display: none;
+  }
+
+  .lg-show {
+    display: none !important;
+  }
+}
+
+/* Mobile sizing */
+@media (max-width: 769px) {
+  .page-menu {
+    display: none;
+  }
+  .site-menu {
+    padding: 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .has-menu .col-sidebar {
+    padding: 0 1rem;
+    max-height: 100dvh;
+  }
+
+  .lg-show {
+    display: none !important;
+  }
+  .md-show {
+    display: none !important;
+  }
+}
+</style></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">MangoJS</a><div id="tsd-toolbar-links"><a href="https://github.com/theunionsquare/mangojs">GitHub</a><a href="https://www.npmjs.com/package/@theunionsquare/mangojs-core">NPM</a></div><div class="tsd-theme-toggle md-show" style="position: relative"><div style="position: absolute; left: 8px; top: 4px; pointer-events: none"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-moon-icon lucide-sun-moon"><path d="M12 2v2"></path><path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715"></path><path d="M16 12a4 4 0 0 0-4-4"></path><path d="m19 5-1.256 1.256"></path><path d="M20 12h2"></path></svg></div><select id="tsd-theme"><option value="os">System</option><option value="light">Light</option><option value="dark">Dark</option></select></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search" style="
+              border: 1px solid var(--color-background-active);
+              border-radius: 4px;
+              margin-left: 8px;
+            "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search" style="margin-bottom: 1px; margin-left: 4px; margin-right: 4px;"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><span class="lg-show" style="margin-left: 4px; margin-right: 12ch;">Search…</span></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu" style="
+              border: 1px solid var(--color-background-active);
+              border-radius: 4px;
+              margin-left: 4px;
+            "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu" style="margin-left: 4px; margin-right: 4px;"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="" aria-current="page">IAuthStrategy</a></li></ul><h1>Interface IAuthStrategy</h1></div><section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography"><p>Authentication strategy interface</p>
+<p>Implement this interface to create custom authentication mechanisms.
+Strategies are tried in priority order (lower number = higher priority).</p>
+</div><div class="tsd-comment tsd-typography"><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example">Example<a href="#example" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="typescript"><span class="hl-2">@</span><span class="hl-4">injectable</span><span class="hl-2">()</span><br/><span class="hl-5">class</span><span class="hl-2"> </span><span class="hl-9">MyCustomStrategy</span><span class="hl-2"> </span><span class="hl-5">implements</span><span class="hl-2"> </span><span class="hl-9">IAuthStrategy</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-5">readonly</span><span class="hl-2"> </span><span class="hl-1">name</span><span class="hl-2"> = </span><span class="hl-0">&#39;custom&#39;</span><span class="hl-2">;</span><br/><span class="hl-2">  </span><span class="hl-5">readonly</span><span class="hl-2"> </span><span class="hl-1">priority</span><span class="hl-2"> = </span><span class="hl-6">50</span><span class="hl-2">;</span><br/><br/><span class="hl-2">  </span><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-4">authenticate</span><span class="hl-2">(</span><span class="hl-1">req</span><span class="hl-2">: </span><span class="hl-9">Request</span><span class="hl-2">): </span><span class="hl-9">Promise</span><span class="hl-2">&lt;</span><span class="hl-9">IAuthUser</span><span class="hl-2"> | </span><span class="hl-9">null</span><span class="hl-2">&gt; {</span><br/><span class="hl-2">    </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">token</span><span class="hl-2"> = </span><span class="hl-1">req</span><span class="hl-2">.</span><span class="hl-1">headers</span><span class="hl-2">[</span><span class="hl-0">&#39;x-custom-token&#39;</span><span class="hl-2">];</span><br/><span class="hl-2">    </span><span class="hl-7">if</span><span class="hl-2"> (!</span><span class="hl-1">token</span><span class="hl-2">) </span><span class="hl-7">return</span><span class="hl-2"> </span><span class="hl-5">null</span><span class="hl-2">;</span><br/><br/><span class="hl-2">    </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-3">user</span><span class="hl-2"> = </span><span class="hl-7">await</span><span class="hl-2"> </span><span class="hl-5">this</span><span class="hl-2">.</span><span class="hl-4">validateToken</span><span class="hl-2">(</span><span class="hl-1">token</span><span class="hl-2">);</span><br/><span class="hl-2">    </span><span class="hl-7">return</span><span class="hl-2"> </span><span class="hl-1">user</span><span class="hl-2">;</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div></section><div class="tsd-signature"><span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">IAuthStrategy</span> <span class="tsd-signature-symbol">{</span><br/>    <a class="tsd-kind-property" href="#name">name</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-property" href="#priority">priority</a><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#authenticate-1">authenticate</a><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">req</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Request</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#canhandle-1">canHandle</a><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">req</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Request</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#generatetoken-1">generateToken</a><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><br/>        <span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">:</span> <a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.GenerateTokenPayload.html" class="tsd-signature-type tsd-kind-interface">GenerateTokenPayload</a><span class="tsd-signature-symbol">,</span><br/>        <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.AuthCredentials.html" class="tsd-signature-type tsd-kind-interface">AuthCredentials</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#revoketoken-1">revokeToken</a><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">token</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/>    <a class="tsd-kind-call-signature" href="#verifytoken-1">verifyToken</a><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">token</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br/><span class="tsd-signature-symbol">}</span></div><section class="tsd-panel"><h4>Implemented by</h4><ul class="tsd-hierarchy"><li><a href="../classes/Auth.BaseAuthStrategy.html" class="tsd-signature-type tsd-kind-class">BaseAuthStrategy</a></li></ul></section><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L39">auth/strategies/IAuthStrategy.ts:39</a></li></ul></aside><div style="margin-top: 64px"></div><details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h2>Properties</h2></summary><section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="name"><code class="tsd-tag">Readonly</code><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><div class="tsd-comment tsd-typography"><p>Unique name for this strategy
+Used for logging and identification</p>
+</div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L44">auth/strategies/IAuthStrategy.ts:44</a></li></ul></aside></section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="priority"><code class="tsd-tag">Readonly</code><span>priority</span><a href="#priority" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><div class="tsd-signature"><span class="tsd-kind-property">priority</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div><div class="tsd-comment tsd-typography"><p>Priority for strategy execution (lower = higher priority)
+Strategies are tried in priority order until one succeeds</p>
+<p>Recommended ranges:</p>
+<ul>
+<li>1-10: High priority (API keys, service tokens)</li>
+<li>10-50: Normal priority (JWT, session)</li>
+<li>50-100: Low priority (fallback strategies)</li>
+</ul>
+</div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L55">auth/strategies/IAuthStrategy.ts:55</a></li></ul></aside></section></section></details><details class="tsd-panel-group tsd-member-group tsd-accordion" open><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h2>Methods</h2></summary><section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="authenticate"><span>authenticate</span><a href="#authenticate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="authenticate-1"><span class="tsd-kind-call-signature">authenticate</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">req</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Request</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span><a href="#authenticate-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Attempt to authenticate the request</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">req</span>: <span class="tsd-signature-type">Request</span></span><div class="tsd-comment tsd-typography"><p>Express request object</p>
+</div></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span></h4><p>IAuthUser if successful, null if this strategy doesn't apply</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-throws"><h4 class="tsd-anchor-link" id="throws">Throws<a href="#throws" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><p>AuthenticationError for explicit failures (invalid token, expired, etc.)</p>
+<p>Return null when:</p>
+<ul>
+<li>The required credentials aren't present (no token, no cookie)</li>
+<li>The strategy simply doesn't apply to this request</li>
+</ul>
+<p>Throw AuthenticationError when:</p>
+<ul>
+<li>Credentials are present but invalid</li>
+<li>Token is expired</li>
+<li>Signature verification fails</li>
+</ul>
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L73">auth/strategies/IAuthStrategy.ts:73</a></li></ul></aside></div></li></ul></section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="canhandle"><code class="tsd-tag">Optional</code><span>can<wbr/>Handle</span><a href="#canhandle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="canhandle-1"><span class="tsd-kind-call-signature">canHandle</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">req</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Request</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><a href="#canhandle-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Optional: Check if this strategy can handle this request
+Use this for early filtering before attempting authentication</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">req</span>: <span class="tsd-signature-type">Request</span></span><div class="tsd-comment tsd-typography"><p>Express request object</p>
+</div></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><p>false to skip this strategy entirely</p>
+<div class="tsd-comment tsd-typography"><div class="tsd-tag-example"><h4 class="tsd-anchor-link" id="example-1">Example<a href="#example-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h4><pre><code class="typescript"><span class="hl-4">canHandle</span><span class="hl-2">(</span><span class="hl-1">req</span><span class="hl-2">: </span><span class="hl-1">Request</span><span class="hl-2">): </span><span class="hl-1">boolean</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-8">// Only handle requests with X-API-Key header</span><br/><span class="hl-2">  </span><span class="hl-7">return</span><span class="hl-2"> !!</span><span class="hl-1">req</span><span class="hl-2">.</span><span class="hl-1">headers</span><span class="hl-2">[</span><span class="hl-0">&#39;x-api-key&#39;</span><span class="hl-2">];</span><br/><span class="hl-2">}</span>
+</code><button type="button">Copy</button></pre>
+
+</div></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L121">auth/strategies/IAuthStrategy.ts:121</a></li></ul></aside></div></li></ul></section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="generatetoken"><code class="tsd-tag">Optional</code><span>generate<wbr/>Token</span><a href="#generatetoken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="generatetoken-1"><span class="tsd-kind-call-signature">generateToken</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><br/>    <span class="tsd-kind-parameter">payload</span><span class="tsd-signature-symbol">:</span> <a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.GenerateTokenPayload.html" class="tsd-signature-type tsd-kind-interface">GenerateTokenPayload</a><span class="tsd-signature-symbol">,</span><br/>    <span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br/><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.AuthCredentials.html" class="tsd-signature-type tsd-kind-interface">AuthCredentials</a><span class="tsd-signature-symbol">&gt;</span><a href="#generatetoken-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Optional: Generate credentials/tokens for a user
+Not all strategies support token generation (e.g., session-based)</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">payload</span>: <a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.GenerateTokenPayload.html" class="tsd-signature-type tsd-kind-interface">GenerateTokenPayload</a></span><div class="tsd-comment tsd-typography"><p>User data to encode in the token</p>
+</div></li><li><span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></span><div class="tsd-comment tsd-typography"><p>Additional generation options</p>
+</div></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.AuthCredentials.html" class="tsd-signature-type tsd-kind-interface">AuthCredentials</a><span class="tsd-signature-symbol">&gt;</span></h4><p>AuthCredentials with token(s) and metadata</p>
+<aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L83">auth/strategies/IAuthStrategy.ts:83</a></li></ul></aside></div></li></ul></section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="revoketoken"><code class="tsd-tag">Optional</code><span>revoke<wbr/>Token</span><a href="#revoketoken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="revoketoken-1"><span class="tsd-kind-call-signature">revokeToken</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">token</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><a href="#revoketoken-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Optional: Revoke/invalidate a token
+Useful for logout, token rotation, or blacklisting</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">token</span>: <span class="tsd-signature-type">string</span></span><div class="tsd-comment tsd-typography"><p>The token to revoke</p>
+</div></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4><p>true if revoked, false if not found or already revoked</p>
+<aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L104">auth/strategies/IAuthStrategy.ts:104</a></li></ul></aside></div></li></ul></section><section class="tsd-panel tsd-member"><h3 class="tsd-anchor-link" id="verifytoken"><code class="tsd-tag">Optional</code><span>verify<wbr/>Token</span><a href="#verifytoken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul class="tsd-signatures"><li class=""><div class="tsd-signature tsd-anchor-link" id="verifytoken-1"><span class="tsd-kind-call-signature">verifyToken</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">token</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span><a href="#verifytoken-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></div><div class="tsd-description"><div class="tsd-comment tsd-typography"><p>Optional: Verify a token without the full request context
+Useful for token validation in non-HTTP contexts</p>
+</div><div class="tsd-parameters"><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameter-list"><li><span><span class="tsd-kind-parameter">token</span>: <span class="tsd-signature-type">string</span></span><div class="tsd-comment tsd-typography"><p>The raw token string</p>
+</div></li></ul></div><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/Auth-1.html" class="tsd-signature-type tsd-kind-namespace">Auth</a><span class="tsd-signature-symbol">.</span><a href="Auth.IAuthUser.html" class="tsd-signature-type tsd-kind-interface">IAuthUser</a><span class="tsd-signature-symbol">&gt;</span></h4><p>User info if valid, null if invalid</p>
+<aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/theunionsquare/mangojs/blob/98ab639ed5ac2cbc93c10a78c293135a2f304d20/src/core/auth/strategies/IAuthStrategy.ts#L95">auth/strategies/IAuthStrategy.ts:95</a></li></ul></aside></div></li></ul></section></section></details></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-page-navigation"><details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Properties"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties</summary><div><a href="#name"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>name</span></a><a href="#priority"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>priority</span></a></div></details><details open class="tsd-accordion tsd-page-navigation-section"><summary class="tsd-accordion-summary" data-key="section-Methods"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods</summary><div><a href="#authenticate"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>authenticate</span></a><a href="#canhandle"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>can<wbr/>Handle</span></a><a href="#generatetoken"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>generate<wbr/>Token</span></a><a href="#revoketoken"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>revoke<wbr/>Token</span></a><a href="#verifytoken"><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>verify<wbr/>Token</span></a></div></details></div></div><div class="site-menu"><nav id="tsd-sidebar-links" class="tsd-navigation"><a href="https://github.com/theunionsquare/mangojs" class="tsd-nav-link">GitHub</a><a href="https://www.npmjs.com/package/@theunionsquare/mangojs-core" class="tsd-nav-link">NPM</a></nav><nav class="tsd-navigation"><a href="../modules.html">MangoJS - v0.0.1-4</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><div class="overlay"></div></body></html>
