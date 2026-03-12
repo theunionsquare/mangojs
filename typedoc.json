@@ -2,8 +2,6 @@
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./src/index.ts"],
   "out": "./docs-site/latest",
-  "plugin": ["typedoc-theme-fresh"],
-  "theme": "fresh",
   "name": "MangoJS",
   "includeVersion": true,
   "excludePrivate": true,
@@ -16,6 +14,12 @@
     "NPM": "https://www.npmjs.com/package/@theunionsquare/mangojs-core"
   },
   "tsconfig": "./tsconfig.json",
+  "categorizeByGroup": true,
+  "searchInComments": true,
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
   "validation": {
     "notExported": true,
     "invalidLink": true,

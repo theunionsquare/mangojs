@@ -50,7 +50,7 @@ endif
 	pnpm docs:version $(VERSION)
 
 docs-serve:
-	@echo "Starting docs server at http://localhost:3000"
+	@echo "Starting docs server at http://localhost:8080"
 	pnpm docs:serve
 
 # Release
