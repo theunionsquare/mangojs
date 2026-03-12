@@ -44,7 +44,10 @@ export class ResendProvider implements IEmailProvider {
         body,
       });
 
-      const responseData = await response.json();
+      const responseData = (await response.json()) as {
+        message?: string;
+        id?: string;
+      };
 
       if (!response.ok) {
         return {

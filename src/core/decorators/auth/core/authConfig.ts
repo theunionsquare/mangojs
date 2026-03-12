@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { AuthorizationError } from "./authErrors";
+import { IAuthContext } from "../../../auth/types";
 
 /**
  * Error handler function type
@@ -170,6 +171,11 @@ export class AuthConfig {
   /**
    * Extract user context from request using configured extractor
    *
+   * Checks in order:
+   * 1. req.authContext (new strategy-based system)
+   * 2. Custom userContextExtractor (if configured)
+   * 3. Path-based extraction from req[userObjectPath] (legacy)
+   *
    * @param req - Express request object
    * @returns User context with userType, groups, and raw user object
    */
@@ -178,6 +184,16 @@ export class AuthConfig {
     groups?: string[];
     raw?: any;
   } | null {
+    // First check for new authContext (strategy-based system)
+    const authContext = (req as any).authContext as IAuthContext | undefined;
+    if (authContext?.isAuthenticated && authContext.user) {
+      return {
+        userType: authContext.user.userType,
+        groups: authContext.user.groups || [],
+        raw: authContext.user,
+      };
+    }
+
     // Use custom extractor if provided
     if (this.config.userContextExtractor) {
       const context = this.config.userContextExtractor(req);
@@ -190,7 +206,7 @@ export class AuthConfig {
       };
     }
 
-    // Use path-based extraction
+    // Use path-based extraction (legacy)
     const user = this.getNestedProperty(req, this.config.userObjectPath);
     if (!user || typeof user !== "object") {
       return null;

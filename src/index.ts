@@ -1,2 +1,4 @@
 export * from "./core";
-export * as services from "./services";
+// deprecated: will be removed in future versions.
+// This repo contains only the core of the framework.
+//export * as services from "./services";

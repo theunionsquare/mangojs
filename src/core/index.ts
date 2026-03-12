@@ -27,7 +27,24 @@ export { Cache } from "./cache";
 // AUTHENTICATION INTERFACES
 export * as Auth from "./auth";
 
-//export * from './auth/authentication'
+// New auth types (direct exports for convenience)
+export type {
+  IAuthUser,
+  IAuthContext,
+  AuthCredentials,
+  JWTStrategyOptions,
+  ApiKeyStrategyOptions,
+  AuthCookieOptions,
+  GenerateTokenPayload,
+} from "./auth/types";
+export { AuthContext } from "./auth/AuthContext";
+export { AuthStrategyRegistry } from "./auth/AuthStrategyRegistry";
+export { AuthenticationError } from "./auth/errors/AuthenticationError";
+export { AUTH_STRATEGY_TAG } from "./auth/strategies/IAuthStrategy";
+export type { IAuthStrategy } from "./auth/strategies/IAuthStrategy";
+
+// Legacy auth exports (deprecated)
+/** @deprecated Use IAuthStrategy instead */
 export * from "./auth/IAuthorization";
 
 // database
@@ -70,6 +87,7 @@ export * as clients from "./clients";
 // Export Types
 export * as Types from "./types";
 
+// Export Integrations
 export * as Integrations from "./integrations";
 
 export * as mappers from "./mappers";
@@ -85,7 +103,16 @@ export { Schedule, ScheduledTask, ScheduleRegistry } from "./scheduler";
 // QUEUE
 export * as Queue from "./queue";
 export { QueueClient, QueueManager, QueueWorker } from "./queue";
-export type { IQueueClient, IQueueWorkerHandler, RedisConfig, JobOptions, JobData, WorkerOptions, QueueWorkerConstructor } from "./queue";
+export type {
+  IQueueClient,
+  IQueueWorkerHandler,
+  RedisConfig,
+  Job,
+  JobOptions,
+  JobData,
+  WorkerOptions,
+  QueueWorkerConstructor,
+} from "./queue";
 
 // BUILDERS
 export { WorkerBuilder } from "./builders/WorkerBuilder";

@@ -40,7 +40,7 @@ import { INVERSITY_TYPES, Integrations } from "@theunionsquare/mangojs-core";
 
 container
   .bind<Integrations.email.EmailServiceFactory>(INVERSITY_TYPES.EmailServiceFactory)
-  .to(Integrations.email.EmailServiceFactory);
+  .toConstantValue(new Integrations.email.EmailServiceFactory());
 ```
 
 ### Option 2: Set Provider at Bind Time

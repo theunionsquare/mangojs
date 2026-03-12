@@ -55,6 +55,7 @@
     "express": "^4.18.0"
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
     "axios": "^1.13.2",
     "bullmq": "^5.66.5",
     "console-table-printer": "^2.12.1",
@@ -63,6 +64,7 @@
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "inversify": "^7.10.6",
+    "jsonwebtoken": "^9.0.3",
     "mongodb": "^5.9.2",
     "mongoose": "^8.19.1",
     "node-schedule": "^2.1.1",

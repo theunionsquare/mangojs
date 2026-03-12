@@ -2,12 +2,12 @@ import {
   Containers,
   Auth,
   INVERSITY_TYPES,
-  Providers,
   persistanceContext,
   databasemanager,
   IPersistenceContext,
   IDatabaseManagerFactory,
 } from "@theunionsquare/mangojs-core";
+import { IEmailService, EmailServiceDummy } from "../../../core/integrations/emails";
 
 import { AuthorizationService } from "./services/authorizationService";
 import { IAMEntities } from "./db/models";
@@ -40,8 +40,8 @@ container
         password: POSTGRES_PASSWORD,
       },
       IAMEntities,
-      syncronize
-    )
+      syncronize,
+    ),
   );
 container
   .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
@@ -52,8 +52,8 @@ container
   .toService(AuthorizationService);
 
 container
-  .bind<Providers.email.IEmailService>(INVERSITY_TYPES.EmailService)
-  .toConstantValue(new Providers.email.EmailServiceDummy());
+  .bind<IEmailService>(INVERSITY_TYPES.EmailService)
+  .toConstantValue(new EmailServiceDummy());
 
 export { container as IAMDefaultContainer };
 export { containerManager as IAMContainerManager };

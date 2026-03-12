@@ -2,6 +2,33 @@ import { Request, Response } from 'express'
 import { IAuthValidator } from './IAuthValidator'
 import { AuthUser } from '../types/entities/authUser'
 
+/**
+ * @deprecated Create a custom `IAuthStrategy` that calls your remote authentication service.
+ *
+ * @example
+ * ```typescript
+ * class RemoteAuthStrategy extends BaseAuthStrategy {
+ *   readonly name = 'remote';
+ *   readonly priority = 10;
+ *
+ *   async authenticate(req: Request): Promise<IAuthUser | null> {
+ *     const token = this.extractBearerToken(req);
+ *     if (!token) return null;
+ *
+ *     const response = await fetch(`${this.baseUrl}/api/v1/auth/verify`, {
+ *       method: 'POST',
+ *       headers: { Authorization: `Bearer ${token}` }
+ *     });
+ *
+ *     if (!response.ok) return null;
+ *     const data = await response.json();
+ *     return data.user;
+ *   }
+ * }
+ * ```
+ *
+ * Will be removed in v2.0.0
+ */
 export class RemoteAuthValidator implements IAuthValidator {
     private readonly baseUrl: string
 

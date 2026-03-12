@@ -40,7 +40,10 @@ export class BrevoProvider implements IEmailProvider {
         body,
       });
 
-      const responseData = await response.json();
+      const responseData = (await response.json()) as {
+        message?: string;
+        messageId?: string;
+      };
 
       if (!response.ok) {
         return {
