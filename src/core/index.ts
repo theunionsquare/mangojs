@@ -43,10 +43,6 @@ export { AuthenticationError } from "./auth/errors/AuthenticationError";
 export { AUTH_STRATEGY_TAG } from "./auth/strategies/IAuthStrategy";
 export type { IAuthStrategy } from "./auth/strategies/IAuthStrategy";
 
-// Legacy auth exports (deprecated)
-/** @deprecated Use IAuthStrategy instead */
-export * from "./auth/IAuthorization";
-
 // database
 export * as databasemanager from "./databasemanager";
 export * as databases from "./databases";

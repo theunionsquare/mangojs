@@ -4,7 +4,7 @@ import { ApplicationExpress } from '../applications/ApplicationExpress'
 import { IApplicationPreCheck } from '../types'
 import swaggerUi from 'swagger-ui-express'
 import { middlewareRequestTime } from '../middlewares/requestTime'
-import { middlewareUserInfo } from '../middlewares/userInfo'
+import { middlewareAuthContext } from '../middlewares/userInfo'
 import { ScheduleRegistry } from '../scheduler/ScheduleRegistry'
 import { ScheduledTaskConstructor } from '../scheduler/types'
 
@@ -52,7 +52,7 @@ export class ServerBuilder {
         }
         // Add Default uses
         if (this.__userAuthentication) {
-            this.express.instance.use(middlewareUserInfo)
+            this.express.instance.use(middlewareAuthContext)
         }
         this.express.instance.use(middlewareRequestTime)
         // Load routes
