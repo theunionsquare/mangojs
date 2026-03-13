@@ -4,7 +4,7 @@ import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types";
 /**
  * Symbol for multi-inject binding
  * Use this to bind multiple strategies to the container
- *
+ * @category Strategies
  * @example
  * ```typescript
  * container.bind(AUTH_STRATEGY_TAG).to(JWTStrategy);
@@ -18,7 +18,7 @@ export const AUTH_STRATEGY_TAG = Symbol.for("AuthStrategy");
  *
  * Implement this interface to create custom authentication mechanisms.
  * Strategies are tried in priority order (lower number = higher priority).
- *
+ * @category Strategies
  * @example
  * ```typescript
  * @injectable()
@@ -82,7 +82,7 @@ export interface IAuthStrategy {
    */
   generateToken?(
     payload: GenerateTokenPayload,
-    options?: Record<string, any>
+    options?: Record<string, any>,
   ): Promise<AuthCredentials>;
 
   /**

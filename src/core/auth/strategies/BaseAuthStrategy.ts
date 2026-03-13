@@ -4,11 +4,17 @@ import { IAuthStrategy } from "./IAuthStrategy";
 import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types";
 
 /**
+ *  @module Authentication
+ *
+ */
+
+/**
  * Abstract base class for authentication strategies
  *
  * Provides common functionality and helper methods for extracting
  * credentials from requests. Extend this class to create custom strategies.
  *
+ * @category Strategies
  * @example
  * ```typescript
  * @injectable()
@@ -67,7 +73,7 @@ export abstract class BaseAuthStrategy implements IAuthStrategy {
   protected extractBearerToken(
     req: Request,
     headerName: string = "authorization",
-    scheme: string = "bearer"
+    scheme: string = "bearer",
   ): string | null {
     const authHeader = req.headers[headerName.toLowerCase()];
     if (!authHeader || typeof authHeader !== "string") return null;
@@ -93,7 +99,10 @@ export abstract class BaseAuthStrategy implements IAuthStrategy {
    * const token = this.extractCookieToken(req, 'auth_token');
    * ```
    */
-  protected extractCookieToken(req: Request, cookieName: string): string | null {
+  protected extractCookieToken(
+    req: Request,
+    cookieName: string,
+  ): string | null {
     const cookies = (req as any).cookies;
     if (!cookies || typeof cookies !== "object") return null;
     return cookies[cookieName] || null;
@@ -114,7 +123,7 @@ export abstract class BaseAuthStrategy implements IAuthStrategy {
    */
   protected extractApiKey(
     req: Request,
-    headerName: string = "x-api-key"
+    headerName: string = "x-api-key",
   ): string | null {
     const value = req.headers[headerName.toLowerCase()];
     if (!value || typeof value !== "string") return null;
@@ -141,7 +150,9 @@ export abstract class BaseAuthStrategy implements IAuthStrategy {
   protected getClientIp(req: Request): string | null {
     const forwardedFor = req.headers["x-forwarded-for"];
     if (forwardedFor) {
-      const ips = (typeof forwardedFor === "string" ? forwardedFor : forwardedFor[0]).split(",");
+      const ips = (
+        typeof forwardedFor === "string" ? forwardedFor : forwardedFor[0]
+      ).split(",");
       return ips[0]?.trim() || null;
     }
 

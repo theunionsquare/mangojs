@@ -10,6 +10,11 @@ import {
 } from "../types";
 import { AuthenticationError } from "../errors/AuthenticationError";
 
+/**
+ * @module Authentication
+ * @description Type definitions for authentication module, including user and context interfaces, token generation payload, and strategy configuration options.
+ */
+
 // Dynamic import for jsonwebtoken - it's an optional peer dependency
 let jwt: typeof import("jsonwebtoken") | null = null;
 try {
@@ -21,7 +26,9 @@ try {
 /**
  * Default JWT strategy options
  */
-const DEFAULT_OPTIONS: Required<Omit<JWTStrategyOptions, "secret" | "publicKey" | "privateKey" | "validator">> = {
+const DEFAULT_OPTIONS: Required<
+  Omit<JWTStrategyOptions, "secret" | "publicKey" | "privateKey" | "validator">
+> = {
   algorithm: "HS256",
   expiresIn: 3600,
   issuer: "",
@@ -56,6 +63,7 @@ const DEFAULT_OPTIONS: Required<Omit<JWTStrategyOptions, "secret" | "publicKey" 
  * - Cookies
  * - Both (tries header first, then cookie)
  *
+ * @category Strategies
  * @example
  * ```typescript
  * // Symmetric JWT via header
@@ -117,7 +125,7 @@ export class JWTStrategy extends BaseAuthStrategy {
   private validateOptions(): void {
     if (!jwt) {
       throw new Error(
-        "JWTStrategy requires 'jsonwebtoken' package. Install it with: npm install jsonwebtoken"
+        "JWTStrategy requires 'jsonwebtoken' package. Install it with: npm install jsonwebtoken",
       );
     }
 
@@ -127,13 +135,13 @@ export class JWTStrategy extends BaseAuthStrategy {
 
     if (isSymmetric && !this.options.secret) {
       throw new Error(
-        `JWTStrategy: 'secret' is required for symmetric algorithm ${algo}`
+        `JWTStrategy: 'secret' is required for symmetric algorithm ${algo}`,
       );
     }
 
     if (isAsymmetric && !this.options.publicKey) {
       throw new Error(
-        `JWTStrategy: 'publicKey' is required for asymmetric algorithm ${algo}`
+        `JWTStrategy: 'publicKey' is required for asymmetric algorithm ${algo}`,
       );
     }
   }
@@ -169,7 +177,9 @@ export class JWTStrategy extends BaseAuthStrategy {
 
     try {
       const verifyOptions: import("jsonwebtoken").VerifyOptions = {
-        algorithms: [this.options.algorithm as import("jsonwebtoken").Algorithm],
+        algorithms: [
+          this.options.algorithm as import("jsonwebtoken").Algorithm,
+        ],
         clockTolerance: this.options.clockTolerance,
         ignoreExpiration: this.options.ignoreExpiration,
       };
@@ -178,7 +188,12 @@ export class JWTStrategy extends BaseAuthStrategy {
         verifyOptions.issuer = this.options.issuer;
       }
 
-      if (this.options.audience && (Array.isArray(this.options.audience) ? this.options.audience.length > 0 : true)) {
+      if (
+        this.options.audience &&
+        (Array.isArray(this.options.audience)
+          ? this.options.audience.length > 0
+          : true)
+      ) {
         const audience = this.options.audience;
         if (Array.isArray(audience) && audience.length > 0) {
           verifyOptions.audience = audience as [string, ...string[]];
@@ -188,7 +203,11 @@ export class JWTStrategy extends BaseAuthStrategy {
       }
 
       const secret = this.getVerificationKey();
-      const decoded = jwt!.verify(token, secret, verifyOptions) as import("jsonwebtoken").JwtPayload;
+      const decoded = jwt!.verify(
+        token,
+        secret,
+        verifyOptions,
+      ) as import("jsonwebtoken").JwtPayload;
 
       return this.mapPayloadToUser(decoded);
     } catch (error: any) {
@@ -206,7 +225,10 @@ export class JWTStrategy extends BaseAuthStrategy {
         throw AuthenticationError.invalidToken(error.message);
       }
       if (error.name === "NotBeforeError") {
-        throw AuthenticationError.custom("Token not yet valid", "TOKEN_NOT_ACTIVE");
+        throw AuthenticationError.custom(
+          "Token not yet valid",
+          "TOKEN_NOT_ACTIVE",
+        );
       }
 
       // Re-throw AuthenticationErrors
@@ -224,7 +246,7 @@ export class JWTStrategy extends BaseAuthStrategy {
    */
   async generateToken(
     payload: GenerateTokenPayload,
-    options?: { expiresIn?: number }
+    options?: { expiresIn?: number },
   ): Promise<AuthCredentials> {
     if (!jwt) {
       throw new Error("JWTStrategy requires 'jsonwebtoken' package");
@@ -253,7 +275,12 @@ export class JWTStrategy extends BaseAuthStrategy {
       signOptions.issuer = this.options.issuer;
     }
 
-    if (this.options.audience && (Array.isArray(this.options.audience) ? this.options.audience.length > 0 : true)) {
+    if (
+      this.options.audience &&
+      (Array.isArray(this.options.audience)
+        ? this.options.audience.length > 0
+        : true)
+    ) {
       signOptions.audience = this.options.audience;
     }
 
@@ -280,7 +307,10 @@ export class JWTStrategy extends BaseAuthStrategy {
     }
 
     // Add cookie configuration if using cookies
-    if (this.options.extractFrom === "cookie" || this.options.extractFrom === "both") {
+    if (
+      this.options.extractFrom === "cookie" ||
+      this.options.extractFrom === "both"
+    ) {
       const cookieOptions: AuthCookieOptions = {
         ...this.options.cookie,
       };
@@ -311,7 +341,9 @@ export class JWTStrategy extends BaseAuthStrategy {
     try {
       const secret = this.getVerificationKey();
       const decoded = jwt.verify(token, secret, {
-        algorithms: [this.options.algorithm as import("jsonwebtoken").Algorithm],
+        algorithms: [
+          this.options.algorithm as import("jsonwebtoken").Algorithm,
+        ],
       }) as import("jsonwebtoken").JwtPayload;
 
       return this.mapPayloadToUser(decoded);
@@ -360,7 +392,7 @@ export class JWTStrategy extends BaseAuthStrategy {
     }
     if (!this.options.privateKey) {
       throw new Error(
-        `JWTStrategy: 'privateKey' is required for signing with ${this.options.algorithm}`
+        `JWTStrategy: 'privateKey' is required for signing with ${this.options.algorithm}`,
       );
     }
     return this.options.privateKey;
@@ -369,7 +401,9 @@ export class JWTStrategy extends BaseAuthStrategy {
   /**
    * Map JWT payload to IAuthUser
    */
-  private mapPayloadToUser(payload: import("jsonwebtoken").JwtPayload): IAuthUser {
+  private mapPayloadToUser(
+    payload: import("jsonwebtoken").JwtPayload,
+  ): IAuthUser {
     return {
       id: payload.sub || payload.id || payload.uid || "",
       userType: payload.userType || payload.type || payload.role || "user",
@@ -404,8 +438,8 @@ export class JWTStrategy extends BaseAuthStrategy {
               "aud",
               "jti",
               "nbf",
-            ].includes(key)
-        )
+            ].includes(key),
+        ),
       ),
     };
   }

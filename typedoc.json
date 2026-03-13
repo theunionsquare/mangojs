@@ -1,28 +1,12 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./src/index.ts"],
-  "out": "./docs-site/latest",
+  "out": "./docs/latest",
   "name": "MangoJS",
-  "includeVersion": true,
-  "excludePrivate": true,
-  "excludeProtected": false,
-  "excludeInternal": true,
-  "excludeExternals": true,
-  "readme": "./README.md",
-  "navigationLinks": {
-    "GitHub": "https://github.com/theunionsquare/mangojs",
-    "NPM": "https://www.npmjs.com/package/@theunionsquare/mangojs-core"
-  },
-  "tsconfig": "./tsconfig.json",
-  "categorizeByGroup": true,
-  "searchInComments": true,
+  "groupOrder": ["Registry", "Strategies", "Context", "Types", "Errors", "*"],
+  "categorizeByGroup": false,
   "navigation": {
-    "includeCategories": true,
-    "includeGroups": true
-  },
-  "validation": {
-    "notExported": true,
-    "invalidLink": true,
-    "notDocumented": false
+    "includeGroups": true,
+    "includeCategories": true
   }
 }

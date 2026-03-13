@@ -37,7 +37,7 @@ dev:
 
 clean:
 	rm -rf dist
-	rm -rf docs-site
+	rm -rf docs
 
 # Documentation
 docs:
@@ -64,7 +64,7 @@ endif
 	@echo "Generating documentation for v$(VERSION)..."
 	pnpm docs:version $(VERSION)
 	@echo "Committing documentation..."
-	git add docs-site
+	git add docs
 	git commit -m "docs: add v$(VERSION) documentation"
 	@echo "Pushing to remote..."
 	git push

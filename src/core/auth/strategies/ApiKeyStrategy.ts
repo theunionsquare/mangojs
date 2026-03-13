@@ -5,6 +5,11 @@ import { IAuthUser, ApiKeyStrategyOptions } from "../types";
 import { AuthenticationError } from "../errors/AuthenticationError";
 
 /**
+ * @module Authentication
+ * @description Type definitions for authentication module, including user and context interfaces, token generation payload, and strategy configuration options.
+ */
+
+/**
  * Default API Key strategy options
  */
 const DEFAULT_OPTIONS = {
@@ -17,6 +22,8 @@ const DEFAULT_OPTIONS = {
  *
  * Authenticates requests using an API key provided in a header or query parameter.
  * You must provide a validator function that verifies the key and returns user info.
+ *
+ * @category Strategies
  *
  * @example
  * ```typescript
@@ -53,7 +60,9 @@ export class ApiKeyStrategy extends BaseAuthStrategy {
   readonly name = "apikey";
   readonly priority: number;
 
-  private options: Required<Pick<ApiKeyStrategyOptions, "headerName" | "queryParam">> &
+  private options: Required<
+    Pick<ApiKeyStrategyOptions, "headerName" | "queryParam">
+  > &
     Pick<ApiKeyStrategyOptions, "validator">;
 
   constructor(options: ApiKeyStrategyOptions) {
@@ -107,7 +116,7 @@ export class ApiKeyStrategy extends BaseAuthStrategy {
       console.error("[ApiKeyStrategy] Validation error:", error);
       throw AuthenticationError.custom(
         "API key validation failed",
-        "API_KEY_VALIDATION_ERROR"
+        "API_KEY_VALIDATION_ERROR",
       );
     }
   }

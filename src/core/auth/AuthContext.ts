@@ -6,6 +6,8 @@ import { IAuthContext, IAuthUser } from "./types";
  * Attached to requests after authentication middleware runs.
  * Provides helper methods for authorization checks.
  *
+ * @module Authentication
+ * @category Context
  * @example
  * ```typescript
  * // In middleware
@@ -30,7 +32,7 @@ export class AuthContext implements IAuthContext {
   constructor(
     user: IAuthUser | null,
     strategy: string | null,
-    authenticatedAt?: Date
+    authenticatedAt?: Date,
   ) {
     this.user = user;
     this.strategy = strategy;

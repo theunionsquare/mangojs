@@ -18,30 +18,30 @@ export * as Containers from "./container";
 export * as Loggers from "./loggers";
 export * as Decorators from "./decorators";
 // TO DO: Remove it
-export * from "./decorators";
+//export * from "./decorators";
 
 // CACHE
 export * as cache from "./cache";
 export { Cache } from "./cache";
 
 // AUTHENTICATION INTERFACES
-export * as Auth from "./auth";
+export * as Auth1 from "./auth";
 
 // New auth types (direct exports for convenience)
-export type {
-  IAuthUser,
-  IAuthContext,
-  AuthCredentials,
-  JWTStrategyOptions,
-  ApiKeyStrategyOptions,
-  AuthCookieOptions,
-  GenerateTokenPayload,
-} from "./auth/types";
-export { AuthContext } from "./auth/AuthContext";
-export { AuthStrategyRegistry } from "./auth/AuthStrategyRegistry";
-export { AuthenticationError } from "./auth/errors/AuthenticationError";
-export { AUTH_STRATEGY_TAG } from "./auth/strategies/IAuthStrategy";
-export type { IAuthStrategy } from "./auth/strategies/IAuthStrategy";
+//export type {
+//  IAuthUser,
+//  IAuthContext,
+//  AuthCredentials,
+//  JWTStrategyOptions,
+//  ApiKeyStrategyOptions,
+//  AuthCookieOptions,
+//  GenerateTokenPayload,
+//} from "./auth/types";
+//export { AuthContext } from "./auth/AuthContext";
+//export { AuthStrategyRegistry } from "./auth/AuthStrategyRegistry";
+//export { AuthenticationError } from "./auth/errors/AuthenticationError";
+//export { AUTH_STRATEGY_TAG } from "./auth/strategies/IAuthStrategy";
+//export type { IAuthStrategy } from "./auth/strategies/IAuthStrategy";
 
 // database
 export * as databasemanager from "./databasemanager";
@@ -112,3 +112,8 @@ export type {
 
 // BUILDERS
 export { WorkerBuilder } from "./builders/WorkerBuilder";
+
+/// NEW EXPORT ORGANIZATION
+
+// AUTHENTICATION
+export * as Aut from "./auth";

@@ -1,7 +1,12 @@
 import { Request } from "express";
+/**
+ * @module Authentication
+ * @description Type definitions for authentication module, including user and context interfaces, token generation payload, and strategy configuration options.
+ */
 
 /**
  * Cookie options for token storage
+ * @group Events
  */
 export interface AuthCookieOptions {
   httpOnly?: boolean;
@@ -15,6 +20,7 @@ export interface AuthCookieOptions {
 /**
  * Extensible user interface - no hardcoded enum
  * Developers can use any string for userType
+ *  @group EventCategory
  */
 export interface IAuthUser {
   /** Unique identifier for the user */
@@ -130,7 +136,16 @@ export interface JWTStrategyOptions {
   // --- Algorithm ---
 
   /** JWT algorithm to use */
-  algorithm?: "HS256" | "HS384" | "HS512" | "RS256" | "RS384" | "RS512" | "ES256" | "ES384" | "ES512";
+  algorithm?:
+    | "HS256"
+    | "HS384"
+    | "HS512"
+    | "RS256"
+    | "RS384"
+    | "RS512"
+    | "ES256"
+    | "ES384"
+    | "ES512";
 
   // --- Token Configuration ---
 

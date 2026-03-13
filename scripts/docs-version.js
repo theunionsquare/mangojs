@@ -18,7 +18,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const DOCS_DIR = path.join(__dirname, '..', 'docs-site');
+const DOCS_DIR = path.join(__dirname, '..', 'docs');
 const VERSIONS_FILE = path.join(DOCS_DIR, 'versions.json');
 
 function main() {
@@ -94,9 +94,9 @@ function main() {
   generateLandingPage(versions);
 
   console.log(`\n✅ Documentation for version ${version} generated successfully!`);
-  console.log(`   - Version docs: docs-site/${version}/`);
-  console.log(`   - Latest docs: docs-site/latest/`);
-  console.log(`   - Landing page: docs-site/index.html`);
+  console.log(`   - Version docs: docs/${version}/`);
+  console.log(`   - Latest docs: docs/latest/`);
+  console.log(`   - Landing page: docs/index.html`);
   console.log(`\n📝 Available versions: ${versions.join(', ')}\n`);
 }
 

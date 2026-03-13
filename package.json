@@ -37,9 +37,9 @@
     "prepublishOnly": "pnpm run build",
     "release": "release-it",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "typedoc",
+    "docs:build": "node ./node_modules/typedoc/bin/typedoc",
     "docs:version": "node scripts/docs-version.js",
-    "docs:serve": "npx http-server docs-site -o"
+    "docs:serve": "npx http-server docs/latest -o"
   },
   "keywords": [
     "nodejs",
@@ -79,6 +79,7 @@
     "release-it": "^19.0.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "typedoc-plugin-markdown": "^4.10.0",
     "typeorm": "^0.3.26",
     "uuid": "^11.1.0"
   },

@@ -11,6 +11,9 @@ import { AuthenticationError } from "./errors/AuthenticationError";
  * Uses Inversify's @multiInject to automatically collect all bound strategies.
  * Strategies are sorted by priority and tried in order during authentication.
  *
+ * @module Authentication
+ * @group Registry
+ *
  * @example
  * ```typescript
  * // Bind strategies in your container
@@ -32,14 +35,14 @@ export class AuthStrategyRegistry {
   constructor(
     @multiInject(AUTH_STRATEGY_TAG)
     @optional()
-    strategies: IAuthStrategy[] = []
+    strategies: IAuthStrategy[] = [],
   ) {
     // Sort strategies by priority (lower = higher priority)
     this.strategies = [...strategies].sort((a, b) => a.priority - b.priority);
 
     if (this.strategies.length > 0) {
       console.log(
-        `[AuthStrategyRegistry] Registered ${this.strategies.length} strategies: ${this.strategies.map((s) => `${s.name}(${s.priority})`).join(", ")}`
+        `[AuthStrategyRegistry] Registered ${this.strategies.length} strategies: ${this.strategies.map((s) => `${s.name}(${s.priority})`).join(", ")}`,
       );
     }
   }
@@ -107,7 +110,7 @@ export class AuthStrategyRegistry {
         // Log other errors but continue to next strategy
         console.error(
           `[AuthStrategyRegistry] Strategy ${strategy.name} error:`,
-          error instanceof Error ? error.message : error
+          error instanceof Error ? error.message : error,
         );
       }
     }
@@ -139,7 +142,7 @@ export class AuthStrategyRegistry {
   async generateCredentials(
     strategyName: string,
     payload: GenerateTokenPayload,
-    options?: Record<string, any>
+    options?: Record<string, any>,
   ): Promise<AuthCredentials> {
     const strategy = this.getStrategy(strategyName);
 
@@ -149,7 +152,7 @@ export class AuthStrategyRegistry {
 
     if (!strategy.generateToken) {
       throw new Error(
-        `Strategy '${strategyName}' does not support token generation`
+        `Strategy '${strategyName}' does not support token generation`,
       );
     }
 
@@ -163,10 +166,7 @@ export class AuthStrategyRegistry {
    * @param token - Token to verify
    * @returns User info if valid, null if invalid
    */
-  async verifyToken(
-    strategyName: string,
-    token: string
-  ): Promise<AuthContext> {
+  async verifyToken(strategyName: string, token: string): Promise<AuthContext> {
     const strategy = this.getStrategy(strategyName);
 
     if (!strategy) {
@@ -174,7 +174,9 @@ export class AuthStrategyRegistry {
     }
 
     if (!strategy.verifyToken) {
-      throw new Error(`Strategy '${strategyName}' does not support token verification`);
+      throw new Error(
+        `Strategy '${strategyName}' does not support token verification`,
+      );
     }
 
     const user = await strategy.verifyToken(token);
@@ -200,7 +202,9 @@ export class AuthStrategyRegistry {
     }
 
     if (!strategy.revokeToken) {
-      throw new Error(`Strategy '${strategyName}' does not support token revocation`);
+      throw new Error(
+        `Strategy '${strategyName}' does not support token revocation`,
+      );
     }
 
     return strategy.revokeToken(token);
