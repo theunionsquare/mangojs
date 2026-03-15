@@ -41,8 +41,8 @@
     "docs:version": "node scripts/docs-version.js",
     "docs:serve": "npx http-server docs/latest -o",
     "docs:md": "cp *.md docs/docs/",
-    "docs:api": "npx typedoc --plugin typedoc-plugin-markdown --out docs/docs/api --readme none --hideBreadcrumbs true --useCodeBlocks true --sanitizeComments true",
-    "docs:start": "npm run docs:md && npm run docs:api && cd docs && npm start"
+    "docs:api": "cd docs && pnpm exec docusaurus generate-typedoc",
+    "docs:start": "pnpm run docs:md && cd docs && pnpm start"
   },
   "keywords": [
     "nodejs",

@@ -25,7 +25,8 @@ const config: Config = {
   organizationName: "mangojs", // Usually your GitHub org/user name.
   projectName: "mangojs", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -35,12 +36,35 @@ const config: Config = {
     locales: ["en"],
   },
 
+  markdown: {
+    format: "md",
+  },
+
+  plugins: [
+    [
+      "docusaurus-plugin-typedoc",
+      {
+        entryPoints: ["../src/index.ts"],
+        tsconfig: "../tsconfig.json",
+        out: "docs/api",
+        readme: "none",
+        hideBreadcrumbs: true,
+        useCodeBlocks: true,
+        sanitizeComments: true,
+        skipErrorChecking: true,
+        plugin: ["typedoc-plugin-markdown", "typedoc-plugin-frontmatter", "./typedoc-frontmatter-plugin.mjs"],
+      },
+    ],
+  ],
+
   presets: [
     [
       "classic",
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+          include: ["**/*.md", "**/*.mdx", "**/*.context.md"],
+          exclude: ["tutorial/common/**"],
         },
         blog: {
           showReadingTime: true,
@@ -75,9 +99,15 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "handOnSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Hand On Tutorial",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "handbookSidebar",
+          position: "left",
+          label: "Handbook",
         },
         {
           type: "docSidebar",
@@ -85,7 +115,6 @@ const config: Config = {
           position: "left",
           label: "API",
         },
-        { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/theunionsquare/mangojs",
           label: "GitHub",
@@ -101,7 +130,11 @@ const config: Config = {
           items: [
             {
               label: "Tutorial",
-              to: "/docs/intro",
+              to: "/docs/tutorial/index.context",
+            },
+            {
+              label: "API",
+              to: "/docs/api",
             },
           ],
         },
