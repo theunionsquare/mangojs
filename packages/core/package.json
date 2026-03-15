@@ -1,5 +1,5 @@
 {
-  "name": "@mangojs/core",
+  "name": "@theunionsquare/mangojs-core",
   "version": "0.1.0",
   "description": "A lightweight Node.js backend framework for microservices with code injection, Express API integration, and AI-driven development support",
   "main": "dist/index.js",

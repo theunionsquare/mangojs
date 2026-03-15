@@ -66,7 +66,7 @@ release:
 ifndef VERSION
 	$(error VERSION is required. Usage: make release VERSION=1.0.0)
 endif
-	node scripts/release.js $(VERSION) --skip-docs
+	node scripts/release.js $(VERSION) 
 
 # Docker
 docker:
