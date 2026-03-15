@@ -1,5 +1,5 @@
 {
-  "name": "mangojs",
+  "name": "@theunionsquare/mangojs-core",
   "version": "0.0.1",
   "description": "MangoJS monorepo - Backend framework, documentation, and website",
   "repository": {
