@@ -1,9 +1,10 @@
 services:
-  mangojs-web:
+  mangojs-website:
+    image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-mangojs-website}:${IMAGE_TAG:-latest}
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: mangojs-web
+    container_name: mangojs-website
     ports:
       - "${PORT:-8010}:8010"
     restart: unless-stopped
