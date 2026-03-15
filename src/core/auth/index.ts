@@ -1,6 +1,6 @@
 /**
  * @module Authentication
- * @description Gestisce tutta la logica di login, JWT e strategie OAuth.
+ * @description Handles all authentication logic including login, JWT, and OAuth strategies.
  */
 
 // Core types and interfaces

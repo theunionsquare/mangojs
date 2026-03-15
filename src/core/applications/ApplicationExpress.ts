@@ -3,21 +3,33 @@ import express, { Application as ExApplication, Handler } from "express";
 import { printTable, Table } from "console-table-printer";
 
 import { MetadataKeys } from "../utils/metadata.keys";
-import { IRouter } from "../decorators/handlers.decorator";
+import { IRouter } from "../decorators/http/handlers.decorator";
 
-// To be migrated to ES6
-const passport = require("passport");
-
+/**
+ * Internal Express application wrapper that handles route registration
+ * from decorated controller classes.
+ *
+ * @internal This class is used internally by ServerBuilder and should not
+ * be instantiated directly.
+ */
 export class ApplicationExpress {
   private readonly _instance: ExApplication;
-  private readonly _routes: any[];
-  private readonly _apiTable;
+  private readonly _routes: unknown[];
+  private readonly _apiTable: Table;
   private _routeIndex: number = 0;
 
+  /**
+   * Returns the underlying Express application instance.
+   */
   get instance(): ExApplication {
     return this._instance;
   }
-  constructor(routes: any[]) {
+
+  /**
+   * Creates a new ApplicationExpress instance.
+   * @param routes - Array of controller classes decorated with @Controller
+   */
+  constructor(routes: unknown[]) {
     this._instance = express();
     this._routes = routes;
     this._routeIndex = 0;
@@ -28,59 +40,50 @@ export class ApplicationExpress {
         { name: "api", alignment: "left" },
         { name: "handler", alignment: "left" },
       ],
-      sort: (row1, row2) => +row2.api - +row1.api, // desc sorting order of rows (optional),
+      sort: (row1, row2) => +row2.api - +row1.api,
     });
   }
 
-  public registerRouters() {
-    // this._instance.get("/", (req, res) => {
-    //   res.json({ message: "Hello World!" });
-    // });
-
-    const info: Array<{ method: string; api: string; handler: string }> = [];
-
+  /**
+   * Registers all routes from the controller classes.
+   * Reads metadata from decorators and creates Express routes accordingly.
+   * Prints a table of registered routes to the console.
+   */
+  public registerRouters(): void {
     this._routes.forEach((routeClass) => {
-      const controllerInstance: { [handleName: string]: Handler } =
-        new routeClass() as any;
+      const RouteClass = routeClass as new () => { [handleName: string]: Handler };
+      const controllerInstance = new RouteClass();
 
-      // get decorator with key BASE_PATH
       const basePath: string = Reflect.getMetadata(
         MetadataKeys.BASE_PATH,
         routeClass
       );
-      // get decorator with key BASE_PATH
+
       const routers: IRouter[] = Reflect.getMetadata(
         MetadataKeys.ROUTERS,
         routeClass
       );
+
       if (routers) {
         routers.forEach(({ method, path, handlerName }) => {
-          const handles: any[] = [];
-
-          // for (let key in MetadataKeys) {
-          //   if (isNaN(Number(key))) {
-          //     console.log(key, "qwe");
-          //   }
-          // }
+          const handles: Handler[] = [];
 
           // USE HANDLER TAG
-          const useHandlers: Function[] = Reflect.getMetadata(
+          const useHandlers: Handler[] | undefined = Reflect.getMetadata(
             MetadataKeys.EXPRESS_USE_HANDLERS,
-            routeClass.prototype,
+            RouteClass.prototype,
             handlerName
           );
-          // push to handles
           if (useHandlers !== undefined) {
             useHandlers.forEach((useHandler) => handles.push(useHandler));
           }
 
           // MIDDLEWARE DECORATOR
-          const expressMiddlewares: Function[] = Reflect.getMetadata(
+          const expressMiddlewares: Handler[] | undefined = Reflect.getMetadata(
             MetadataKeys.MIDDLEWARE,
-            routeClass.prototype,
+            RouteClass.prototype,
             handlerName
           );
-          // push all express middleware
           if (expressMiddlewares !== undefined) {
             expressMiddlewares.forEach((middleware) =>
               handles.push(middleware)
@@ -88,12 +91,11 @@ export class ApplicationExpress {
           }
 
           // AUTHORIZATION DECORATOR
-          const authorizationMiddlewares: Function[] = Reflect.getMetadata(
+          const authorizationMiddlewares: Handler[] | undefined = Reflect.getMetadata(
             MetadataKeys.AUTHORIZATION,
-            routeClass.prototype,
+            RouteClass.prototype,
             handlerName
           );
-          // push all express middleware
           if (authorizationMiddlewares !== undefined) {
             authorizationMiddlewares.forEach((middleware) =>
               handles.push(middleware)
@@ -101,12 +103,11 @@ export class ApplicationExpress {
           }
 
           // AUTHENTICATION DECORATOR
-          const authenticationHandlers: Function[] = Reflect.getMetadata(
+          const authenticationHandlers: Handler[] | undefined = Reflect.getMetadata(
             MetadataKeys.AUTHENTICATION_HANDLERS,
-            routeClass.prototype,
+            RouteClass.prototype,
             handlerName
           );
-          // push
           if (authenticationHandlers !== undefined) {
             authenticationHandlers.forEach((authenticationHandler) =>
               handles.push(authenticationHandler)
@@ -117,10 +118,7 @@ export class ApplicationExpress {
           const exRouter = express.Router();
 
           exRouter[method](basePath + path, [
-            ...handles.map((handler) => {
-              return handler.bind(handler);
-            }),
-            // authenticated !== undefined ? authenticated : undefined,
+            ...handles.map((handler) => handler.bind(handler)),
             controllerInstance[String(handlerName)].bind(controllerInstance),
           ]);
 
@@ -129,19 +127,17 @@ export class ApplicationExpress {
               index: this._routeIndex,
               method: `${method.toLocaleUpperCase()}`,
               api: `${basePath + path}`,
-              handler: `${routeClass.name}.${String(handlerName)}`,
+              handler: `${RouteClass.name}.${String(handlerName)}`,
             },
             { color: "green" }
           );
           this._routeIndex = this._routeIndex + 1;
 
-          // set use
           this._instance.use("/", exRouter);
         });
       }
     });
 
     this._apiTable.printTable();
-    //console.table(info);
   }
 }

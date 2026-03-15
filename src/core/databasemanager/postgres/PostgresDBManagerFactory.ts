@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { IDatabaseManagerFactory } from "../IDatabaseManagerFactory";
+import { IDatabaseManagerFactory } from "../types";
 import * as containers from "../../container";
 import { INVERSITY_TYPES } from "../../types/inversifyTypes";
 import { Loggers } from "../..";
@@ -12,6 +12,28 @@ import type {
   PostgresConnection,
 } from "../../types/database/postgres";
 
+/**
+ * PostgreSQL database manager factory using TypeORM.
+ *
+ * Supports both URL-based and connection object configuration.
+ *
+ * @example
+ * ```typescript
+ * // URL-based connection
+ * const factory = new PostgresDBManagerFactory(
+ *   { url: 'postgresql://user:pass@host:5432/db' },
+ *   [UserEntity, OrderEntity]
+ * );
+ *
+ * // Connection object
+ * const factory = new PostgresDBManagerFactory(
+ *   { host: 'localhost', port: 5432, username: 'postgres', database: 'mydb' },
+ *   [UserEntity],
+ *   true,  // synchronize
+ *   true   // logging
+ * );
+ * ```
+ */
 @injectable()
 export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
   private _instance = 0;

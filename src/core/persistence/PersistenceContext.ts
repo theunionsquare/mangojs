@@ -1,11 +1,14 @@
 import { inject, injectable } from "inversify";
-import { IPersistenceContext } from "./IPersistenceContext";
-import { IDatabaseManagerFactory } from "../databasemanager/IDatabaseManagerFactory";
+import { IPersistenceContext, Context } from "./types";
+import { IDatabaseManagerFactory } from "../databasemanager/types";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import * as mongoDB from "mongodb";
-import { Context } from "./Context.generics";
 import mongoose from "mongoose";
 
+/**
+ * Generic MongoDB persistence context.
+ *
+ * @deprecated Use MongoosePersistenceContext instead.
+ */
 @injectable()
 class PersistenceContext2 implements IPersistenceContext {
   private _entityManagerFactory!: IDatabaseManagerFactory;
@@ -20,7 +23,7 @@ class PersistenceContext2 implements IPersistenceContext {
 
   async inTransaction(context: Context<mongoose.Connection>): Promise<{}> {
     console.log("Start transaction");
-    const dbConnection = await this._entityManagerFactory.getConnection();
+    const dbConnection = await this._entityManagerFactory.getConnection() as mongoose.Connection;
 
     const a = context(dbConnection);
     console.log("End transaction");

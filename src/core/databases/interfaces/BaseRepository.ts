@@ -2,6 +2,12 @@ import { injectable } from 'inversify'
 import { IRead } from './IRead'
 import { IWrite } from './IWrite'
 
+/**
+ * Abstract base repository implementing basic CRUD operations.
+ *
+ * @deprecated This class will be removed in a future version.
+ * Use TypeORM repositories directly instead.
+ */
 @injectable()
 export abstract class BaseRepository<T> implements IRead<T>, IWrite<T> {
     public readonly _collection: any

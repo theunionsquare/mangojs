@@ -1,11 +1,16 @@
 import { inject, injectable } from 'inversify'
 import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord'
 import { INVERSITY_TYPES } from '../../types/inversifyTypes'
-import { IDatabaseManagerFactory } from '../../databasemanager/IDatabaseManagerFactory'
+import { IDatabaseManagerFactory } from '../../databasemanager/types'
 import { ILoggerFactory } from '../../loggers'
 import { SetUpDatabaseAction } from '../../types/database'
 import { Mongoose } from 'mongoose'
 
+/**
+ * MongoDB-specific database setup action.
+ *
+ * @deprecated This class will be removed in a future version.
+ */
 @injectable()
 export class MongoSetUpDatabaseAction implements SetUpDatabaseAction {
     private _database: IDatabaseManagerFactory
@@ -27,7 +32,7 @@ export class MongoSetUpDatabaseAction implements SetUpDatabaseAction {
         dropBeforeInsert: boolean = true
     ): Promise<void> {
         this._logger.getLogger().info({ record }, 'START PROCESS FILE')
-        const connection = await this._database.getConnection()
+        const connection = await this._database.getConnection() as { mongoose: Mongoose }
         const mongo = await connection.mongoose.connection.getClient()
         const parsedContent = JSON.parse(content)
 

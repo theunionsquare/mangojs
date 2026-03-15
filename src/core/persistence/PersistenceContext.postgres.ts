@@ -1,10 +1,20 @@
 import { inject, injectable } from "inversify";
-import { IPersistenceContext } from "./IPersistenceContext";
-import { IDatabaseManagerFactory } from "../databasemanager/IDatabaseManagerFactory";
+import { IPersistenceContext, Context } from "./types";
+import { IDatabaseManagerFactory } from "../databasemanager/types";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import { Context } from "./Context.generics";
 import { EntityManager } from "typeorm";
 
+/**
+ * PostgreSQL persistence context for transaction management.
+ *
+ * Works with PostgresDBManagerFactory to execute operations
+ * within a TypeORM EntityManager context.
+ *
+ * @example
+ * const result = await persistenceContext.inTransaction(async (em) => {
+ *   return em.getRepository(User).find();
+ * });
+ */
 @injectable()
 class PostgresPersistenceContext implements IPersistenceContext {
   private _databaseManagerFactory!: IDatabaseManagerFactory;

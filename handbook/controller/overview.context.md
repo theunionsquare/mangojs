@@ -1,3 +1,8 @@
+---
+label: "Controller"
+category: "Controller"
+---
+
 # Controller Layer Guide
 
 ## Overview

@@ -1,39 +1,4 @@
-/**
- * Cache entry with expiration timestamp
- */
-export interface CacheEntry<T> {
-  value: T;
-  expiresAt: number; // Timestamp in milliseconds
-}
-
-/**
- * Configuration options for Cache
- */
-export interface CacheOptions {
-  /**
-   * Default time-to-live in milliseconds
-   * @default 60000 (1 minute)
-   */
-  ttl?: number;
-
-  /**
-   * Maximum number of cache entries (prevents memory leaks)
-   * When max is reached, oldest entries are removed (LRU)
-   * @default 1000
-   */
-  maxSize?: number;
-}
-
-/**
- * Cache statistics
- */
-export interface CacheStats {
-  hits: number;
-  misses: number;
-  hitRate: number;
-  size: number;
-  maxSize: number;
-}
+import { CacheEntry, CacheOptions, CacheStats } from "./types";
 
 /**
  * Generic TTL cache with LRU eviction.

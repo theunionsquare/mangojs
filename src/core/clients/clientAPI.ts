@@ -5,6 +5,12 @@ import axios, {
   AxiosRequestConfig,
 } from "axios";
 
+/**
+ * HTTP client wrapper with retry logic and error handling.
+ *
+ * @deprecated This class will be removed in a future version.
+ * Use axios directly or create your own HTTP client implementation.
+ */
 export class ClientAPI {
   private client: AxiosInstance;
   private baseURL: string;

@@ -4,9 +4,19 @@ import { apiResponses } from "../types";
 import { APIError } from "./baseErrors";
 
 /**
- * Handles the error and returns the error response
- * @param {unknown} error
- * @returns {APIGatewayBaseResponseBody}
+ * Express error handler that formats API error responses.
+ *
+ * @param res - Express response object
+ * @param error - Error to handle
+ *
+ * @example
+ * ```typescript
+ * try {
+ *   // ... operation
+ * } catch (error) {
+ *   errorHandler(res, error);
+ * }
+ * ```
  */
 export const errorHandler = (res: Response, error: Error) => {
   const response = {

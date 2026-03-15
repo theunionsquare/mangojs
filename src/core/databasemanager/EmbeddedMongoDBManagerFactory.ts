@@ -1,8 +1,14 @@
 import { injectable } from 'inversify'
-import { IDatabaseManagerFactory } from './IDatabaseManagerFactory'
+import { IDatabaseManagerFactory } from './types'
 import mongoose from 'mongoose'
 import { ConnectionError } from '../errors/databaseErrors'
 
+/**
+ * Embedded MongoDB manager factory for testing purposes.
+ *
+ * @deprecated This class will be removed in a future version.
+ * Use PostgresDBManagerFactory or CockRoachDBManagerFactory instead.
+ */
 @injectable()
 export class EmbeddedMongoDBManagerFactory implements IDatabaseManagerFactory {
     private _instance = 0

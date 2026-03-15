@@ -1,10 +1,15 @@
-import { inject, injectable } from 'inversify'
-import { IPersistenceContext } from './IPersistenceContext'
-import { IDatabaseManagerFactory } from '../databasemanager/IDatabaseManagerFactory'
-import { INVERSITY_TYPES } from '../types/inversifyTypes'
-import { Context } from './Context.generics'
-import mongoose from 'mongoose'
+import { inject, injectable } from "inversify";
+import { IPersistenceContext, Context } from "./types";
+import { IDatabaseManagerFactory } from "../databasemanager/types";
+import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import mongoose from "mongoose";
 
+/**
+ * CockroachDB persistence context for transaction management.
+ *
+ * Works with CockRoachDBManagerFactory to execute operations
+ * within a transaction context.
+ */
 @injectable()
 class CockroachPersistenceContext implements IPersistenceContext {
     private _databaseManagerFactory!: IDatabaseManagerFactory

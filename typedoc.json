@@ -1,12 +1,16 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["./src/index.ts"],
-  "out": "./docs/latest",
-  "name": "MangoJS",
-  "groupOrder": ["Registry", "Strategies", "Context", "Types", "Errors", "*"],
-  "categorizeByGroup": false,
   "navigation": {
+    "includeFolders": true,
+    "compactFolders": false,
     "includeGroups": true,
     "includeCategories": true
-  }
+  },
+  "out": "./docs/latest",
+  "name": "MangoJS",
+  "categorizeByGroup": false,
+  "readme": "./README.md",
+  "entryPointStrategy": "expand",
+  "skipErrorChecking": true,
 }

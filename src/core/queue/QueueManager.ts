@@ -8,7 +8,7 @@ import {
     IQueueWorkerHandler,
     QueueWorkerConstructor,
 } from './types'
-import { QUEUE_WORKER_METADATA_KEY } from './decorators/queueWorker.decorator'
+import { QUEUE_WORKER_METADATA_KEY } from "../decorators/queue";
 import { Container } from 'inversify'
 
 /**

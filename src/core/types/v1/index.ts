@@ -1,1 +1,4 @@
-export * as api from './api'
+/**
+ * @deprecated Use types from '../api' instead.
+ */
+export * as api from "./api";

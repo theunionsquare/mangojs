@@ -1,6 +1,11 @@
 import { injectable } from "inversify";
 import { IEmailService } from "./IEmailService";
 
+/**
+ * Legacy dummy email service for testing.
+ *
+ * @deprecated Use DummyProvider with EmailServiceFactory instead.
+ */
 @injectable()
 export class EmailServiceDummy implements IEmailService {
   provider: string;

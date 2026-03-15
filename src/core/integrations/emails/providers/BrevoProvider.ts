@@ -3,7 +3,7 @@ import {
   EmailPayload,
   EmailSendResult,
   BrevoProviderConfig,
-} from "../IEmailProvider";
+} from "../types";
 
 export class BrevoProvider implements IEmailProvider {
   readonly providerName = "brevo";

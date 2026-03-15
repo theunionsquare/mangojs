@@ -1,23 +1,43 @@
 import http from 'http'
-import express from 'express'
+import express, { Handler } from 'express'
 import { ApplicationExpress } from '../applications/ApplicationExpress'
-import { IApplicationPreCheck } from '../types'
+import { IApplicationPreCheck } from '../applications/types'
 import swaggerUi from 'swagger-ui-express'
 import { middlewareRequestTime } from '../middlewares/requestTime'
 import { middlewareAuthContext } from '../middlewares/userInfo'
 import { ScheduleRegistry } from '../scheduler/ScheduleRegistry'
 import { ScheduledTaskConstructor } from '../scheduler/types'
 
+/**
+ * ServerBuilder - Builder pattern for Express HTTP server configuration.
+ *
+ * Provides a fluent API for configuring and starting an Express server
+ * with support for routes, middleware, scheduled tasks, and Swagger documentation.
+ *
+ * @example
+ * ```typescript
+ * const server = await new ServerBuilder()
+ *   .setName('api-server')
+ *   .setPort(3000)
+ *   .setRoutes([UserController, ProductController])
+ *   .setUserAuthentication(true)
+ *   .enableSwagger(true)
+ *   .setSwaggerSpec(swaggerSpec)
+ *   .build()
+ *
+ * server.run()
+ * ```
+ */
 export class ServerBuilder {
     private __port: number = 3000
     private __name: string = 'default'
-    private __routes: any[] = []
+    private __routes: unknown[] = []
     private __tasks: ScheduledTaskConstructor[] = []
     private __userAuthentication: boolean = false
-    private __expressUseHandlers: any[] = []
+    private __expressUseHandlers: Handler[] = []
     private __check: IApplicationPreCheck | undefined
     private __enableSwagger: boolean = false
-    private __swaggerSpec: {} = {}
+    private __swaggerSpec: Record<string, unknown> = {}
     private __scheduleRegistry: ScheduleRegistry | undefined
     express: ApplicationExpress | undefined
 
@@ -25,19 +45,30 @@ export class ServerBuilder {
         this.express = undefined
     }
 
-    public run() {
+    /**
+     * Start the HTTP server and begin listening for requests.
+     */
+    public run(): void {
         const server = http.createServer(this.express?.instance)
         server.listen(this.__port, () => {
             console.log(`Server is listening on :${this.__port}`)
         })
     }
 
-    public expressUse(handler: any) {
+    /**
+     * Add an Express middleware handler.
+     * @param handler - Express middleware function
+     */
+    public expressUse(handler: Handler): this {
         this.__expressUseHandlers.push(handler)
         return this
     }
 
-    public async build() {
+    /**
+     * Build the server with all configured options.
+     * Must be called before run().
+     */
+    public async build(): Promise<this> {
         if (this.__check !== undefined) {
             await this.__check.startCheck()
         }
@@ -79,45 +110,82 @@ export class ServerBuilder {
 
         return this
     }
-    public setCheck(check: IApplicationPreCheck) {
+
+    /**
+     * Set pre-flight check handler.
+     * @param check - Application pre-check instance
+     */
+    public setCheck(check: IApplicationPreCheck): this {
         this.__check = check
         return this
     }
 
-    public setPort(port: number) {
+    /**
+     * Set the server port.
+     * @param port - Port number to listen on
+     */
+    public setPort(port: number): this {
         this.__port = port
         return this
     }
 
-    public setName(name: string) {
+    /**
+     * Set the server name for logging.
+     * @param name - Server name
+     */
+    public setName(name: string): this {
         this.__name = name
         return this
     }
 
-    public setRoutes(routes: any[]) {
+    /**
+     * Set controller classes for route registration.
+     * @param routes - Array of controller classes decorated with @Controller
+     */
+    public setRoutes(routes: unknown[]): this {
         this.__routes = routes
         return this
     }
 
-    public setTasks(tasks: ScheduledTaskConstructor[]) {
+    /**
+     * Set scheduled task classes.
+     * @param tasks - Array of task classes decorated with @Schedule
+     */
+    public setTasks(tasks: ScheduledTaskConstructor[]): this {
         this.__tasks = tasks
         return this
     }
 
+    /**
+     * Get the schedule registry instance.
+     */
     public getScheduleRegistry(): ScheduleRegistry | undefined {
         return this.__scheduleRegistry
     }
 
-    public setUserAuthentication(enable: boolean) {
+    /**
+     * Enable or disable user authentication middleware.
+     * @param enable - Whether to enable authentication
+     */
+    public setUserAuthentication(enable: boolean): this {
         this.__userAuthentication = enable
         return this
     }
 
-    public enableSwagger(enable: boolean) {
+    /**
+     * Enable or disable Swagger documentation.
+     * @param enable - Whether to enable Swagger UI at /docs
+     */
+    public enableSwagger(enable: boolean): this {
         this.__enableSwagger = enable
         return this
     }
-    public setSwaggerSpec(swaggerSpec: {}) {
+
+    /**
+     * Set the Swagger/OpenAPI specification.
+     * @param swaggerSpec - OpenAPI specification object
+     */
+    public setSwaggerSpec(swaggerSpec: Record<string, unknown>): this {
         this.__swaggerSpec = swaggerSpec
         return this
     }

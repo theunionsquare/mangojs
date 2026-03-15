@@ -1,7 +1,13 @@
-import { Queue } from 'bullmq'
-import { injectable } from 'inversify'
-import { IQueueClient } from './IQueueClient'
-import { RedisConfig, JobOptions, JobData, JobStatus, QueueStatus } from './types'
+import { Queue } from "bullmq";
+import { injectable } from "inversify";
+import {
+  IQueueClient,
+  RedisConfig,
+  JobOptions,
+  JobData,
+  JobStatus,
+  QueueStatus,
+} from "./types";
 
 /**
  * QueueClient - Wrapper for BullMQ Queue (Producer side)

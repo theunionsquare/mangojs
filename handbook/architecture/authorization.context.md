@@ -1,8 +1,14 @@
+---
+label: "Authentication & Authorization"
+category: "Architecture"
+---
+
 # MangoJS Authentication & Authorization
 
 ## Purpose
 
 Provide a flexible, strategy-based authentication system that allows developers to:
+
 - Register custom authentication strategies via dependency injection
 - Support multiple authentication methods simultaneously (JWT, API keys, sessions, OAuth)
 - Use extensible user types (not limited to hardcoded enum values)
@@ -74,11 +80,11 @@ type UserType = string;
 
 interface IAuthUser {
   id: string;
-  userType: string;        // 'ADMIN', 'CUSTOMER', 'API_CLIENT', etc.
+  userType: string; // 'ADMIN', 'CUSTOMER', 'API_CLIENT', etc.
   email?: string;
-  groups?: string[];       // ['admins', 'premium_users']
-  permissions?: string[];  // ['users:read', 'users:write']
-  [key: string]: any;      // Extensible
+  groups?: string[]; // ['admins', 'premium_users']
+  permissions?: string[]; // ['users:read', 'users:write']
+  [key: string]: any; // Extensible
 }
 
 interface IAuthContext {
@@ -95,7 +101,7 @@ interface IAuthContext {
 
 interface IAuthStrategy {
   readonly name: string;
-  readonly priority: number;  // Lower = tried first
+  readonly priority: number; // Lower = tried first
 
   authenticate(req: Request): Promise<IAuthUser | null>;
   generateToken?(payload: GenerateTokenPayload): Promise<AuthCredentials>;
@@ -104,7 +110,7 @@ interface IAuthStrategy {
 
 interface AuthCredentials {
   accessToken: string;
-  tokenType: 'Bearer' | 'Cookie' | 'ApiKey' | string;
+  tokenType: "Bearer" | "Cookie" | "ApiKey" | string;
   refreshToken?: string;
   expiresIn?: number;
   expiresAt?: Date;
@@ -121,40 +127,42 @@ interface AuthCredentials {
 ### JWT Strategy
 
 ```typescript
-import { Auth, INVERSITY_TYPES } from '@mangojs/core';
+import { Auth, INVERSITY_TYPES } from "@mangojs/core";
 
 // Symmetric JWT via header (simple setup)
 container.bind(Auth.AUTH_STRATEGY_TAG).toConstantValue(
   new Auth.JWTStrategy({
     secret: process.env.JWT_SECRET,
-    expiresIn: 3600,  // 1 hour
-  })
+    expiresIn: 3600, // 1 hour
+  }),
 );
 
 // Asymmetric JWT via cookie (more secure)
 container.bind(Auth.AUTH_STRATEGY_TAG).toConstantValue(
   new Auth.JWTStrategy({
-    publicKey: fs.readFileSync('./keys/public.pem', 'utf8'),
-    privateKey: fs.readFileSync('./keys/private.pem', 'utf8'),
-    algorithm: 'RS256',
-    extractFrom: 'cookie',
-    cookieName: 'session',
+    publicKey: fs.readFileSync("./keys/public.pem", "utf8"),
+    privateKey: fs.readFileSync("./keys/private.pem", "utf8"),
+    algorithm: "RS256",
+    extractFrom: "cookie",
+    cookieName: "session",
     cookie: {
       httpOnly: true,
       secure: true,
-      sameSite: 'strict',
-      maxAge: 86400000,  // 24 hours
-      domain: '.myapp.com',
+      sameSite: "strict",
+      maxAge: 86400000, // 24 hours
+      domain: ".myapp.com",
     },
     refreshToken: {
       enabled: true,
-      expiresIn: 604800,  // 7 days
-    }
-  })
+      expiresIn: 604800, // 7 days
+    },
+  }),
 );
 
 // Bind the registry
-container.bind(INVERSITY_TYPES.AuthStrategyRegistry).to(Auth.AuthStrategyRegistry);
+container
+  .bind(INVERSITY_TYPES.AuthStrategyRegistry)
+  .to(Auth.AuthStrategyRegistry);
 ```
 
 ### API Key Strategy
@@ -162,53 +170,51 @@ container.bind(INVERSITY_TYPES.AuthStrategyRegistry).to(Auth.AuthStrategyRegistr
 ```typescript
 container.bind(Auth.AUTH_STRATEGY_TAG).toConstantValue(
   new Auth.ApiKeyStrategy({
-    headerName: 'X-API-Key',
+    headerName: "X-API-Key",
     validator: async (apiKey, req) => {
       const user = await db.apiKeys.findByKey(apiKey);
       if (!user) return null;
 
       return {
         id: user.id,
-        userType: 'API_CLIENT',
+        userType: "API_CLIENT",
         permissions: user.scopes,
       };
-    }
-  })
+    },
+  }),
 );
 ```
 
 ### Custom Strategy
 
 ```typescript
-import { BaseAuthStrategy, IAuthUser } from '@mangojs/core';
+import { BaseAuthStrategy, IAuthUser } from "@mangojs/core";
 
 @injectable()
 class OAuth2Strategy extends BaseAuthStrategy {
-  readonly name = 'oauth2';
+  readonly name = "oauth2";
   readonly priority = 20;
 
-  constructor(
-    @inject('OAuthClient') private oauth: IOAuthClient
-  ) {
+  constructor(@inject("OAuthClient") private oauth: IOAuthClient) {
     super();
   }
 
   canHandle(req: Request): boolean {
-    return !!req.headers['x-oauth-token'];
+    return !!req.headers["x-oauth-token"];
   }
 
   async authenticate(req: Request): Promise<IAuthUser | null> {
-    const token = req.headers['x-oauth-token'] as string;
+    const token = req.headers["x-oauth-token"] as string;
     if (!token) return null;
 
     try {
       const profile = await this.oauth.getProfile(token);
       return {
         id: profile.sub,
-        userType: 'OAUTH_USER',
+        userType: "OAUTH_USER",
         email: profile.email,
         groups: profile.groups || [],
-        metadata: { provider: profile.iss }
+        metadata: { provider: profile.iss },
       };
     } catch {
       return null;
@@ -225,15 +231,14 @@ container.bind(Auth.AUTH_STRATEGY_TAG).to(OAuth2Strategy);
 ### In Controllers
 
 ```typescript
-import { Request, IAuthContext } from '@mangojs/core';
+import { Request, IAuthContext } from "@mangojs/core";
 
-@Controller('/api/users')
+@Controller("/api/users")
 class UserController {
-
-  @Get('/profile')
+  @Get("/profile")
   async getProfile(req: Request & { authContext: IAuthContext }) {
     if (!req.authContext.isAuthenticated) {
-      throw new UnauthorizedError('Authentication required');
+      throw new UnauthorizedError("Authentication required");
     }
 
     return {
@@ -243,14 +248,14 @@ class UserController {
     };
   }
 
-  @Get('/admin-data')
-  @HasUserType(['ADMIN'])
+  @Get("/admin-data")
+  @HasUserType(["ADMIN"])
   async getAdminData(req: Request) {
     // Only accessible by ADMIN users
   }
 
-  @Delete('/:id')
-  @HasPermission('users:delete')
+  @Delete("/:id")
+  @HasPermission("users:delete")
   async deleteUser(req: Request) {
     // Only accessible by users with 'users:delete' permission
   }
@@ -260,25 +265,25 @@ class UserController {
 ### Generating Tokens
 
 ```typescript
-@Controller('/auth')
+@Controller("/auth")
 class AuthController {
   constructor(
     @inject(INVERSITY_TYPES.AuthStrategyRegistry)
-    private authRegistry: AuthStrategyRegistry
+    private authRegistry: AuthStrategyRegistry,
   ) {}
 
-  @Post('/login')
+  @Post("/login")
   async login(req: Request, res: Response) {
     const { email, password } = req.body;
 
     // Validate credentials
     const user = await this.userService.validateCredentials(email, password);
     if (!user) {
-      throw new UnauthorizedError('Invalid credentials');
+      throw new UnauthorizedError("Invalid credentials");
     }
 
     // Generate token using JWT strategy
-    const credentials = await this.authRegistry.generateCredentials('jwt', {
+    const credentials = await this.authRegistry.generateCredentials("jwt", {
       id: user.id,
       userType: user.role,
       email: user.email,
@@ -290,7 +295,7 @@ class AuthController {
       res.cookie(
         credentials.cookie.name,
         credentials.cookie.value,
-        credentials.cookie.options
+        credentials.cookie.options,
       );
     }
 
@@ -306,24 +311,25 @@ class AuthController {
 
 ```typescript
 // inversify.config.ts
-import { Container } from 'inversify';
-import { Auth, INVERSITY_TYPES } from '@mangojs/core';
+import { Container } from "inversify";
+import { Auth, INVERSITY_TYPES } from "@mangojs/core";
 
 const container = new Container();
 
 // Bind strategies (multi-inject)
-container.bind(Auth.AUTH_STRATEGY_TAG).toConstantValue(
-  new Auth.JWTStrategy({ secret: process.env.JWT_SECRET })
-);
+container
+  .bind(Auth.AUTH_STRATEGY_TAG)
+  .toConstantValue(new Auth.JWTStrategy({ secret: process.env.JWT_SECRET }));
 
 container.bind(Auth.AUTH_STRATEGY_TAG).toConstantValue(
   new Auth.ApiKeyStrategy({
-    validator: async (key) => validateApiKey(key)
-  })
+    validator: async (key) => validateApiKey(key),
+  }),
 );
 
 // Bind registry (collects all strategies automatically)
-container.bind(INVERSITY_TYPES.AuthStrategyRegistry)
+container
+  .bind(INVERSITY_TYPES.AuthStrategyRegistry)
   .to(Auth.AuthStrategyRegistry)
   .inSingletonScope();
 ```

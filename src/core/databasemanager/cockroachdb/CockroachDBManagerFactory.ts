@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { IDatabaseManagerFactory } from "../IDatabaseManagerFactory";
+import { IDatabaseManagerFactory } from "../types";
 import { getContainer } from "../../container";
 import { INVERSITY_TYPES } from "../../types/inversifyTypes";
 import { Loggers } from "../..";
@@ -12,8 +12,26 @@ import type {
   CockroachConnection,
 } from "../../types/database/cockroach";
 
-//Get logger
-
+/**
+ * CockroachDB database manager factory using TypeORM.
+ *
+ * Supports both URL-based and connection object configuration.
+ *
+ * @example
+ * ```typescript
+ * // URL-based connection
+ * const factory = new CockRoachDBManagerFactory(
+ *   { url: 'postgresql://user:pass@host:26257/db?sslmode=verify-full' },
+ *   [UserEntity, OrderEntity]
+ * );
+ *
+ * // Connection object
+ * const factory = new CockRoachDBManagerFactory(
+ *   { host: 'localhost', port: 26257, username: 'root', database: 'mydb' },
+ *   [UserEntity]
+ * );
+ * ```
+ */
 @injectable()
 export class CockRoachDBManagerFactory implements IDatabaseManagerFactory {
   private _instance = 0;

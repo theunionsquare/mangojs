@@ -1,17 +1,9 @@
 import type { Response, NextFunction } from "express";
 import * as containers from "../container";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import type * as Types from "../types";
 import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry";
 import { AuthContext } from "../auth/AuthContext";
-import { IAuthContext } from "../auth/types";
-
-/**
- * Extended request type with auth context
- */
-export interface AuthenticatedRequest extends Types.v1.api.request.Request {
-  authContext?: IAuthContext;
-}
+import { AuthenticatedRequest } from "./types";
 
 /**
  * Middleware using AuthStrategyRegistry

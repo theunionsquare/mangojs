@@ -1,3 +1,11 @@
+/**
+ * Base API error class for HTTP error responses.
+ *
+ * @example
+ * ```typescript
+ * throw new APIError(404, 'NOT_FOUND', 'Resource not found');
+ * ```
+ */
 export class APIError extends Error {
     public readonly statusCode: number
     public readonly errorCode: string

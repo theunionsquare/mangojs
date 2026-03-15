@@ -1,51 +1,27 @@
-import { ServerBuilder } from "./builders/ServerBuilder";
 import { BaseRepository } from "./databases/interfaces/BaseRepository";
 import { INVERSITY_TYPES } from "./types/inversifyTypes";
 import { IPersistenceContext } from "./persistence/IPersistenceContext";
-// import { PersistenceContext } from "./persistence/PersistenceContext";
-import { MongoosePersistenceContext } from "./persistence/PersistenceContext.mongoose";
+//import { MongoosePersistenceContext } from "./persistence/PersistenceContext.mongoose";
 import { PersistenceContext2 } from "./persistence/PersistenceContext";
-import { CockroachPersistenceContext } from "./persistence/PersistenceContext.cockroach";
-import { IDatabaseManagerFactory } from "./databasemanager/IDatabaseManagerFactory";
-import { MongoDBEntityManagerFactory } from "./databasemanager/MongoDBEntityManagerFactory";
-import { MongooseDBManagerFactory } from "./databasemanager/MongooseDBManagerFactory";
-import { CockRoachDBManagerFactory } from "./databasemanager/cockroachdb/CockroachDBManagerFactory";
+//import { CockroachPersistenceContext } from "./persistence/PersistenceContext.cockroach";
 
-export { ApplicationPreCheck } from "./applications/ApplicationPreCheck";
+export * as Applications from "./applications";
 
 export * as Middlewares from "./middlewares";
-export * as Containers from "./container";
+export * as Container from "./container";
 export * as Loggers from "./loggers";
 export * as Decorators from "./decorators";
-// TO DO: Remove it
-//export * from "./decorators";
 
 // CACHE
-export * as cache from "./cache";
-export { Cache } from "./cache";
+export * as Cache from "./cache";
 
-// AUTHENTICATION INTERFACES
-export * as Auth1 from "./auth";
+// AUTHENTICATION
+export * as Authentication from "./auth";
 
-// New auth types (direct exports for convenience)
-//export type {
-//  IAuthUser,
-//  IAuthContext,
-//  AuthCredentials,
-//  JWTStrategyOptions,
-//  ApiKeyStrategyOptions,
-//  AuthCookieOptions,
-//  GenerateTokenPayload,
-//} from "./auth/types";
-//export { AuthContext } from "./auth/AuthContext";
-//export { AuthStrategyRegistry } from "./auth/AuthStrategyRegistry";
-//export { AuthenticationError } from "./auth/errors/AuthenticationError";
-//export { AUTH_STRATEGY_TAG } from "./auth/strategies/IAuthStrategy";
-//export type { IAuthStrategy } from "./auth/strategies/IAuthStrategy";
-
-// database
-export * as databasemanager from "./databasemanager";
-export * as databases from "./databases";
+// DATABASE
+export * as DatabaseManager from "./databasemanager";
+/** @deprecated Use DatabaseManager instead */
+export * as Databases from "./databases";
 
 // types
 //export * from './types'
@@ -59,20 +35,13 @@ export * as errors from "./errors";
 // DATABASE REPO
 export { BaseRepository };
 
-// SERVERS CONFIGURATION
-export { ServerBuilder };
-
 // CONTEXT
 export {
   INVERSITY_TYPES,
   IPersistenceContext,
   PersistenceContext2,
-  IDatabaseManagerFactory,
-  MongoDBEntityManagerFactory,
-  MongooseDBManagerFactory,
-  MongoosePersistenceContext,
-  CockRoachDBManagerFactory,
-  CockroachPersistenceContext,
+  //MongoosePersistenceContext,
+  //CockroachPersistenceContext,
 };
 // PERSISTENCE CONTEXT
 export * as persistanceContext from "./persistence";
@@ -86,6 +55,7 @@ export * as Types from "./types";
 // Export Integrations
 export * as Integrations from "./integrations";
 
+/** @deprecated Import BaseMapper from utils instead */
 export * as mappers from "./mappers";
 
 // export Request and REsponse API wrappers
@@ -111,9 +81,4 @@ export type {
 } from "./queue";
 
 // BUILDERS
-export { WorkerBuilder } from "./builders/WorkerBuilder";
-
-/// NEW EXPORT ORGANIZATION
-
-// AUTHENTICATION
-export * as Aut from "./auth";
+export * as Builders from "./builders";

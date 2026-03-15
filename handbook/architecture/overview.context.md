@@ -1,3 +1,8 @@
+---
+label: "Overview"
+category: "Architecture"
+---
+
 # MangoJS Architecture Overview
 
 ## Purpose

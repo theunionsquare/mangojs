@@ -1,3 +1,9 @@
+/**
+ * Method decorator that logs method calls with timestamps.
+ *
+ * @deprecated Use the Loggers module for proper logging instead.
+ * This decorator uses console.log which is not suitable for production.
+ */
 export function loggedMethod(): any {
     return function (
         target: any,

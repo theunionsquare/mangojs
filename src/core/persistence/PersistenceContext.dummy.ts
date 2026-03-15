@@ -1,10 +1,14 @@
-import { inject, injectable } from 'inversify'
-import { IPersistenceContext } from './IPersistenceContext'
-import { IDatabaseManagerFactory } from '../databasemanager/IDatabaseManagerFactory'
-import { Context } from './Context.generics'
-import mongoose from 'mongoose'
-import { INVERSITY_TYPES } from '../types/inversifyTypes'
+import { inject, injectable } from "inversify";
+import { IPersistenceContext, Context } from "./types";
+import { IDatabaseManagerFactory } from "../databasemanager/types";
+import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import mongoose from "mongoose";
 
+/**
+ * Dummy persistence context for testing without a real database.
+ *
+ * Returns empty results without executing actual transactions.
+ */
 @injectable()
 class DummyPersistenceContext implements IPersistenceContext {
 

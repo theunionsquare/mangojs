@@ -39,7 +39,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:build": "node ./node_modules/typedoc/bin/typedoc",
     "docs:version": "node scripts/docs-version.js",
-    "docs:serve": "npx http-server docs/latest -o"
+    "docs:serve": "npx http-server docs/latest -o",
+    "docs:md": "cp *.md docs/docs/",
+    "docs:api": "npx typedoc --plugin typedoc-plugin-markdown --out docs/docs/api --readme none --hideBreadcrumbs true --useCodeBlocks true --sanitizeComments true",
+    "docs:start": "npm run docs:md && npm run docs:api && cd docs && npm start"
   },
   "keywords": [
     "nodejs",
@@ -79,7 +82,6 @@
     "release-it": "^19.0.5",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "typedoc-plugin-markdown": "^4.10.0",
     "typeorm": "^0.3.26",
     "uuid": "^11.1.0"
   },
@@ -91,7 +93,10 @@
     "@types/passport": "^1.0.12",
     "@types/pino": "^7.0.5",
     "@types/swagger-ui-express": "^4.1.6",
+    "jsdoc-to-markdown": "^9.1.3",
+    "mermaid": "^11.13.0",
     "typedoc": "^0.28.17",
+    "typedoc-plugin-markdown": "^4.10.0",
     "typescript": "^5.3.0"
   }
 }

@@ -1,8 +1,14 @@
 import { injectable } from 'inversify'
-import { IDatabaseManagerFactory } from './IDatabaseManagerFactory'
+import { IDatabaseManagerFactory } from './types'
 import * as mongoDB from 'mongodb'
 import { ConnectionError } from '../errors/databaseErrors'
 
+/**
+ * MongoDB native driver manager factory.
+ *
+ * @deprecated This class will be removed in a future version.
+ * Use PostgresDBManagerFactory or CockRoachDBManagerFactory instead.
+ */
 @injectable()
 export class MongoDBEntityManagerFactory implements IDatabaseManagerFactory {
     private _instance = 0

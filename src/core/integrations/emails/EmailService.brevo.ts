@@ -1,6 +1,11 @@
 import { injectable } from "inversify";
 import { IEmailService } from "./IEmailService";
 
+/**
+ * Legacy Brevo email service.
+ *
+ * @deprecated Use BrevoProvider with EmailServiceFactory instead.
+ */
 @injectable()
 export class EmailServiceBrevo implements IEmailService {
   provider: string;

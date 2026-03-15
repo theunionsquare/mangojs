@@ -1,15 +1,16 @@
-import { Container, ContainerModule } from "inversify";
+/**
+ * @module Container
+ * @description Dependency injection container management using Inversify.
+ * Provides utilities for creating and managing IoC containers.
+ */
+
 import { ContainerManager } from "./ContainerManager";
 import { addCoreModule } from "./modules";
-import { ILoggerFactory } from "../loggers/ILoggerFactory";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import { LoggerPino } from "../loggers";
 
 /**
  * Global parent container manager with shared dependencies
  */
 const parentContainerManager = new ContainerManager();
-const parentContainer = new Container();
 
 /**
  * Get the parent container manager (contains shared dependencies like logger)
@@ -38,3 +39,4 @@ export const createChild = (parent?: ContainerManager): ContainerManager => {
 
 export { ContainerManager } from "./ContainerManager";
 export * from "./modules";
+export type { ServiceIdentifier } from "./types";

@@ -28,4 +28,5 @@
  * ```
  */
 
-export { Cache, CacheEntry, CacheOptions, CacheStats } from "./Cache";
+export { Cache } from "./Cache";
+export type { CacheEntry, CacheOptions, CacheStats } from "./types";

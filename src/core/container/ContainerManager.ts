@@ -1,12 +1,17 @@
-import { Container, ContainerModule, Newable } from "inversify";
+import { Container } from "inversify";
+import { ServiceIdentifier } from "./types";
 
-export type ServiceIdentifier<TInstance = unknown> =
-  | string
-  | symbol
-  | Newable<TInstance>
-  | Function;
 /**
- * Wrapper class to manage Inversify containers with a cleaner API
+ * Wrapper class to manage Inversify containers with a cleaner API.
+ *
+ * Provides a simplified interface for dependency injection using Inversify,
+ * with support for parent-child container hierarchies.
+ *
+ * @example
+ * ```typescript
+ * const manager = new ContainerManager();
+ * const service = manager.get<MyService>(TYPES.MyService);
+ * ```
  */
 export class ContainerManager {
   private container: Container;

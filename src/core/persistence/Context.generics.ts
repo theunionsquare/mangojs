@@ -1,1 +1,4 @@
-export type Context<T> = (em: T) => {}
+/**
+ * @deprecated Import from './types' instead.
+ */
+export { Context } from "./types";
