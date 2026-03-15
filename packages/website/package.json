@@ -1,0 +1,6 @@
+{
+  "name": "@mangojs/website",
+  "version": "0.0.1",
+  "private": true,
+  "description": "MangoJS landing page and static website"
+}

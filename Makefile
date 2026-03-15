@@ -1,29 +1,36 @@
-.PHONY: help build dev docs docs-version docs-serve release clean install
+.PHONY: help build dev docs docs-serve release clean install docker docker-up docker-down
 
 # Default target
 help:
-	@echo "MangoJS Development Commands"
+	@echo "MangoJS Monorepo Commands"
 	@echo ""
 	@echo "Usage: make <target>"
 	@echo ""
 	@echo "Development:"
-	@echo "  install      Install dependencies"
-	@echo "  build        Build the project"
-	@echo "  dev          Watch mode for development"
+	@echo "  install      Install all dependencies"
+	@echo "  build        Build @mangojs/core"
+	@echo "  build-all    Build core + docs"
+	@echo "  dev          Watch mode for core"
 	@echo "  clean        Remove build artifacts"
 	@echo ""
 	@echo "Documentation:"
-	@echo "  docs         Generate docs to docs-site/latest/"
-	@echo "  docs-version VERSION=x.x.x  Create versioned docs snapshot"
-	@echo "  docs-serve   Preview docs locally at http://localhost:3000"
+	@echo "  docs-build VERSION=x.x.x  Create version snapshot and build docs"
+	@echo "  docs-build-latest          Build docs for the latest version"
+	@echo "  docs-serve                 Preview docs locally"
 	@echo ""
 	@echo "Release:"
-	@echo "  release      Run release-it"
-	@echo "  release-docs VERSION=x.x.x  Generate versioned docs, commit, and push"
+	@echo "  release VERSION=x.x.x [FLAGS=...]  Release new version"
+	@echo "    FLAGS: --skip-docs --skip-publish --skip-git --dry-run"
+	@echo ""
+	@echo "Docker:"
+	@echo "  docker       Build Docker image"
+	@echo "  docker-up    Build and start with docker-compose"
+	@echo "  docker-down  Stop and remove containers"
 	@echo ""
 	@echo "Examples:"
-	@echo "  make docs-version VERSION=1.0.0"
-	@echo "  make release-docs VERSION=1.0.0"
+	@echo "  make release VERSION=1.0.0"
+	@echo "  make release VERSION=1.0.0 FLAGS='--skip-docs'"
+	@echo "  make docker-up"
 
 # Development
 install:
@@ -32,40 +39,41 @@ install:
 build:
 	pnpm build
 
+build-all:
+	pnpm build:all
+
 dev:
 	pnpm dev
 
 clean:
-	rm -rf dist
-	rm -rf docs
+	pnpm clean
 
 # Documentation
-docs:
-	pnpm docs
-
-docs-version:
+docs-build:
 ifndef VERSION
-	$(error VERSION is required. Usage: make docs-version VERSION=1.0.0)
+	$(error VERSION is required. Usage: make docs VERSION=1.0.0)
 endif
-	pnpm docs:version $(VERSION)
+	pnpm --filter @mangojs/docs copy:handbook
+	pnpm --filter @mangojs/docs docusaurus docs:version $(VERSION)
+	pnpm --filter @mangojs/docs docusaurus docs:version latest
+	pnpm build:docs
 
 docs-serve:
-	@echo "Starting docs server at http://localhost:8080"
-	pnpm docs:serve
+	pnpm dev:docs
 
 # Release
 release:
-	pnpm release
-
-release-docs:
 ifndef VERSION
-	$(error VERSION is required. Usage: make release-docs VERSION=1.0.0)
+	$(error VERSION is required. Usage: make release VERSION=1.0.0)
 endif
-	@echo "Generating documentation for v$(VERSION)..."
-	pnpm docs:version $(VERSION)
-	@echo "Committing documentation..."
-	git add docs
-	git commit -m "docs: add v$(VERSION) documentation"
-	@echo "Pushing to remote..."
-	git push
-	@echo "Done! Documentation for v$(VERSION) has been published."
+	node scripts/release.js $(VERSION) --skip-docs
+
+# Docker
+docker:
+	docker build -t mangojs-web .
+
+docker-up:
+	docker-compose up -d --build
+
+docker-down:
+	docker-compose down

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MangoJS - The AI-First Backend Framework</title>
+    <meta name="description" content="Build secure, efficient microservices with natural language. MangoJS is a lightweight Node.js framework designed for AI-driven development.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥭</text></svg>">
+</head>
+<body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">MangoJS</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="docs/docs/handbook/quick-start-tutorial.context">Examples</a>
+                <a href="docs/docs/handbook/index.context">Docs</a>
+                <a href="docs/docs/api">References</a>
+                <a href="https://github.com/theunionsquare/mangojs" target="_blank" class="nav-github">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>AI-Powered Backend Development</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Build backends</span>
+                    <span class="title-line gradient-text">with natural language</span>
+                </h1>
+                <p class="hero-subtitle">
+                    MangoJS is a lightweight Node.js framework for building secure, efficient microservices. 
+                    Speak your architecture into existence with AI-driven development.
+                </p>
+                <div class="hero-actions">
+                    <a href="#get-started" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#code" class="btn btn-secondary">
+                        <span>View Examples</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">~3kb</span>
+                        <span class="stat-label">Core Size</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value">&lt;1ms</span>
+                        <span class="stat-label">Routing</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">AI Prompt</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="prompt-line typing" id="typing-demo">
+                        <span class="prompt-symbol">❯</span>
+                        <span class="prompt-text"></span>
+                        <span class="cursor">▊</span>
+                    </div>
+                    <div class="output-lines" id="output-lines"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2 class="section-title">Everything you need<br><span class="gradient-text">for modern backends</span></h2>
+                <p class="section-subtitle">Built with developer experience in mind. Write less, ship more.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1: AI-First -->
+                <div class="feature-card feature-large" data-aos="fade-up">
+                    <div class="feature-icon ai-icon">
+                        <div class="icon-glow"></div>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>AI-First Development</h3>
+                    <p>Describe your service in plain English. MangoJS comes with optimized prompts and patterns for AI-assisted development. Build entire microservices with natural language.</p>
+                    <div class="feature-demo">
+                        <code>"Create a user authentication service with JWT tokens"</code>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Blazing Fast -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon speed-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized routing engine with sub-millisecond response times. Built for high-throughput microservices.</p>
+                </div>
+
+                <!-- Feature 3: Type Safety -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon ts-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Type-Safe</h3>
+                    <p>Full TypeScript support with strict typing. Catch errors at compile time, not runtime.</p>
+                </div>
+
+                <!-- Feature 4: Dependency Injection -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon di-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v10"/>
+                            <path d="M21 12h-6m-6 0H1"/>
+                            <path d="M18.36 5.64l-4.24 4.24m-4.24 4.24L5.64 18.36"/>
+                            <path d="M18.36 18.36l-4.24-4.24m-4.24-4.24L5.64 5.64"/>
+                        </svg>
+                    </div>
+                    <h3>Dependency Injection</h3>
+                    <p>Clean, modular code with Inversify-powered DI. Easy testing and loose coupling built-in.</p>
+                </div>
+
+                <!-- Feature 5: Security -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon security-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <h3>Security First</h3>
+                    <p>Built-in auth decorators, group permissions, and resource ownership validation.</p>
+                </div>
+
+                <!-- Feature 6: Microservices -->
+                <div class="feature-card feature-large" data-aos="fade-up">
+                    <div class="feature-icon micro-icon">
+                        <div class="icon-glow"></div>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="6" height="6" rx="1"/>
+                            <rect x="16" y="3" width="6" height="6" rx="1"/>
+                            <rect x="9" y="15" width="6" height="6" rx="1"/>
+                            <path d="M5 9v3a3 3 0 003 3h8a3 3 0 003-3V9"/>
+                            <path d="M12 15v-3"/>
+                        </svg>
+                    </div>
+                    <h3>Microservice Ready</h3>
+                    <p>Designed for distributed systems from day one. Scale horizontally with built-in patterns for service communication, queue systems, and scheduled tasks.</p>
+                    <div class="feature-tags">
+                        <span class="tag">BullMQ Queues</span>
+                        <span class="tag">Cron Scheduler</span>
+                        <span class="tag">Worker Threads</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2 class="section-title">From idea to API<br><span class="gradient-text">in minutes</span></h2>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-step" data-aos="fade-right">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Describe Your Service</h3>
+                        <p>Use natural language to describe what you want to build. MangoJS templates guide AI to generate the right code.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="chat-bubble user">
+                            "Create a blog post service with CRUD operations"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-connector">
+                    <svg width="40" height="80" viewBox="0 0 40 80">
+                        <path d="M20 0 L20 80" stroke="url(#gradient-line)" stroke-width="2" stroke-dasharray="4 4"/>
+                        <defs>
+                            <linearGradient id="gradient-line" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#ff6b35"/>
+                                <stop offset="100%" stop-color="#ffa500"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="workflow-step" data-aos="fade-left">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>AI Generates Code</h3>
+                        <p>The framework generates layered architecture: Database entities, Services with business logic, and Controllers with type-safe APIs.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="code-structure">
+                            <div class="folder">📁 db/models/Post.ts</div>
+                            <div class="folder">📁 services/post.service.ts</div>
+                            <div class="folder">📁 routes/posts.controller.ts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workflow-connector">
+                    <svg width="40" height="80" viewBox="0 0 40 80">
+                        <path d="M20 0 L20 80" stroke="url(#gradient-line)" stroke-width="2" stroke-dasharray="4 4"/>
+                    </svg>
+                </div>
+
+                <div class="workflow-step" data-aos="fade-right">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Ship to Production</h3>
+                        <p>Type-safe endpoints with Swagger docs, ready for deployment. Add features incrementally with the same workflow.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="api-preview">
+                            <div class="endpoint"><span class="method get">GET</span>/api/v1/posts</div>
+                            <div class="endpoint"><span class="method post">POST</span>/api/v1/posts</div>
+                            <div class="endpoint"><span class="method put">PUT</span>/api/v1/posts/:id</div>
+                            <div class="endpoint"><span class="method delete">DELETE</span>/api/v1/posts/:id</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section class="code-examples" id="code">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Code Examples</span>
+                <h2 class="section-title">Clean, declarative<br><span class="gradient-text">developer experience</span></h2>
+            </div>
+
+            <div class="code-tabs">
+                <button class="code-tab active" data-tab="controller">Controller</button>
+                <button class="code-tab" data-tab="service">Service</button>
+                <button class="code-tab" data-tab="scheduler">Scheduler</button>
+                <button class="code-tab" data-tab="queue">Queue</button>
+            </div>
+
+            <div class="code-panels">
+                <div class="code-panel active" id="panel-controller">
+                    <pre><code class="language-typescript"><span class="comment">// Clean decorator-based routing</span>
+<span class="keyword">@Controller</span>(<span class="string">"/api/v1/users"</span>)
+<span class="keyword">export class</span> <span class="class">UserController</span> {
+
+  <span class="keyword">@Get</span>(<span class="string">"/"</span>)
+  <span class="keyword">async</span> <span class="function">getUsers</span>(<span class="param">req</span>: Request, <span class="param">res</span>: Response) {
+    <span class="keyword">const</span> users = <span class="keyword">await</span> userService.<span class="function">getAll</span>();
+    <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">200</span>).<span class="function">json</span>({ <span class="param">data</span>: users });
+  }
+
+  <span class="keyword">@Post</span>(<span class="string">"/"</span>)
+  <span class="keyword">@HasGroups</span>([<span class="string">"Admin"</span>])  <span class="comment">// Built-in auth</span>
+  <span class="keyword">async</span> <span class="function">createUser</span>(<span class="param">req</span>: Request, <span class="param">res</span>: Response) {
+    <span class="keyword">const</span> user = <span class="keyword">await</span> userService.<span class="function">create</span>(req.body);
+    <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">201</span>).<span class="function">json</span>({ <span class="param">data</span>: user });
+  }
+}</code></pre>
+                </div>
+
+                <div class="code-panel" id="panel-service">
+                    <pre><code class="language-typescript"><span class="comment">// Automatic transaction management</span>
+<span class="keyword">@injectable</span>()
+<span class="keyword">export class</span> <span class="class">UserService</span> {
+
+  <span class="keyword">@inject</span>(INVERSITY_TYPES.PersistenceContext)
+  <span class="keyword">private</span> _persistence: IPersistenceContext;
+
+  <span class="keyword">async</span> <span class="function">create</span>(<span class="param">data</span>: UserPost): Promise&lt;User&gt; {
+    <span class="keyword">return await</span> <span class="keyword">this</span>._persistence.<span class="function">inTransaction</span>(
+      <span class="keyword">async</span> (<span class="param">em</span>: EntityManager) =&gt; {
+        <span class="keyword">const</span> user = em.<span class="function">create</span>(User, data);
+        <span class="keyword">await</span> em.<span class="function">save</span>(user);
+        <span class="keyword">return</span> user;
+      }
+    );
+  }
+}</code></pre>
+                </div>
+
+                <div class="code-panel" id="panel-scheduler">
+                    <pre><code class="language-typescript"><span class="comment">// Cron-based scheduled tasks</span>
+<span class="keyword">@Schedule</span>(<span class="string">'0 0 * * *'</span>, { 
+  timezone: <span class="string">'UTC'</span>,
+  runOnStart: <span class="keyword">false</span> 
+})
+<span class="keyword">@injectable</span>()
+<span class="keyword">export class</span> <span class="class">CleanupTask</span> <span class="keyword">extends</span> ScheduledTask {
+
+  <span class="keyword">async</span> <span class="function">run</span>(): Promise&lt;<span class="keyword">void</span>&gt; {
+    <span class="keyword">await this</span>.<span class="function">performCleanup</span>();
+  }
+
+  <span class="function">onComplete</span>(): <span class="keyword">void</span> {
+    console.<span class="function">log</span>(<span class="string">'Cleanup finished!'</span>);
+  }
+
+  <span class="function">onError</span>(<span class="param">error</span>: Error): <span class="keyword">void</span> {
+    <span class="keyword">this</span>.alertService.<span class="function">notify</span>(error);
+  }
+}</code></pre>
+                </div>
+
+                <div class="code-panel" id="panel-queue">
+                    <pre><code class="language-typescript"><span class="comment">// Distributed job processing</span>
+<span class="keyword">@QueueWorker</span>(<span class="string">'email-queue'</span>, { concurrency: <span class="number">5</span> })
+<span class="keyword">@injectable</span>()
+<span class="keyword">export class</span> <span class="class">EmailWorker</span> <span class="keyword">implements</span> IQueueWorkerHandler {
+
+  <span class="keyword">async</span> <span class="function">process</span>(<span class="param">job</span>: Job&lt;EmailData&gt;): Promise&lt;<span class="keyword">void</span>&gt; {
+    <span class="keyword">const</span> { to, subject, body } = job.data;
+    
+    <span class="keyword">await</span> job.<span class="function">updateProgress</span>(<span class="number">50</span>);
+    <span class="keyword">await this</span>.<span class="function">sendEmail</span>(to, subject, body);
+    <span class="keyword">await</span> job.<span class="function">updateProgress</span>(<span class="number">100</span>);
+  }
+
+  <span class="function">onFailed</span>(<span class="param">job</span>: Job, <span class="param">error</span>: Error): <span class="keyword">void</span> {
+    console.<span class="function">error</span>(<span class="string">`Job failed: ${error.message}`</span>);
+  }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">Onion architecture<br><span class="gradient-text">built for scale</span></h2>
+            </div>
+
+            <div class="arch-visual">
+                <div class="arch-layer layer-outer" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="layer-label">Controllers</div>
+                    <div class="layer-desc">HTTP/API Layer</div>
+                </div>
+                <div class="arch-layer layer-middle" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="layer-label">Services</div>
+                    <div class="layer-desc">Business Logic</div>
+                </div>
+                <div class="arch-layer layer-inner" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="layer-label">Database</div>
+                    <div class="layer-desc">Data Models</div>
+                </div>
+            </div>
+
+            <div class="arch-features">
+                <div class="arch-feature">
+                    <span class="arch-icon">🔄</span>
+                    <h4>Dependencies Flow Inward</h4>
+                    <p>Outer layers depend on inner layers, never the reverse</p>
+                </div>
+                <div class="arch-feature">
+                    <span class="arch-icon">🗃️</span>
+                    <h4>Database Agnostic</h4>
+                    <p>Switch databases without changing business logic</p>
+                </div>
+                <div class="arch-feature">
+                    <span class="arch-icon">🧪</span>
+                    <h4>Testable by Design</h4>
+                    <p>DI makes unit testing a breeze</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started Section -->
+    <section class="get-started" id="get-started">
+        <div class="container">
+            <div class="get-started-content">
+                <div class="section-header">
+                    <span class="section-tag">Get Started</span>
+                    <h2 class="section-title">Ready to build<br><span class="gradient-text">something amazing?</span></h2>
+                </div>
+
+                <div class="install-steps">
+                    <div class="install-step" data-aos="fade-up">
+                        <span class="step-badge">1</span>
+                        <h4>Install MangoJS</h4>
+                        <div class="code-block">
+                            <code>npm install mangojs-core</code>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="install-step" data-aos="fade-up" data-aos-delay="100">
+                        <span class="step-badge">2</span>
+                        <h4>Start Building with AI</h4>
+                        <div class="code-block prompt">
+                            <code>"Start a MangoJS application using the quick-start template"</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="https://github.com/theunionsquare/mangojs" target="_blank" class="btn btn-primary btn-large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                    <a href="docs/" class="btn btn-secondary btn-large">
+                        Read Documentation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🥭</span>
+                    <span class="logo-text">MangoJS</span>
+                </div>
+                <p class="footer-tagline">The AI-First Backend Framework</p>
+                <div class="footer-links">
+                    <a href="https://github.com/theunionsquare/mangojs" target="_blank">GitHub</a>
+                    <a href="docs/docs/handbook/index.context">Documentation</a>
+                    <a href="docs/api">API References</a>
+                    <a href="mailto:info@mangojs.tech">Contact</a>
+                </div>
+                <a href="mailto:info@mangojs.tech" class="footer-cta">
+                    <div class="footer-cta-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="footer-cta-text">
+                        <span class="footer-cta-label">Get in touch</span>
+                        <span class="footer-cta-email">info@mangojs.tech</span>
+                    </div>
+                    <svg class="footer-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+                <p class="footer-copy">© 2026 MangoJS. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Mango Contact Button -->
+    <a href="mailto:info@mangojs.tech" class="mango-fab" id="mangoFab" title="Need help? Send us an email!">
+        <div class="mango-fab-pulse"></div>
+        <div class="mango-fab-pulse mango-fab-pulse--delayed"></div>
+        <div class="mango-fab-icon">
+            <svg viewBox="0 0 100 100" width="36" height="36">
+                <!-- Mango body -->
+                <ellipse cx="50" cy="55" rx="30" ry="35" fill="url(#mangoGrad)" />
+                <!-- Mango highlight -->
+                <ellipse cx="40" cy="42" rx="12" ry="18" fill="rgba(255,255,255,0.18)" transform="rotate(-15 40 42)" />
+                <!-- Leaf -->
+                <path d="M50 20 Q60 5 75 10 Q65 18 55 22 Z" fill="#4CAF50" />
+                <path d="M50 20 Q55 8 68 12" fill="none" stroke="#388E3C" stroke-width="1.5" />
+                <!-- Stem -->
+                <path d="M50 22 Q48 18 50 14" fill="none" stroke="#6D4C21" stroke-width="2.5" stroke-linecap="round" />
+                <defs>
+                    <radialGradient id="mangoGrad" cx="40%" cy="35%" r="65%">
+                        <stop offset="0%" stop-color="#FFD54F" />
+                        <stop offset="45%" stop-color="#FFA726" />
+                        <stop offset="100%" stop-color="#FF6B35" />
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+        <span class="mango-fab-tooltip">🥭 Need help?</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

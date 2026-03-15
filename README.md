@@ -1,147 +1,74 @@
-<h1 align="center">🥭 MangoJS</h1>
+# MangoJS Monorepo
 
-<p align="center">
-  <strong>The AI-First Backend Framework</strong><br/>
-  Build backends with natural language. From idea to API in minutes.
-</p>
+AI-Powered Backend Framework for Node.js
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/@theunionsquare/mangojs-core"><img src="https://img.shields.io/npm/v/@theunionsquare/mangojs-core.svg" alt="npm version" /></a>
-  <a href="https://github.com/theunionsquare/mangojs/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" /></a>
-  <a href="https://mangojs.tech"><img src="https://img.shields.io/badge/docs-mangojs.tech-orange.svg" alt="Documentation" /></a>
-</p>
+## Packages
 
-<p align="center">
-  <code>~3kb</code> core size &nbsp;•&nbsp; <code>1ms</code> routing &nbsp;•&nbsp; <code>100%</code> TypeScript
-</p>
+| Package | Description |
+|---------|-------------|
+| [@mangojs/core](./packages/core) | The framework - published to npm |
+| [@mangojs/docs](./packages/docs) | Docusaurus documentation |
+| [@mangojs/website](./packages/website) | Landing page (mangojs.tech) |
 
----
+## Quick Start
 
-## Why MangoJS?
+```bash
+# Install dependencies
+pnpm install
 
-MangoJS is designed for the AI era. Describe your services in plain English, and let AI generate production-ready code following battle-tested patterns.
+# Build the framework
+pnpm build
 
-```
-"Create a user authentication service with JWT tokens and role-based permissions"
+# Start docs dev server
+pnpm dev:docs
 ```
 
-MangoJS + AI = Complete service architecture with controllers, services, and database models.
+## Commands
 
----
+| Command | Description |
+|---------|-------------|
+| `pnpm build` | Build @mangojs/core |
+| `pnpm build:docs` | Build Docusaurus docs |
+| `pnpm build:all` | Build core + docs |
+| `pnpm dev` | Watch mode for core |
+| `pnpm dev:docs` | Start Docusaurus dev server |
+| `pnpm release <version>` | Release new version |
 
-## Features
+## Local Development
 
-| Feature                   | Description                                                     |
-| ------------------------- | --------------------------------------------------------------- |
-| **AI-First Development**  | Built-in handbook and patterns optimized for AI code generation |
-| **Onion Architecture**    | Clean separation: Controllers → Services → Database             |
-| **Dependency Injection**  | Powered by Inversify for testable, maintainable code            |
-| **Type Safety**           | 100% TypeScript with strict typing throughout                   |
-| **Database Agnostic**     | Use any database with TypeORM integration                       |
-| **Production Ready**      | Auto-generated Swagger docs, error handling, logging            |
-| **Microservice Patterns** | Distributed systems support out of the box                      |
-| **Built-in Auth**         | Decorators for authentication and permissions                   |
-| **Background Jobs**       | BullMQ queues and cron scheduling included                      |
-| **Worker Threads**        | CPU-intensive task support                                      |
+### Docs only
 
----
-
-## Architecture
-
-<h3 align="center">MangoJS Onion Architecture</h3>
-
-<table align="center">
-  <tr>
-    <td>
-      <strong>Controller Layer (Outer)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← HTTP/API</em><br/>
-      • <code>@Controller()</code>, <code>@Get()</code>, <code>@Post()</code><br/>
-      • Request/Response handling<br/>
-      • Call services
-    </td>
-  </tr>
-  <tr>
-    <td align="center"><em>depends on</em><br/>⬇️</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Service Layer (Middle)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← Business Logic</em><br/>
-      • <code>@injectable()</code> classes<br/>
-      • Validation & business rules<br/>
-      • Transaction orchestration
-    </td>
-  </tr>
-  <tr>
-    <td align="center"><em>depends on</em><br/>⬇️</td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Database Layer (Core)</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>← Data Models</em><br/>
-      • <code>@Entity()</code> declarations<br/>
-      • TypeORM relationships<br/>
-      • Pure domain objects
-    </td>
-  </tr>
-</table>
-
----
-
-## AI-Powered Development
-
-MangoJS includes a comprehensive handbook optimized for AI assistants:
-
-```prompt
-Start a mangojs application using the handbook
+```bash
+pnpm dev:docs
 ```
 
-The handbook provides:
+Open `http://localhost:3000/docs/`
 
-- Code templates for common patterns
-- Best practices and conventions
-- Step-by-step tutorials
-- Architecture guidelines
+### Website + Docs
 
----
+```bash
+# Terminal 1: Serve the static website
+npx serve packages/website -p 8010
 
-## Project Structure
-
-```
-your-app/
-├── src/
-│   ├── db/
-│   │   └── models/          # TypeORM entities
-│   ├── routes/
-│   │   └── v1/              # Versioned controllers
-│   ├── services/            # Business logic
-│   ├── types/               # TypeScript definitions
-│   └── inversify.config.ts  # DI container setup
-├── package.json
-└── tsconfig.json
+# Terminal 2: Build docs and copy to website
+pnpm build:docs && cp -r packages/docs/build packages/website/docs
 ```
 
----
+Open `http://localhost:8010/`
 
-## Documentation
+## Docker
 
-- [Quick Start Tutorial](https://mangojs.tech/docs/quick-start)
-- [API Reference](https://mangojs.tech/docs/api)
-- [Architecture Guide](https://mangojs.tech/docs/architecture)
-- [Best Practices](https://mangojs.tech/docs/best-practices)
+```bash
+# Build image (website + docs)
+docker build -t mangojs-web .
 
----
+# Run locally
+docker-compose up -d
+```
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
+- `http://localhost:8010/` - Landing page
+- `http://localhost:8010/docs/` - Documentation
 
 ## License
 
 MIT
-
----
-
-<p align="center">
-  <a href="https://mangojs.tech">mangojs.tech</a> &nbsp;•&nbsp;
-  <a href="https://github.com/theunionsquare/mangojs">GitHub</a>
-</p>

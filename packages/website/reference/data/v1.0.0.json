@@ -1,0 +1,788 @@
+{
+    "version": "1.0.0",
+    "generatedAt": "2026-02-12T10:00:00Z",
+    "categories": {
+        "decorators": [
+            {
+                "name": "@Controller",
+                "kind": "decorator",
+                "signature": "@Controller(path: string)",
+                "description": "Defines a controller class that handles HTTP requests at a specific base route. All methods decorated with route decorators (@Get, @Post, etc.) will be relative to this path.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": true,
+                        "description": "The base URL path for all routes in this controller (e.g., '/api/v1/users')"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Get(\"/\")\n  async getUsers(req: Request, res: Response) {\n    return res.json({ users: [] });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/controller.ts",
+                    "line": 15
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "core"]
+            },
+            {
+                "name": "@Get",
+                "kind": "decorator",
+                "signature": "@Get(path?: string)",
+                "description": "Decorates a method to handle HTTP GET requests. The path is relative to the controller's base path.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": false,
+                        "description": "The route path for this endpoint. Defaults to '/' if not specified.",
+                        "default": "'/'"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Get(\"/:id\")\n  async getUser(req: Request, res: Response) {\n    const { id } = req.params;\n    const user = await userService.getById(id);\n    return res.json({ data: user });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/routes.ts",
+                    "line": 25
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "http"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Post" },
+                    { "category": "decorators", "name": "@Put" },
+                    { "category": "decorators", "name": "@Delete" }
+                ]
+            },
+            {
+                "name": "@Post",
+                "kind": "decorator",
+                "signature": "@Post(path?: string)",
+                "description": "Decorates a method to handle HTTP POST requests. Typically used for creating new resources.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": false,
+                        "description": "The route path for this endpoint. Defaults to '/' if not specified.",
+                        "default": "'/'"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Post(\"/\")\n  async createUser(req: Request, res: Response) {\n    const user = await userService.create(req.body);\n    return res.status(201).json({ data: user });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/routes.ts",
+                    "line": 45
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "http"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Get" },
+                    { "category": "decorators", "name": "@Put" },
+                    { "category": "decorators", "name": "@Delete" }
+                ]
+            },
+            {
+                "name": "@Put",
+                "kind": "decorator",
+                "signature": "@Put(path?: string)",
+                "description": "Decorates a method to handle HTTP PUT requests. Typically used for updating existing resources.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": false,
+                        "description": "The route path for this endpoint. Defaults to '/' if not specified.",
+                        "default": "'/'"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Put(\"/:id\")\n  async updateUser(req: Request, res: Response) {\n    const { id } = req.params;\n    const user = await userService.update(id, req.body);\n    return res.json({ data: user });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/routes.ts",
+                    "line": 65
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "http"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Get" },
+                    { "category": "decorators", "name": "@Post" },
+                    { "category": "decorators", "name": "@Delete" }
+                ]
+            },
+            {
+                "name": "@Delete",
+                "kind": "decorator",
+                "signature": "@Delete(path?: string)",
+                "description": "Decorates a method to handle HTTP DELETE requests. Used for removing resources.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": false,
+                        "description": "The route path for this endpoint. Defaults to '/' if not specified.",
+                        "default": "'/'"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Delete(\"/:id\")\n  async deleteUser(req: Request, res: Response) {\n    const { id } = req.params;\n    await userService.delete(id);\n    return res.status(204).send();\n  }\n}",
+                "source": {
+                    "file": "src/decorators/routes.ts",
+                    "line": 85
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "http"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Get" },
+                    { "category": "decorators", "name": "@Post" },
+                    { "category": "decorators", "name": "@Put" }
+                ]
+            },
+            {
+                "name": "@Patch",
+                "kind": "decorator",
+                "signature": "@Patch(path?: string)",
+                "description": "Decorates a method to handle HTTP PATCH requests. Used for partial updates to resources.",
+                "parameters": [
+                    {
+                        "name": "path",
+                        "type": "string",
+                        "required": false,
+                        "description": "The route path for this endpoint. Defaults to '/' if not specified.",
+                        "default": "'/'"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Patch(\"/:id\")\n  async patchUser(req: Request, res: Response) {\n    const { id } = req.params;\n    const user = await userService.patch(id, req.body);\n    return res.json({ data: user });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/routes.ts",
+                    "line": 105
+                },
+                "since": "1.0.0",
+                "tags": ["routing", "http"]
+            },
+            {
+                "name": "@NoAuth",
+                "kind": "decorator",
+                "signature": "@NoAuth()",
+                "description": "Marks an endpoint as public, bypassing authentication checks. Use this for endpoints that should be accessible without a valid token.",
+                "parameters": [],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/health\")\nexport class HealthController {\n  @Get(\"/\")\n  @NoAuth()\n  async healthCheck(req: Request, res: Response) {\n    return res.json({ status: 'ok' });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/auth.ts",
+                    "line": 15
+                },
+                "since": "1.0.0",
+                "tags": ["authentication", "security"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@HasUserType" },
+                    { "category": "decorators", "name": "@HasGroups" }
+                ]
+            },
+            {
+                "name": "@HasUserType",
+                "kind": "decorator",
+                "signature": "@HasUserType(userTypes: AuthUserType[])",
+                "description": "Restricts endpoint access to users with specific user types. The authenticated user must have one of the specified types to access the endpoint.",
+                "parameters": [
+                    {
+                        "name": "userTypes",
+                        "type": "AuthUserType[]",
+                        "required": true,
+                        "description": "Array of allowed user types (e.g., ['ADMIN', 'MODERATOR'])"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/admin\")\nexport class AdminController {\n  @Get(\"/dashboard\")\n  @HasUserType([AuthUserType.ADMIN])\n  async getDashboard(req: Request, res: Response) {\n    return res.json({ data: dashboardStats });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/auth.ts",
+                    "line": 35
+                },
+                "since": "1.0.0",
+                "tags": ["authentication", "authorization", "security"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@HasGroups" },
+                    { "category": "decorators", "name": "@RequiresOwnership" },
+                    { "category": "types", "name": "AuthUserType" }
+                ]
+            },
+            {
+                "name": "@HasGroups",
+                "kind": "decorator",
+                "signature": "@HasGroups(groups: string[])",
+                "description": "Restricts endpoint access to users belonging to specific groups. The authenticated user must be a member of at least one of the specified groups.",
+                "parameters": [
+                    {
+                        "name": "groups",
+                        "type": "string[]",
+                        "required": true,
+                        "description": "Array of group names that are allowed to access this endpoint"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/reports\")\nexport class ReportController {\n  @Get(\"/financial\")\n  @HasGroups([\"Finance\", \"Management\"])\n  async getFinancialReport(req: Request, res: Response) {\n    return res.json({ data: report });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/auth.ts",
+                    "line": 55
+                },
+                "since": "1.0.0",
+                "tags": ["authentication", "authorization", "security"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@HasUserType" },
+                    { "category": "decorators", "name": "@RequiresOwnership" }
+                ]
+            },
+            {
+                "name": "@RequiresOwnership",
+                "kind": "decorator",
+                "signature": "@RequiresOwnership(options: OwnershipOptions)",
+                "description": "Validates that the authenticated user owns the requested resource. Compares the user ID from the token with a field in the request parameters.",
+                "parameters": [
+                    {
+                        "name": "options",
+                        "type": "OwnershipOptions",
+                        "required": true,
+                        "description": "Configuration object specifying how to verify ownership"
+                    },
+                    {
+                        "name": "options.paramName",
+                        "type": "string",
+                        "required": true,
+                        "description": "The name of the request parameter containing the resource ID"
+                    },
+                    {
+                        "name": "options.userIdField",
+                        "type": "string",
+                        "required": true,
+                        "description": "The field name in the user token containing the user's ID"
+                    }
+                ],
+                "returns": null,
+                "example": "@Controller(\"/api/v1/users\")\nexport class UserController {\n  @Put(\"/:id\")\n  @RequiresOwnership({ paramName: 'id', userIdField: 'uid' })\n  async updateProfile(req: Request, res: Response) {\n    const { id } = req.params;\n    const user = await userService.update(id, req.body);\n    return res.json({ data: user });\n  }\n}",
+                "source": {
+                    "file": "src/decorators/auth.ts",
+                    "line": 75
+                },
+                "since": "1.0.0",
+                "tags": ["authentication", "authorization", "security"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@HasUserType" },
+                    { "category": "decorators", "name": "@HasGroups" }
+                ]
+            },
+            {
+                "name": "@Schedule",
+                "kind": "decorator",
+                "signature": "@Schedule(cronExpression: string, options?: ScheduleOptions)",
+                "description": "Defines a scheduled task using cron expressions. The decorated class must extend ScheduledTask and implement the run() method.",
+                "parameters": [
+                    {
+                        "name": "cronExpression",
+                        "type": "string",
+                        "required": true,
+                        "description": "Cron expression defining when the task runs (e.g., '0 0 * * *' for daily at midnight)"
+                    },
+                    {
+                        "name": "options",
+                        "type": "ScheduleOptions",
+                        "required": false,
+                        "description": "Additional scheduling configuration"
+                    },
+                    {
+                        "name": "options.timezone",
+                        "type": "string",
+                        "required": false,
+                        "description": "IANA timezone for the schedule (e.g., 'America/New_York')",
+                        "default": "'UTC'"
+                    },
+                    {
+                        "name": "options.runOnStart",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Whether to run the task immediately when the application starts",
+                        "default": "false"
+                    }
+                ],
+                "returns": null,
+                "example": "@Schedule('0 0 * * *', { timezone: 'UTC', runOnStart: false })\n@injectable()\nexport class DailyCleanupTask extends ScheduledTask {\n  async run(): Promise<void> {\n    await this.performCleanup();\n  }\n\n  onComplete(): void {\n    console.log('Cleanup completed');\n  }\n\n  onError(error: Error): void {\n    console.error('Cleanup failed:', error);\n  }\n}",
+                "source": {
+                    "file": "src/decorators/schedule.ts",
+                    "line": 20
+                },
+                "since": "1.0.0",
+                "tags": ["scheduling", "cron", "tasks"],
+                "seeAlso": [
+                    { "category": "classes", "name": "ScheduledTask" }
+                ]
+            },
+            {
+                "name": "@QueueWorker",
+                "kind": "decorator",
+                "signature": "@QueueWorker(queueName: string, options?: QueueWorkerOptions)",
+                "description": "Defines a queue worker that processes jobs from a BullMQ queue. The decorated class must implement IQueueWorkerHandler.",
+                "parameters": [
+                    {
+                        "name": "queueName",
+                        "type": "string",
+                        "required": true,
+                        "description": "The name of the queue to consume jobs from"
+                    },
+                    {
+                        "name": "options",
+                        "type": "QueueWorkerOptions",
+                        "required": false,
+                        "description": "Worker configuration options"
+                    },
+                    {
+                        "name": "options.concurrency",
+                        "type": "number",
+                        "required": false,
+                        "description": "Number of jobs to process concurrently",
+                        "default": "1"
+                    }
+                ],
+                "returns": null,
+                "example": "@QueueWorker('email-queue', { concurrency: 5 })\n@injectable()\nexport class EmailWorker implements IQueueWorkerHandler {\n  async process(job: Job<EmailData>): Promise<void> {\n    const { to, subject, body } = job.data;\n    await this.sendEmail(to, subject, body);\n  }\n\n  onCompleted(job: Job): void {\n    console.log(`Email sent: ${job.id}`);\n  }\n\n  onFailed(job: Job, error: Error): void {\n    console.error(`Email failed: ${error.message}`);\n  }\n}",
+                "source": {
+                    "file": "src/decorators/queue.ts",
+                    "line": 15
+                },
+                "since": "1.0.0",
+                "tags": ["queue", "bullmq", "workers"],
+                "seeAlso": [
+                    { "category": "interfaces", "name": "IQueueWorkerHandler" },
+                    { "category": "interfaces", "name": "IQueueClient" }
+                ]
+            },
+            {
+                "name": "@injectable",
+                "kind": "decorator",
+                "signature": "@injectable()",
+                "description": "Marks a class as injectable for dependency injection. Required for any class that needs to be resolved from the DI container or have dependencies injected.",
+                "parameters": [],
+                "returns": null,
+                "example": "@injectable()\nexport class UserService {\n  @inject(INVERSITY_TYPES.PersistenceContext)\n  private _persistence: IPersistenceContext;\n\n  async getUsers(): Promise<User[]> {\n    // ...\n  }\n}",
+                "source": {
+                    "file": "inversify (external)",
+                    "line": null
+                },
+                "since": "1.0.0",
+                "tags": ["dependency-injection", "inversify"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@inject" }
+                ]
+            },
+            {
+                "name": "@inject",
+                "kind": "decorator",
+                "signature": "@inject(serviceIdentifier: ServiceIdentifier)",
+                "description": "Injects a dependency into a class property or constructor parameter. Used with @injectable classes to resolve dependencies from the DI container.",
+                "parameters": [
+                    {
+                        "name": "serviceIdentifier",
+                        "type": "ServiceIdentifier",
+                        "required": true,
+                        "description": "The identifier for the service to inject (typically from INVERSITY_TYPES)"
+                    }
+                ],
+                "returns": null,
+                "example": "@injectable()\nexport class UserService {\n  @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))\n  private _persistenceContext: IPersistenceContext;\n\n  @inject(INVERSITY_TYPES.LoggerFactory)\n  private _loggerFactory: ILoggerFactory;\n}",
+                "source": {
+                    "file": "inversify (external)",
+                    "line": null
+                },
+                "since": "1.0.0",
+                "tags": ["dependency-injection", "inversify"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@injectable" },
+                    { "category": "types", "name": "INVERSITY_TYPES" }
+                ]
+            }
+        ],
+        "classes": [
+            {
+                "name": "ScheduledTask",
+                "kind": "class",
+                "signature": "abstract class ScheduledTask",
+                "description": "Base class for scheduled tasks. Extend this class and decorate with @Schedule to create cron-based tasks. Provides lifecycle hooks for task execution.",
+                "parameters": [],
+                "returns": null,
+                "example": "@Schedule('0 */6 * * *', { timezone: 'UTC' })\n@injectable()\nexport class DataSyncTask extends ScheduledTask {\n  async run(): Promise<void> {\n    // Main task logic\n    await this.syncData();\n  }\n\n  onStart(): void {\n    console.log('Sync starting...');\n  }\n\n  onComplete(): void {\n    console.log('Sync completed');\n  }\n\n  onError(error: Error): void {\n    this.alertService.notify(error);\n  }\n}",
+                "source": {
+                    "file": "src/core/scheduled-task.ts",
+                    "line": 10
+                },
+                "since": "1.0.0",
+                "tags": ["scheduling", "tasks", "abstract"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Schedule" }
+                ]
+            },
+            {
+                "name": "Containers",
+                "kind": "class",
+                "signature": "class Containers",
+                "description": "Singleton class that manages the Inversify dependency injection container. Use getContainer() to access the DI container for binding and resolving services.",
+                "parameters": [],
+                "returns": null,
+                "example": "import { Containers } from '@theunionsquare/mangojs-core';\n\nconst container = Containers.getContainer();\n\n// Bind a service\ncontainer\n  .bind<IUserService>(TYPES.UserService)\n  .to(UserService);\n\n// Resolve a service\nconst userService = container.get<IUserService>(TYPES.UserService);",
+                "source": {
+                    "file": "src/core/containers.ts",
+                    "line": 8
+                },
+                "since": "1.0.0",
+                "tags": ["dependency-injection", "container", "singleton"]
+            },
+            {
+                "name": "PostgreSQLPersistenceContext",
+                "kind": "class",
+                "signature": "class PostgreSQLPersistenceContext implements IPersistenceContext",
+                "description": "PostgreSQL implementation of IPersistenceContext. Provides transaction management with automatic rollback on errors using TypeORM's EntityManager.",
+                "parameters": [],
+                "returns": null,
+                "example": "@injectable()\nexport class UserService {\n  @inject(INVERSITY_TYPES.PersistenceContext)\n  private _persistence: IPersistenceContext;\n\n  async createUser(data: UserInput): Promise<User> {\n    return await this._persistence.inTransaction(\n      async (em: EntityManager) => {\n        const user = em.create(User, data);\n        await em.save(user);\n        return user;\n      }\n    );\n  }\n}",
+                "source": {
+                    "file": "src/persistence/postgresql-persistence-context.ts",
+                    "line": 15
+                },
+                "since": "1.0.0",
+                "tags": ["database", "postgresql", "transactions"],
+                "seeAlso": [
+                    { "category": "interfaces", "name": "IPersistenceContext" }
+                ]
+            },
+            {
+                "name": "APIError",
+                "kind": "class",
+                "signature": "class APIError extends Error",
+                "description": "Custom error class for API responses. Includes HTTP status code and error code for structured error handling.",
+                "parameters": [
+                    {
+                        "name": "statusCode",
+                        "type": "number",
+                        "required": true,
+                        "description": "HTTP status code (e.g., 400, 404, 500)"
+                    },
+                    {
+                        "name": "errorCode",
+                        "type": "string",
+                        "required": true,
+                        "description": "Application-specific error code (e.g., 'NOT_FOUND', 'VALIDATION_ERROR')"
+                    },
+                    {
+                        "name": "message",
+                        "type": "string",
+                        "required": true,
+                        "description": "Human-readable error message"
+                    }
+                ],
+                "returns": null,
+                "example": "import { errors } from '@theunionsquare/mangojs-core';\n\n// In a service\nasync getUser(id: string): Promise<User> {\n  const user = await this.repository.findOne(id);\n  \n  if (!user) {\n    throw new errors.APIError(\n      404,\n      'NOT_FOUND',\n      `User with ID ${id} not found`\n    );\n  }\n  \n  return user;\n}",
+                "source": {
+                    "file": "src/errors/api-error.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["errors", "http", "exceptions"]
+            },
+            {
+                "name": "LoggerPino",
+                "kind": "class",
+                "signature": "class LoggerPino implements ILoggerFactory",
+                "description": "Pino-based logger factory implementation. Creates structured JSON loggers optimized for production environments.",
+                "parameters": [
+                    {
+                        "name": "serviceName",
+                        "type": "string",
+                        "required": true,
+                        "description": "Name of the service for log identification"
+                    },
+                    {
+                        "name": "level",
+                        "type": "string",
+                        "required": false,
+                        "description": "Minimum log level (trace, debug, info, warn, error, fatal)",
+                        "default": "'info'"
+                    }
+                ],
+                "returns": null,
+                "example": "// In inversify.config.ts\ncontainer\n  .bind<ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)\n  .toConstantValue(new LoggerPino('user-service', 'debug'));\n\n// In a service\n@injectable()\nexport class UserService {\n  @inject(INVERSITY_TYPES.LoggerFactory)\n  private loggerFactory: ILoggerFactory;\n\n  private get logger() {\n    return this.loggerFactory.createLogger('UserService');\n  }\n\n  async createUser(data: UserInput) {\n    this.logger.info('Creating user', { email: data.email });\n    // ...\n  }\n}",
+                "source": {
+                    "file": "src/logging/logger-pino.ts",
+                    "line": 10
+                },
+                "since": "1.0.0",
+                "tags": ["logging", "pino"],
+                "seeAlso": [
+                    { "category": "interfaces", "name": "ILoggerFactory" }
+                ]
+            }
+        ],
+        "interfaces": [
+            {
+                "name": "IPersistenceContext",
+                "kind": "interface",
+                "signature": "interface IPersistenceContext",
+                "description": "Interface for transaction management. Implementations provide atomic database operations with automatic rollback on errors.",
+                "parameters": [],
+                "returns": null,
+                "example": "// Interface usage in a service\n@injectable()\nexport class OrderService {\n  @inject(INVERSITY_TYPES.PersistenceContext)\n  private _persistence: IPersistenceContext;\n\n  async createOrder(data: OrderInput): Promise<Order> {\n    // All operations inside inTransaction are atomic\n    return await this._persistence.inTransaction(\n      async (em: EntityManager) => {\n        const order = em.create(Order, data);\n        await em.save(order);\n        \n        // Update inventory (also in same transaction)\n        await this.updateInventory(em, data.items);\n        \n        return order;\n      }\n    );\n  }\n}",
+                "source": {
+                    "file": "src/interfaces/persistence-context.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["database", "transactions", "interface"],
+                "seeAlso": [
+                    { "category": "classes", "name": "PostgreSQLPersistenceContext" }
+                ]
+            },
+            {
+                "name": "IQueueClient",
+                "kind": "interface",
+                "signature": "interface IQueueClient",
+                "description": "Interface for queue job producers. Used in API services to add jobs to queues for async processing by workers.",
+                "parameters": [],
+                "returns": null,
+                "example": "@Controller('/api/v1/emails')\nexport class EmailController {\n  @inject(INVERSITY_TYPES.QueueClient)\n  private queueClient: IQueueClient;\n\n  @Post('/send')\n  async sendEmail(req: Request, res: Response) {\n    const jobId = await this.queueClient.addJob(\n      'email-queue',\n      'send-welcome',\n      { to: req.body.email, template: 'welcome' },\n      { attempts: 3, backoff: { type: 'exponential', delay: 1000 } }\n    );\n    \n    return res.status(202).json({ jobId, status: 'queued' });\n  }\n}",
+                "source": {
+                    "file": "src/interfaces/queue-client.ts",
+                    "line": 8
+                },
+                "since": "1.0.0",
+                "tags": ["queue", "bullmq", "producer"],
+                "seeAlso": [
+                    { "category": "interfaces", "name": "IQueueWorkerHandler" },
+                    { "category": "decorators", "name": "@QueueWorker" }
+                ]
+            },
+            {
+                "name": "IQueueWorkerHandler",
+                "kind": "interface",
+                "signature": "interface IQueueWorkerHandler",
+                "description": "Interface for queue job consumers. Implement this interface in classes decorated with @QueueWorker to process jobs.",
+                "parameters": [],
+                "returns": null,
+                "example": "@QueueWorker('email-queue', { concurrency: 5 })\n@injectable()\nexport class EmailWorker implements IQueueWorkerHandler {\n  async process(job: Job<EmailData>): Promise<void> {\n    await job.updateProgress(10);\n    await this.sendEmail(job.data);\n    await job.updateProgress(100);\n  }\n\n  onCompleted(job: Job): void {\n    console.log(`Email sent successfully: ${job.id}`);\n  }\n\n  onFailed(job: Job, error: Error): void {\n    console.error(`Email failed: ${error.message}`);\n  }\n\n  onProgress(job: Job, progress: number): void {\n    console.log(`Job ${job.id} progress: ${progress}%`);\n  }\n}",
+                "source": {
+                    "file": "src/interfaces/queue-worker-handler.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["queue", "bullmq", "consumer", "worker"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@QueueWorker" },
+                    { "category": "interfaces", "name": "IQueueClient" }
+                ]
+            },
+            {
+                "name": "IDatabaseManagerFactory",
+                "kind": "interface",
+                "signature": "interface IDatabaseManagerFactory",
+                "description": "Interface for database connection management. Implementations handle connection pooling and DataSource creation for TypeORM.",
+                "parameters": [],
+                "returns": null,
+                "example": "// In inversify.config.ts\nimport { PostgresDBManagerFactory } from '@theunionsquare/mangojs-core';\n\ncontainer\n  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)\n  .toConstantValue(\n    new PostgresDBManagerFactory(\n      { url: process.env.DATABASE_URL },\n      [User, Post, Comment] // Entity classes\n    )\n  );",
+                "source": {
+                    "file": "src/interfaces/database-manager-factory.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["database", "typeorm", "connection"]
+            },
+            {
+                "name": "ILoggerFactory",
+                "kind": "interface",
+                "signature": "interface ILoggerFactory",
+                "description": "Interface for creating scoped loggers. Implementations provide structured logging with service and component context.",
+                "parameters": [],
+                "returns": null,
+                "example": "@injectable()\nexport class UserService {\n  @inject(INVERSITY_TYPES.LoggerFactory)\n  private loggerFactory: ILoggerFactory;\n\n  async createUser(data: UserInput): Promise<User> {\n    const logger = this.loggerFactory.createLogger('UserService');\n    \n    logger.info('Creating new user', { email: data.email });\n    \n    try {\n      const user = await this.save(data);\n      logger.info('User created', { userId: user.id });\n      return user;\n    } catch (error) {\n      logger.error('Failed to create user', { error });\n      throw error;\n    }\n  }\n}",
+                "source": {
+                    "file": "src/interfaces/logger-factory.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["logging", "interface"],
+                "seeAlso": [
+                    { "category": "classes", "name": "LoggerPino" }
+                ]
+            }
+        ],
+        "functions": [
+            {
+                "name": "createApplication",
+                "kind": "function",
+                "signature": "function createApplication(options: ApplicationOptions): Application",
+                "description": "Creates and configures a MangoJS application instance. This is the main entry point for bootstrapping your microservice.",
+                "parameters": [
+                    {
+                        "name": "options",
+                        "type": "ApplicationOptions",
+                        "required": true,
+                        "description": "Application configuration options"
+                    },
+                    {
+                        "name": "options.controllers",
+                        "type": "Class[]",
+                        "required": true,
+                        "description": "Array of controller classes to register"
+                    },
+                    {
+                        "name": "options.middleware",
+                        "type": "Middleware[]",
+                        "required": false,
+                        "description": "Global middleware to apply to all routes"
+                    },
+                    {
+                        "name": "options.container",
+                        "type": "Container",
+                        "required": false,
+                        "description": "Custom Inversify container (uses default if not provided)"
+                    }
+                ],
+                "returns": {
+                    "type": "Application",
+                    "description": "Configured Express application instance"
+                },
+                "example": "import { createApplication } from '@theunionsquare/mangojs-core';\nimport { UserController, PostController } from './routes';\nimport { authMiddleware, corsMiddleware } from './middleware';\n\nconst app = createApplication({\n  controllers: [UserController, PostController],\n  middleware: [corsMiddleware, authMiddleware]\n});\n\napp.listen(3000, () => {\n  console.log('Server running on port 3000');\n});",
+                "source": {
+                    "file": "src/core/application.ts",
+                    "line": 25
+                },
+                "since": "1.0.0",
+                "tags": ["core", "bootstrap", "application"]
+            }
+        ],
+        "types": [
+            {
+                "name": "INVERSITY_TYPES",
+                "kind": "const",
+                "signature": "const INVERSITY_TYPES: { [key: string]: symbol }",
+                "description": "Symbols used as injection tokens for the dependency injection container. Use these with @inject() to resolve services.",
+                "parameters": [],
+                "returns": null,
+                "example": "import { INVERSITY_TYPES } from '@theunionsquare/mangojs-core';\n\n// Available tokens:\n// INVERSITY_TYPES.PersistenceContext\n// INVERSITY_TYPES.DatabaseManagerFactory\n// INVERSITY_TYPES.LoggerFactory\n// INVERSITY_TYPES.QueueClient\n// INVERSITY_TYPES.AuthorizationContext\n\n@injectable()\nexport class MyService {\n  @inject(INVERSITY_TYPES.PersistenceContext)\n  private persistence: IPersistenceContext;\n\n  @inject(INVERSITY_TYPES.LoggerFactory)\n  private loggerFactory: ILoggerFactory;\n}",
+                "source": {
+                    "file": "src/types/inversify-types.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["dependency-injection", "constants"]
+            },
+            {
+                "name": "AuthUserType",
+                "kind": "enum",
+                "signature": "enum AuthUserType",
+                "description": "Enumeration of user types for authentication and authorization. Used with @HasUserType decorator to restrict endpoint access.",
+                "parameters": [],
+                "returns": null,
+                "example": "import { Types } from '@theunionsquare/mangojs-core';\n\n// Available values:\n// AuthUserType.USER\n// AuthUserType.ADMIN\n// AuthUserType.MODERATOR\n// AuthUserType.SERVICE\n\n@Controller('/api/v1/admin')\nexport class AdminController {\n  @Get('/users')\n  @HasUserType([Types.enums.AuthUserType.ADMIN])\n  async listUsers(req: Request, res: Response) {\n    // Only admins can access\n  }\n}",
+                "source": {
+                    "file": "src/types/enums.ts",
+                    "line": 10
+                },
+                "since": "1.0.0",
+                "tags": ["authentication", "enum"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@HasUserType" }
+                ]
+            },
+            {
+                "name": "ScheduleOptions",
+                "kind": "type",
+                "signature": "type ScheduleOptions = { timezone?: string; runOnStart?: boolean }",
+                "description": "Configuration options for the @Schedule decorator.",
+                "parameters": [
+                    {
+                        "name": "timezone",
+                        "type": "string",
+                        "required": false,
+                        "description": "IANA timezone identifier (e.g., 'America/New_York', 'Europe/London')",
+                        "default": "'UTC'"
+                    },
+                    {
+                        "name": "runOnStart",
+                        "type": "boolean",
+                        "required": false,
+                        "description": "Execute the task immediately when the application starts",
+                        "default": "false"
+                    }
+                ],
+                "returns": null,
+                "example": "@Schedule('0 9 * * 1-5', {\n  timezone: 'America/New_York',\n  runOnStart: false\n})\nexport class WeekdayReportTask extends ScheduledTask {\n  // Runs at 9 AM Eastern, Monday through Friday\n}",
+                "source": {
+                    "file": "src/types/schedule-options.ts",
+                    "line": 3
+                },
+                "since": "1.0.0",
+                "tags": ["scheduling", "configuration"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@Schedule" }
+                ]
+            },
+            {
+                "name": "QueueWorkerOptions",
+                "kind": "type",
+                "signature": "type QueueWorkerOptions = { concurrency?: number }",
+                "description": "Configuration options for the @QueueWorker decorator.",
+                "parameters": [
+                    {
+                        "name": "concurrency",
+                        "type": "number",
+                        "required": false,
+                        "description": "Maximum number of jobs to process simultaneously",
+                        "default": "1"
+                    }
+                ],
+                "returns": null,
+                "example": "@QueueWorker('heavy-tasks', { concurrency: 3 })\nexport class HeavyTaskWorker implements IQueueWorkerHandler {\n  // Process up to 3 jobs concurrently\n}",
+                "source": {
+                    "file": "src/types/queue-worker-options.ts",
+                    "line": 3
+                },
+                "since": "1.0.0",
+                "tags": ["queue", "configuration"],
+                "seeAlso": [
+                    { "category": "decorators", "name": "@QueueWorker" }
+                ]
+            }
+        ],
+        "errors": [
+            {
+                "name": "APIError",
+                "kind": "class",
+                "signature": "class APIError extends Error",
+                "description": "Standard error class for API responses. Thrown from services and automatically handled by the error middleware to return consistent JSON error responses.",
+                "parameters": [
+                    {
+                        "name": "statusCode",
+                        "type": "number",
+                        "required": true,
+                        "description": "HTTP status code for the response"
+                    },
+                    {
+                        "name": "errorCode",
+                        "type": "string",
+                        "required": true,
+                        "description": "Machine-readable error code"
+                    },
+                    {
+                        "name": "message",
+                        "type": "string",
+                        "required": true,
+                        "description": "Human-readable error message"
+                    }
+                ],
+                "returns": null,
+                "example": "import { errors } from '@theunionsquare/mangojs-core';\n\n// Common usage patterns:\n\n// 400 Bad Request\nthrow new errors.APIError(400, 'VALIDATION_ERROR', 'Email is required');\n\n// 401 Unauthorized\nthrow new errors.APIError(401, 'UNAUTHORIZED', 'Invalid credentials');\n\n// 403 Forbidden\nthrow new errors.APIError(403, 'FORBIDDEN', 'Access denied');\n\n// 404 Not Found\nthrow new errors.APIError(404, 'NOT_FOUND', 'User not found');\n\n// 409 Conflict\nthrow new errors.APIError(409, 'CONFLICT', 'Email already exists');\n\n// 500 Internal Server Error\nthrow new errors.APIError(500, 'INTERNAL_ERROR', 'Something went wrong');",
+                "source": {
+                    "file": "src/errors/api-error.ts",
+                    "line": 5
+                },
+                "since": "1.0.0",
+                "tags": ["errors", "http", "exceptions"]
+            }
+        ]
+    }
+}
