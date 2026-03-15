@@ -21,18 +21,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set environment based on branch
+      - name: Set environment
         id: set-env
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/release/app" || "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
-            echo "DEPLOY_PATH=/opt/mangojs-website/production" >> $GITHUB_OUTPUT
-            echo "APP_PORT=8010" >> $GITHUB_OUTPUT
-          else
-            echo "ENVIRONMENT=test" >> $GITHUB_OUTPUT
-            echo "DEPLOY_PATH=/opt/mangojs-website/test" >> $GITHUB_OUTPUT
-            echo "APP_PORT=8011" >> $GITHUB_OUTPUT
-          fi
+          echo "ENVIRONMENT=production" >> $GITHUB_OUTPUT
+          echo "APP_PORT=8010" >> $GITHUB_OUTPUT
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -61,8 +54,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
-          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
+          no-cache: true
 
       - name: Copy files to server
         uses: appleboy/scp-action@v0.1.7
