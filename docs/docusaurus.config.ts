@@ -47,11 +47,14 @@ const config: Config = {
         entryPoints: ["../src/index.ts"],
         tsconfig: "../tsconfig.json",
         out: "docs/api",
+        name: "MangoJS",
         readme: "none",
         hideBreadcrumbs: true,
         useCodeBlocks: true,
         sanitizeComments: true,
         skipErrorChecking: true,
+        // Only generate files for namespaces, don't create separate files for top-level members
+        membersWithOwnFile: [],
         plugin: ["typedoc-plugin-markdown", "typedoc-plugin-frontmatter", "./typedoc-frontmatter-plugin.mjs"],
       },
     ],
@@ -91,11 +94,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: "MangoJS",
-      logo: {
-        alt: "MangoJS Logo",
-        src: "img/logo.svg",
-      },
+      title: "🥭 MangoJS",
       items: [
         {
           type: "docSidebar",
