@@ -17,3 +17,6 @@ coverage
 
 # Allow scripts folder JS files
 !scripts/*.js
+
+# Allow website static JS files
+!packages/website/js/**
