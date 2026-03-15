@@ -9,22 +9,22 @@
 ## Controllers & Endpoints
 **Keywords**: controllers, endpoints, api, routes, http, rest, request, response
 **Description**: Use when you need to create HTTP endpoints, handle requests/responses, or work with API routing
-- Read: [@theunionsquare/mangojs-core/handbook/controller/overview.context.md](@theunionsquare/mangojs-core/handbook/controller/overview.context.md) - Complete controller guide with examples
+- Read: [@theunionsquare/mangojs-core/handbook/controller/index.context.md](@theunionsquare/mangojs-core/handbook/controller/index.context.md) - Complete controller guide with examples
 
 ## Services & Business Logic
 **Keywords**: services, business logic, transactions, orchestration, methods
 **Description**: Use when you need to implement business logic, manage transactions, or orchestrate database operations
-- Read: [@theunionsquare/mangojs-core/handbook/service/overview.context.md](@theunionsquare/mangojs-core/handbook/service/overview.context.md) - Service layer patterns
+- Read: [@theunionsquare/mangojs-core/handbook/service/index.context.md](@theunionsquare/mangojs-core/handbook/service/index.context.md) - Service layer patterns
 
 ## Database & Models
 **Keywords**: database, models, entities, orm, typeorm, migrations, relationships, schema
 **Description**: Use when you need to create database entities, define relationships, or generate migrations
-- Read: [@theunionsquare/mangojs-core/handbook/database/overview.context.md](@theunionsquare/mangojs-core/handbook/database/overview.context.md) - Database layer with TypeORM
+- Read: [@theunionsquare/mangojs-core/handbook/database/index.context.md](@theunionsquare/mangojs-core/handbook/database/index.context.md) - Database layer with TypeORM
 
 ## Architecture & Design
 **Keywords**: architecture, design, patterns, onion architecture, layers, structure
 **Description**: Use when you need to understand the overall framework architecture, layer responsibilities, or design patterns
-- Read: [@theunionsquare/mangojs-core/handbook/architecture/overview.context.md](@theunionsquare/mangojs-core/handbook/architecture/overview.context.md) - Framework architecture
+- Read: [@theunionsquare/mangojs-core/handbook/architecture/index.context.md](@theunionsquare/mangojs-core/handbook/architecture/index.context.md) - Framework architecture
 
 ## Dependency Injection
 **Keywords**: dependency injection, di, inversify, container, inject, injectable
@@ -39,7 +39,7 @@
 ## Types & TypeScript
 **Keywords**: types, typescript, interfaces, type safety, api types, entity types
 **Description**: Use when you need to define API types, organize type definitions, or ensure type safety
-- Read: [@theunionsquare/mangojs-core/handbook/architecture/type.context.md](@theunionsquare/mangojs-core/handbook/architecture/type.context.md) - Type organization patterns
+- Read: [@theunionsquare/mangojs-core/handbook/project-structure/types.context.md](@theunionsquare/mangojs-core/handbook/project-structure/types.context.md) - Type organization patterns
 
 ## Error Handling
 **Keywords**: errors, error handling, exceptions, APIError, try catch, error responses
@@ -49,12 +49,12 @@
 ## Scheduler & Background Tasks
 **Keywords**: scheduler, scheduled tasks, cron, background jobs, tasks, @Schedule, ScheduledTask, worker thread
 **Description**: Use when you need to create scheduled background tasks, configure cron jobs, or run periodic operations
-- Read: [@theunionsquare/mangojs-core/handbook/scheduler/overview.context.md](@theunionsquare/mangojs-core/handbook/scheduler/overview.context.md) - Complete scheduler guide
+- Read: [@theunionsquare/mangojs-core/handbook/scheduler/index.context.md](@theunionsquare/mangojs-core/handbook/scheduler/index.context.md) - Complete scheduler guide
 
 ## Queue System & Workers
 **Keywords**: queue, bullmq, redis, workers, background jobs, async, QueueClient, QueueManager, WorkerBuilder, @QueueWorker
 **Description**: Use when you need to implement distributed job processing, message queues, or background workers for tasks like email sending, report generation, or long-running operations
-- Read: [@theunionsquare/mangojs-core/handbook/queue/overview.context.md](@theunionsquare/mangojs-core/handbook/queue/overview.context.md) - Complete queue system guide
+- Read: [@theunionsquare/mangojs-core/handbook/queue/index.context.md](@theunionsquare/mangojs-core/handbook/queue/index.context.md) - Complete queue system guide
 
 ## Best Practices
 **Keywords**: best practices, conventions, naming, optimization, performance, security

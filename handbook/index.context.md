@@ -38,7 +38,7 @@ Choose your learning path based on your goal:
    - Build a complete blog post service
    - Learn all core patterns
 
-2. **[Architecture Overview](./architecture/overview.context.md)**
+2. **[Architecture Overview](./architecture/index.context.md)**
    - Understand onion architecture
    - Learn layer responsibilities
 
@@ -58,17 +58,17 @@ Choose your learning path based on your goal:
    - Set up environment variables
    - Create basic entry points
 
-2. **[Database Layer](./database/overview.context.md)**
+2. **[Database Layer](./database/index.context.md)**
    - Define TypeORM entities
    - Set up relationships
    - Create migrations
 
-3. **[Service Layer](./service/overview.context.md)**
+3. **[Service Layer](./service/index.context.md)**
    - Implement business logic
    - Use transactions properly
    - Handle errors with APIError
 
-4. **[Controller Layer](./controller/overview.context.md)**
+4. **[Controller Layer](./controller/index.context.md)**
    - Create HTTP endpoints
    - Apply authorization
    - Define API types
@@ -85,7 +85,7 @@ Choose your learning path based on your goal:
 **Dependency Injection & Container**
 
 - [Dependency Injection Guide](./architecture/injection.context.md)
-- [Architecture Overview](./architecture/overview.context.md)
+- [Architecture Overview](./architecture/index.context.md)
 
 **Decorators (Routing, Auth, Middleware)**
 
@@ -93,7 +93,7 @@ Choose your learning path based on your goal:
 
 **Type System & API Types**
 
-- [Type Organization Guide](./architecture/type.context.md)
+- [Type Organization Guide](./project-structure/types.context.md)
 
 **Error Handling**
 
@@ -101,7 +101,7 @@ Choose your learning path based on your goal:
 
 **Scheduled Tasks**
 
-- [Scheduler Guide](./scheduler/overview.context.md)
+- [Scheduler Guide](./scheduler/index.context.md)
 
 **Troubleshooting**
 
@@ -115,38 +115,51 @@ Choose your learning path based on your goal:
 
 **Purpose**: Define domain models with TypeORM
 
-- **[Overview & Examples](./database/overview.context.md)** - Complete guide with inline examples
-- **[Checklist](./database/checklist.context.md)** - Validation checklist
+- **[Overview](./database/index.context.md)** - Database layer introduction
+- **[Entities](./database/entities.context.md)** - Entity creation patterns
+- **[Relationships](./database/relationships.context.md)** - Entity relationships
+- **[Migrations](./database/migrations.context.md)** - Database migrations
+- **[Examples](./database/examples.context.md)** - Complete examples
 
 ### Service Layer (Business Logic)
 
 **Purpose**: Implement business logic and orchestration
 
-- **[Overview & Examples](./service/overview.context.md)** - Complete guide with inline examples
-- **[Checklist](./service/checklist.context.md)** - Validation checklist
+- **[Overview](./service/index.context.md)** - Service layer introduction
+- **[Setup](./service/setup.context.md)** - Service setup patterns
+- **[Transactions](./service/transactions.context.md)** - Transaction handling
+- **[Error Handling](./service/error-handling.context.md)** - Error patterns
+- **[Examples](./service/examples.context.md)** - Complete examples
 
 ### Controller Layer (HTTP/API)
 
 **Purpose**: Handle HTTP requests and responses
 
-- **[Overview & Examples](./controller/overview.context.md)** - Complete guide with inline examples
-- **[Checklist](./controller/checklist.context.md)** - Validation checklist
+- **[Overview](./controller/index.context.md)** - Controller layer introduction
+- **[Setup](./controller/setup.context.md)** - Controller setup patterns
+- **[Type Safety](./controller/type-safety.context.md)** - Type-safe controllers
+- **[Authorization](./controller/authorization.context.md)** - Auth decorators
+- **[Examples](./controller/examples.context.md)** - Complete examples
 
 ### Scheduler (Background Tasks)
 
 **Purpose**: Execute time-based tasks using cron expressions
 
-- **[Overview & Examples](./scheduler/overview.context.md)** - Complete scheduler guide with examples
+- **[Overview](./scheduler/index.context.md)** - Scheduler introduction
+- **[Architecture](./scheduler/architecture.context.md)** - Scheduler architecture
+- **[Examples](./scheduler/examples.context.md)** - Complete examples
 
 ---
 
 ## 🏗️ Architecture & Patterns
 
-- **[Architecture Overview](./architecture/overview.context.md)** - Onion architecture explained
+- **[Architecture Overview](./architecture/index.context.md)** - Onion architecture explained
+- **[Onion Architecture](./architecture/onion-architecture.context.md)** - Detailed onion architecture
+- **[Layers](./architecture/layers.context.md)** - Layer responsibilities
 - **[Dependency Injection](./architecture/injection.context.md)** - Inversify configuration
 - **[Decorators Reference](./architecture/decorators.context.md)** - All decorators explained
-- **[Type Organization](./architecture/type.context.md)** - TypeScript type patterns
-- **[Scheduler](./scheduler/overview.context.md)** - Background task scheduling
+- **[Type Organization](./project-structure/types.context.md)** - TypeScript type patterns
+- **[Scheduler](./scheduler/index.context.md)** - Background task scheduling
 
 ---
 

@@ -176,7 +176,7 @@ Wait for user confirmation.
 
 ### TASK 1.4: IMPLEMENT: Implement Database Layer
 
-**📖 Reference**: [`handbook/database/overview.context.md`](../handbook/database/overview.context.md)
+**📖 Reference**: [`handbook/database/index.context.md`](../handbook/database/index.context.md)
 
 **USE ONLY THE HANDBOOK** - Reference handbook guides for implementation
 
@@ -184,13 +184,13 @@ Once confirmed, implement:
 
 #### 1.4.1 Create Entity Models
 
-**📖 Reference**: See [`handbook/database/overview.context.md`](../handbook/database/overview.context.md) for entity creation patterns.
+**📖 Reference**: See [`handbook/database/entities.context.md`](../handbook/database/entities.context.md) for entity creation patterns.
 
 For each entity in `src/db/models/{entity}.ts`, follow the handbook guidelines for TypeORM entities.
 
 #### 1.4.2 Create Entity Types
 
-**📖 Reference**: See [`handbook/architecture/type.context.md`](../handbook/architecture/type.context.md) for type organization patterns.
+**📖 Reference**: See [`handbook/project-structure/types.context.md`](../handbook/project-structure/types.context.md) for type organization patterns.
 
 In `src/types/entities/{entity}.type.ts`, follow the handbook guidelines for entity types and DTOs.
 
@@ -222,7 +222,7 @@ DATABASE_SYNC=true
 
 #### 1.4.4 Checklist
 
-**📖 Reference**: Use validation checklist from handbook/database/overview.context.md
+**📖 Reference**: Use validation checklist from handbook/database/index.context.md
 
 ✅ Successful Database Layer
 
@@ -290,7 +290,7 @@ Ask: "Does this service design look correct? Should I proceed with building the 
 
 ### TASK 2.3: IMPLEMENT: Implement Service Layer
 
-**📖 Reference**: [`handbook/service/overview.context.md`](../handbook/service/overview.context.md)
+**📖 Reference**: [`handbook/service/index.context.md`](../handbook/service/index.context.md)
 
 **USE ONLY THE HANDBOOK** - Reference handbook guides for implementation
 
@@ -308,13 +308,13 @@ src/services/{service-name}/
 
 #### 2.3.2 Create Service Classes
 
-**📖 Reference**: See [`handbook/service/overview.context.md`](../handbook/service/overview.context.md) for service implementation patterns.
+**📖 Reference**: See [`handbook/service/setup.context.md`](../handbook/service/setup.context.md) for service implementation patterns.
 
 For each entity in `src/services/{entity}.service.ts`, follow the handbook guidelines for service classes, transactions, error handling, and business logic.
 
 #### 2.3.3 Checklist Service Layer
 
-**📖 Reference**: Use the validation checklist from [`handbook/service/overview.context.md`](../handbook/service/overview.context.md)
+**📖 Reference**: Use the validation checklist from [`handbook/service/index.context.md`](../handbook/service/index.context.md)
 
 **CHECKPOINT**:
 Verify all service layer requirements are met before proceeding to the next phase.
@@ -379,7 +379,7 @@ Wait for user confirmation.
 
 ### TASK 3.3: IMPLEMENT: Implement API Layer
 
-**📖 Reference**: [`handbook/controller/overview.context.md`](../handbook/controller/overview.context.md)
+**📖 Reference**: [`handbook/controller/index.context.md`](../handbook/controller/index.context.md)
 
 **USE ONLY THE HANDBOOK** - Reference handbook guides for implementation
 
@@ -387,13 +387,13 @@ Once confirmed, implement:
 
 #### 3.3.1 Create API Types
 
-**📖 Reference**: See [`handbook/architecture/type.context.md`](../handbook/architecture/type.context.md) for API type patterns.
+**📖 Reference**: See [`handbook/project-structure/types.context.md`](../handbook/project-structure/types.context.md) for API type patterns.
 
 In `src/types/api/v1/{resource}/`, follow the handbook guidelines for request/response types.
 
 #### 3.3.2 Create Controllers
 
-**📖 Reference**: See [`handbook/controller/overview.context.md`](../handbook/controller/overview.context.md) for controller implementation patterns.
+**📖 Reference**: See [`handbook/controller/setup.context.md`](../handbook/controller/setup.context.md) for controller implementation patterns.
 
 ** IMPORTANT **
 For each entity in `src/routes/v1/{entity}/{entity}.controller.ts` follow the handbook guidelines:
@@ -410,7 +410,7 @@ Update `src/index.ts` and `.env.example` following the handbook and sample servi
 
 #### 3.3.4 Validate API Layer
 
-**📖 Reference**: Use the validation checklist from [`handbook/controller/overview.context.md`](../handbook/controller/overview.context.md)
+**📖 Reference**: Use the validation checklist from [`handbook/controller/index.context.md`](../handbook/controller/index.context.md)
 
 Verify all API layer requirements are met before proceeding to artifacts generation.
 
