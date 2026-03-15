@@ -1,5 +1,5 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import { errors } from "../..";
+import { Errors } from "../..";
 import { MetadataKeys } from "../../utils/metadata.keys";
 import { Types } from "../..";
 import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "./core/authOrchestrator";
@@ -312,7 +312,7 @@ export function RequiresAccess(
           if (customErrorHandler) {
             customErrorHandler(res, authError);
           } else {
-            errors.errorHandler(res, authError);
+            Errors.errorHandler(res, authError);
           }
           return;
         }
@@ -338,7 +338,7 @@ export function RequiresAccess(
           if (customErrorHandler) {
             customErrorHandler(res, authError);
           } else {
-            errors.errorHandler(res, authError);
+            Errors.errorHandler(res, authError);
           }
           return;
         }
@@ -367,7 +367,7 @@ export function RequiresAccess(
           if (customErrorHandler) {
             customErrorHandler(res, authError);
           } else {
-            errors.errorHandler(res, authError);
+            Errors.errorHandler(res, authError);
           }
         }
       };

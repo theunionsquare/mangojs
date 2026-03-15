@@ -1,5 +1,5 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import { errors } from "../..";
+import { Errors } from "../..";
 import { MetadataKeys } from "../../utils/metadata.keys";
 import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "./core/authOrchestrator";
 import { AuthErrorFactory, AuthorizationError } from "./core/authErrors";

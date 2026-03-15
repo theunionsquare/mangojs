@@ -11,11 +11,11 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "pnpm --filter @mangojs/core build",
-    "build:docs": "pnpm --filter @mangojs/docs build",
+    "build": "pnpm --filter @theunionsquare/mangojs-core build",
+    "build:docs": "pnpm --filter @theunionsquare/mangojs-docs build",
     "build:all": "pnpm build && pnpm build:docs",
-    "dev": "pnpm --filter @mangojs/core dev",
-    "dev:docs": "pnpm --filter @mangojs/docs start",
+    "dev": "pnpm --filter @theunionsquare/mangojs-core dev",
+    "dev:docs": "pnpm --filter @theunionsquare/mangojs-docs start",
     "release": "node scripts/release.js",
     "clean": "rm -rf packages/*/dist packages/*/node_modules packages/*/.docusaurus packages/docs/build"
   },

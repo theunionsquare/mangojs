@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { errors } from "../../..";
+import { Errors } from "../../..";
 import { AuthorizationError, AuthErrorFactory } from "./authErrors";
 import { AuthConfig, DecoratorOptions } from "./authConfig";
 import { authCache, generateCacheKey } from "./authCacheUtils";
@@ -162,7 +162,7 @@ ${authError.toLogString()}`
         if (customErrorHandler) {
           customErrorHandler(res, authError);
         } else {
-          errors.errorHandler(res, authError);
+          Errors.errorHandler(res, authError);
         }
       }
     } else {
@@ -236,7 +236,7 @@ ${authError.toLogString()}`
           if (customErrorHandler) {
             customErrorHandler(res, authError);
           } else {
-            errors.errorHandler(res, authError);
+            Errors.errorHandler(res, authError);
           }
           return;
         }

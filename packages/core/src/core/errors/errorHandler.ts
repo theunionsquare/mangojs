@@ -1,4 +1,4 @@
-import { errors } from "..";
+import { Errors } from "..";
 import type { Response } from "express";
 import { apiResponses } from "../types";
 import { APIError } from "./baseErrors";
@@ -24,14 +24,14 @@ export const errorHandler = (res: Response, error: Error) => {
     timestamp: (res.getHeader("x-request-timestamp") as string) || "",
     requestId: (res.getHeader("x-request-id") as string) || "",
   };
-  if (error instanceof errors.APIError || error instanceof APIError) {
+  if (error instanceof Errors.APIError || error instanceof APIError) {
     const castError = error as APIError;
     const responseApiError: apiResponses.Error = {
       ...response,
       errorMessage: castError.errorMessage,
       errorCode: castError.errorCode,
     };
-    return res.status(error.statusCode).json(responseApiError);
+    return res.status(castError.statusCode).json(responseApiError);
   }
 
   const errorResponse: apiResponses.Error = {
