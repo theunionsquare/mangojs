@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/theunionsquare/mangojs.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "pnpm --filter @mangojs/core build",
     "build:docs": "pnpm --filter @mangojs/docs build",
