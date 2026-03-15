@@ -1,6 +1,7 @@
 {
-  "name": "@theunionsquare/mangojs-core",
+  "name": "mangojs",
   "version": "0.0.1",
+  "private": true,
   "description": "MangoJS monorepo - Backend framework, documentation, and website",
   "repository": {
     "type": "git",

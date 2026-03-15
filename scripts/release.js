@@ -117,9 +117,9 @@ Examples:
   if (!skipPublish) {
     console.log('\n🚀 Step 5: Publishing package...');
     if (!dryRun) {
-      exec('pnpm --filter @mangojs/core publish --no-git-checks');
+      exec('pnpm --filter @theunionsquare/mangojs-core publish --no-git-checks');
     }
-    console.log(`   Published @mangojs/core@${version}`);
+    console.log(`   Published @theunionsquare/mangojs-core@${version}`);
   }
 
   // Summary
