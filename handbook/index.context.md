@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Introduction
+---
+
 # MangoJS Service Development Guide
 
 > **Purpose**: This guide teaches AI agents how to build microservices following MangoJS framework patterns.
@@ -188,23 +193,6 @@ Need to build a service?
 
 ---
 
-## 🔍 Reference Implementations
-
-Study complete, working examples:
-
-- **[IAM Service](../src/services/iam_server/src/)** - Full authentication service
-  - Complex relationships and business logic
-  - Authorization patterns
-  - Database: `src/services/iam_server/src/db/models/`
-  - Services: `src/services/iam_server/src/services/`
-  - Controllers: `src/services/iam_server/src/routes/v1/`
-
-- **[Sample Service](../src/services/sample/src/)** - Minimal service template
-  - Quick start reference
-  - Basic patterns
-
----
-
 ## 📋 Development Workflow
 
 **For each new feature:**
@@ -228,94 +216,6 @@ Study complete, working examples:
 - **[Inversify Documentation](https://inversify.io/)** - Dependency injection
 - **[Express Documentation](https://expressjs.com/)** - Web framework
 - **[Complete Resource List](./resources.context.md)** - All external docs
-
----
-
-## ⚡ Quick Reference Cards
-
-> **💡 Templates:** See [Code Templates](./common/code-templates.context.md) for copy-paste ready boilerplate.
-
-**Service Pattern**:
-
-```typescript
-@injectable()
-export class UserService {
-  @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))
-  private _persistenceContext: IPersistenceContext;
-
-  public async createUser(data: UserPost): Promise<User> {
-    const response = await this._persistenceContext.inTransaction(
-      async (em: EntityManager) => {
-        const user = em.create(models.User, data);
-        await em.save(user);
-        return user;
-      },
-    );
-    return response as User;
-  }
-}
-```
-
-**Controller Pattern**:
-
-```typescript
-const userService = ServiceContainer.get<UserService>(UserService);
-
-@Controller("/api/v1/users")
-export class UserController {
-  @Post("/")
-  public async createUser(req: Request, res: Response): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
-    try {
-      const user = await userService.createUser(req.body);
-      return res.status(201).send({
-        ok: true,
-        timestamp: logRequest.timestamp,
-        requestId: logRequest.requestId,
-        data: user,
-      });
-    } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
-    }
-  }
-}
-```
-
-**Scheduled Task Pattern**:
-
-```typescript
-import {
-  Schedule,
-  ScheduledTask,
-  INVERSITY_TYPES,
-  ILoggerFactory,
-} from "@theunionsquare/mangojs-core";
-import { injectable, inject } from "inversify";
-
-@Schedule("0 0 * * *") // Daily at midnight
-@injectable()
-export class CleanupTask extends ScheduledTask {
-  @inject(INVERSITY_TYPES.LoggerFactory)
-  private loggerFactory: ILoggerFactory;
-
-  async run(): Promise<void> {
-    // Task logic here
-  }
-
-  onStart(): void {}
-  onComplete(): void {}
-  onError(error: Error): void {}
-}
-```
-
-**See [Code Templates](./common/code-templates.context.md) for:**
-
-- Complete service boilerplate
-- Controller boilerplate
-- Entity templates
-- All transaction patterns
-- Type definitions
-- Scheduled task boilerplate
 
 ---
 
