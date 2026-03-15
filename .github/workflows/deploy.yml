@@ -3,9 +3,7 @@ name: Build and Deploy MangoJS Website
 on:
   push:
     branches:
-      - release/test
-      - release/app
-      - main
+      - release/web
   workflow_dispatch:
 
 env:
