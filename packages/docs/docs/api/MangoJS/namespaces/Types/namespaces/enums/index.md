@@ -8,7 +8,7 @@ sidebar_label: enums
 
 ### AdminUserStatus
 
-Defined in: [packages/core/src/core/types/enums/index.ts:43](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L43)
+Defined in: [packages/core/src/core/types/enums/index.ts:43](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L43)
 
 #### Enumeration Members
 
@@ -18,7 +18,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:43](https://github.com/
 ACTIVE: "ACTIVE";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:45](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L45)
+Defined in: [packages/core/src/core/types/enums/index.ts:45](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L45)
 
 ##### DISABLED
 
@@ -26,7 +26,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:45](https://github.com/
 DISABLED: "DISABLED";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:46](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L46)
+Defined in: [packages/core/src/core/types/enums/index.ts:46](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L46)
 
 ##### PENDING
 
@@ -34,13 +34,13 @@ Defined in: [packages/core/src/core/types/enums/index.ts:46](https://github.com/
 PENDING: "PENDING";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:44](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L44)
+Defined in: [packages/core/src/core/types/enums/index.ts:44](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L44)
 
 ***
 
 ### ~~AuthUserType~~
 
-Defined in: [packages/core/src/core/types/enums/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L18)
+Defined in: [packages/core/src/core/types/enums/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L18)
 
 #### Deprecated
 
@@ -69,7 +69,7 @@ if (authContext.hasAnyUserType(['ADMIN', 'MODERATOR'])) { ... }
 ADMIN: "ADMIN";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L19)
+Defined in: [packages/core/src/core/types/enums/index.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L19)
 
 ##### ~~PARTNER~~
 
@@ -77,7 +77,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:19](https://github.com/
 PARTNER: "PARTNER";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:20](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L20)
+Defined in: [packages/core/src/core/types/enums/index.ts:20](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L20)
 
 ##### ~~USER~~
 
@@ -85,13 +85,13 @@ Defined in: [packages/core/src/core/types/enums/index.ts:20](https://github.com/
 USER: "USER";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:21](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L21)
+Defined in: [packages/core/src/core/types/enums/index.ts:21](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L21)
 
 ***
 
 ### PartnerStatus
 
-Defined in: [packages/core/src/core/types/enums/index.ts:30](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L30)
+Defined in: [packages/core/src/core/types/enums/index.ts:30](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L30)
 
 #### Enumeration Members
 
@@ -101,7 +101,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:30](https://github.com/
 ACTIVE: "ACTIVE";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:33](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L33)
+Defined in: [packages/core/src/core/types/enums/index.ts:33](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L33)
 
 ##### DISABLED
 
@@ -109,7 +109,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:33](https://github.com/
 DISABLED: "DISABLED";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L34)
+Defined in: [packages/core/src/core/types/enums/index.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L34)
 
 ##### PENDING
 
@@ -117,7 +117,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:34](https://github.com/
 PENDING: "PENDING";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:31](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L31)
+Defined in: [packages/core/src/core/types/enums/index.ts:31](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L31)
 
 ##### UNDER\_REVIEW
 
@@ -125,13 +125,13 @@ Defined in: [packages/core/src/core/types/enums/index.ts:31](https://github.com/
 UNDER_REVIEW: "UNDER_REVIEW";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:32](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L32)
+Defined in: [packages/core/src/core/types/enums/index.ts:32](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L32)
 
 ***
 
 ### PartnerUserStatus
 
-Defined in: [packages/core/src/core/types/enums/index.ts:24](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L24)
+Defined in: [packages/core/src/core/types/enums/index.ts:24](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L24)
 
 #### Enumeration Members
 
@@ -141,7 +141,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:24](https://github.com/
 ACTIVE: "ACTIVE";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:26](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L26)
+Defined in: [packages/core/src/core/types/enums/index.ts:26](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L26)
 
 ##### DISABLED
 
@@ -149,7 +149,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:26](https://github.com/
 DISABLED: "DISABLED";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:27](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L27)
+Defined in: [packages/core/src/core/types/enums/index.ts:27](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L27)
 
 ##### PENDING
 
@@ -157,13 +157,13 @@ Defined in: [packages/core/src/core/types/enums/index.ts:27](https://github.com/
 PENDING: "PENDING";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:25](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L25)
+Defined in: [packages/core/src/core/types/enums/index.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L25)
 
 ***
 
 ### UserStatus
 
-Defined in: [packages/core/src/core/types/enums/index.ts:37](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L37)
+Defined in: [packages/core/src/core/types/enums/index.ts:37](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L37)
 
 #### Enumeration Members
 
@@ -173,7 +173,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:37](https://github.com/
 ACTIVE: "ACTIVE";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:39](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L39)
+Defined in: [packages/core/src/core/types/enums/index.ts:39](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L39)
 
 ##### DISABLED
 
@@ -181,7 +181,7 @@ Defined in: [packages/core/src/core/types/enums/index.ts:39](https://github.com/
 DISABLED: "DISABLED";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:40](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L40)
+Defined in: [packages/core/src/core/types/enums/index.ts:40](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L40)
 
 ##### PENDING
 
@@ -189,4 +189,4 @@ Defined in: [packages/core/src/core/types/enums/index.ts:40](https://github.com/
 PENDING: "PENDING";
 ```
 
-Defined in: [packages/core/src/core/types/enums/index.ts:38](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/enums/index.ts#L38)
+Defined in: [packages/core/src/core/types/enums/index.ts:38](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/enums/index.ts#L38)

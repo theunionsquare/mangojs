@@ -144,21 +144,6 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs/tutorial/index.context",
-            },
-            {
-              label: "API",
-              to: "/docs/api",
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()}`,
     },
     prism: {

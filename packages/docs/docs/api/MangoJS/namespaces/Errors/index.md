@@ -16,7 +16,7 @@ Error types and handling
 
 ### APIError
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:9](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L9)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L9)
 
 Base API error class for HTTP error responses.
 
@@ -45,7 +45,7 @@ new APIError(
    errorMessage): APIError;
 ```
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:15](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L15)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:15](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L15)
 
 ###### Parameters
 
@@ -79,7 +79,7 @@ Error.constructor
 readonly errorCode: string;
 ```
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L11)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L11)
 
 ##### errorMessage
 
@@ -87,7 +87,7 @@ Defined in: [packages/core/src/core/errors/baseErrors.ts:11](https://github.com/
 readonly errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L12)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L12)
 
 ##### errorName
 
@@ -95,7 +95,7 @@ Defined in: [packages/core/src/core/errors/baseErrors.ts:12](https://github.com/
 readonly errorName: string = 'APIError';
 ```
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:13](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L13)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:13](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L13)
 
 ##### message
 
@@ -145,7 +145,7 @@ Error.stack
 readonly statusCode: number;
 ```
 
-Defined in: [packages/core/src/core/errors/baseErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/baseErrors.ts#L10)
+Defined in: [packages/core/src/core/errors/baseErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/baseErrors.ts#L10)
 
 ##### stackTraceLimit
 
@@ -281,7 +281,7 @@ Error.prepareStackTrace
 
 ### ConnectionError
 
-Defined in: [packages/core/src/core/errors/databaseErrors.ts:5](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/databaseErrors.ts#L5)
+Defined in: [packages/core/src/core/errors/databaseErrors.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/databaseErrors.ts#L5)
 
 Database connection error.
 Thrown when database connection fails.
@@ -298,7 +298,7 @@ Thrown when database connection fails.
 new ConnectionError(message): ConnectionError;
 ```
 
-Defined in: [packages/core/src/core/errors/databaseErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/databaseErrors.ts#L6)
+Defined in: [packages/core/src/core/errors/databaseErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/databaseErrors.ts#L6)
 
 ###### Parameters
 
@@ -498,7 +498,7 @@ Error.prepareStackTrace
 function errorHandler(res, error): Response<any, Record<string, any>>;
 ```
 
-Defined in: [packages/core/src/core/errors/errorHandler.ts:21](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/errors/errorHandler.ts#L21)
+Defined in: [packages/core/src/core/errors/errorHandler.ts:21](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/errors/errorHandler.ts#L21)
 
 Express error handler that formats API error responses.
 

@@ -10,10 +10,10 @@ sidebar_label: "Examples"
 import { injectable, inject, LazyServiceIdentifier } from "inversify";
 import { EntityManager } from "typeorm";
 import {
-  errors,
+  Errors,
   INVERSITY_TYPES,
-  IPersistenceContext,
-} from "@mangojs/core";
+  Persistence,
+} from "@theunionsquare/mangojs-core";
 import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 import * as models from "../db/models";
 
@@ -25,7 +25,7 @@ type UpdateShopRequest = PBTypes.partner.requests.shop.UpdateShopRequest;
 @injectable()
 export class ShopService {
   @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))
-  private _persistenceContext: IPersistenceContext;
+  private _persistenceContext: Persistence.IPersistenceContext;
 
   constructor() {}
 
@@ -38,7 +38,7 @@ export class ShopService {
     const response = await this._persistenceContext.inTransaction(
       async (em: EntityManager) => {
         if (!data.shop_name || !data.partner_uid) {
-          throw new errors.APIError(400, "BAD_REQUEST", "Required fields missing");
+          throw new Errors.APIError(400, "BAD_REQUEST", "Required fields missing");
         }
 
         const existing = await em.findOne(models.Shop, {
@@ -46,7 +46,7 @@ export class ShopService {
         });
 
         if (existing) {
-          throw new errors.APIError(409, "CONFLICT", "Shop already exists");
+          throw new Errors.APIError(409, "CONFLICT", "Shop already exists");
         }
 
         const shop = em.create(models.Shop, { ...data, status: "ACTIVE" });
@@ -67,7 +67,7 @@ export class ShopService {
         const shop = await em.findOne(models.Shop, { where: { uid: id } });
 
         if (!shop) {
-          throw new errors.APIError(404, "NOT_FOUND", "Shop not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Shop not found");
         }
 
         return shop;
@@ -102,7 +102,7 @@ export class ShopService {
         const shop = await em.findOne(models.Shop, { where: { uid: id } });
 
         if (!shop) {
-          throw new errors.APIError(404, "NOT_FOUND", "Shop not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Shop not found");
         }
 
         Object.assign(shop, data);
@@ -123,7 +123,7 @@ export class ShopService {
         const shop = await em.findOne(models.Shop, { where: { uid: id } });
 
         if (!shop) {
-          throw new errors.APIError(404, "NOT_FOUND", "Shop not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Shop not found");
         }
 
         await em.remove(shop);
@@ -144,7 +144,7 @@ export class ShopService {
         });
 
         if (!shop) {
-          throw new errors.APIError(404, "NOT_FOUND", "Shop not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Shop not found");
         }
 
         return shop;

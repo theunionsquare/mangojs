@@ -125,9 +125,9 @@ export * as post from "./post.type";
 import { injectable, inject, LazyServiceIdentifier } from "inversify";
 import { EntityManager } from "typeorm";
 import {
-  errors,
+  Errors,
   INVERSITY_TYPES,
-  IPersistenceContext,
+  Persistence,
 } from "@theunionsquare/mangojs-core";
 import * as models from "../db/models";
 import { types } from "../types";
@@ -135,7 +135,7 @@ import { types } from "../types";
 @injectable()
 export class PostService {
   @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))
-  private _persistenceContext: IPersistenceContext;
+  private _persistenceContext: Persistence.IPersistenceContext;
 
   constructor() {}
 
@@ -149,7 +149,7 @@ export class PostService {
       async (em: EntityManager) => {
         // Validate
         if (!data.title || !data.content) {
-          throw new errors.APIError(
+          throw new Errors.APIError(
             400,
             "BAD_REQUEST",
             "Title and content are required",
@@ -194,7 +194,7 @@ export class PostService {
         });
 
         if (!post) {
-          throw new errors.APIError(404, "NOT_FOUND", "Post not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Post not found");
         }
 
         return post;
@@ -217,7 +217,7 @@ export class PostService {
         });
 
         if (!post) {
-          throw new errors.APIError(404, "NOT_FOUND", "Post not found");
+          throw new Errors.APIError(404, "NOT_FOUND", "Post not found");
         }
 
         Object.assign(post, data);
@@ -239,7 +239,7 @@ export class PostService {
       });
 
       if (!post) {
-        throw new errors.APIError(404, "NOT_FOUND", "Post not found");
+        throw new Errors.APIError(404, "NOT_FOUND", "Post not found");
       }
 
       await em.remove(post);
@@ -352,12 +352,13 @@ import {
   Put,
   Delete,
   Decorators,
+  Errors,
+  Utils,
 } from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 import { ServiceContainer } from "../../../inversify.config";
 import { PostService } from "../../../services";
 import { types } from "../../../types";
-import { errors, utils } from "@theunionsquare/mangojs-core";
 
 const postService = ServiceContainer.get<PostService>(PostService);
 
@@ -375,7 +376,7 @@ export class PostController {
     req: Request,
     res: Response<types.api.v1.posts.GET.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const posts = await postService.getAllPosts();
 
@@ -386,7 +387,7 @@ export class PostController {
         data: posts,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -402,7 +403,7 @@ export class PostController {
     req: Request<types.api.v1.posts.GET.Params>,
     res: Response<types.api.v1.posts.GET.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { id } = req.params;
       const post = await postService.getPostById(id!);
@@ -414,7 +415,7 @@ export class PostController {
         data: post,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -430,7 +431,7 @@ export class PostController {
     req: Request<{}, {}, types.api.v1.posts.POST.RequestBody>,
     res: Response<types.api.v1.posts.POST.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const post = await postService.createPost(req.body);
 
@@ -441,7 +442,7 @@ export class PostController {
         data: post,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -461,7 +462,7 @@ export class PostController {
     >,
     res: Response<types.api.v1.posts.PUT.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { id } = req.params;
       const post = await postService.updatePost(id, req.body);
@@ -473,7 +474,7 @@ export class PostController {
         data: post,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -490,7 +491,7 @@ export class PostController {
     req: Request<types.api.v1.posts.DELETE.Params>,
     res: Response<types.api.v1.posts.DELETE.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { id } = req.params;
       await postService.deletePost(id);
@@ -502,7 +503,7 @@ export class PostController {
         data: { message: "Post deleted successfully" },
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 }
@@ -536,22 +537,20 @@ export { routes } from "./v1";
 
 ```typescript
 import {
-  persistanceContext,
-  Auth,
+  Persistence,
+  Authentication,
   INVERSITY_TYPES,
   Loggers,
-  databasemanager,
-  Containers,
+  DatabaseManager,
+  Container,
 } from "@theunionsquare/mangojs-core";
-import { IPersistenceContext } from "@theunionsquare/mangojs-core";
-import { IDatabaseManagerFactory } from "@theunionsquare/mangojs-core";
 
 import dotenv from "dotenv";
 import { Post } from "./db/models";
 
 dotenv.config();
 
-const containerManager = Containers.getContainer();
+const containerManager = Container.getContainer();
 const serviceContainer = containerManager.getContainer();
 
 /**
@@ -565,9 +564,9 @@ serviceContainer
  * Bind Database connector
  */
 serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
+  .bind<DatabaseManager.IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
   .toConstantValue(
-    new databasemanager.cockroach.CockRoachDBManagerFactory(
+    new DatabaseManager.CockRoachDBManagerFactory(
       { url: process.env.DATABASE_URL },
       [Post], // Register all your entities here
     ),
@@ -577,8 +576,8 @@ serviceContainer
  * Bind Persistence Context
  */
 serviceContainer
-  .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
-  .to(persistanceContext.CockroachPersistenceContext);
+  .bind<Persistence.IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
+  .to(Persistence.CockroachPersistenceContext);
 
 export { serviceContainer };
 ```

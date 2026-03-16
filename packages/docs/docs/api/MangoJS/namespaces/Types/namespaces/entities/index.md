@@ -8,7 +8,7 @@ sidebar_label: entities
 
 ### AuthUser
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L11)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L11)
 
 #### Extends
 
@@ -22,7 +22,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:11](https://githu
 email: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L7)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L7)
 
 ###### Inherited from
 
@@ -34,7 +34,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github
 firstName: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L5)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L5)
 
 ###### Inherited from
 
@@ -46,7 +46,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github
 lastName: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L6)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L6)
 
 ###### Inherited from
 
@@ -58,7 +58,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github
 optional partnerUid: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L8)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L8)
 
 ###### Inherited from
 
@@ -73,7 +73,7 @@ status:
   | PartnerUserStatus;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:13](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L13)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:13](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L13)
 
 ##### uid
 
@@ -81,7 +81,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:13](https://githu
 uid: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:4](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L4)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:4](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L4)
 
 ###### Inherited from
 
@@ -93,13 +93,13 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:4](https://github
 userType: AuthUserType;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:12](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L12)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L12)
 
 ***
 
 ### AuthUserBase
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:3](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L3)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:3](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L3)
 
 #### Extended by
 
@@ -113,7 +113,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:3](https://github
 email: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L7)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L7)
 
 ##### firstName
 
@@ -121,7 +121,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:7](https://github
 firstName: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L5)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L5)
 
 ##### lastName
 
@@ -129,7 +129,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:5](https://github
 lastName: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L6)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L6)
 
 ##### partnerUid?
 
@@ -137,7 +137,7 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:6](https://github
 optional partnerUid: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L8)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L8)
 
 ##### uid
 
@@ -145,4 +145,4 @@ Defined in: [packages/core/src/core/types/entities/authUser.ts:8](https://github
 uid: string;
 ```
 
-Defined in: [packages/core/src/core/types/entities/authUser.ts:4](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/entities/authUser.ts#L4)
+Defined in: [packages/core/src/core/types/entities/authUser.ts:4](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/entities/authUser.ts#L4)

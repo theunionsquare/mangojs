@@ -22,9 +22,9 @@ Quick reference for common code patterns. Use these as starting points for new c
 import { injectable, inject, LazyServiceIdentifier } from "inversify";
 import { EntityManager } from "typeorm";
 import {
-  errors,
+  Errors,
   INVERSITY_TYPES,
-  IPersistenceContext,
+  Persistence,
 } from "@theunionsquare/mangojs-core";
 import * as models from "../db/models";
 import { types } from "../types";
@@ -32,7 +32,7 @@ import { types } from "../types";
 @injectable()
 export class EntityNameService {
   @inject(new LazyServiceIdentifier(() => INVERSITY_TYPES.PersistenceContext))
-  private _persistenceContext: IPersistenceContext;
+  private _persistenceContext: Persistence.IPersistenceContext;
 
   constructor() {}
 
@@ -77,12 +77,13 @@ import {
   Post,
   Put,
   Delete,
+  Errors,
+  Utils,
 } from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 import { ServiceContainer } from "../../../inversify.config";
 import { EntityNameService } from "../../../services";
 import { types } from "../../../types";
-import { errors, utils } from "@theunionsquare/mangojs-core";
 
 // Resolve service OUTSIDE controller class
 const entityNameService =
@@ -105,7 +106,7 @@ export class EntityNameController {
     req: Request,
     res: Response<types.api.v1.resourcename.GET.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const data = await entityNameService.getAll();
 
@@ -116,7 +117,7 @@ export class EntityNameController {
         data: data,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 }
@@ -183,11 +184,12 @@ export { EntityName } from "./EntityName";
 
 ```typescript
 import { EntityName } from "./db/models";
+import { DatabaseManager, INVERSITY_TYPES } from "@theunionsquare/mangojs-core";
 
 serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
+  .bind<DatabaseManager.IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
   .toConstantValue(
-    new databasemanager.cockroach.CockRoachDBManagerFactory(
+    new DatabaseManager.CockRoachDBManagerFactory(
       { url: process.env.DATABASE_URL },
       [EntityName], // ← Add entity here
     ),
@@ -289,7 +291,7 @@ public async createEntity(
     async (em: EntityManager) => {
       // 1. Validate input
       if (!data.field1) {
-        throw new errors.APIError(400, "BAD_REQUEST", "Field1 is required");
+        throw new Errors.APIError(400, "BAD_REQUEST", "Field1 is required");
       }
 
       // 2. Check business rules
@@ -298,7 +300,7 @@ public async createEntity(
       });
 
       if (existing) {
-        throw new errors.APIError(409, "CONFLICT", "Entity already exists");
+        throw new Errors.APIError(409, "CONFLICT", "Entity already exists");
       }
 
       // 3. Create and save
@@ -355,7 +357,7 @@ public async getById(id: string): Promise<types.entities.entityname.EntityName> 
       });
 
       if (!entity) {
-        throw new errors.APIError(404, "NOT_FOUND", "Entity not found");
+        throw new Errors.APIError(404, "NOT_FOUND", "Entity not found");
       }
 
       return entity;
@@ -379,7 +381,7 @@ public async update(
       });
 
       if (!entity) {
-        throw new errors.APIError(404, "NOT_FOUND", "Entity not found");
+        throw new Errors.APIError(404, "NOT_FOUND", "Entity not found");
       }
 
       // Update fields
@@ -403,7 +405,7 @@ public async delete(id: string): Promise<void> {
     });
 
     if (!entity) {
-      throw new errors.APIError(404, "NOT_FOUND", "Entity not found");
+      throw new Errors.APIError(404, "NOT_FOUND", "Entity not found");
     }
 
     await em.remove(entity);
@@ -420,22 +422,22 @@ public async delete(id: string): Promise<void> {
 ```typescript
 // Not found
 if (!entity) {
-  throw new errors.APIError(404, "NOT_FOUND", "Entity not found");
+  throw new Errors.APIError(404, "NOT_FOUND", "Entity not found");
 }
 
 // Validation error
 if (!data.requiredField) {
-  throw new errors.APIError(400, "BAD_REQUEST", "Required field is missing");
+  throw new Errors.APIError(400, "BAD_REQUEST", "Required field is missing");
 }
 
 // Duplicate/Conflict
 if (existing) {
-  throw new errors.APIError(409, "CONFLICT", "Entity already exists");
+  throw new Errors.APIError(409, "CONFLICT", "Entity already exists");
 }
 
 // Unauthorized
 if (!hasPermission) {
-  throw new errors.APIError(403, "FORBIDDEN", "Insufficient permissions");
+  throw new Errors.APIError(403, "FORBIDDEN", "Insufficient permissions");
 }
 ```
 
@@ -451,7 +453,7 @@ try {
     data: result,
   });
 } catch (error: unknown) {
-  return errors.errorHandler(res, error as Error);
+  return Errors.errorHandler(res, error as Error);
 }
 ```
 
@@ -466,7 +468,7 @@ try {
 - ✅ Services use `@injectable()` decorator
 - ✅ Services injected with `LazyServiceIdentifier`
 - ✅ Controllers resolve services OUTSIDE class
-- ✅ All errors use `errors.APIError`
+- ✅ All errors use `Errors.APIError`
 - ✅ Cast transaction response to correct type
 - ✅ Add JSDoc to all public methods
 - ❌ No try-catch inside transactions

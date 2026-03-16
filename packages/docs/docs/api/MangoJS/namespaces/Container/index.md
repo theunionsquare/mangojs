@@ -10,7 +10,7 @@ Dependency injection container (Inversify)
 
 ### ContainerManager
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:16](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L16)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L16)
 
 Wrapper class to manage Inversify containers with a cleaner API.
 
@@ -32,7 +32,7 @@ const service = manager.get<MyService>(TYPES.MyService);
 new ContainerManager(parent?): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L19)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L19)
 
 ###### Parameters
 
@@ -52,7 +52,7 @@ Defined in: [packages/core/src/core/container/ContainerManager.ts:19](https://gi
 get<T>(serviceIdentifier, options?): T;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:26](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L26)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:26](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L26)
 
 Get a service from the container
 
@@ -80,7 +80,7 @@ Get a service from the container
 getContainer(): Container;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:48](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L48)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:48](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L48)
 
 Get the underlying Inversify container (for advanced use)
 
@@ -94,7 +94,7 @@ Get the underlying Inversify container (for advanced use)
 isBound(serviceIdentifier): boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L34)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L34)
 
 Check if a service is bound
 
@@ -114,7 +114,7 @@ Check if a service is bound
 reset(): void;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:55](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L55)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:55](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L55)
 
 Reset the container (useful for testing)
 
@@ -128,7 +128,7 @@ Reset the container (useful for testing)
 unbind(serviceIdentifier): void;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:41](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/ContainerManager.ts#L41)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:41](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/ContainerManager.ts#L41)
 
 Unbind a service from the container
 
@@ -150,7 +150,7 @@ Unbind a service from the container
 type ServiceIdentifier<TInstance> = string | symbol | Newable<TInstance> | Function;
 ```
 
-Defined in: [packages/core/src/core/container/types.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/types.ts#L8)
+Defined in: [packages/core/src/core/container/types.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/types.ts#L8)
 
 Service identifier for dependency injection.
 Can be a string, symbol, constructor, or function.
@@ -171,7 +171,7 @@ The type of the service instance
 function addCoreModule(container): Container;
 ```
 
-Defined in: [packages/core/src/core/container/modules.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/modules.ts#L8)
+Defined in: [packages/core/src/core/container/modules.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/modules.ts#L8)
 
 Core module providing default logger binding
 
@@ -193,7 +193,7 @@ Core module providing default logger binding
 function createChild(parent?): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/index.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/index.ts#L34)
+Defined in: [packages/core/src/core/container/index.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/index.ts#L34)
 
 Create a child container for a microservice
 Child containers inherit parent bindings and can override them
@@ -216,7 +216,7 @@ Child containers inherit parent bindings and can override them
 function getContainer(): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/index.ts#L18)
+Defined in: [packages/core/src/core/container/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/index.ts#L18)
 
 Get the parent container manager (contains shared dependencies like logger)
 
@@ -232,7 +232,7 @@ Get the parent container manager (contains shared dependencies like logger)
 function getContainerManager(): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/index.ts:24](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/container/index.ts#L24)
+Defined in: [packages/core/src/core/container/index.ts:24](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/container/index.ts#L24)
 
 #### Returns
 

@@ -12,7 +12,7 @@ API request and response type definitions for MangoJS applications.
 
 ### BaseResponse
 
-Defined in: [packages/core/src/core/types/api/index.ts:16](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L16)
+Defined in: [packages/core/src/core/types/api/index.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L16)
 
 Base fields included in all API responses.
 
@@ -30,7 +30,7 @@ Base fields included in all API responses.
 ok: boolean;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:17](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L17)
+Defined in: [packages/core/src/core/types/api/index.ts:17](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L17)
 
 ##### requestId
 
@@ -38,7 +38,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:17](https://github.com/th
 requestId: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L19)
+Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L19)
 
 ##### timestamp
 
@@ -46,13 +46,13 @@ Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/th
 timestamp: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L18)
+Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L18)
 
 ***
 
 ### ErrorResponse
 
-Defined in: [packages/core/src/core/types/api/index.ts:33](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L33)
+Defined in: [packages/core/src/core/types/api/index.ts:33](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L33)
 
 Error API response.
 
@@ -68,7 +68,7 @@ Error API response.
 error: object;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:35](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L35)
+Defined in: [packages/core/src/core/types/api/index.ts:35](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L35)
 
 ###### code?
 
@@ -88,7 +88,7 @@ message: string;
 ok: false;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L34)
+Defined in: [packages/core/src/core/types/api/index.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L34)
 
 ###### Overrides
 
@@ -100,7 +100,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:34](https://github.com/th
 requestId: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L19)
+Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L19)
 
 ###### Inherited from
 
@@ -112,7 +112,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/th
 timestamp: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L18)
+Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L18)
 
 ###### Inherited from
 
@@ -122,7 +122,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/th
 
 ### PaginatedData
 
-Defined in: [packages/core/src/core/types/api/index.ts:63](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L63)
+Defined in: [packages/core/src/core/types/api/index.ts:63](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L63)
 
 Paginated data container.
 
@@ -140,7 +140,7 @@ Paginated data container.
 items: T[];
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:64](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L64)
+Defined in: [packages/core/src/core/types/api/index.ts:64](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L64)
 
 ##### pagination
 
@@ -148,13 +148,13 @@ Defined in: [packages/core/src/core/types/api/index.ts:64](https://github.com/th
 pagination: Pagination;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:65](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L65)
+Defined in: [packages/core/src/core/types/api/index.ts:65](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L65)
 
 ***
 
 ### PaginatedResponse
 
-Defined in: [packages/core/src/core/types/api/index.ts:71](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L71)
+Defined in: [packages/core/src/core/types/api/index.ts:71](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L71)
 
 Paginated API response.
 
@@ -176,7 +176,7 @@ Paginated API response.
 data: PaginatedData<T>;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:73](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L73)
+Defined in: [packages/core/src/core/types/api/index.ts:73](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L73)
 
 ##### ok
 
@@ -184,7 +184,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:73](https://github.com/th
 ok: true;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:72](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L72)
+Defined in: [packages/core/src/core/types/api/index.ts:72](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L72)
 
 ###### Overrides
 
@@ -196,7 +196,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:72](https://github.com/th
 requestId: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L19)
+Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L19)
 
 ###### Inherited from
 
@@ -208,7 +208,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/th
 timestamp: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L18)
+Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L18)
 
 ###### Inherited from
 
@@ -218,7 +218,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/th
 
 ### Pagination
 
-Defined in: [packages/core/src/core/types/api/index.ts:53](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L53)
+Defined in: [packages/core/src/core/types/api/index.ts:53](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L53)
 
 Pagination metadata for list responses.
 
@@ -230,7 +230,7 @@ Pagination metadata for list responses.
 currentPage: number;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:56](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L56)
+Defined in: [packages/core/src/core/types/api/index.ts:56](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L56)
 
 ##### pageSize
 
@@ -238,7 +238,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:56](https://github.com/th
 pageSize: number;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:57](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L57)
+Defined in: [packages/core/src/core/types/api/index.ts:57](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L57)
 
 ##### totalItems
 
@@ -246,7 +246,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:57](https://github.com/th
 totalItems: number;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:54](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L54)
+Defined in: [packages/core/src/core/types/api/index.ts:54](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L54)
 
 ##### totalPages
 
@@ -254,13 +254,13 @@ Defined in: [packages/core/src/core/types/api/index.ts:54](https://github.com/th
 totalPages: number;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:55](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L55)
+Defined in: [packages/core/src/core/types/api/index.ts:55](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L55)
 
 ***
 
 ### SuccessResponse
 
-Defined in: [packages/core/src/core/types/api/index.ts:25](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L25)
+Defined in: [packages/core/src/core/types/api/index.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L25)
 
 Successful API response with typed data.
 
@@ -282,7 +282,7 @@ Successful API response with typed data.
 data: T;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:27](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L27)
+Defined in: [packages/core/src/core/types/api/index.ts:27](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L27)
 
 ##### ok
 
@@ -290,7 +290,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:27](https://github.com/th
 ok: true;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:26](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L26)
+Defined in: [packages/core/src/core/types/api/index.ts:26](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L26)
 
 ###### Overrides
 
@@ -302,7 +302,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:26](https://github.com/th
 requestId: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L19)
+Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L19)
 
 ###### Inherited from
 
@@ -314,7 +314,7 @@ Defined in: [packages/core/src/core/types/api/index.ts:19](https://github.com/th
 timestamp: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L18)
+Defined in: [packages/core/src/core/types/api/index.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L18)
 
 ###### Inherited from
 
@@ -330,7 +330,7 @@ type ApiResponse<T> =
   | ErrorResponse;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:44](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L44)
+Defined in: [packages/core/src/core/types/api/index.ts:44](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L44)
 
 API response - either success or error.
 

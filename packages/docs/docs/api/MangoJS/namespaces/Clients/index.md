@@ -10,7 +10,7 @@ HTTP and external service clients
 
 ### ~~ClientAPI~~
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:14](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L14)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:14](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L14)
 
 HTTP client wrapper with retry logic and error handling.
 
@@ -27,7 +27,7 @@ Use axios directly or create your own HTTP client implementation.
 new ClientAPI(baseURL): ClientAPI;
 ```
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:20](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L20)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:20](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L20)
 
 ###### Parameters
 
@@ -47,7 +47,7 @@ Defined in: [packages/core/src/core/clients/clientAPI.ts:20](https://github.com/
 delete<R>(url, config?): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:107](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L107)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:107](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L107)
 
 Make a DELETE request
 
@@ -77,7 +77,7 @@ Make a DELETE request
 get<R>(url, config?): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:59](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L59)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:59](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L59)
 
 Make a GET request
 
@@ -110,7 +110,7 @@ post<B, R>(
 config?): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:75](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L75)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:75](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L75)
 
 Make a POST request
 
@@ -151,7 +151,7 @@ put<B, R>(
 config?): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/clients/clientAPI.ts:91](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/clients/clientAPI.ts#L91)
+Defined in: [packages/core/src/core/clients/clientAPI.ts:91](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/clients/clientAPI.ts#L91)
 
 Make a PUT request
 

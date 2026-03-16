@@ -47,9 +47,9 @@ MangoJS uses **Inversify** for dependency injection. All dependencies are regist
 
 ```typescript
 serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
+  .bind<DatabaseManager.IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
   .toConstantValue(
-    new databasemanager.postgres.PostgresDBManagerFactory(
+    new DatabaseManager.PostgresDBManagerFactory(
       { url: "postgresql://localhost:5432/db" },
       [User, Post],
     ),
@@ -60,8 +60,8 @@ serviceContainer
 
 | Implementation                 | Database    | Use Case                 |
 | ------------------------------ | ----------- | ------------------------ |
-| `CockroachPersistenceContext`  | CockroachDB | CockroachDB transactions |
-| `PostgreSQLPersistenceContext` | PostgreSQL  | PostgreSQL transactions  |
+| `CockroachPersistenceContext` | CockroachDB | CockroachDB transactions |
+| `PostgresPersistenceContext`  | PostgreSQL  | PostgreSQL transactions  |
 | `MongoosePersistenceContext`   | MongoDB     | MongoDB sessions         |
 | `DummyPersistenceContext`      | None        | Testing                  |
 
@@ -69,14 +69,14 @@ serviceContainer
 
 ```
 CockRoachDBManagerFactory → CockroachPersistenceContext
-PostgresDBManagerFactory  → PostgreSQLPersistenceContext
+PostgresDBManagerFactory  → PostgresPersistenceContext
 MongooseDBManagerFactory  → MongoosePersistenceContext
 ```
 
 ```typescript
 serviceContainer
-  .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
-  .to(persistanceContext.PostgreSQLPersistenceContext);
+  .bind<Persistence.IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
+  .to(Persistence.PostgresPersistenceContext);
 ```
 
 ### Authentication Validators
@@ -85,16 +85,16 @@ serviceContainer
 
 ```typescript
 serviceContainer
-  .bind<Auth.IAuthValidator>(INVERSITY_TYPES.AuthorizationContext)
+  .bind<Authentication.IAuthValidator>(INVERSITY_TYPES.AuthorizationContext)
   .toConstantValue(
-    new Auth.RemoteAuthValidator("http://iam-service.internal", 3031),
+    new Authentication.RemoteAuthValidator("http://iam-service.internal", 3031),
   );
 ```
 
 **Custom**: Implement `IAuthValidator` interface
 
 ```typescript
-class CustomAuthValidator implements Auth.IAuthValidator {
+class CustomAuthValidator implements Authentication.IAuthValidator {
   async validate(token: string): Promise<boolean> {
     // Custom logic
     return true;
@@ -145,28 +145,38 @@ See [Controller Layer Guide](../controller/overview.context.md) for service reso
 ## Configuration Example
 
 ```typescript
-const serviceContainer = Containers.getContainer();
+import {
+  Container,
+  Loggers,
+  INVERSITY_TYPES,
+  DatabaseManager,
+  Persistence,
+  Authentication,
+} from "@theunionsquare/mangojs-core";
+
+const containerManager = Container.getContainer();
+const serviceContainer = containerManager.getContainer();
 
 serviceContainer
   .bind<Loggers.ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)
   .toConstantValue(new Loggers.LoggerPino("dev-service", "debug"));
 
 serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
+  .bind<DatabaseManager.IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
   .toConstantValue(
-    new databasemanager.postgres.PostgresDBManagerFactory(
+    new DatabaseManager.PostgresDBManagerFactory(
       { url: "postgresql://localhost:5432/dev_db" },
       [User, Post, Comment],
     ),
   );
 
 serviceContainer
-  .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
-  .to(persistanceContext.PostgreSQLPersistenceContext);
+  .bind<Persistence.IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
+  .to(Persistence.PostgresPersistenceContext);
 
 serviceContainer
-  .bind<Auth.IAuthValidator>(INVERSITY_TYPES.AuthorizationContext)
-  .toConstantValue(new Auth.RemoteAuthValidator("http://localhost", 3031));
+  .bind<Authentication.IAuthValidator>(INVERSITY_TYPES.AuthorizationContext)
+  .toConstantValue(new Authentication.RemoteAuthValidator("http://localhost", 3031));
 
 export { serviceContainer };
 ```

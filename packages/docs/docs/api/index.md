@@ -30,7 +30,7 @@ sidebar_label: MangoJS
 
 ### Methods
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:6](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L6)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:6](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L6)
 
 HTTP VERB ENUM
 
@@ -42,7 +42,7 @@ HTTP VERB ENUM
 DELETE: "delete";
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:10](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L10)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:10](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L10)
 
 ##### GET
 
@@ -50,7 +50,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:10](ht
 GET: "get";
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L7)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L7)
 
 ##### POST
 
@@ -58,7 +58,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:7](htt
 POST: "post";
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L8)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L8)
 
 ##### PUT
 
@@ -66,13 +66,13 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:8](htt
 PUT: "put";
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:9](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L9)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L9)
 
 ## Classes
 
 ### ~~`abstract` BaseRepository~~
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:12](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L12)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L12)
 
 Abstract base repository implementing basic CRUD operations.
 
@@ -100,7 +100,7 @@ Use TypeORM repositories directly instead.
 new BaseRepository<T>(): BaseRepository<T>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:15](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L15)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:15](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L15)
 
 ###### Returns
 
@@ -114,7 +114,7 @@ Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:15](h
 readonly _collection: any;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:13](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L13)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:13](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L13)
 
 #### Methods
 
@@ -124,7 +124,7 @@ Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:13](h
 count(): Promise<Number>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L34)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L34)
 
 ###### Returns
 
@@ -136,7 +136,7 @@ Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:34](h
 create(item): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:25](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L25)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L25)
 
 ###### Parameters
 
@@ -160,7 +160,7 @@ IWrite.create
 delete(id): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:31](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L31)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:31](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L31)
 
 ###### Parameters
 
@@ -184,7 +184,7 @@ IWrite.delete
 find(item): Promise<T[]>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L19)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L19)
 
 ###### Parameters
 
@@ -208,7 +208,7 @@ IRead.find
 findOne(id): Promise<T>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:22](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L22)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:22](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L22)
 
 ###### Parameters
 
@@ -232,7 +232,7 @@ IRead.findOne
 update(id, item): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:28](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/interfaces/BaseRepository.ts#L28)
+Defined in: [packages/core/src/core/databases/interfaces/BaseRepository.ts:28](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/interfaces/BaseRepository.ts#L28)
 
 ###### Parameters
 
@@ -258,7 +258,7 @@ IWrite.update
 
 ### ~~PersistenceContext2~~
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:13](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/persistence/PersistenceContext.ts#L13)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:13](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/persistence/PersistenceContext.ts#L13)
 
 Generic MongoDB persistence context.
 
@@ -278,7 +278,7 @@ Use MongoosePersistenceContext instead.
 new PersistenceContext2(entityManager): PersistenceContext2;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:16](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/persistence/PersistenceContext.ts#L16)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/persistence/PersistenceContext.ts#L16)
 
 ###### Parameters
 
@@ -299,7 +299,7 @@ inTransaction(context): Promise<{
 }>;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:24](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/persistence/PersistenceContext.ts#L24)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.ts:24](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/persistence/PersistenceContext.ts#L24)
 
 Executes operations within a transaction context.
 
@@ -324,7 +324,7 @@ Result of the transaction
 
 ### IRouter
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:16](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L16)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L16)
 
 Router interface
 
@@ -336,7 +336,7 @@ Router interface
 handlerName: string | symbol;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:19](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L19)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L19)
 
 ##### method
 
@@ -344,7 +344,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:19](ht
 method: Methods;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:17](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L17)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:17](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L17)
 
 ##### path
 
@@ -352,13 +352,13 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:17](ht
 path: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:18](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L18)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L18)
 
 ***
 
 ### Request
 
-Defined in: [packages/core/src/core/types/api/index.ts:91](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L91)
+Defined in: [packages/core/src/core/types/api/index.ts:91](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L91)
 
 Generic API request extending Express Request.
 
@@ -1169,7 +1169,7 @@ ExpressRequest.readableObjectMode
 optional requestTime: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:94](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L94)
+Defined in: [packages/core/src/core/types/api/index.ts:94](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L94)
 
 Request timestamp set by middleware
 
@@ -1439,7 +1439,7 @@ v0.1.90
 optional user: MiddlewareUserInfo;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:96](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L96)
+Defined in: [packages/core/src/core/types/api/index.ts:96](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L96)
 
 Authenticated user info set by auth middleware
 
@@ -5730,7 +5730,7 @@ ExpressRequest.wrap
 
 ### Response
 
-Defined in: [packages/core/src/core/types/api/index.ts:107](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L107)
+Defined in: [packages/core/src/core/types/api/index.ts:107](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L107)
 
 Generic API response extending Express Response.
 
@@ -10954,7 +10954,7 @@ ExpressResponse.writeProcessing
 const Delete: (path) => MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:58](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L58)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:58](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L58)
 
 #### Parameters
 
@@ -10974,7 +10974,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:58](ht
 const Get: (path) => MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:52](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L52)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:52](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L52)
 
 #### Parameters
 
@@ -10994,7 +10994,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:52](ht
 const INVERSITY_TYPES: object;
 ```
 
-Defined in: [packages/core/src/core/types/inversifyTypes.ts:1](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/inversifyTypes.ts#L1)
+Defined in: [packages/core/src/core/types/inversifyTypes.ts:1](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/inversifyTypes.ts#L1)
 
 #### Type Declaration
 
@@ -11084,7 +11084,7 @@ Use Container.INVERSITY_TYPES or import from types directly.
 const Post: (path) => MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:54](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L54)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:54](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L54)
 
 #### Parameters
 
@@ -11104,7 +11104,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:54](ht
 const Put: (path) => MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:56](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L56)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:56](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L56)
 
 #### Parameters
 
@@ -11124,7 +11124,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:56](ht
 const Use: (handler) => MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:82](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/handlers.decorator.ts#L82)
+Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:82](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/handlers.decorator.ts#L82)
 
 #### Parameters
 
@@ -11144,7 +11144,7 @@ Defined in: [packages/core/src/core/decorators/http/handlers.decorator.ts:82](ht
 function Controller(basePath): ClassDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/controller.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/controller.decorator.ts#L8)
+Defined in: [packages/core/src/core/decorators/http/controller.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/controller.decorator.ts#L8)
 
 Define the base API address
 
@@ -11168,7 +11168,7 @@ string
 function Middleware(middleware): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/middleware.decorator.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/http/middleware.decorator.ts#L11)
+Defined in: [packages/core/src/core/decorators/http/middleware.decorator.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/http/middleware.decorator.ts#L11)
 
 Generic Middleware decoratoor
 
@@ -11194,7 +11194,7 @@ function in the form (req: Request, res: Response, next: NextFunction) =\> \{
 function QueueWorker(queueName, options?): <T>(target) => T;
 ```
 
-Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:24](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L24)
+Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:24](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L24)
 
 #### Parameters
 
@@ -11256,7 +11256,7 @@ export class EmailWorker implements IQueueWorkerHandler {
 function Schedule(cron, options?): ClassDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/scheduler/schedule.decorator.ts:32](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/scheduler/schedule.decorator.ts#L32)
+Defined in: [packages/core/src/core/decorators/scheduler/schedule.decorator.ts:32](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/scheduler/schedule.decorator.ts#L32)
 
 Decorator to mark a class as a scheduled task.
 

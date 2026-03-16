@@ -15,7 +15,7 @@ Middleware patterns
 
 ### AuthenticatedRequest
 
-Defined in: [packages/core/src/core/middlewares/types.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/middlewares/types.ts#L11)
+Defined in: [packages/core/src/core/middlewares/types.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/middlewares/types.ts#L11)
 
 Extended request type with auth context.
 Available after middlewareAuthContext runs.
@@ -82,7 +82,7 @@ Defined in: node\_modules/.pnpm/@types+express-serve-static-core@5.1.1/node\_mod
 optional authContext: IAuthContext;
 ```
 
-Defined in: [packages/core/src/core/middlewares/types.ts:12](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/middlewares/types.ts#L12)
+Defined in: [packages/core/src/core/middlewares/types.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/middlewares/types.ts#L12)
 
 ##### baseUrl
 
@@ -760,7 +760,7 @@ v12.3.0
 optional requestTime: string;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:94](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L94)
+Defined in: [packages/core/src/core/types/api/index.ts:94](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L94)
 
 Request timestamp set by middleware
 
@@ -1026,7 +1026,7 @@ v0.1.90
 optional user: MiddlewareUserInfo;
 ```
 
-Defined in: [packages/core/src/core/types/api/index.ts:96](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/api/index.ts#L96)
+Defined in: [packages/core/src/core/types/api/index.ts:96](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/api/index.ts#L96)
 
 Authenticated user info set by auth middleware
 

@@ -8,7 +8,7 @@ sidebar_label: database
 
 ### ~~SetUpDatabaseAction~~
 
-Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L8)
+Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L8)
 
 Base class for database setup actions.
 
@@ -36,7 +36,7 @@ new SetUpDatabaseAction(): SetUpDatabaseAction;
 onError(err): void;
 ```
 
-Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:14](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L14)
+Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:14](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L14)
 
 ###### Parameters
 
@@ -57,7 +57,7 @@ onFileContent(
    dropBeforeInsert): void;
 ```
 
-Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:9](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L9)
+Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/databases/setup/SetUpDatabaseAction.ts#L9)
 
 ###### Parameters
 
@@ -81,7 +81,7 @@ Defined in: [packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:9](ht
 
 ### SetUpDatabaseRecord
 
-Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:1](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L1)
+Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:1](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L1)
 
 #### Properties
 
@@ -91,7 +91,7 @@ Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:1](htt
 collection: string;
 ```
 
-Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:3](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L3)
+Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:3](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L3)
 
 ##### file
 
@@ -99,7 +99,7 @@ Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:3](htt
 file: string;
 ```
 
-Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:2](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L2)
+Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:2](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L2)
 
 ##### key
 
@@ -107,4 +107,4 @@ Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:2](htt
 key: string;
 ```
 
-Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:4](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L4)
+Defined in: [packages/core/src/core/types/database/SetUpDataBaseRecord.ts:4](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/types/database/SetUpDataBaseRecord.ts#L4)

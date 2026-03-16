@@ -269,12 +269,12 @@ interface TaskEntry {
 
 ```typescript
 // tasks/index.ts
-import { ScheduledTaskConstructor } from "@theunionsquare/mangojs-core";
+import { Scheduler } from "@theunionsquare/mangojs-core";
 import { CleanupTask } from "./cleanup.task";
 import { ReportTask } from "./report.task";
 import { NotificationTask } from "./notification.task";
 
-export const scheduledTasks: ScheduledTaskConstructor[] = [
+export const scheduledTasks: Scheduler.ScheduledTaskConstructor[] = [
   CleanupTask,
   ReportTask,
   NotificationTask,

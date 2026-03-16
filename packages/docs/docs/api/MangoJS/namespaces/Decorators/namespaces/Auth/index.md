@@ -12,7 +12,7 @@ Authorization decorators for Express route protection.
 
 ### AuthConfig
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L132)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L132)
 
 Global authentication configuration
 
@@ -36,7 +36,7 @@ new AuthConfig(): AuthConfig;
 static configure(options): void;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:148](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L148)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:148](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L148)
 
 Configure global auth settings
 
@@ -67,7 +67,7 @@ AuthConfig.configure({
 static extractUserContext(req): object;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:182](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L182)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:182](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L182)
 
 Extract user context from request using configured extractor
 
@@ -114,7 +114,7 @@ optional userType: string;
 static getCacheMaxSize(): number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:309](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L309)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:309](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L309)
 
 Get cache max size
 
@@ -130,7 +130,7 @@ Maximum number of cache entries
 static getCacheTTL(decoratorOptions?): number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:282](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L282)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:282](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L282)
 
 Get cache TTL
 
@@ -154,7 +154,7 @@ Cache TTL in milliseconds
 static getConfig(): Readonly<Required<AuthConfigOptions>>;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:160](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L160)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:160](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L160)
 
 Get current configuration
 
@@ -168,7 +168,7 @@ Get current configuration
 static getErrorHandler(decoratorOptions?): AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:295](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L295)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:295](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L295)
 
 Get error handler
 
@@ -192,7 +192,7 @@ Custom error handler if configured
 static isAuditLogEnabled(decoratorOptions?): boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:256](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L256)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:256](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L256)
 
 Check if audit logging is enabled
 
@@ -216,7 +216,7 @@ true if audit logging should be enabled
 static isCachingEnabled(decoratorOptions?): boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:269](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L269)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:269](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L269)
 
 Check if caching is enabled
 
@@ -240,7 +240,7 @@ true if caching should be enabled
 static reset(): void;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:167](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L167)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:167](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L167)
 
 Reset to default configuration (useful for testing)
 
@@ -252,7 +252,7 @@ Reset to default configuration (useful for testing)
 
 ### AuthErrorFactory
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:88](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L88)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:88](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L88)
 
 Factory functions for creating common authorization errors
 
@@ -280,7 +280,7 @@ static accessDenied(
    validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:128](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L128)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:128](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L128)
 
 Create error for access requirements mismatch
 
@@ -315,7 +315,7 @@ static andModeFailure(
    userGroups?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:188](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L188)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:188](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L188)
 
 Create error for AND mode validation failure
 
@@ -353,7 +353,7 @@ static groupMismatch(
    userType?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:108](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L108)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:108](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L108)
 
 Create error for group mismatch
 
@@ -385,7 +385,7 @@ Create error for group mismatch
 static missingUserContext(validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:148](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L148)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:148](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L148)
 
 Create error for missing user context
 
@@ -408,7 +408,7 @@ static orModeFailure(
    userGroups?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:159](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L159)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:159](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L159)
 
 Create error for OR mode validation failure
 
@@ -439,7 +439,7 @@ static userTypeMismatch(
    validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:92](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L92)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:92](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L92)
 
 Create error for user type mismatch
 
@@ -465,7 +465,7 @@ Create error for user type mismatch
 
 ### AuthorizationError
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:22](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L22)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:22](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L22)
 
 Authorization error class with detailed information
 
@@ -481,7 +481,7 @@ Authorization error class with detailed information
 new AuthorizationError(message, details): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:27](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L27)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:27](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L27)
 
 ###### Parameters
 
@@ -511,7 +511,7 @@ Error.constructor
 readonly code: "NOT_AUTHORIZED" = "NOT_AUTHORIZED";
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:23](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L23)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:23](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L23)
 
 ##### details
 
@@ -519,7 +519,7 @@ Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:23](https
 readonly details: AuthErrorDetails;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:25](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L25)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L25)
 
 ##### message
 
@@ -569,7 +569,7 @@ Error.stack
 readonly statusCode: 401 = 401;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:24](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L24)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:24](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L24)
 
 ##### stackTraceLimit
 
@@ -603,7 +603,7 @@ Error.stackTraceLimit
 toClientResponse(): object;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:57](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L57)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:57](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L57)
 
 Get a safe error response for client (without sensitive details)
 
@@ -635,7 +635,7 @@ message: string;
 toFullResponse(): object;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:68](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L68)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:68](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L68)
 
 Get full error details (for internal logging/debugging)
 
@@ -679,7 +679,7 @@ statusCode: number;
 toLogString(): string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:41](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L41)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:41](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L41)
 
 Get a formatted error message for logging
 
@@ -795,7 +795,7 @@ Error.prepareStackTrace
 
 ### AuthConfigOptions
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:26](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L26)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:26](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L26)
 
 Global configuration options
 
@@ -807,7 +807,7 @@ Global configuration options
 optional cacheMaxSize: number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:68](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L68)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:68](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L68)
 
 Maximum number of cache entries
 Default: 1000
@@ -818,7 +818,7 @@ Default: 1000
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:62](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L62)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:62](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L62)
 
 Cache TTL in milliseconds
 Default: 60000 (1 minute)
@@ -829,7 +829,7 @@ Default: 60000 (1 minute)
 optional cacheValidationResults: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:56](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L56)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:56](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L56)
 
 Enable caching of validation results
 Default: false
@@ -840,7 +840,7 @@ Default: false
 optional enableAuditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:50](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L50)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:50](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L50)
 
 Enable audit logging for all auth decisions
 Default: false
@@ -852,7 +852,7 @@ Note: Logging implementation will be added in future
 optional environment: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:74](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L74)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:74](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L74)
 
 Environment (used for conditional behavior)
 Default: process.env.NODE_ENV
@@ -863,7 +863,7 @@ Default: process.env.NODE_ENV
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:43](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L43)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:43](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L43)
 
 Custom error handler
 Default: uses core error handler
@@ -874,7 +874,7 @@ Default: uses core error handler
 optional userContextExtractor: UserContextExtractor;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:37](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L37)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:37](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L37)
 
 Custom function to extract user context from request
 If provided, overrides userObjectPath
@@ -885,7 +885,7 @@ If provided, overrides userObjectPath
 optional userObjectPath: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:31](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L31)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:31](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L31)
 
 Path to user object in request (e.g., "user", "session.user")
 Default: "user"
@@ -894,7 +894,7 @@ Default: "user"
 
 ### AuthErrorDetails
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:4](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L4)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:4](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L4)
 
 Detailed authorization error information
 
@@ -906,7 +906,7 @@ Detailed authorization error information
 actual: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L8)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L8)
 
 What the user actually has
 
@@ -916,7 +916,7 @@ What the user actually has
 optional context: Record<string, any>;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:16](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L16)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L16)
 
 Additional context
 
@@ -926,7 +926,7 @@ Additional context
 failedValidator: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L10)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L10)
 
 Which decorator/validator failed
 
@@ -936,7 +936,7 @@ Which decorator/validator failed
 required: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L6)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L6)
 
 What authorization was required
 
@@ -946,7 +946,7 @@ What authorization was required
 optional userGroups: string[];
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:14](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L14)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:14](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L14)
 
 User groups if available
 
@@ -956,7 +956,7 @@ User groups if available
 optional userType: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authErrors.ts#L12)
+Defined in: [packages/core/src/core/decorators/auth/core/authErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authErrors.ts#L12)
 
 User type if available
 
@@ -964,7 +964,7 @@ User type if available
 
 ### DecoratorOptions
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:80](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L80)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:80](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L80)
 
 Per-decorator configuration options
 
@@ -980,7 +980,7 @@ Per-decorator configuration options
 optional auditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:90](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L90)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:90](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L90)
 
 Enable audit logging for this endpoint
 Overrides global setting
@@ -991,7 +991,7 @@ Overrides global setting
 optional cache: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:96](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L96)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:96](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L96)
 
 Enable caching for this endpoint
 Overrides global setting
@@ -1002,7 +1002,7 @@ Overrides global setting
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:102](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L102)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:102](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L102)
 
 Cache TTL for this endpoint in milliseconds
 Overrides global setting
@@ -1013,7 +1013,7 @@ Overrides global setting
 optional disabled: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:112](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L112)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:112](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L112)
 
 Disable this auth check (useful for testing)
 
@@ -1023,7 +1023,7 @@ Disable this auth check (useful for testing)
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:107](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L107)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:107](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L107)
 
 Custom error handler for this endpoint
 
@@ -1033,7 +1033,7 @@ Custom error handler for this endpoint
 optional errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L84)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L84)
 
 Custom error message for this endpoint
 
@@ -1041,7 +1041,7 @@ Custom error message for this endpoint
 
 ### OwnershipOptions
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:29](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L29)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:29](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L29)
 
 Configuration options for the RequiresOwnership decorator
 
@@ -1057,7 +1057,7 @@ Configuration options for the RequiresOwnership decorator
 optional arrayField: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:54](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L54)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:54](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L54)
 
 Whether the user field contains an array of IDs
 If true, checks if resource ID is in the user's array
@@ -1075,7 +1075,7 @@ false
 optional auditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:90](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L90)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:90](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L90)
 
 Enable audit logging for this endpoint
 Overrides global setting
@@ -1090,7 +1090,7 @@ Overrides global setting
 optional cache: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:96](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L96)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:96](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L96)
 
 Enable caching for this endpoint
 Overrides global setting
@@ -1105,7 +1105,7 @@ Overrides global setting
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:102](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L102)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:102](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L102)
 
 Cache TTL for this endpoint in milliseconds
 Overrides global setting
@@ -1120,7 +1120,7 @@ Overrides global setting
 optional customValidator: OwnershipValidator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:60](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L60)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:60](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L60)
 
 Custom validation function for complex ownership logic
 If provided, overrides the default equality/array checks
@@ -1131,7 +1131,7 @@ If provided, overrides the default equality/array checks
 optional disabled: boolean;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:112](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L112)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:112](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L112)
 
 Disable this auth check (useful for testing)
 
@@ -1145,7 +1145,7 @@ Disable this auth check (useful for testing)
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:107](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L107)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:107](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L107)
 
 Custom error handler for this endpoint
 
@@ -1159,7 +1159,7 @@ Custom error handler for this endpoint
 optional errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L84)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L84)
 
 Custom error message for this endpoint
 
@@ -1173,7 +1173,7 @@ Custom error message for this endpoint
 optional paramName: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:40](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L40)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:40](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L40)
 
 Parameter name in the request (params/query/body)
 
@@ -1187,7 +1187,7 @@ Parameter name in the request (params/query/body)
 optional paramSource: ParameterSource;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:46](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L46)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:46](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L46)
 
 Source of the parameter in the request
 
@@ -1203,7 +1203,7 @@ Source of the parameter in the request
 optional userField: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:34](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L34)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L34)
 
 Field name in the user context to check
 
@@ -1215,7 +1215,7 @@ Field name in the user context to check
 
 ### UserCacheContext
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L8)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L8)
 
 User context for cache key generation
 
@@ -1227,7 +1227,7 @@ User context for cache key generation
 optional groups: string[];
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L11)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L11)
 
 ##### userId?
 
@@ -1235,7 +1235,7 @@ Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:11](h
 optional userId: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:9](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L9)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L9)
 
 ##### userType?
 
@@ -1243,7 +1243,7 @@ Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:9](ht
 optional userType: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:10](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L10)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:10](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L10)
 
 ## Type Aliases
 
@@ -1253,7 +1253,7 @@ Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:10](h
 type AuthErrorHandler = (res, error) => void;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:8](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L8)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:8](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L8)
 
 Error handler function type
 
@@ -1279,7 +1279,7 @@ Error handler function type
 type OwnershipValidator = (userValue, resourceValue, req) => boolean | Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:20](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L20)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:20](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L20)
 
 Custom ownership validator function
 
@@ -1317,7 +1317,7 @@ true if user owns the resource, false otherwise
 type ParameterSource = "params" | "query" | "body";
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:11](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L11)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L11)
 
 Source of the resource identifier in the request
 
@@ -1339,7 +1339,7 @@ type UserContextExtractor = (req) =>
   | null;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:17](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L17)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:17](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L17)
 
 User context extractor function
 Allows custom logic for extracting user from request
@@ -1371,7 +1371,7 @@ Allows custom logic for extracting user from request
 const authCache: Cache<ValidationResult>;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:108](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L108)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:108](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L108)
 
 Singleton cache instance for authorization results.
 Use this instance throughout your application.
@@ -1400,7 +1400,7 @@ authCache.clear();
 const defaultUserContextExtractor: UserContextExtractor;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:318](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authConfig.ts#L318)
+Defined in: [packages/core/src/core/decorators/auth/core/authConfig.ts:318](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authConfig.ts#L318)
 
 Default user context extractor
 Extracts user from req.user (standard Express pattern)
@@ -1413,7 +1413,7 @@ Extracts user from req.user (standard Express pattern)
 function ClassHasUserType(userTypes): ClassDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/classHasUserType.decorator.ts:43](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/classHasUserType.decorator.ts#L43)
+Defined in: [packages/core/src/core/decorators/auth/classHasUserType.decorator.ts:43](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/classHasUserType.decorator.ts#L43)
 
 Class decorator that applies user type authorization to all methods in a class.
 
@@ -1481,7 +1481,7 @@ export class PartnerUserController {
 function clearUserCache(cache, userId): number;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:82](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L82)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:82](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L82)
 
 Clear cache entries for a specific user.
 Useful when user permissions change.
@@ -1517,7 +1517,7 @@ function generateCacheKey(
    validatorName): string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:48](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L48)
+Defined in: [packages/core/src/core/decorators/auth/core/authCacheUtils.ts:48](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/core/authCacheUtils.ts#L48)
 
 Generate cache key for validation result.
 
@@ -1582,7 +1582,7 @@ const key = generateCacheKey(
 function HasGroups(groups, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/hasGroups.decorator.ts:100](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/hasGroups.decorator.ts#L100)
+Defined in: [packages/core/src/core/decorators/auth/hasGroups.decorator.ts:100](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/hasGroups.decorator.ts#L100)
 
 Method decorator that restricts access to routes based on user groups.
 
@@ -1699,7 +1699,7 @@ instead
 function HasUserType(userTypes, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/hasUserType.decorator.ts:89](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/hasUserType.decorator.ts#L89)
+Defined in: [packages/core/src/core/decorators/auth/hasUserType.decorator.ts:89](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/hasUserType.decorator.ts#L89)
 
 Method decorator that restricts access to routes based on user type.
 
@@ -1806,7 +1806,7 @@ class UserController {
 function NoAuth(): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/noAuth.decorator.ts:35](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/noAuth.decorator.ts#L35)
+Defined in: [packages/core/src/core/decorators/auth/noAuth.decorator.ts:35](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/noAuth.decorator.ts#L35)
 
 Method decorator that removes all authorization requirements from a method.
 
@@ -1853,7 +1853,7 @@ export class PartnerUserController {
 function OrAuth(): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/orAuth.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/orAuth.decorator.ts#L44)
+Defined in: [packages/core/src/core/decorators/auth/orAuth.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/orAuth.decorator.ts#L44)
 
 Method decorator that enables OR logic for multiple authorization decorators.
 
@@ -1909,7 +1909,7 @@ class PartnerUserController {
 function RequiresAccess(accessMap, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresAccess.decorator.ts:184](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresAccess.decorator.ts#L184)
+Defined in: [packages/core/src/core/decorators/auth/requiresAccess.decorator.ts:184](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresAccess.decorator.ts#L184)
 
 Method decorator that restricts access to routes based on user type and group combinations.
 
@@ -2065,7 +2065,7 @@ decorators use AND logic by default
 function RequiresOwnership(resourceName, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:175](https://github.com/theunionsquare/mangojs/blob/a27c3c3ecf5653dc474c67d026e430ad3a6bdbb0/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L175)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:175](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L175)
 
 Method decorator that validates resource ownership based on user context.
 

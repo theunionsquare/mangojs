@@ -5,7 +5,30 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureIcon {
+  height: 80px;
+  width: 80px;
+  color: var(--ifm-color-primary);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.featureLink {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.featureLink:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  transform: translateY(-4px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.featureLink:hover .featureIcon {
+  transform: scale(1.1);
+  color: var(--ifm-color-primary-dark);
 }

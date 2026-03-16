@@ -13,11 +13,11 @@ The simplest way to use scheduled tasks is through `ServerBuilder.setTasks()`. T
 ## Basic Setup
 
 ```typescript
-import { ServerBuilder } from "@theunionsquare/mangojs-core";
+import { Builders } from "@theunionsquare/mangojs-core";
 import { CleanupTask } from "./tasks/cleanup.task";
 import { ReportTask } from "./tasks/report.task";
 
-const server = await new ServerBuilder()
+const server = await new Builders.ServerBuilder()
   .setName('my-api')
   .setPort(3000)
   .setRoutes([UserController, ProductController])
@@ -62,11 +62,11 @@ export const tasks = [CleanupTask, ReportTask, SyncTask];
 ### Usage
 
 ```typescript
-import { ServerBuilder } from "@theunionsquare/mangojs-core";
+import { Builders } from "@theunionsquare/mangojs-core";
 import { tasks } from "./tasks";
 import { routes } from "./routes";
 
-const server = await new ServerBuilder()
+const server = await new Builders.ServerBuilder()
   .setName('my-api')
   .setRoutes(routes)
   .setTasks(tasks)
@@ -82,7 +82,7 @@ server.run();
 Access the registry via `getScheduleRegistry()` for runtime management:
 
 ```typescript
-const server = await new ServerBuilder()
+const server = await new Builders.ServerBuilder()
   .setTasks([CleanupTask, ReportTask])
   .build();
 
@@ -123,22 +123,22 @@ console.log(`Running: ${status.runningTasks}/${status.totalTasks}`);
 
 ```typescript
 // src/tasks/index.ts
-import { ScheduledTaskConstructor } from "@theunionsquare/mangojs-core";
+import { Scheduler } from "@theunionsquare/mangojs-core";
 import { CleanupTask } from "./cleanup.task";
 import { ReportTask } from "./report.task";
 
-export const tasks: ScheduledTaskConstructor[] = [
+export const tasks: Scheduler.ScheduledTaskConstructor[] = [
   CleanupTask,
   ReportTask,
 ];
 
 // src/index.ts
-import { ServerBuilder } from "@theunionsquare/mangojs-core";
+import { Builders } from "@theunionsquare/mangojs-core";
 import { tasks } from "./tasks";
 import { routes } from "./routes";
 
 async function main() {
-  const server = await new ServerBuilder()
+  const server = await new Builders.ServerBuilder()
     .setName('my-api')
     .setPort(3000)
     .setRoutes(routes)
@@ -171,9 +171,9 @@ Create an endpoint to monitor and control tasks:
 @Controller('/api/v1/scheduler')
 @injectable()
 export class SchedulerController {
-  private registry: IScheduleRegistry;
+  private registry: Scheduler.IScheduleRegistry;
 
-  constructor(serverBuilder: ServerBuilder) {
+  constructor(serverBuilder: Builders.ServerBuilder) {
     this.registry = serverBuilder.getScheduleRegistry();
   }
 
