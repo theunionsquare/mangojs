@@ -52,10 +52,10 @@ export { EmailWorker, ReportWorker, NotificationWorker };
 import {
   Controller,
   Post,
-  injectable,
-  inject,
+  INVERSITY_TYPES,
+  Queue,
 } from "@theunionsquare/mangojs-core";
-import { INVERSITY_TYPES, IQueueClient } from "@theunionsquare/mangojs-core";
+import { injectable, inject } from "inversify";
 import { Request, Response } from "express";
 
 interface SendEmailRequest {
@@ -69,7 +69,7 @@ interface SendEmailRequest {
 @injectable()
 export class EmailController {
   @inject(INVERSITY_TYPES.QueueClient)
-  private queueClient: IQueueClient;
+  private queueClient: Queue.IQueueClient;
 
   @Post("/send")
   async sendEmail(req: Request, res: Response): Promise<Response> {
@@ -120,12 +120,12 @@ export class EmailController {
 // worker/src/workers/email.worker.ts
 import {
   QueueWorker,
-  IQueueWorkerHandler,
+  Queue,
   INVERSITY_TYPES,
+  Loggers,
 } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 import { Job } from "bullmq";
-import { ILoggerFactory, ILogger } from "@theunionsquare/mangojs-core";
 
 interface EmailJobData {
   to: string;
@@ -136,14 +136,14 @@ interface EmailJobData {
 
 @QueueWorker("email-queue", { concurrency: 5 })
 @injectable()
-export class EmailWorker implements IQueueWorkerHandler<EmailJobData> {
-  private logger: ILogger;
+export class EmailWorker implements Queue.IQueueWorkerHandler<EmailJobData> {
+  private logger: Loggers.ILogger;
 
   @inject(INVERSITY_TYPES.EmailService)
   private emailService: IEmailService;
 
   constructor(
-    @inject(INVERSITY_TYPES.LoggerFactory) loggerFactory: ILoggerFactory,
+    @inject(INVERSITY_TYPES.LoggerFactory) loggerFactory: Loggers.ILoggerFactory,
   ) {
     this.logger = loggerFactory.createLogger("EmailWorker");
   }
@@ -430,14 +430,14 @@ Complete worker service setup:
 
 ```typescript
 // worker/src/index.ts
-import { WorkerBuilder } from "@theunionsquare/mangojs-core";
+import { Builders } from "@theunionsquare/mangojs-core";
 import { workers } from "./workers";
 import { container } from "./inversify.config";
 
 async function main() {
   console.log("Starting worker service...");
 
-  const worker = await new WorkerBuilder()
+  const worker = await new Builders.WorkerBuilder()
     .setName("background-worker")
     .setRedisConfig({
       host: process.env.REDIS_HOST || "localhost",

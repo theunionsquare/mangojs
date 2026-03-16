@@ -6,12 +6,12 @@ Standardized error handling patterns for consistent API responses.
 
 ## Using APIError
 
-Always use `errors.APIError` from MangoJS core:
+Always use `Errors.APIError` from MangoJS core:
 
 ```typescript
-import { errors } from "@theunionsquare/mangojs-core";
+import { Errors } from "@theunionsquare/mangojs-core";
 
-throw new errors.APIError(statusCode, errorCode, message);
+throw new Errors.APIError(statusCode, errorCode, message);
 ```
 
 **Constructor**: `APIError(statusCode: number, errorCode: string, message: string)`
@@ -40,7 +40,7 @@ Services throw `APIError` - controllers catch them.
 ```typescript
 const user = await em.findOneBy(models.User, { id });
 if (!user) {
-  throw new errors.APIError(404, "NOT_FOUND", "User not found");
+  throw new Errors.APIError(404, "NOT_FOUND", "User not found");
 }
 ```
 
@@ -53,7 +53,7 @@ Controllers catch errors and pass to `errorHandler`:
 ```typescript
 @Get("/:id")
 public async getUser(req: Request, res: Response): Promise<Response> {
-  const logRequest = new utils.LogRequest(res);
+  const logRequest = new Utils.LogRequest(res);
   try {
     const { id } = req.params;
     const user = await userService.getUser(id);
@@ -65,7 +65,7 @@ public async getUser(req: Request, res: Response): Promise<Response> {
       data: user,
     });
   } catch (error: unknown) {
-    return errors.errorHandler(res, error as Error);
+    return Errors.errorHandler(res, error as Error);
   }
 }
 ```

@@ -25,12 +25,12 @@ src/
 
 ```typescript
 // src/tasks/index.ts
-import { ScheduledTaskConstructor } from "@theunionsquare/mangojs-core";
+import { Scheduler } from "@theunionsquare/mangojs-core";
 import { CleanupTask } from "./cleanup.task";
 import { ReportTask } from "./report.task";
 import { NotificationTask } from "./notification.task";
 
-export const scheduledTasks: ScheduledTaskConstructor[] = [
+export const scheduledTasks: Scheduler.ScheduledTaskConstructor[] = [
   CleanupTask,
   ReportTask,
   NotificationTask,
@@ -47,8 +47,9 @@ export { CleanupTask, ReportTask, NotificationTask };
 // src/tasks/cleanup.task.ts
 import {
   Schedule,
-  ScheduledTask,
+  Scheduler,
   INVERSITY_TYPES,
+  Loggers,
 } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 
@@ -61,14 +62,14 @@ interface CleanupResult {
 
 @Schedule('0 3 * * *', { timezone: 'UTC', name: 'database-cleanup' })
 @injectable()
-export class CleanupTask extends ScheduledTask {
+export class CleanupTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.LoggerFactory)
-  private loggerFactory: ILoggerFactory;
+  private loggerFactory: Loggers.ILoggerFactory;
 
   @inject(INVERSITY_TYPES.Database)
   private database: IDatabase;
 
-  private logger: ILogger;
+  private logger: Loggers.ILogger;
   private startTime: Date;
   private result: CleanupResult;
 
@@ -124,7 +125,7 @@ export class CleanupTask extends ScheduledTask {
 ```typescript
 @Schedule('0 6 * * *', { timezone: 'America/New_York', name: 'daily-report' })
 @injectable()
-export class DailyReportTask extends ScheduledTask {
+export class DailyReportTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.ReportService)
   private reportService: IReportService;
 
@@ -154,7 +155,7 @@ export class DailyReportTask extends ScheduledTask {
 ```typescript
 @Schedule('*/5 * * * *', { name: 'health-check' })
 @injectable()
-export class HealthCheckTask extends ScheduledTask {
+export class HealthCheckTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.HealthService)
   private healthService: IHealthService;
 
@@ -187,7 +188,7 @@ export class HealthCheckTask extends ScheduledTask {
 ```typescript
 @Schedule('0 */6 * * *', { runOnStart: true, name: 'cache-warmup' })
 @injectable()
-export class CacheWarmupTask extends ScheduledTask {
+export class CacheWarmupTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.CacheService)
   private cacheService: ICacheService;
 
@@ -213,7 +214,7 @@ export class CacheWarmupTask extends ScheduledTask {
 ```typescript
 @Schedule('* * * * *', { name: 'metrics-collector' })
 @injectable()
-export class MetricsCollectorTask extends ScheduledTask {
+export class MetricsCollectorTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.MetricsService)
   private metrics: IMetricsService;
 
@@ -245,7 +246,7 @@ export class MetricsCollectorTask extends ScheduledTask {
 ```typescript
 @Schedule('0 9 * * 1', { timezone: 'UTC', name: 'weekly-digest' })
 @injectable()
-export class WeeklyDigestTask extends ScheduledTask {
+export class WeeklyDigestTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.UserRepository)
   private userRepo: IUserRepository;
 
@@ -276,7 +277,7 @@ export class WeeklyDigestTask extends ScheduledTask {
 ```typescript
 @Schedule('*/15 * * * *', { name: 'external-sync' })
 @injectable()
-export class ExternalSyncTask extends ScheduledTask {
+export class ExternalSyncTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.ExternalApi)
   private externalApi: IExternalApi;
 
@@ -286,7 +287,7 @@ export class ExternalSyncTask extends ScheduledTask {
   @inject(INVERSITY_TYPES.LoggerFactory)
   private loggerFactory: ILoggerFactory;
 
-  private logger: ILogger;
+  private logger: Loggers.ILogger;
 
   onStart(): void {
     this.logger = this.loggerFactory.createLogger('ExternalSync');
@@ -327,7 +328,7 @@ export class ExternalSyncTask extends ScheduledTask {
 ```typescript
 @Schedule('0 2 * * 0', { timezone: 'UTC', name: 'maintenance' })
 @injectable()
-export class MaintenanceTask extends ScheduledTask {
+export class MaintenanceTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.MaintenanceService)
   private maintenance: IMaintenanceService;
 
@@ -363,7 +364,7 @@ Complete application setup with scheduler:
 
 ```typescript
 // src/index.ts
-import { ServerBuilder, ScheduleRegistry } from "@theunionsquare/mangojs-core";
+import { Builders, Scheduler, INVERSITY_TYPES } from "@theunionsquare/mangojs-core";
 import { container } from "./inversify.config";
 import { scheduledTasks } from "./tasks";
 import { controllers } from "./controllers";
@@ -372,7 +373,7 @@ async function main() {
   console.log('Starting application...');
 
   // Set up scheduler
-  const scheduler = new ScheduleRegistry();
+  const scheduler = new Scheduler.ScheduleRegistry();
   scheduledTasks.forEach(task => {
     scheduler.register(task);
     console.log(`Registered task: ${task.name}`);
@@ -382,7 +383,7 @@ async function main() {
   container.bind(INVERSITY_TYPES.ScheduleRegistry).toConstantValue(scheduler);
 
   // Build server
-  const server = await new ServerBuilder()
+  const server = await new Builders.ServerBuilder()
     .setName('my-api')
     .setPort(parseInt(process.env.PORT || '3000'))
     .setControllers(controllers)
@@ -431,7 +432,7 @@ import {
   Get,
   Post,
   INVERSITY_TYPES,
-  IScheduleRegistry,
+  Scheduler,
 } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 import { Request, Response } from "express";
@@ -440,7 +441,7 @@ import { Request, Response } from "express";
 @injectable()
 export class SchedulerController {
   @inject(INVERSITY_TYPES.ScheduleRegistry)
-  private scheduler: IScheduleRegistry;
+  private scheduler: Scheduler.IScheduleRegistry;
 
   @Get('/status')
   getStatus(req: Request, res: Response): Response {

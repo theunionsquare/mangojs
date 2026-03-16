@@ -44,16 +44,15 @@ Bind `QueueClient` in your API service's container:
 
 ```typescript
 import {
-  QueueClient,
+  Queue,
   INVERSITY_TYPES,
-  IQueueClient,
 } from "@theunionsquare/mangojs-core";
 import { Container } from "inversify";
 
 const container = new Container();
 
-container.bind<IQueueClient>(INVERSITY_TYPES.QueueClient).toConstantValue(
-  new QueueClient({
+container.bind<Queue.IQueueClient>(INVERSITY_TYPES.QueueClient).toConstantValue(
+  new Queue.QueueClient({
     host: process.env.REDIS_HOST || "localhost",
     port: parseInt(process.env.REDIS_PORT || "6379"),
     password: process.env.REDIS_PASSWORD,
@@ -191,13 +190,13 @@ The `WorkerBuilder` creates and runs worker services, similar to how `ServerBuil
 
 ```typescript
 // worker/src/index.ts
-import { WorkerBuilder } from "@theunionsquare/mangojs-core";
+import { Builders } from "@theunionsquare/mangojs-core";
 import { EmailWorker } from "./workers/email.worker";
 import { ReportWorker } from "./workers/report.worker";
 import { container } from "./inversify.config";
 
 async function main() {
-  const worker = await new WorkerBuilder()
+  const worker = await new Builders.WorkerBuilder()
     .setName("background-worker")
     .setRedisConfig({
       host: process.env.REDIS_HOST || "localhost",
@@ -233,7 +232,7 @@ main().catch(console.error);
 Run checks before starting workers (e.g., database connection, external service availability):
 
 ```typescript
-const worker = await new WorkerBuilder()
+const worker = await new Builders.WorkerBuilder()
   .setName("background-worker")
   .setRedisConfig({ host: "localhost", port: 6379 })
   .setWorkers([EmailWorker])
@@ -307,16 +306,15 @@ statuses.forEach((s) => {
 // api/src/inversify.config.ts
 import { Container } from "inversify";
 import {
-  QueueClient,
+  Queue,
   INVERSITY_TYPES,
-  IQueueClient,
 } from "@theunionsquare/mangojs-core";
 
 const container = new Container();
 
 // Only needs QueueClient
-container.bind<IQueueClient>(INVERSITY_TYPES.QueueClient).toConstantValue(
-  new QueueClient({
+container.bind<Queue.IQueueClient>(INVERSITY_TYPES.QueueClient).toConstantValue(
+  new Queue.QueueClient({
     host: process.env.REDIS_HOST || "localhost",
     port: parseInt(process.env.REDIS_PORT || "6379"),
   }),
@@ -370,7 +368,7 @@ Errors in workers are handled by BullMQ's retry mechanism:
 ```typescript
 @QueueWorker("email-queue", { concurrency: 5 })
 @injectable()
-export class EmailWorker implements IQueueWorkerHandler<EmailData> {
+export class EmailWorker implements Queue.IQueueWorkerHandler<EmailData> {
   async process(job: Job<EmailData>): Promise<void> {
     try {
       await this.emailService.send(job.data);

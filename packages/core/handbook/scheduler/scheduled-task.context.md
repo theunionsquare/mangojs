@@ -192,8 +192,9 @@ export class MyTask extends ScheduledTask {
 ```typescript
 import {
   Schedule,
-  ScheduledTask,
+  Scheduler,
   INVERSITY_TYPES,
+  Loggers,
 } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 
@@ -204,9 +205,9 @@ interface CleanupMetrics {
 
 @Schedule('0 2 * * *', { timezone: 'UTC', name: 'nightly-cleanup' })
 @injectable()
-export class NightlyCleanupTask extends ScheduledTask {
+export class NightlyCleanupTask extends Scheduler.ScheduledTask {
   @inject(INVERSITY_TYPES.LoggerFactory)
-  private loggerFactory: ILoggerFactory;
+  private loggerFactory: Loggers.ILoggerFactory;
 
   @inject(INVERSITY_TYPES.Database)
   private database: IDatabase;
@@ -214,7 +215,7 @@ export class NightlyCleanupTask extends ScheduledTask {
   @inject(INVERSITY_TYPES.MetricsService)
   private metricsService: IMetricsService;
 
-  private logger: ILogger;
+  private logger: Loggers.ILogger;
   private startTime: Date;
   private metrics: CleanupMetrics;
 
