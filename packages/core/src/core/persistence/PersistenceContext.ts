@@ -10,7 +10,7 @@ import mongoose from "mongoose";
  * @deprecated Use MongoosePersistenceContext instead.
  */
 @injectable()
-class PersistenceContext2 implements IPersistenceContext {
+class PersistenceContext2 implements IPersistenceContext<mongoose.Connection> {
   private _entityManagerFactory!: IDatabaseManagerFactory;
 
   public constructor(
@@ -21,14 +21,19 @@ class PersistenceContext2 implements IPersistenceContext {
     this._entityManagerFactory = entityManager;
   }
 
-  async inTransaction(context: Context<mongoose.Connection>): Promise<{}> {
+  /**
+   * Execute operations within a transaction context.
+   * @typeParam R - The return type of the transaction
+   * @param context - Function receiving the mongoose Connection
+   * @returns Result of the transaction
+   */
+  async inTransaction<R>(context: Context<mongoose.Connection, R>): Promise<R> {
     console.log("Start transaction");
     const dbConnection = await this._entityManagerFactory.getConnection() as mongoose.Connection;
 
-    const a = context(dbConnection);
+    const result = await context(dbConnection);
     console.log("End transaction");
-    //const response = context.process;
-    return {};
+    return result;
   }
 }
 

@@ -11,30 +11,30 @@ import mongoose from "mongoose";
  * within a transaction context.
  */
 @injectable()
-class CockroachPersistenceContext implements IPersistenceContext {
+class CockroachPersistenceContext implements IPersistenceContext<mongoose.Connection> {
     private _databaseManagerFactory!: IDatabaseManagerFactory
 
     public constructor(
         @inject(INVERSITY_TYPES.DatabaseManagerFactory)
         entityManager: IDatabaseManagerFactory
     ) {
-        //console.log({}, "MongoosePersistenceContext: Starting up");
         this._databaseManagerFactory = entityManager
     }
 
     /**
-     * Start a transaction
-     * @param context
-     * @returns
+     * Execute operations within a transaction context.
+     * @typeParam R - The return type of the transaction
+     * @param context - Function receiving the mongoose Connection
+     * @returns Result of the transaction
      */
-    async inTransaction(context: Context<mongoose.Connection>): Promise<{}> {
+    async inTransaction<R>(context: Context<mongoose.Connection, R>): Promise<R> {
         console.log('Start Cockroach transaction')
         //TO DO: Start transaction and close it once done
         const connection =
             (await this._databaseManagerFactory.getConnection()) as mongoose.Connection
-        const a = context(connection)
+        const result = await context(connection)
         console.log('End Cockroach transaction')
-        return a
+        return result
     }
 }
 

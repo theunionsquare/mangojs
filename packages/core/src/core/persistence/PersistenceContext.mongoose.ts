@@ -11,30 +11,29 @@ import mongoose from "mongoose";
  * within a Mongoose connection context.
  */
 @injectable()
-class MongoosePersistenceContext implements IPersistenceContext {
+class MongoosePersistenceContext implements IPersistenceContext<mongoose.Connection> {
     private _databaseManagerFactory!: IDatabaseManagerFactory
 
     public constructor(
         @inject(INVERSITY_TYPES.DatabaseManagerFactory)
         entityManager: IDatabaseManagerFactory
     ) {
-        //console.log({}, "MongoosePersistenceContext: Starting up");
         this._databaseManagerFactory = entityManager
     }
 
     /**
-     *
-     * @param context
-     * @returns
+     * Execute operations within a transaction context.
+     * @typeParam R - The return type of the transaction
+     * @param context - Function receiving the mongoose Connection
+     * @returns Result of the transaction
      */
-    async inTransaction(context: Context<mongoose.Connection>): Promise<{}> {
+    async inTransaction<R>(context: Context<mongoose.Connection, R>): Promise<R> {
         console.log('Start Mongoose transaction')
         const mongooseConn =
             (await this._databaseManagerFactory.getConnection()) as mongoose.Connection
-        const a = context(mongooseConn)
+        const result = await context(mongooseConn)
         console.log('End transaction')
-        //const response = context.process;
-        return a
+        return result
     }
 }
 
