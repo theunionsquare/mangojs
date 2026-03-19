@@ -47,11 +47,16 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
       .get(INVERSITY_TYPES.LoggerFactory) as Loggers.ILoggerFactory
   ).getLogger();
 
+  /** Cached DataSource instance - reused across all getConnection() calls */
+  private _dataSource: DataSource | null = null;
+  /** Promise to prevent race conditions during initialization */
+  private _initializingPromise: Promise<DataSource> | null = null;
+
   constructor(
     connection: PostgresUrl | PostgresConnection,
     entities: any[] = [],
     synchronize: boolean = true,
-    logging: boolean = false
+    logging: boolean = false,
   ) {
     this.logger.info({ connection }, "POSTGRES-CONSTRUCTOR");
     this.connection = connection;
@@ -63,16 +68,41 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
   dbConnection(): void {}
 
   async getConnection(): Promise<{}> {
+    // Return cached connection if already initialized
+    if (this._dataSource?.isInitialized) {
+      return this._dataSource.manager;
+    }
+
+    // If initialization is in progress, wait for it
+    if (this._initializingPromise) {
+      const dataSource = await this._initializingPromise;
+      return dataSource.manager;
+    }
+
+    // Start initialization
+    this._initializingPromise = this.initializeDataSource();
+
     try {
-      this.logger.debug("POSTGRES-START-CONNECTION");
+      this._dataSource = await this._initializingPromise;
+      return this._dataSource.manager;
+    } finally {
+      this._initializingPromise = null;
+    }
+  }
+
+  /**
+   * Initialize the DataSource (called only once)
+   */
+  private async initializeDataSource(): Promise<DataSource> {
+    try {
+      let dataSource: DataSource;
 
       if ("url" in this.connection) {
-        this.logger.debug("POSTGRES-URL");
         const dbUrl = new URL(this.connection.url);
-        const routingId = dbUrl.searchParams.get("options");
         dbUrl.searchParams.delete("options");
         this.logger.debug({ dbUrl }, "POSTGRES-URL");
-        const AppDataSource = new DataSource({
+
+        dataSource = new DataSource({
           type: "postgres",
           url: this.connection.url,
           ssl: true,
@@ -80,12 +110,8 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
           synchronize: this.synchronize,
           logging: this.logging,
         });
-        await AppDataSource.initialize();
-        this.logger.debug("POSTGRES-SUCCESSFULLY-CONNECTED");
-
-        return AppDataSource.manager;
       } else {
-        const AppDataSource = new DataSource({
+        dataSource = new DataSource({
           ...this.connection,
           ...{
             type: "postgres",
@@ -94,11 +120,12 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
             logging: this.logging,
           },
         });
-        await AppDataSource.initialize();
-        this.logger.debug("POSTGRES-SUCCESSFULLY-CONNECTED");
-
-        return AppDataSource.manager;
       }
+
+      await dataSource.initialize();
+      //this.logger.info("POSTGRES-DATASOURCE-INITIALIZED");
+
+      return dataSource;
     } catch (e) {
       const message = `Can't connect to ${this.connection["host"]}: ${e}`;
       this.logger.error({ e }, message);
