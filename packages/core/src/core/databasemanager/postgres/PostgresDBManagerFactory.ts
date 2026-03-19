@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { IDatabaseManagerFactory } from "../types";
-import * as containers from "../../container";
+import { ContainerRegistry } from "../../container";
 import { INVERSITY_TYPES } from "../../types/inversifyTypes";
 import { Loggers } from "../..";
 import { ConnectionError } from "../../errors/databaseErrors";
@@ -41,16 +41,21 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
   private entities: any[];
   private synchronize: boolean;
   private logging: boolean;
-  private logger = (
-    containers
-      .getContainer()
-      .get(INVERSITY_TYPES.LoggerFactory) as Loggers.ILoggerFactory
-  ).getLogger();
+  private _logger: Loggers.ILogger | null = null;
 
   /** Cached DataSource instance - reused across all getConnection() calls */
   private _dataSource: DataSource | null = null;
   /** Promise to prevent race conditions during initialization */
   private _initializingPromise: Promise<DataSource> | null = null;
+
+  private get logger(): Loggers.ILogger {
+    if (!this._logger) {
+      this._logger = ContainerRegistry.getDefault()
+        .get<Loggers.ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)
+        .getLogger();
+    }
+    return this._logger;
+  }
 
   constructor(
     connection: PostgresUrl | PostgresConnection,
@@ -58,7 +63,6 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
     synchronize: boolean = true,
     logging: boolean = false,
   ) {
-    this.logger.info({ connection }, "POSTGRES-CONSTRUCTOR");
     this.connection = connection;
     this.entities = entities;
     this.synchronize = synchronize;
@@ -100,7 +104,7 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
       if ("url" in this.connection) {
         const dbUrl = new URL(this.connection.url);
         dbUrl.searchParams.delete("options");
-        this.logger.debug({ dbUrl }, "POSTGRES-URL");
+        this.logger.debug(`POSTGRES-URL: ${dbUrl.toString()}`);
 
         dataSource = new DataSource({
           type: "postgres",
@@ -128,7 +132,7 @@ export class PostgresDBManagerFactory implements IDatabaseManagerFactory {
       return dataSource;
     } catch (e) {
       const message = `Can't connect to ${this.connection["host"]}: ${e}`;
-      this.logger.error({ e }, message);
+      this.logger.error(message);
       throw new ConnectionError(message);
     }
   }

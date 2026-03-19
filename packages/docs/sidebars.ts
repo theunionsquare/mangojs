@@ -43,8 +43,24 @@ const sidebars: SidebarsConfig = {
         "handbook/architecture/index.context",
         "handbook/architecture/onion-architecture.context",
         "handbook/architecture/layers.context",
-        "handbook/architecture/injection.context",
-        "handbook/architecture/decorators.context",
+      ],
+    },
+    {
+      type: "category",
+      label: "Dependency Injection",
+      items: [
+        "handbook/injection/index.context",
+        "handbook/injection/container-builder.context",
+        "handbook/injection/types.context",
+      ],
+    },
+    {
+      type: "category",
+      label: "Decorators",
+      items: [
+        "handbook/decorators/index.context",
+        "handbook/decorators/http.context",
+        "handbook/decorators/auth.context",
       ],
     },
     {

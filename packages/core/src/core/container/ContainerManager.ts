@@ -1,31 +1,34 @@
-import { Container } from "inversify";
+import { Container, GetOptions } from "inversify";
 import { ServiceIdentifier } from "./types";
 
 /**
- * Wrapper class to manage Inversify containers with a cleaner API.
+ * Wrapper class for an Inversify container.
  *
- * Provides a simplified interface for dependency injection using Inversify,
- * with support for parent-child container hierarchies.
+ * Provides a clean API for dependency injection operations on a single container.
  *
  * @example
  * ```typescript
- * const manager = new ContainerManager();
- * const service = manager.get<MyService>(TYPES.MyService);
+ * // Get a service from the container
+ * const service = containerManager.get<MyService>(TYPES.MyService);
+ *
+ * // Check if a service is bound
+ * if (containerManager.isBound(TYPES.MyService)) { ... }
  * ```
  */
 export class ContainerManager {
   private container: Container;
+  private name: string;
 
-  constructor(parent?: Container) {
-    this.container = parent ? new Container({ parent }) : new Container();
+  constructor(container: Container, name: string) {
+    this.container = container;
+    this.name = name;
   }
 
   /**
-   * Get a service from the container
+   * Get a service from this container
    */
-  get<T>(serviceIdentifier: ServiceIdentifier<T>, options = {}): T {
-    // Apply options for future use
-    return this.container.get<T>(serviceIdentifier);
+  get<T>(serviceIdentifier: ServiceIdentifier<T>, options?: GetOptions): T {
+    return this.container.get<T>(serviceIdentifier, options);
   }
 
   /**
@@ -36,23 +39,31 @@ export class ContainerManager {
   }
 
   /**
-   * Unbind a service from the container
+   * Get all services bound to an identifier
    */
-  unbind(serviceIdentifier: ServiceIdentifier): void {
-    this.container.unbind(serviceIdentifier);
+  getAll<T>(serviceIdentifier: ServiceIdentifier<T>, options?: GetOptions): T[] {
+    return this.container.getAll<T>(serviceIdentifier, options);
   }
 
   /**
-   * Get the underlying Inversify container (for advanced use)
+   * Get the underlying Inversify container
    */
-  getContainer(): Container {
+  getRawContainer(): Container {
     return this.container;
   }
 
   /**
-   * Reset the container (useful for testing)
+   * Get the container name
    */
-  reset(): void {
-    this.container.unbindAll();
+  getName(): string {
+    return this.name;
+  }
+
+  /**
+   * Create a child container
+   */
+  createChild(childName: string): ContainerManager {
+    const childContainer = new Container({ parent: this.container });
+    return new ContainerManager(childContainer, childName);
   }
 }

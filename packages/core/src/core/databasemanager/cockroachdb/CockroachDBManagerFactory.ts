@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { IDatabaseManagerFactory } from "../types";
-import { getContainer } from "../../container";
+import { ContainerRegistry } from "../../container";
 import { INVERSITY_TYPES } from "../../types/inversifyTypes";
 import { Loggers } from "../..";
 import { ConnectionError } from "../../errors/databaseErrors";
@@ -39,9 +39,16 @@ export class CockRoachDBManagerFactory implements IDatabaseManagerFactory {
   private entities: any[];
   private synchronize: boolean;
   private logging: boolean;
-  private logger = (
-    getContainer().get(INVERSITY_TYPES.LoggerFactory) as Loggers.ILoggerFactory
-  ).getLogger();
+  private _logger: Loggers.ILogger | null = null;
+
+  private get logger(): Loggers.ILogger {
+    if (!this._logger) {
+      this._logger = ContainerRegistry.getDefault()
+        .get<Loggers.ILoggerFactory>(INVERSITY_TYPES.LoggerFactory)
+        .getLogger();
+    }
+    return this._logger;
+  }
 
   constructor(
     connection: CockroachUrl | CockroachConnection,
@@ -49,7 +56,6 @@ export class CockRoachDBManagerFactory implements IDatabaseManagerFactory {
     synchronize: boolean = true,
     logging: boolean = false
   ) {
-    this.logger.info({ connection }, "COCKROACH-CONSTRUCTOR");
     this.connection = connection;
     this.entities = entities;
     this.synchronize = synchronize;
@@ -60,17 +66,13 @@ export class CockRoachDBManagerFactory implements IDatabaseManagerFactory {
 
   async getConnection(): Promise<{}> {
     try {
-      this.logger.debug(
-        { host: this.connection },
-        "COCKROACH-START-CONNECTION"
-      );
+      this.logger.debug("COCKROACH-START-CONNECTION");
 
       if ("url" in this.connection) {
         this.logger.debug("COCKROACH-URL");
         const dbUrl = new URL(this.connection.url);
-        const routingId = dbUrl.searchParams.get("options");
         dbUrl.searchParams.delete("options");
-        this.logger.debug({ dbUrl }, "COCKROACH-URL");
+        this.logger.debug(`COCKROACH-URL: ${dbUrl.toString()}`);
         const AppDataSource = new DataSource({
           type: "cockroachdb",
           url: this.connection.url,
@@ -100,8 +102,8 @@ export class CockRoachDBManagerFactory implements IDatabaseManagerFactory {
         return AppDataSource.manager;
       }
     } catch (e) {
-      const message = `Can't connect to ${this.connection}`;
-      this.logger.error({ e }, message);
+      const message = `Can't connect to ${this.connection}: ${e}`;
+      this.logger.error(message);
       throw new ConnectionError(message);
     }
   }

@@ -1,7 +1,6 @@
 import { inject, injectable } from "inversify";
 import { IDatabaseManagerFactory } from "./types";
 import mongoose, { Mongoose } from "mongoose";
-import * as container from "../container";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import { Loggers } from "..";
 import { ConnectionError } from "../errors/databaseErrors";

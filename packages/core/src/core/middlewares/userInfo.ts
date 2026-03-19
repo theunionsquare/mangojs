@@ -1,5 +1,5 @@
 import type { Response, NextFunction } from "express";
-import * as containers from "../container";
+import { ContainerRegistry } from "../container";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry";
 import { AuthContext } from "../auth/AuthContext";
@@ -32,8 +32,7 @@ export async function middlewareAuthContext(
   next: NextFunction,
 ): Promise<void> {
   try {
-    const container = containers.getContainer().getContainer();
-
+    const container = ContainerRegistry.getDefault();
     if (!container.isBound(INVERSITY_TYPES.AuthStrategyRegistry)) {
       throw new Error(
         "[middlewareAuthContext] AuthStrategyRegistry is not bound. " +
