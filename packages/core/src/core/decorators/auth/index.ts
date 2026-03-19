@@ -6,6 +6,7 @@
 // Decorators
 export { HasUserType } from "./hasUserType.decorator";
 export { HasGroups } from "./hasGroups.decorator";
+export { HasPermissions } from "./hasPermissions.decorator";
 export { RequiresAccess } from "./requiresAccess.decorator";
 export {
   RequiresOwnership,

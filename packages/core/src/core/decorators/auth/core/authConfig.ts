@@ -7,7 +7,7 @@ import { IAuthContext } from "../../../auth/types";
  */
 export type AuthErrorHandler = (
   res: Response,
-  error: AuthorizationError
+  error: AuthorizationError,
 ) => void;
 
 /**
@@ -110,6 +110,20 @@ export interface DecoratorOptions {
    * Disable this auth check (useful for testing)
    */
   disabled?: boolean;
+
+  /**
+   * Separator character for permission patterns with wildcards.
+   * Used by HasPermissions decorator for wildcard matching.
+   * Default: ":"
+   *
+   * @example
+   * // With default separator ":"
+   * @HasPermissions(["idm:user:*"]) // matches idm:user:read, idm:user:write
+   *
+   * // With custom separator "."
+   * @HasPermissions(["idm.user.*"], { separator: "." }) // matches idm.user.read
+   */
+  separator?: string;
 }
 
 /**
@@ -119,7 +133,7 @@ const DEFAULT_CONFIG: Required<AuthConfigOptions> = {
   userObjectPath: "user",
   userContextExtractor: undefined as any,
   errorHandler: undefined as any,
-  enableAuditLog: true,
+  enableAuditLog: false,
   cacheValidationResults: false,
   cacheTTL: 60000,
   cacheMaxSize: 1000,
@@ -177,11 +191,12 @@ export class AuthConfig {
    * 3. Path-based extraction from req[userObjectPath] (legacy)
    *
    * @param req - Express request object
-   * @returns User context with userType, groups, and raw user object
+   * @returns User context with userType, groups, permissions, and raw user object
    */
   static extractUserContext(req: Request): {
     userType?: string;
     groups?: string[];
+    permissions?: string[];
     raw?: any;
   } | null {
     // First check for new authContext (strategy-based system)
@@ -190,6 +205,7 @@ export class AuthConfig {
       return {
         userType: authContext.user.userType,
         groups: authContext.user.groups || [],
+        permissions: authContext.user.permissions || [],
         raw: authContext.user,
       };
     }
@@ -202,6 +218,7 @@ export class AuthConfig {
       return {
         userType: context.userType,
         groups: this.normalizeGroups(context.groups),
+        permissions: this.normalizePermissions(context.permissions),
         raw: context,
       };
     }
@@ -215,6 +232,7 @@ export class AuthConfig {
     return {
       userType: user.userType,
       groups: this.normalizeGroups(user.groups),
+      permissions: this.normalizePermissions(user.permissions),
       raw: user,
     };
   }
@@ -233,6 +251,19 @@ export class AuthConfig {
       if (typeof g === "object" && g !== null && "name" in g) return g.name;
       return String(g);
     });
+  }
+
+  /**
+   * Normalize permissions to string array
+   */
+  private static normalizePermissions(permissions: any): string[] | undefined {
+    if (!permissions || !Array.isArray(permissions)) {
+      return undefined;
+    }
+
+    return permissions
+      .filter((p) => typeof p === "string")
+      .map((p) => String(p));
   }
 
   /**
@@ -293,7 +324,7 @@ export class AuthConfig {
    * @returns Custom error handler if configured
    */
   static getErrorHandler(
-    decoratorOptions?: DecoratorOptions
+    decoratorOptions?: DecoratorOptions,
   ): AuthErrorHandler | undefined {
     if (decoratorOptions?.errorHandler) {
       return decoratorOptions.errorHandler;

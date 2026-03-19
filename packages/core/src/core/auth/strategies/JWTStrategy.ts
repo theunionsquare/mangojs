@@ -173,6 +173,7 @@ export class JWTStrategy extends BaseAuthStrategy {
    */
   async authenticate(req: Request): Promise<IAuthUser | null> {
     const token = this.extractToken(req);
+
     if (!token) return null;
 
     try {
@@ -404,6 +405,17 @@ export class JWTStrategy extends BaseAuthStrategy {
   private mapPayloadToUser(
     payload: import("jsonwebtoken").JwtPayload,
   ): IAuthUser {
+    // DEBUG: Log the raw JWT payload
+    console.log(
+      "[JWTStrategy DEBUG] Raw payload:",
+      JSON.stringify(payload, null, 2),
+    );
+    console.log(
+      "[JWTStrategy DEBUG] payload.permissions:",
+      payload.permissions,
+    );
+    console.log("[JWTStrategy DEBUG] payload.roles:", payload.roles);
+
     return {
       id: payload.sub || payload.id || payload.uid || "",
       userType: payload.userType || payload.type || payload.role || "user",

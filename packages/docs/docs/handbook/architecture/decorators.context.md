@@ -46,15 +46,16 @@ These decorators define HTTP routes and handle requests.
 
 These decorators control access to endpoints based on user authentication and permissions.
 
-| Decorator                           | Type   | Description                                               | Example                                                | Parameters                                                |
-| ----------------------------------- | ------ | --------------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------- |
-| `@HasUserType(types[])`             | Method | Require specific user types to access endpoint            | `@HasUserType([AuthUserType.ADMIN])`                   | `types: AuthUserType[]` - Array of allowed user types     |
-| `@ClassHasUserType(types[])`        | Class  | Apply user type restriction to all methods in class       | `@ClassHasUserType([AuthUserType.ADMIN])`              | `types: AuthUserType[]` - Array of allowed user types     |
-| `@HasGroups(groups[])`              | Method | Require user to belong to specific groups                 | `@HasGroups(["admins", "moderators"])`                 | `groups: string[]` - Array of group names                 |
-| `@RequiresAccess(resource, action)` | Method | Check if user has permission for specific resource/action | `@RequiresAccess("posts", "delete")`                   | `resource: string`, `action: string`                      |
-| `@RequiresOwnership(options)`       | Method | Verify user owns the resource being accessed              | `@RequiresOwnership({ ... })`                          | `options: OwnershipOptions` - Ownership validation config |
-| `@NoAuth()`                         | Method | Explicitly mark endpoint as public (no auth required)     | `@NoAuth()`                                            | None                                                      |
-| `@OrAuth(decorators[])`             | Method | Apply OR logic to multiple auth decorators                | `@OrAuth([HasUserType([ADMIN]), HasGroups(["mods"])])` | `decorators: Function[]` - Array of auth decorators       |
+| Decorator                           | Type   | Description                                               | Example                                                | Parameters                                                                      |
+| ----------------------------------- | ------ | --------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| `@HasUserType(types[])`             | Method | Require specific user types to access endpoint            | `@HasUserType([AuthUserType.ADMIN])`                   | `types: AuthUserType[]` - Array of allowed user types                           |
+| `@ClassHasUserType(types[])`        | Class  | Apply user type restriction to all methods in class       | `@ClassHasUserType([AuthUserType.ADMIN])`              | `types: AuthUserType[]` - Array of allowed user types                           |
+| `@HasGroups(groups[])`              | Method | Require user to belong to specific groups                 | `@HasGroups(["admins", "moderators"])`                 | `groups: string[]` - Array of group names                                       |
+| `@HasPermissions(perms[], opts?)`   | Method | Require user to have specific permissions (wildcard supported) | `@HasPermissions(["idm:user:*"])`                 | `perms: string[]` - Permission patterns, `opts?: { separator?: string }` (default: `:`) |
+| `@RequiresAccess(resource, action)` | Method | Check if user has permission for specific resource/action | `@RequiresAccess("posts", "delete")`                   | `resource: string`, `action: string`                                            |
+| `@RequiresOwnership(options)`       | Method | Verify user owns the resource being accessed              | `@RequiresOwnership({ ... })`                          | `options: OwnershipOptions` - Ownership validation config                       |
+| `@NoAuth()`                         | Method | Explicitly mark endpoint as public (no auth required)     | `@NoAuth()`                                            | None                                                                            |
+| `@OrAuth(decorators[])`             | Method | Apply OR logic to multiple auth decorators                | `@OrAuth([HasUserType([ADMIN]), HasGroups(["mods"])])` | `decorators: Function[]` - Array of auth decorators                             |
 
 ---
 
@@ -71,12 +72,12 @@ import {
 } from "@theunionsquare/mangojs-core";
 import { Request, Response } from "express";
 
-@Controller("/api/v1/users/") // � Class decorator (routing)
+@Controller("/api/v1/users/") // Class decorator (routing)
 export class UserController {
-  @Get("/") // � Method decorator (HTTP verb)
-  @loggedMethod() // � Method decorator (logging)
+  @Get("/") // Method decorator (HTTP verb)
+  @loggedMethod() // Method decorator (logging)
   @Decorators.auth.HasUserType([
-    // � Method decorator (auth)
+    // Method decorator (auth)
     Types.enums.AuthUserType.ADMIN,
   ])
   public async getUsers(req: Request, res: Response) {
@@ -84,3 +85,55 @@ export class UserController {
   }
 }
 ```
+
+### HasPermissions with Wildcards
+
+The `@HasPermissions` decorator supports wildcard patterns using `*` to match permission segments.
+
+```typescript
+import { Controller, Get, Post, Delete, Decorators } from "@theunionsquare/mangojs-core";
+
+@Controller("/api/v1/resources")
+export class ResourceController {
+  // Exact permission match
+  @Get("/")
+  @Decorators.auth.HasPermissions(["idm:user:read"])
+  async listResources(req: Request, res: Response) {
+    // Requires exact "idm:user:read" permission
+  }
+
+  // Wildcard at end - matches any action
+  @Post("/")
+  @Decorators.auth.HasPermissions(["idm:user:*"])
+  async createResource(req: Request, res: Response) {
+    // Matches: idm:user:read, idm:user:write, idm:user:delete
+  }
+
+  // Wildcard in middle - matches any resource
+  @Get("/all")
+  @Decorators.auth.HasPermissions(["idm:*:read"])
+  async readAllResources(req: Request, res: Response) {
+    // Matches: idm:user:read, idm:group:read, idm:role:read
+  }
+
+  // Multiple patterns (OR logic)
+  @Delete("/:id")
+  @Decorators.auth.HasPermissions(["idm:user:delete", "idm:admin:*"])
+  async deleteResource(req: Request, res: Response) {
+    // Requires "idm:user:delete" OR any idm:admin permission
+  }
+
+  // Custom separator for dot-notation
+  @Get("/app")
+  @Decorators.auth.HasPermissions(["app.users.*"], { separator: "." })
+  async appEndpoint(req: Request, res: Response) {
+    // Matches: app.users.read, app.users.write
+  }
+}
+```
+
+**Wildcard Rules:**
+- `*` matches exactly one segment (between separators)
+- `idm:user:*` matches `idm:user:read` but NOT `idm:user:sub:read`
+- Default separator is `:`, configurable via `options.separator`
+- User permissions are read from `req.authContext.user.permissions` or `req.user.permissions`

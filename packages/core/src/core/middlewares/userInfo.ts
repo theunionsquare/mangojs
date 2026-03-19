@@ -46,6 +46,7 @@ export async function middlewareAuthContext(
     );
 
     const authContext = await registry.authenticate(req);
+
     req.authContext = authContext;
 
     next();
