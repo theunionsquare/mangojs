@@ -10,7 +10,7 @@ Utility functions and base classes
 
 ### MetadataKeys
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:1](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L1)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:1](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L1)
 
 #### Enumeration Members
 
@@ -20,7 +20,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:1](https://github.com
 AUTHENTICATION_HANDLERS: "auth:authentication";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:14](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L14)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L14)
 
 ##### AUTHORIZATION
 
@@ -28,7 +28,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:14](https://github.co
 AUTHORIZATION: "server:authorization";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L11)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:11](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L11)
 
 ##### AUTHORIZATION\_OR\_MODE
 
@@ -36,7 +36,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:11](https://github.co
 AUTHORIZATION_OR_MODE: "server:authorization:or_mode";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L12)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L12)
 
 ##### AUTHORIZATION\_VALIDATORS
 
@@ -44,7 +44,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:12](https://github.co
 AUTHORIZATION_VALIDATORS: "server:authorization:validators";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:13](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L13)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:13](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L13)
 
 ##### BASE\_PATH
 
@@ -52,7 +52,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:13](https://github.co
 BASE_PATH: "express:base_path";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:3](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L3)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:3](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L3)
 
 ##### EXPRESS\_USE\_HANDLERS
 
@@ -60,7 +60,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:3](https://github.com
 EXPRESS_USE_HANDLERS: "express:handlers";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:7](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L7)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:7](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L7)
 
 ##### MIDDLEWARE
 
@@ -68,7 +68,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:7](https://github.com
 MIDDLEWARE: "express:middleware";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L9)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:9](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L9)
 
 ##### ROUTERS
 
@@ -76,7 +76,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:9](https://github.com
 ROUTERS: "express:routers";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L5)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:5](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L5)
 
 ##### SCHEDULE\_CRON
 
@@ -84,7 +84,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:5](https://github.com
 SCHEDULE_CRON: "scheduler:cron";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:16](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L16)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:16](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L16)
 
 ##### SCHEDULE\_METADATA
 
@@ -92,7 +92,7 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:16](https://github.co
 SCHEDULE_METADATA: "scheduler:metadata";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L18)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:18](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L18)
 
 ##### SCHEDULE\_OPTIONS
 
@@ -100,13 +100,13 @@ Defined in: [packages/core/src/core/utils/metadata.keys.ts:18](https://github.co
 SCHEDULE_OPTIONS: "scheduler:options";
 ```
 
-Defined in: [packages/core/src/core/utils/metadata.keys.ts:17](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/metadata.keys.ts#L17)
+Defined in: [packages/core/src/core/utils/metadata.keys.ts:17](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/metadata.keys.ts#L17)
 
 ## Classes
 
 ### `abstract` BaseMapper
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L5)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:5](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L5)
 
 Base mapper class for bidirectional entity-DTO transformation
 Provides generic mapping functionality that can be extended by specific mappers
@@ -141,7 +141,7 @@ new BaseMapper<Entity, DTO>(): BaseMapper<Entity, DTO>;
 abstract fromDTO(dto): Partial<Entity>;
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L18)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:18](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L18)
 
 Maps a DTO to its entity representation
 
@@ -165,7 +165,7 @@ The mapped entity (partial or complete depending on implementation)
 fromDTOList(dtos): Partial<Entity>[];
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:34](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L34)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:34](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L34)
 
 Maps an array of DTOs to their entity representations
 
@@ -189,7 +189,7 @@ Array of mapped entities
 fromDTOOrNull(dto): Partial<Entity>;
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:52](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L52)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:52](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L52)
 
 Maps a single DTO to entity, returning null if DTO is null/undefined
 
@@ -213,7 +213,7 @@ The mapped entity or null
 abstract toDTO(entity): DTO;
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:11](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L11)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:11](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L11)
 
 Maps a single entity to its DTO representation
 
@@ -237,7 +237,7 @@ The mapped DTO
 toDTOList(entities): DTO[];
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L25)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:25](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L25)
 
 Maps an array of entities to their DTO representations
 
@@ -261,7 +261,7 @@ Array of mapped DTOs
 toDTOOrNull(entity): DTO;
 ```
 
-Defined in: [packages/core/src/core/utils/base.mapper.ts:43](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/base.mapper.ts#L43)
+Defined in: [packages/core/src/core/utils/base.mapper.ts:43](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/base.mapper.ts#L43)
 
 Maps a single entity to DTO, returning null if entity is null/undefined
 
@@ -283,7 +283,7 @@ The mapped DTO or null
 
 ### LogRequest
 
-Defined in: [packages/core/src/core/utils/logRequest.ts:17](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/logRequest.ts#L17)
+Defined in: [packages/core/src/core/utils/logRequest.ts:17](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/logRequest.ts#L17)
 
 Adds request tracking headers to a response.
 
@@ -308,7 +308,7 @@ app.use((req, res, next) => {
 new LogRequest(res): LogRequest;
 ```
 
-Defined in: [packages/core/src/core/utils/logRequest.ts:21](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/logRequest.ts#L21)
+Defined in: [packages/core/src/core/utils/logRequest.ts:21](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/logRequest.ts#L21)
 
 ###### Parameters
 
@@ -328,7 +328,7 @@ Defined in: [packages/core/src/core/utils/logRequest.ts:21](https://github.com/t
 requestId: string;
 ```
 
-Defined in: [packages/core/src/core/utils/logRequest.ts:19](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/logRequest.ts#L19)
+Defined in: [packages/core/src/core/utils/logRequest.ts:19](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/logRequest.ts#L19)
 
 ##### timestamp
 
@@ -336,7 +336,7 @@ Defined in: [packages/core/src/core/utils/logRequest.ts:19](https://github.com/t
 timestamp: string;
 ```
 
-Defined in: [packages/core/src/core/utils/logRequest.ts:18](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/logRequest.ts#L18)
+Defined in: [packages/core/src/core/utils/logRequest.ts:18](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/logRequest.ts#L18)
 
 ## Functions
 
@@ -346,7 +346,7 @@ Defined in: [packages/core/src/core/utils/logRequest.ts:18](https://github.com/t
 function generateMagicLink(size?): string;
 ```
 
-Defined in: [packages/core/src/core/utils/generics.ts:54](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/generics.ts#L54)
+Defined in: [packages/core/src/core/utils/generics.ts:54](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/generics.ts#L54)
 
 Generates a magic link token for passwordless authentication.
 
@@ -372,7 +372,7 @@ Random token string
 function generateRandomPassword(length?): string;
 ```
 
-Defined in: [packages/core/src/core/utils/generics.ts:44](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/generics.ts#L44)
+Defined in: [packages/core/src/core/utils/generics.ts:44](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/generics.ts#L44)
 
 Generates a random password.
 
@@ -398,7 +398,7 @@ Random alphanumeric password
 function generateRandomString(length?): string;
 ```
 
-Defined in: [packages/core/src/core/utils/generics.ts:25](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/generics.ts#L25)
+Defined in: [packages/core/src/core/utils/generics.ts:25](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/generics.ts#L25)
 
 Generates a random alphanumeric string.
 
@@ -430,7 +430,7 @@ const token = generateRandomString(20);
 function generateUUID(): string;
 ```
 
-Defined in: [packages/core/src/core/utils/generics.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/generics.ts#L12)
+Defined in: [packages/core/src/core/utils/generics.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/generics.ts#L12)
 
 Generates a UUID v4 string.
 
@@ -455,7 +455,7 @@ const id = generateUUID();
 function hashedPassword(password): string;
 ```
 
-Defined in: [packages/core/src/core/utils/crypto.ts:12](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/crypto.ts#L12)
+Defined in: [packages/core/src/core/utils/crypto.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/crypto.ts#L12)
 
 Hashes a password using SHA-256.
 
@@ -487,7 +487,7 @@ const hash = hashedPassword('mypassword');
 function loadSecret(envVarName): string;
 ```
 
-Defined in: [packages/core/src/core/utils/loadSecrets.ts:9](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/loadSecrets.ts#L9)
+Defined in: [packages/core/src/core/utils/loadSecrets.ts:9](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/loadSecrets.ts#L9)
 
 Load a secret from a file or environment variable
 Use this function to load Docker mounts
@@ -514,7 +514,7 @@ The secret value as a string
 function processSetUpDataBaseService(fileList, setUpDatabaseAction): void;
 ```
 
-Defined in: [packages/core/src/core/utils/processSetUpDataBaseFiles.ts:5](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/processSetUpDataBaseFiles.ts#L5)
+Defined in: [packages/core/src/core/utils/processSetUpDataBaseFiles.ts:5](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/processSetUpDataBaseFiles.ts#L5)
 
 #### Parameters
 
@@ -538,7 +538,7 @@ Defined in: [packages/core/src/core/utils/processSetUpDataBaseFiles.ts:5](https:
 function renderHtmlTemplate(template, data): string;
 ```
 
-Defined in: [packages/core/src/core/utils/renderHtmlTemplate.ts:15](https://github.com/theunionsquare/mangojs/blob/4af5555dfdb04ecafb028803db4f53d12b635140/packages/core/src/core/utils/renderHtmlTemplate.ts#L15)
+Defined in: [packages/core/src/core/utils/renderHtmlTemplate.ts:15](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/utils/renderHtmlTemplate.ts#L15)
 
 Renders an HTML template by replacing `{{placeholder}}` with actual data.
 
