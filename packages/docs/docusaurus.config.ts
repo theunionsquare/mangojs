@@ -1,10 +1,14 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
-import corePackage from "../core/package.json";
+import fs from "fs";
+import path from "path";
 
 // Read version from core package.json
-const version = corePackage.version;
+const corePackagePath = path.resolve(__dirname, "../core/package.json");
+const version = fs.existsSync(corePackagePath)
+  ? JSON.parse(fs.readFileSync(corePackagePath, "utf-8")).version
+  : "0.0.0";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
