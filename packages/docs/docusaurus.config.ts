@@ -1,6 +1,10 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import corePackage from "../core/package.json";
+
+// Read version from core package.json
+const version = corePackage.version;
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -75,7 +79,7 @@ const config: Config = {
           lastVersion: "current",
           versions: {
             current: {
-              label: "0.1.0 (Latest)",
+              label: `${version} (Latest)`,
               badge: true,
             },
           },
