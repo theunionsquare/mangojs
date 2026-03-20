@@ -12,9 +12,10 @@ COPY pnpm-workspace.yaml package.json pnpm-lock.yaml* ./
 # Copy docs package
 COPY packages/docs ./packages/docs
 
-# Copy handbook and tsconfig from core (needed for docs build)
+# Copy handbook, tsconfig, package.json and src from core (needed for docs build)
 COPY packages/core/handbook ./packages/core/handbook
 COPY packages/core/tsconfig.json ./packages/core/tsconfig.json
+COPY packages/core/package.json ./packages/core/package.json
 COPY packages/core/src ./packages/core/src
 
 # Install dependencies for docs only
