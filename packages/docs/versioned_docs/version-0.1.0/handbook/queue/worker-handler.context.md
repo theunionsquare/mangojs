@@ -40,7 +40,7 @@ interface EmailJobData {
 
 @QueueWorker("email-queue")
 @injectable()
-export class EmailWorker implements IQueueWorkerHandler<EmailJobData> {
+export class EmailWorker implements Queue.IQueueWorkerHandler<EmailJobData> {
   async process(job: Job<EmailJobData>): Promise<void> {
     // job.data is typed as EmailJobData
     const { to, subject, body } = job.data;
@@ -163,8 +163,9 @@ onProgress(job: Job<FileProcessingData>, progress: number | object): void {
 ```typescript
 import {
   QueueWorker,
-  IQueueWorkerHandler,
+  Queue,
   INVERSITY_TYPES,
+  Loggers,
 } from "@theunionsquare/mangojs-core";
 import { injectable, inject } from "inversify";
 import { Job } from "bullmq";
@@ -178,9 +179,9 @@ interface ReportJobData {
 
 @QueueWorker("report-generation", { concurrency: 2 })
 @injectable()
-export class ReportWorker implements IQueueWorkerHandler<ReportJobData> {
+export class ReportWorker implements Queue.IQueueWorkerHandler<ReportJobData> {
   @inject(INVERSITY_TYPES.LoggerFactory)
-  private loggerFactory: ILoggerFactory;
+  private loggerFactory: Loggers.ILoggerFactory;
 
   @inject(INVERSITY_TYPES.ReportService)
   private reportService: IReportService;

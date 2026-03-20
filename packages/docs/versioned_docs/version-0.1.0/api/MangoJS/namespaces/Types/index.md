@@ -4,9 +4,7 @@ sidebar_label: Types
 
 # Types
 
-## Description
-
-Shared type definitions for MangoJS applications.
+Type definitions
 
 ## Namespaces
 

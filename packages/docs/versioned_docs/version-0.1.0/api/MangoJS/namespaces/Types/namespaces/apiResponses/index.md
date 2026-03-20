@@ -12,7 +12,7 @@ Use `api` instead.
 
 ### ~~Base~~
 
-Defined in: packages/core/src/core/types/apiResponses.ts:4
+Defined in: [packages/core/src/core/types/apiResponses.ts:4](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L4)
 
 #### Deprecated
 
@@ -31,7 +31,7 @@ Use types from './api' instead.
 ok: boolean;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:5
+Defined in: [packages/core/src/core/types/apiResponses.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L5)
 
 ##### ~~requestId~~
 
@@ -39,7 +39,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:5
 requestId: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:7
+Defined in: [packages/core/src/core/types/apiResponses.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L7)
 
 ##### ~~timestamp~~
 
@@ -47,13 +47,13 @@ Defined in: packages/core/src/core/types/apiResponses.ts:7
 timestamp: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:6
+Defined in: [packages/core/src/core/types/apiResponses.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L6)
 
 ***
 
 ### ~~Error~~
 
-Defined in: packages/core/src/core/types/apiResponses.ts:13
+Defined in: [packages/core/src/core/types/apiResponses.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L13)
 
 #### Deprecated
 
@@ -71,7 +71,7 @@ Use types from './api' instead.
 optional errorCode: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:15
+Defined in: [packages/core/src/core/types/apiResponses.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L15)
 
 ##### ~~errorMessage?~~
 
@@ -79,7 +79,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:15
 optional errorMessage: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:14
+Defined in: [packages/core/src/core/types/apiResponses.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L14)
 
 ##### ~~ok~~
 
@@ -87,7 +87,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:14
 ok: boolean;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:5
+Defined in: [packages/core/src/core/types/apiResponses.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L5)
 
 ###### Inherited from
 
@@ -99,7 +99,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:5
 requestId: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:7
+Defined in: [packages/core/src/core/types/apiResponses.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L7)
 
 ###### Inherited from
 
@@ -111,7 +111,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:7
 timestamp: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:6
+Defined in: [packages/core/src/core/types/apiResponses.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L6)
 
 ###### Inherited from
 
@@ -121,7 +121,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:6
 
 ### ~~Success~~
 
-Defined in: packages/core/src/core/types/apiResponses.ts:21
+Defined in: [packages/core/src/core/types/apiResponses.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L21)
 
 #### Deprecated
 
@@ -145,7 +145,7 @@ Use types from './api' instead.
 data: D;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:22
+Defined in: [packages/core/src/core/types/apiResponses.ts:22](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L22)
 
 ##### ~~ok~~
 
@@ -153,7 +153,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:22
 ok: boolean;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:5
+Defined in: [packages/core/src/core/types/apiResponses.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L5)
 
 ###### Inherited from
 
@@ -165,7 +165,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:5
 requestId: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:7
+Defined in: [packages/core/src/core/types/apiResponses.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L7)
 
 ###### Inherited from
 
@@ -177,7 +177,7 @@ Defined in: packages/core/src/core/types/apiResponses.ts:7
 timestamp: string;
 ```
 
-Defined in: packages/core/src/core/types/apiResponses.ts:6
+Defined in: [packages/core/src/core/types/apiResponses.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/apiResponses.ts#L6)
 
 ###### Inherited from
 

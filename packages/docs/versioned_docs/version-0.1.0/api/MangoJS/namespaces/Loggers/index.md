@@ -4,25 +4,13 @@ sidebar_label: Loggers
 
 # Loggers
 
-## Description
-
-Logging utilities with Pino integration.
-
-## Example
-
-```ts
-import { LoggerPino } from '@anthropic/mangojs';
-
-const logger = new LoggerPino('my-service', 'info');
-const pino = logger.getLogger();
-pino.info('Server started');
-```
+Logging utilities
 
 ## Classes
 
 ### LoggerPino
 
-Defined in: packages/core/src/core/loggers/LoggerPino.ts:14
+Defined in: [packages/core/src/core/loggers/LoggerPino.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/LoggerPino.ts#L14)
 
 Pino-based logger implementation.
 
@@ -46,7 +34,7 @@ pino.info('Hello world');
 new LoggerPino(name, logLevel): LoggerPino;
 ```
 
-Defined in: packages/core/src/core/loggers/LoggerPino.ts:18
+Defined in: [packages/core/src/core/loggers/LoggerPino.ts:18](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/LoggerPino.ts#L18)
 
 ###### Parameters
 
@@ -70,7 +58,7 @@ Defined in: packages/core/src/core/loggers/LoggerPino.ts:18
 getLogger(): Logger;
 ```
 
-Defined in: packages/core/src/core/loggers/LoggerPino.ts:26
+Defined in: [packages/core/src/core/loggers/LoggerPino.ts:26](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/LoggerPino.ts#L26)
 
 ###### Returns
 
@@ -84,7 +72,7 @@ Defined in: packages/core/src/core/loggers/LoggerPino.ts:26
 
 ### ILogger
 
-Defined in: packages/core/src/core/loggers/types.ts:8
+Defined in: [packages/core/src/core/loggers/types.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L8)
 
 Base logger interface with common logging methods.
 
@@ -96,7 +84,7 @@ Base logger interface with common logging methods.
 debug(msg, ...args): void;
 ```
 
-Defined in: packages/core/src/core/loggers/types.ts:10
+Defined in: [packages/core/src/core/loggers/types.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L10)
 
 ###### Parameters
 
@@ -118,7 +106,7 @@ Defined in: packages/core/src/core/loggers/types.ts:10
 error(msg, ...args): void;
 ```
 
-Defined in: packages/core/src/core/loggers/types.ts:11
+Defined in: [packages/core/src/core/loggers/types.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L11)
 
 ###### Parameters
 
@@ -140,7 +128,7 @@ Defined in: packages/core/src/core/loggers/types.ts:11
 info(msg, ...args): void;
 ```
 
-Defined in: packages/core/src/core/loggers/types.ts:9
+Defined in: [packages/core/src/core/loggers/types.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L9)
 
 ###### Parameters
 
@@ -162,7 +150,7 @@ Defined in: packages/core/src/core/loggers/types.ts:9
 warn(msg, ...args): void;
 ```
 
-Defined in: packages/core/src/core/loggers/types.ts:12
+Defined in: [packages/core/src/core/loggers/types.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L12)
 
 ###### Parameters
 
@@ -182,7 +170,7 @@ Defined in: packages/core/src/core/loggers/types.ts:12
 
 ### ILoggerFactory
 
-Defined in: packages/core/src/core/loggers/types.ts:25
+Defined in: [packages/core/src/core/loggers/types.ts:25](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L25)
 
 Factory interface for creating logger instances.
 
@@ -204,7 +192,7 @@ class MyLogger implements ILoggerFactory {
 getLogger(): any;
 ```
 
-Defined in: packages/core/src/core/loggers/types.ts:27
+Defined in: [packages/core/src/core/loggers/types.ts:27](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/loggers/types.ts#L27)
 
 ###### Returns
 

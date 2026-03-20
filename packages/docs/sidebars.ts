@@ -160,6 +160,20 @@ const sidebars: SidebarsConfig = {
       ],
     },
     {
+      type: "category",
+      label: "Common",
+      items: [
+        "handbook/common/best-practices.context",
+        "handbook/common/error-handling.context",
+        "handbook/common/code-templates.context",
+      ],
+    },
+    {
+      type: "category",
+      label: "Guides",
+      items: ["handbook/guides/troubleshooting.context"],
+    },
+    {
       type: "doc",
       id: "handbook/resources.context",
       label: "Resources",

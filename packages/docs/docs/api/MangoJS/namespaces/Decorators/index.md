@@ -18,7 +18,7 @@ Decorator utilities for HTTP, auth, queue, and scheduler
 const QUEUE_WORKER_METADATA_KEY: typeof QUEUE_WORKER_METADATA_KEY;
 ```
 
-Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L5)
+Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L5)
 
 ## Functions
 
@@ -28,7 +28,7 @@ Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5]
 function loggedMethod(): any;
 ```
 
-Defined in: [packages/core/src/core/decorators/logger.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/decorators/logger.decorator.ts#L7)
+Defined in: [packages/core/src/core/decorators/logger.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/decorators/logger.decorator.ts#L7)
 
 Method decorator that logs method calls with timestamps.
 

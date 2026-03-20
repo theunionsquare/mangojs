@@ -4,18 +4,7 @@ sidebar_label: Middlewares
 
 # Middlewares
 
-## Description
-
-Express middlewares for authentication and request processing.
-
-## Example
-
-```ts
-import { userInfo, requestTime } from '@mangojs/core';
-
-app.use(requestTime.middlewareRequestTime);
-app.use(userInfo.middlewareAuthContext);
-```
+Middleware patterns
 
 ## Namespaces
 
@@ -26,7 +15,7 @@ app.use(userInfo.middlewareAuthContext);
 
 ### AuthenticatedRequest
 
-Defined in: packages/core/src/core/middlewares/types.ts:11
+Defined in: [packages/core/src/core/middlewares/types.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/middlewares/types.ts#L11)
 
 Extended request type with auth context.
 Available after middlewareAuthContext runs.
@@ -93,7 +82,7 @@ Defined in: node\_modules/.pnpm/@types+express-serve-static-core@5.1.1/node\_mod
 optional authContext: IAuthContext;
 ```
 
-Defined in: packages/core/src/core/middlewares/types.ts:12
+Defined in: [packages/core/src/core/middlewares/types.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/middlewares/types.ts#L12)
 
 ##### baseUrl
 
@@ -459,7 +448,7 @@ v0.1.1
 
 ###### Inherited from
 
-[`Request`](../../../index.md#request).[`method`](../../../index.md#method)
+[`Request`](../../../index.md#request).[`method`](../../../index.md#method-1)
 
 ##### next?
 
@@ -509,7 +498,7 @@ Short-hand for `url.parse(req.url).pathname`.
 
 ###### Inherited from
 
-[`Request`](../../../index.md#request).[`path`](../../../index.md#path)
+[`Request`](../../../index.md#request).[`path`](../../../index.md#path-1)
 
 ##### protocol
 
@@ -771,7 +760,7 @@ v12.3.0
 optional requestTime: string;
 ```
 
-Defined in: packages/core/src/core/types/api/index.ts:94
+Defined in: [packages/core/src/core/types/api/index.ts:94](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/api/index.ts#L94)
 
 Request timestamp set by middleware
 
@@ -1037,7 +1026,7 @@ v0.1.90
 optional user: MiddlewareUserInfo;
 ```
 
-Defined in: packages/core/src/core/types/api/index.ts:96
+Defined in: [packages/core/src/core/types/api/index.ts:96](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/types/api/index.ts#L96)
 
 Authenticated user info set by auth middleware
 
@@ -2584,7 +2573,7 @@ Aliased as `req.header()`.
 
 ###### Inherited from
 
-[`Request`](../../../index.md#request).[`get`](../../../index.md#get)
+[`Request`](../../../index.md#request).[`get`](../../../index.md#get-1)
 
 ###### Call Signature
 
@@ -2606,7 +2595,7 @@ Defined in: node\_modules/.pnpm/@types+express-serve-static-core@5.1.1/node\_mod
 
 ###### Inherited from
 
-[`Request`](../../../index.md#request).[`get`](../../../index.md#get)
+[`Request`](../../../index.md#request).[`get`](../../../index.md#get-1)
 
 ##### getMaxListeners()
 

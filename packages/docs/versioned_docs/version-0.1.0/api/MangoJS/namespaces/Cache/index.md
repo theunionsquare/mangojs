@@ -4,11 +4,13 @@ sidebar_label: Cache
 
 # Cache
 
+Caching utilities
+
 ## Classes
 
 ### Cache
 
-Defined in: packages/core/src/core/cache/Cache.ts:43
+Defined in: [packages/core/src/core/cache/Cache.ts:43](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L43)
 
 Generic TTL cache with LRU eviction.
 
@@ -64,7 +66,7 @@ The type of values stored in the cache
 new Cache<T>(options?): Cache<T>;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:50
+Defined in: [packages/core/src/core/cache/Cache.ts:50](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L50)
 
 ###### Parameters
 
@@ -86,7 +88,7 @@ Defined in: packages/core/src/core/cache/Cache.ts:50
 get size(): number;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:226
+Defined in: [packages/core/src/core/cache/Cache.ts:226](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L226)
 
 Get the current size of the cache.
 
@@ -104,7 +106,7 @@ Number of entries in cache
 cleanExpired(): number;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:189
+Defined in: [packages/core/src/core/cache/Cache.ts:189](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L189)
 
 Clean up expired entries.
 Should be run periodically to prevent memory leaks.
@@ -121,7 +123,7 @@ Number of expired entries removed
 clear(): void;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:134
+Defined in: [packages/core/src/core/cache/Cache.ts:134](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L134)
 
 Clear all cached entries and reset statistics.
 
@@ -135,7 +137,7 @@ Clear all cached entries and reset statistics.
 clearPattern(pattern): number;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:156
+Defined in: [packages/core/src/core/cache/Cache.ts:156](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L156)
 
 Clear cache entries matching a pattern.
 Useful when specific data changes and related cache entries should be invalidated.
@@ -170,7 +172,7 @@ cache.clearPattern(':resource:posts');
 delete(key): boolean;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:127
+Defined in: [packages/core/src/core/cache/Cache.ts:127](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L127)
 
 Delete a specific cache entry.
 
@@ -194,7 +196,7 @@ true if entry was deleted, false if it didn't exist
 get(key): T;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:63
+Defined in: [packages/core/src/core/cache/Cache.ts:63](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L63)
 
 Get cached value.
 Returns undefined if not found or expired.
@@ -219,7 +221,7 @@ Cached value or undefined
 getStats(): CacheStats;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:172
+Defined in: [packages/core/src/core/cache/Cache.ts:172](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L172)
 
 Get cache statistics including hit rate.
 
@@ -235,7 +237,7 @@ Cache statistics object
 has(key): boolean;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:109
+Defined in: [packages/core/src/core/cache/Cache.ts:109](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L109)
 
 Check if a key exists in the cache and is not expired.
 
@@ -259,7 +261,7 @@ true if key exists and is not expired
 keys(): string[];
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:217
+Defined in: [packages/core/src/core/cache/Cache.ts:217](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L217)
 
 Get all cache keys.
 Useful for debugging and testing.
@@ -276,7 +278,7 @@ Array of all cache keys
 resetStats(): void;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:206
+Defined in: [packages/core/src/core/cache/Cache.ts:206](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L206)
 
 Reset statistics without clearing cache.
 
@@ -293,7 +295,7 @@ set(
    ttl?): void;
 ```
 
-Defined in: packages/core/src/core/cache/Cache.ts:90
+Defined in: [packages/core/src/core/cache/Cache.ts:90](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/Cache.ts#L90)
 
 Set cached value with TTL.
 If cache is at max size, oldest entry is removed (LRU).
@@ -326,7 +328,7 @@ Optional TTL in milliseconds (overrides default)
 
 ### CacheEntry
 
-Defined in: packages/core/src/core/cache/types.ts:5
+Defined in: [packages/core/src/core/cache/types.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L5)
 
 Cache entry with expiration timestamp.
 
@@ -346,7 +348,7 @@ The type of the cached value
 expiresAt: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:9
+Defined in: [packages/core/src/core/cache/types.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L9)
 
 Expiration timestamp in milliseconds
 
@@ -356,7 +358,7 @@ Expiration timestamp in milliseconds
 value: T;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:7
+Defined in: [packages/core/src/core/cache/types.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L7)
 
 The cached value
 
@@ -364,7 +366,7 @@ The cached value
 
 ### CacheOptions
 
-Defined in: packages/core/src/core/cache/types.ts:15
+Defined in: [packages/core/src/core/cache/types.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L15)
 
 Configuration options for Cache.
 
@@ -376,7 +378,7 @@ Configuration options for Cache.
 optional maxSize: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:27
+Defined in: [packages/core/src/core/cache/types.ts:27](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L27)
 
 Maximum number of cache entries (prevents memory leaks).
 When max is reached, oldest entries are removed (LRU).
@@ -393,7 +395,7 @@ When max is reached, oldest entries are removed (LRU).
 optional ttl: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:20
+Defined in: [packages/core/src/core/cache/types.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L20)
 
 Default time-to-live in milliseconds.
 
@@ -407,7 +409,7 @@ Default time-to-live in milliseconds.
 
 ### CacheStats
 
-Defined in: packages/core/src/core/cache/types.ts:33
+Defined in: [packages/core/src/core/cache/types.ts:33](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L33)
 
 Cache statistics for monitoring and debugging.
 
@@ -419,7 +421,7 @@ Cache statistics for monitoring and debugging.
 hitRate: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:39
+Defined in: [packages/core/src/core/cache/types.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L39)
 
 Hit rate as a percentage (0-100)
 
@@ -429,7 +431,7 @@ Hit rate as a percentage (0-100)
 hits: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:35
+Defined in: [packages/core/src/core/cache/types.ts:35](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L35)
 
 Number of cache hits
 
@@ -439,7 +441,7 @@ Number of cache hits
 maxSize: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:43
+Defined in: [packages/core/src/core/cache/types.ts:43](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L43)
 
 Maximum allowed entries
 
@@ -449,7 +451,7 @@ Maximum allowed entries
 misses: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:37
+Defined in: [packages/core/src/core/cache/types.ts:37](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L37)
 
 Number of cache misses
 
@@ -459,6 +461,6 @@ Number of cache misses
 size: number;
 ```
 
-Defined in: packages/core/src/core/cache/types.ts:41
+Defined in: [packages/core/src/core/cache/types.ts:41](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/cache/types.ts#L41)
 
 Current number of entries in cache

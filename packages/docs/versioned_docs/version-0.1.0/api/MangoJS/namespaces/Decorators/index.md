@@ -4,171 +4,13 @@ sidebar_label: Decorators
 
 # Decorators
 
-## Description
-
-TypeScript decorators for HTTP routing, authorization, scheduling, and queues.
+Decorator utilities for HTTP, auth, queue, and scheduler
 
 ## Namespaces
 
 - [Auth](namespaces/Auth/index.md)
 
-## Enumerations
-
-### Methods
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:6
-
-HTTP VERB ENUM
-
-#### Enumeration Members
-
-##### DELETE
-
-```ts
-DELETE: "delete";
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:10
-
-##### GET
-
-```ts
-GET: "get";
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:7
-
-##### POST
-
-```ts
-POST: "post";
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:8
-
-##### PUT
-
-```ts
-PUT: "put";
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:9
-
-## Interfaces
-
-### IRouter
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:16
-
-Router interface
-
-#### Properties
-
-##### handlerName
-
-```ts
-handlerName: string | symbol;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:19
-
-##### method
-
-```ts
-method: Methods;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:17
-
-##### path
-
-```ts
-path: string;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:18
-
 ## Variables
-
-### Delete()
-
-```ts
-const Delete: (path) => MethodDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:58
-
-#### Parameters
-
-##### path
-
-`string`
-
-#### Returns
-
-`MethodDecorator`
-
-***
-
-### Get()
-
-```ts
-const Get: (path) => MethodDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:52
-
-#### Parameters
-
-##### path
-
-`string`
-
-#### Returns
-
-`MethodDecorator`
-
-***
-
-### Post()
-
-```ts
-const Post: (path) => MethodDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:54
-
-#### Parameters
-
-##### path
-
-`string`
-
-#### Returns
-
-`MethodDecorator`
-
-***
-
-### Put()
-
-```ts
-const Put: (path) => MethodDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:56
-
-#### Parameters
-
-##### path
-
-`string`
-
-#### Returns
-
-`MethodDecorator`
-
-***
 
 ### QUEUE\_WORKER\_METADATA\_KEY
 
@@ -176,53 +18,9 @@ Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:56
 const QUEUE_WORKER_METADATA_KEY: typeof QUEUE_WORKER_METADATA_KEY;
 ```
 
-Defined in: packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5
-
-***
-
-### Use()
-
-```ts
-const Use: (handler) => MethodDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/handlers.decorator.ts:82
-
-#### Parameters
-
-##### handler
-
-`Function`
-
-#### Returns
-
-`MethodDecorator`
+Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L5)
 
 ## Functions
-
-### Controller()
-
-```ts
-function Controller(basePath): ClassDecorator;
-```
-
-Defined in: packages/core/src/core/decorators/http/controller.decorator.ts:8
-
-Define the base API address
-
-#### Parameters
-
-##### basePath
-
-`string`
-
-string
-
-#### Returns
-
-`ClassDecorator`
-
-***
 
 ### ~~loggedMethod()~~
 
@@ -230,7 +28,7 @@ string
 function loggedMethod(): any;
 ```
 
-Defined in: packages/core/src/core/decorators/logger.decorator.ts:7
+Defined in: [packages/core/src/core/decorators/logger.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/decorators/logger.decorator.ts#L7)
 
 Method decorator that logs method calls with timestamps.
 
@@ -243,33 +41,55 @@ Method decorator that logs method calls with timestamps.
 Use the Loggers module for proper logging instead.
 This decorator uses console.log which is not suitable for production.
 
+## References
+
+### Controller
+
+Re-exports [Controller](../../../index.md#controller)
+
 ***
 
-### Middleware()
+### Delete
 
-```ts
-function Middleware(middleware): MethodDecorator;
-```
+Re-exports [Delete](../../../index.md#delete-2)
 
-Defined in: packages/core/src/core/decorators/http/middleware.decorator.ts:11
+***
 
-Generic Middleware decoratoor
+### Get
 
-#### Parameters
+Re-exports [Get](../../../index.md#get-3)
 
-##### middleware
+***
 
-`RequestHandler`
+### IRouter
 
-function in the form (req: Request, res: Response, next: NextFunction) =\> \{
-       next();
-   \})
+Re-exports [IRouter](../../../index.md#irouter)
 
-#### Returns
+***
 
-`MethodDecorator`
+### Methods
 
-## References
+Re-exports [Methods](../../../index.md#methods)
+
+***
+
+### Middleware
+
+Re-exports [Middleware](../../../index.md#middleware)
+
+***
+
+### Post
+
+Re-exports [Post](../../../index.md#post-1)
+
+***
+
+### Put
+
+Re-exports [Put](../../../index.md#put-1)
+
+***
 
 ### QueueWorker
 
@@ -280,3 +100,9 @@ Re-exports [QueueWorker](../../../index.md#queueworker)
 ### Schedule
 
 Re-exports [Schedule](../../../index.md#schedule)
+
+***
+
+### Use
+
+Re-exports [Use](../../../index.md#use)

@@ -28,9 +28,25 @@
       "items": [
         "handbook/architecture/index.context",
         "handbook/architecture/onion-architecture.context",
-        "handbook/architecture/layers.context",
-        "handbook/architecture/injection.context",
-        "handbook/architecture/decorators.context"
+        "handbook/architecture/layers.context"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Dependency Injection",
+      "items": [
+        "handbook/injection/index.context",
+        "handbook/injection/container-builder.context",
+        "handbook/injection/types.context"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Decorators",
+      "items": [
+        "handbook/decorators/index.context",
+        "handbook/decorators/http.context",
+        "handbook/decorators/auth.context"
       ]
     },
     {
@@ -127,6 +143,22 @@
         "handbook/project-structure/index.context",
         "handbook/project-structure/folders.context",
         "handbook/project-structure/types.context"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Common",
+      "items": [
+        "handbook/common/best-practices.context",
+        "handbook/common/error-handling.context",
+        "handbook/common/code-templates.context"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guides",
+      "items": [
+        "handbook/guides/troubleshooting.context"
       ]
     },
     {

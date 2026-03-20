@@ -10,7 +10,7 @@ Cron-based task scheduling
 
 ### `abstract` ScheduledTask
 
-Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:35](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduledTask.ts#L35)
+Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:35](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduledTask.ts#L35)
 
 Abstract base class for scheduled tasks.
 Extend this class to create a scheduled task.
@@ -68,7 +68,7 @@ new ScheduledTask(): ScheduledTask;
 onComplete(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:54](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduledTask.ts#L54)
+Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:54](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduledTask.ts#L54)
 
 Lifecycle hook called after task execution completes successfully.
 Override to add post-execution logic.
@@ -87,7 +87,7 @@ Override to add post-execution logic.
 onError(error): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:64](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduledTask.ts#L64)
+Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:64](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduledTask.ts#L64)
 
 Lifecycle hook called when task execution fails.
 Override to add error handling logic.
@@ -114,7 +114,7 @@ The error that occurred during execution
 onStart(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:46](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduledTask.ts#L46)
+Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:46](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduledTask.ts#L46)
 
 Lifecycle hook called before task execution starts.
 Override to add pre-execution logic.
@@ -133,7 +133,7 @@ Override to add pre-execution logic.
 abstract run(): void | Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:40](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduledTask.ts#L40)
+Defined in: [packages/core/src/core/scheduler/ScheduledTask.ts:40](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduledTask.ts#L40)
 
 Main execution method - called on each scheduled run.
 Must be implemented by subclasses.
@@ -150,7 +150,7 @@ Must be implemented by subclasses.
 
 ### ScheduleRegistry
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:19](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L19)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:19](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L19)
 
 Registry for managing scheduled tasks.
 Handles registration, lifecycle management, and status tracking of all scheduled tasks.
@@ -167,7 +167,7 @@ Handles registration, lifecycle management, and status tracking of all scheduled
 new ScheduleRegistry(): ScheduleRegistry;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:23](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L23)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:23](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L23)
 
 ###### Returns
 
@@ -181,7 +181,7 @@ Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:23](https://gi
 getStatus(): SchedulerStatus;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:150](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L150)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:150](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L150)
 
 Get overall scheduler status
 
@@ -199,7 +199,7 @@ Get overall scheduler status
 getTask(name): TaskInfo;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:142](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L142)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:142](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L142)
 
 Get information about a specific task
 
@@ -223,7 +223,7 @@ Get information about a specific task
 getTasks(): TaskInfo[];
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:135](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L135)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:135](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L135)
 
 Get information about all registered tasks
 
@@ -241,7 +241,7 @@ Get information about all registered tasks
 register(taskClass): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:33](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L33)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:33](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L33)
 
 Register a task class with the scheduler.
 Reads metadata from the
@@ -274,7 +274,7 @@ decorator and sets up the cron job.
 start(name): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:60](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L60)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:60](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L60)
 
 Initialize and start a registered task
 
@@ -298,7 +298,7 @@ Initialize and start a registered task
 startAll(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:117](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L117)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:117](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L117)
 
 Start all registered tasks
 
@@ -316,7 +316,7 @@ Start all registered tasks
 stop(name): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:100](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L100)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:100](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L100)
 
 Stop a running task
 
@@ -340,7 +340,7 @@ Stop a running task
 stopAll(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:126](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/ScheduleRegistry.ts#L126)
+Defined in: [packages/core/src/core/scheduler/ScheduleRegistry.ts:126](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/ScheduleRegistry.ts#L126)
 
 Stop all running tasks
 
@@ -356,7 +356,7 @@ Stop all running tasks
 
 ### IScheduledTask
 
-Defined in: [packages/core/src/core/scheduler/types.ts:93](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L93)
+Defined in: [packages/core/src/core/scheduler/types.ts:93](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L93)
 
 Interface for scheduled task implementations
 
@@ -368,7 +368,7 @@ Interface for scheduled task implementations
 optional onComplete(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:99](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L99)
+Defined in: [packages/core/src/core/scheduler/types.ts:99](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L99)
 
 Called after task execution completes successfully
 
@@ -382,7 +382,7 @@ Called after task execution completes successfully
 optional onError(error): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:101](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L101)
+Defined in: [packages/core/src/core/scheduler/types.ts:101](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L101)
 
 Called when task execution fails
 
@@ -402,7 +402,7 @@ Called when task execution fails
 optional onStart(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:97](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L97)
+Defined in: [packages/core/src/core/scheduler/types.ts:97](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L97)
 
 Called before task execution starts
 
@@ -416,7 +416,7 @@ Called before task execution starts
 run(): void | Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:95](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L95)
+Defined in: [packages/core/src/core/scheduler/types.ts:95](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L95)
 
 Main execution method - called on each scheduled run
 
@@ -428,7 +428,7 @@ Main execution method - called on each scheduled run
 
 ### IScheduleRegistry
 
-Defined in: [packages/core/src/core/scheduler/types.ts:71](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L71)
+Defined in: [packages/core/src/core/scheduler/types.ts:71](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L71)
 
 Interface for the Schedule Registry
 
@@ -440,7 +440,7 @@ Interface for the Schedule Registry
 getStatus(): SchedulerStatus;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:87](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L87)
+Defined in: [packages/core/src/core/scheduler/types.ts:87](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L87)
 
 Get overall scheduler status
 
@@ -454,7 +454,7 @@ Get overall scheduler status
 getTask(name): TaskInfo;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:77](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L77)
+Defined in: [packages/core/src/core/scheduler/types.ts:77](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L77)
 
 Get a specific task by name
 
@@ -474,7 +474,7 @@ Get a specific task by name
 getTasks(): TaskInfo[];
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:75](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L75)
+Defined in: [packages/core/src/core/scheduler/types.ts:75](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L75)
 
 Get all registered tasks
 
@@ -488,7 +488,7 @@ Get all registered tasks
 register(taskClass): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L73)
+Defined in: [packages/core/src/core/scheduler/types.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L73)
 
 Register a task class
 
@@ -508,7 +508,7 @@ Register a task class
 start(name): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:79](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L79)
+Defined in: [packages/core/src/core/scheduler/types.ts:79](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L79)
 
 Start a specific task
 
@@ -528,7 +528,7 @@ Start a specific task
 startAll(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:83](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L83)
+Defined in: [packages/core/src/core/scheduler/types.ts:83](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L83)
 
 Start all tasks
 
@@ -542,7 +542,7 @@ Start all tasks
 stop(name): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:81](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L81)
+Defined in: [packages/core/src/core/scheduler/types.ts:81](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L81)
 
 Stop a specific task
 
@@ -562,7 +562,7 @@ Stop a specific task
 stopAll(): void;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:85](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L85)
+Defined in: [packages/core/src/core/scheduler/types.ts:85](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L85)
 
 Stop all tasks
 
@@ -574,7 +574,7 @@ Stop all tasks
 
 ### ScheduledTaskConstructor
 
-Defined in: [packages/core/src/core/scheduler/types.ts:107](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L107)
+Defined in: [packages/core/src/core/scheduler/types.ts:107](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L107)
 
 Constructor type for ScheduledTask classes
 
@@ -586,7 +586,7 @@ Constructor type for ScheduledTask classes
 new ScheduledTaskConstructor(...args): IScheduledTask;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:108](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L108)
+Defined in: [packages/core/src/core/scheduler/types.ts:108](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L108)
 
 ###### Parameters
 
@@ -602,7 +602,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:108](https://github.com/t
 
 ### ScheduleMetadata
 
-Defined in: [packages/core/src/core/scheduler/types.ts:20](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L20)
+Defined in: [packages/core/src/core/scheduler/types.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L20)
 
 Internal metadata stored by
 
@@ -618,7 +618,7 @@ decorator
 cron: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:21](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L21)
+Defined in: [packages/core/src/core/scheduler/types.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L21)
 
 ##### options
 
@@ -626,13 +626,13 @@ Defined in: [packages/core/src/core/scheduler/types.ts:21](https://github.com/th
 options: ScheduleOptions;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:22](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L22)
+Defined in: [packages/core/src/core/scheduler/types.ts:22](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L22)
 
 ***
 
 ### ScheduleOptions
 
-Defined in: [packages/core/src/core/scheduler/types.ts:6](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L6)
+Defined in: [packages/core/src/core/scheduler/types.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L6)
 
 Options for the
 
@@ -648,7 +648,7 @@ decorator
 optional execution: "main" | "worker";
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L14)
+Defined in: [packages/core/src/core/scheduler/types.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L14)
 
 Execution mode: 'main' runs in main thread, 'worker' runs in Worker Thread (no DI support)
 
@@ -658,7 +658,7 @@ Execution mode: 'main' runs in main thread, 'worker' runs in Worker Thread (no D
 optional name: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:8](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L8)
+Defined in: [packages/core/src/core/scheduler/types.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L8)
 
 Custom name for the task (defaults to class name)
 
@@ -668,7 +668,7 @@ Custom name for the task (defaults to class name)
 optional runOnStart: boolean;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L12)
+Defined in: [packages/core/src/core/scheduler/types.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L12)
 
 Execute the task immediately on startup
 
@@ -678,7 +678,7 @@ Execute the task immediately on startup
 optional timezone: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:10](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L10)
+Defined in: [packages/core/src/core/scheduler/types.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L10)
 
 Timezone for the cron expression (e.g., 'UTC', 'America/New_York')
 
@@ -686,7 +686,7 @@ Timezone for the cron expression (e.g., 'UTC', 'America/New_York')
 
 ### SchedulerStatus
 
-Defined in: [packages/core/src/core/scheduler/types.ts:55](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L55)
+Defined in: [packages/core/src/core/scheduler/types.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L55)
 
 Overall scheduler status
 
@@ -698,7 +698,7 @@ Overall scheduler status
 active: boolean;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:57](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L57)
+Defined in: [packages/core/src/core/scheduler/types.ts:57](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L57)
 
 Whether the scheduler is active
 
@@ -708,7 +708,7 @@ Whether the scheduler is active
 runningTasks: number;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:61](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L61)
+Defined in: [packages/core/src/core/scheduler/types.ts:61](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L61)
 
 Number of running tasks
 
@@ -718,7 +718,7 @@ Number of running tasks
 stoppedTasks: number;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:63](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L63)
+Defined in: [packages/core/src/core/scheduler/types.ts:63](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L63)
 
 Number of stopped tasks
 
@@ -728,7 +728,7 @@ Number of stopped tasks
 tasks: TaskInfo[];
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:65](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L65)
+Defined in: [packages/core/src/core/scheduler/types.ts:65](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L65)
 
 List of all tasks
 
@@ -738,7 +738,7 @@ List of all tasks
 totalTasks: number;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:59](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L59)
+Defined in: [packages/core/src/core/scheduler/types.ts:59](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L59)
 
 Total number of registered tasks
 
@@ -746,7 +746,7 @@ Total number of registered tasks
 
 ### TaskEntry
 
-Defined in: [packages/core/src/core/scheduler/types.ts:114](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L114)
+Defined in: [packages/core/src/core/scheduler/types.ts:114](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L114)
 
 Internal task entry in the registry
 
@@ -758,7 +758,7 @@ Internal task entry in the registry
 optional cronJob: Job;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:118](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L118)
+Defined in: [packages/core/src/core/scheduler/types.ts:118](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L118)
 
 ##### instance?
 
@@ -766,7 +766,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:118](https://github.com/t
 optional instance: IScheduledTask;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:117](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L117)
+Defined in: [packages/core/src/core/scheduler/types.ts:117](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L117)
 
 ##### lastError?
 
@@ -774,7 +774,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:117](https://github.com/t
 optional lastError: Error;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:122](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L122)
+Defined in: [packages/core/src/core/scheduler/types.ts:122](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L122)
 
 ##### lastRun?
 
@@ -782,7 +782,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:122](https://github.com/t
 optional lastRun: Date;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:121](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L121)
+Defined in: [packages/core/src/core/scheduler/types.ts:121](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L121)
 
 ##### metadata
 
@@ -790,7 +790,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:121](https://github.com/t
 metadata: ScheduleMetadata;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:119](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L119)
+Defined in: [packages/core/src/core/scheduler/types.ts:119](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L119)
 
 ##### name
 
@@ -798,7 +798,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:119](https://github.com/t
 name: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:115](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L115)
+Defined in: [packages/core/src/core/scheduler/types.ts:115](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L115)
 
 ##### status
 
@@ -806,7 +806,7 @@ Defined in: [packages/core/src/core/scheduler/types.ts:115](https://github.com/t
 status: TaskStatus;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:120](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L120)
+Defined in: [packages/core/src/core/scheduler/types.ts:120](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L120)
 
 ##### taskClass
 
@@ -814,13 +814,13 @@ Defined in: [packages/core/src/core/scheduler/types.ts:120](https://github.com/t
 taskClass: ScheduledTaskConstructor;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:116](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L116)
+Defined in: [packages/core/src/core/scheduler/types.ts:116](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L116)
 
 ***
 
 ### TaskInfo
 
-Defined in: [packages/core/src/core/scheduler/types.ts:33](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L33)
+Defined in: [packages/core/src/core/scheduler/types.ts:33](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L33)
 
 Information about a registered task
 
@@ -832,7 +832,7 @@ Information about a registered task
 cron: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:37](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L37)
+Defined in: [packages/core/src/core/scheduler/types.ts:37](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L37)
 
 Cron expression
 
@@ -842,7 +842,7 @@ Cron expression
 execution: "main" | "worker";
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:41](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L41)
+Defined in: [packages/core/src/core/scheduler/types.ts:41](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L41)
 
 Execution mode
 
@@ -852,7 +852,7 @@ Execution mode
 optional lastError: Error;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:49](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L49)
+Defined in: [packages/core/src/core/scheduler/types.ts:49](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L49)
 
 Last error if any
 
@@ -862,7 +862,7 @@ Last error if any
 optional lastRun: Date;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:45](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L45)
+Defined in: [packages/core/src/core/scheduler/types.ts:45](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L45)
 
 Last execution time
 
@@ -872,7 +872,7 @@ Last execution time
 name: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:35](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L35)
+Defined in: [packages/core/src/core/scheduler/types.ts:35](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L35)
 
 Task name
 
@@ -882,7 +882,7 @@ Task name
 optional nextRun: Date;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:47](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L47)
+Defined in: [packages/core/src/core/scheduler/types.ts:47](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L47)
 
 Next scheduled execution time
 
@@ -892,7 +892,7 @@ Next scheduled execution time
 status: TaskStatus;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:39](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L39)
+Defined in: [packages/core/src/core/scheduler/types.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L39)
 
 Current status
 
@@ -902,7 +902,7 @@ Current status
 optional timezone: string;
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:43](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L43)
+Defined in: [packages/core/src/core/scheduler/types.ts:43](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L43)
 
 Timezone
 
@@ -914,7 +914,7 @@ Timezone
 type TaskStatus = "running" | "stopped" | "error";
 ```
 
-Defined in: [packages/core/src/core/scheduler/types.ts:28](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/scheduler/types.ts#L28)
+Defined in: [packages/core/src/core/scheduler/types.ts:28](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/scheduler/types.ts#L28)
 
 Task status enumeration
 

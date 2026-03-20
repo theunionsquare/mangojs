@@ -1,12 +1,16 @@
 ---
-sidebar_label: mappers
+sidebar_label: Mappers
 ---
 
-# ~~mappers~~
+# ~~Mappers~~
 
 ## Deprecated
 
-Import BaseMapper from utils instead
+Import BaseMapper from Utils instead.
+
+## See
+
+Utils
 
 ## References
 

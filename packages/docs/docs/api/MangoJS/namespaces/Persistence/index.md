@@ -10,7 +10,7 @@ Transaction management for database operations
 
 ### CockroachPersistenceContext
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L14)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L14)
 
 CockroachDB persistence context for transaction management.
 
@@ -29,7 +29,7 @@ within a transaction context.
 new CockroachPersistenceContext(entityManager): CockroachPersistenceContext;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:17](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L17)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:17](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L17)
 
 ###### Parameters
 
@@ -49,7 +49,7 @@ Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:
 inTransaction<R>(context): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:30](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L30)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.cockroach.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.cockroach.ts#L30)
 
 Execute operations within a transaction context.
 
@@ -83,7 +83,7 @@ Result of the transaction
 
 ### DummyPersistenceContext
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L12)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L12)
 
 Dummy persistence context for testing without a real database.
 
@@ -101,7 +101,7 @@ Returns empty results without executing actual transactions.
 new DummyPersistenceContext(entityManager): DummyPersistenceContext;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L14)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L14)
 
 ###### Parameters
 
@@ -121,7 +121,7 @@ Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:14](
 inTransaction<R>(context): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:26](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L26)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.dummy.ts:26](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.dummy.ts#L26)
 
 Execute operations within a transaction context.
 
@@ -155,7 +155,7 @@ Empty object
 
 ### MongoosePersistenceContext
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L14)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L14)
 
 Mongoose persistence context for transaction management.
 
@@ -174,7 +174,7 @@ within a Mongoose connection context.
 new MongoosePersistenceContext(entityManager): MongoosePersistenceContext;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:17](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L17)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:17](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L17)
 
 ###### Parameters
 
@@ -194,7 +194,7 @@ Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:1
 inTransaction<R>(context): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:30](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L30)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.mongoose.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.mongoose.ts#L30)
 
 Execute operations within a transaction context.
 
@@ -228,7 +228,7 @@ Result of the transaction
 
 ### PostgresPersistenceContext
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:19](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L19)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L20)
 
 PostgreSQL persistence context for transaction management.
 
@@ -255,7 +255,7 @@ const result = await persistenceContext.inTransaction(async (em) => {
 new PostgresPersistenceContext(entityManager): PostgresPersistenceContext;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:22](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L22)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:23](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L23)
 
 ###### Parameters
 
@@ -275,7 +275,7 @@ Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:2
 inTransaction<R>(context): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:35](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L35)
+Defined in: [packages/core/src/core/persistence/PersistenceContext.postgres.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/PersistenceContext.postgres.ts#L36)
 
 Execute operations within a transaction context.
 
@@ -309,7 +309,7 @@ Result of the transaction
 
 ### IPersistenceContext
 
-Defined in: [packages/core/src/core/persistence/types.ts:31](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/types.ts#L31)
+Defined in: [packages/core/src/core/persistence/types.ts:31](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/types.ts#L31)
 
 Interface for persistence context implementations.
 Provides transaction management for database operations.
@@ -341,7 +341,7 @@ The entity manager type (defaults to unknown for flexibility)
 inTransaction<R>(process): Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/types.ts:38](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/types.ts#L38)
+Defined in: [packages/core/src/core/persistence/types.ts:38](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/types.ts#L38)
 
 Executes operations within a transaction context.
 
@@ -375,7 +375,7 @@ Result of the transaction
 type Context<T, R> = (em) => R | Promise<R>;
 ```
 
-Defined in: [packages/core/src/core/persistence/types.ts:15](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/persistence/types.ts#L15)
+Defined in: [packages/core/src/core/persistence/types.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/persistence/types.ts#L15)
 
 Context function type for transaction execution.
 Receives an entity manager/connection and executes operations within it.

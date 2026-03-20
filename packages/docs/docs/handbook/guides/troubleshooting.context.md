@@ -16,7 +16,7 @@ Error: No matching bindings found for serviceIdentifier: Symbol(PersistenceConte
 
 **Causes**:
 
-1. Service not registered in `inversify.config.ts`
+1. Service not registered in container
 2. Wrong identifier used in `@inject()`
 3. Container not properly initialized
 
@@ -32,12 +32,17 @@ private _persistenceContext: IPersistenceContext;
 private _persistenceContext: IPersistenceContext;
 ```
 
-**Check `inversify.config.ts`**:
+**Check container setup**:
 
 ```typescript
-serviceContainer
-  .bind<IPersistenceContext>(INVERSITY_TYPES.PersistenceContext)
-  .to(persistanceContext.CockroachPersistenceContext); // Must be registered
+// Ensure database preset is configured
+Container.ContainerBuilder.create()
+  .withCore()
+  .withPostgres({  // This binds PersistenceContext
+    connection: { host: "...", port: 5432, ... },
+    entities: [User, Post],
+  })
+  .build();
 ```
 
 ---
@@ -79,23 +84,20 @@ export class UserService {
 EntityNotFound: Could not find any entity of type "User" matching: { uid: "..." }
 ```
 
-**Cause**: Entity not registered in DatabaseManagerFactory
+**Cause**: Entity not registered in ContainerBuilder
 
 **Solution**:
-
-**File**: `src/inversify.config.ts`
 
 ```typescript
 import { User, Post, Comment } from "./db/models";
 
-serviceContainer
-  .bind<IDatabaseManagerFactory>(INVERSITY_TYPES.DatabaseManagerFactory)
-  .toConstantValue(
-    new databasemanager.cockroach.CockRoachDBManagerFactory(
-      { url: process.env.DATABASE_URL },
-      [User, Post, Comment], // ← Add all entities here
-    ),
-  );
+Container.ContainerBuilder.create()
+  .withCore()
+  .withPostgres({
+    connection: { ... },
+    entities: [User, Post, Comment],  // ← Add all entities here
+  })
+  .build();
 ```
 
 ---
@@ -124,13 +126,14 @@ export class UserService {
 }
 ```
 
-2. **Check container binding**:
+2. **Check container has database configured**:
 
 ```typescript
-// Must match database manager
-CockRoachDBManagerFactory → CockroachPersistenceContext
-PostgresDBManagerFactory  → PostgreSQLPersistenceContext
-MongooseDBManagerFactory  → MongoosePersistenceContext
+// Must use a database preset
+Container.ContainerBuilder.create()
+  .withCore()
+  .withPostgres({ ... })  // or .withCockroachDB({ ... })
+  .build();
 ```
 
 ---
@@ -179,27 +182,34 @@ public async createUserWithProfile(data) {
 Service resolution fails, controller methods not working
 ```
 
-**Cause**: Service resolved inside controller class
+**Cause**: Service not bound or container not initialized
 
 **Solution**:
 
 ```typescript
-// ✅ Correct - resolve OUTSIDE class
-const userService = ServiceContainer.get<UserService>(UserService);
+// ✅ Correct - use ContainerRegistry
+import { Container } from "@theunionsquare/mangojs-core";
 
 @Controller("/api/v1/users")
 export class UserController {
   @Get("/")
-  public async getUsers() {
-    const users = await userService.getAllUsers(); // Works
+  public async getUsers(req: Request, res: Response) {
+    const userService = Container.ContainerRegistry.getDefault()
+      .get<UserService>(UserService);
+    const users = await userService.getAllUsers();
+    // ...
   }
 }
+```
 
-// ❌ Wrong - resolved inside class
-@Controller("/api/v1/users")
-export class UserController {
-  private userService = ServiceContainer.get<UserService>(UserService); // Don't do this
-}
+**Ensure service is bound**:
+
+```typescript
+Container.ContainerBuilder.create()
+  .withCore()
+  .withPostgres({ ... })
+  .bind(UserService).toSelf()  // ← Bind your service
+  .build();
 ```
 
 ---
@@ -224,7 +234,7 @@ public async getUser(req: Request, res: Response): Promise<Response> {
     const user = await userService.getUserById(req.params.id);
     return res.status(200).send({ data: user }); // Return here
   } catch (error) {
-    return errors.errorHandler(res, error as Error); // And here
+    return Errors.errorHandler(res, error as Error); // And here
   }
 }
 
@@ -235,7 +245,7 @@ public async getUser(req: Request, res: Response): Promise<Response> {
     const user = await userService.getUserById(req.params.id);
     res.status(200).send({ data: user }); // Missing return
   } catch (error) {
-    errors.errorHandler(res, error as Error); // Missing return
+    Errors.errorHandler(res, error as Error); // Missing return
   }
 }
 ```
@@ -334,7 +344,7 @@ public async getUser(req: Request, res: Response): Promise<Response> {
     const user = await userService.getUserById(req.params.id);
     return res.status(200).send({ data: user }); // Return response
   } catch (error) {
-    return errors.errorHandler(res, error as Error); // Return in catch too
+    return Errors.errorHandler(res, error as Error); // Return in catch too
   }
 }
 
@@ -377,7 +387,7 @@ public async createUser(data) {
   return await this._persistenceContext.inTransaction(async (em) => {
     // Validation
     if (!data.email) {
-      throw new errors.APIError(400, "BAD_REQUEST", "Email required");
+      throw new Errors.APIError(400, "BAD_REQUEST", "Email required");
     }
 
     // Operations
@@ -465,16 +475,20 @@ Decorator is not valid here
 
 1. Auth middleware not configured
 2. Wrong decorator syntax
-3. AuthValidator not registered
+3. Auth strategies not registered
 
 **Solutions**:
 
-**Check inversify.config.ts**:
+**Check container setup**:
 
 ```typescript
-serviceContainer
-  .bind<Auth.IAuthValidator>(INVERSITY_TYPES.AuthorizationContext)
-  .toConstantValue(new Auth.RemoteAuthValidator("http://iam-service", 3031));
+import { JWTStrategy } from "./auth/JWTStrategy";
+
+Container.ContainerBuilder.create()
+  .withCore()
+  .withPostgres({ ... })
+  .withAuth([JWTStrategy])  // ← Register auth strategies
+  .build();
 ```
 
 **Check decorator syntax**:
@@ -562,32 +576,26 @@ const users = await em.find(models.User, {
 
 - [ ] All services have `@injectable()` decorator
 - [ ] PersistenceContext uses `LazyServiceIdentifier`
-- [ ] All entities registered in DatabaseManagerFactory
-- [ ] PersistenceContext matches database manager type
-- [ ] Services resolved outside controller class
+- [ ] All entities registered in `withPostgres()` or `withCockroachDB()`
+- [ ] Services bound with `.bind(Service).toSelf()`
 - [ ] All database operations in `inTransaction()`
 - [ ] No try-catch inside transactions
 - [ ] Return statements in all controller methods
-- [ ] Error handling uses `errorHandler`
+- [ ] Error handling uses `Errors.errorHandler`
 - [ ] Controllers registered in routes array
 - [ ] Indexes added for frequently queried fields
-- [ ] API types defined for all endpoints
 
 ---
 
 ## Still Stuck?
 
-1. **Check the reference implementations**:
-   - IAM Service: `src/services/iam_server/src/`
-   - Sample Service: `src/services/sample/src/`
+1. **Review the guides**:
+   - [Database Layer](../database/index.context.md)
+   - [Service Layer](../service/index.context.md)
+   - [Controller Layer](../controller/index.context.md)
+   - [Dependency Injection](../injection/index.context.md)
 
-2. **Review the guides**:
-   - [Database Layer](../database/overview.context.md)
-   - [Service Layer](../service/overview.context.md)
-   - [Controller Layer](../controller/overview.context.md)
-   - [Best Practices](../common/best-practices.context.md)
-
-3. **Check external documentation**:
+2. **Check external documentation**:
    - [TypeORM Docs](https://typeorm.io/)
    - [Inversify Docs](https://inversify.io/)
    - [Express Docs](https://expressjs.com/)

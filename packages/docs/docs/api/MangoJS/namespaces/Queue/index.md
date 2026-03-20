@@ -1909,7 +1909,7 @@ Defined in: node\_modules/.pnpm/bullmq@5.66.5/node\_modules/bullmq/dist/esm/clas
 
 ### QueueClient
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:20](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L20)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L20)
 
 QueueClient - Wrapper for BullMQ Queue (Producer side)
 Used by API Service to add jobs to queues
@@ -1929,7 +1929,7 @@ No direct BullMQ calls should be made outside this wrapper.
 new QueueClient(redisConfig): QueueClient;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:24](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L24)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:24](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L24)
 
 ###### Parameters
 
@@ -1949,7 +1949,7 @@ Defined in: [packages/core/src/core/queue/QueueClient.ts:24](https://github.com/
 addBulk<T>(queueName, jobs): Promise<string[]>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:71](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L71)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:71](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L71)
 
 Add multiple jobs to a queue in bulk
 
@@ -1987,7 +1987,7 @@ addJob<T>(
 options?): Promise<string>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:49](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L49)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:49](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L49)
 
 Add a single job to a queue
 
@@ -2029,7 +2029,7 @@ Add a single job to a queue
 close(): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:146](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L146)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:146](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L146)
 
 Close all queue connections
 
@@ -2047,7 +2047,7 @@ Close all queue connections
 getJobStatus(queueName, jobId): Promise<JobStatus>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:95](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L95)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:95](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L95)
 
 Get the status of a specific job
 
@@ -2075,7 +2075,7 @@ Get the status of a specific job
 getQueueStatus(queueName): Promise<QueueStatus>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueClient.ts:121](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueClient.ts#L121)
+Defined in: [packages/core/src/core/queue/QueueClient.ts:121](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueClient.ts#L121)
 
 Get queue statistics
 
@@ -2097,7 +2097,7 @@ Get queue statistics
 
 ### QueueManager
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:34](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L34)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:34](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L34)
 
 QueueManager - Wrapper for BullMQ Worker (Consumer side)
 Used by Worker Service to process jobs from queues
@@ -2113,7 +2113,7 @@ No direct BullMQ calls should be made outside this wrapper.
 new QueueManager(redisConfig): QueueManager;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:40](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L40)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:40](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L40)
 
 ###### Parameters
 
@@ -2136,7 +2136,7 @@ cleanQueue(
 status?): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:306](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L306)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:306](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L306)
 
 Clean completed/failed jobs from a queue
 
@@ -2164,7 +2164,7 @@ Clean completed/failed jobs from a queue
 close(): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:318](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L318)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:318](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L318)
 
 Close all workers and connections
 
@@ -2178,7 +2178,7 @@ Close all workers and connections
 getQueueStatus(queueName): Promise<QueueStatus>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:248](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L248)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:248](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L248)
 
 Get queue status/statistics
 
@@ -2198,7 +2198,7 @@ Get queue status/statistics
 getWorkersStatus(): object[];
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:273](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L273)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:273](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L273)
 
 Get status of all registered workers
 
@@ -2212,7 +2212,7 @@ Get status of all registered workers
 pauseQueue(queueName): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:290](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L290)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:290](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L290)
 
 Pause a queue (stops new jobs from being processed)
 
@@ -2232,7 +2232,7 @@ Pause a queue (stops new jobs from being processed)
 register(workerClass): void;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:72](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L72)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:72](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L72)
 
 Register a worker class decorated with
 
@@ -2254,7 +2254,7 @@ Register a worker class decorated with
 resumeQueue(queueName): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:298](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L298)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:298](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L298)
 
 Resume a paused queue
 
@@ -2274,7 +2274,7 @@ Resume a paused queue
 setContainer(container): void;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:47](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L47)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:47](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L47)
 
 Set the Inversify container for dependency injection
 
@@ -2294,7 +2294,7 @@ Set the Inversify container for dependency injection
 start(queueName): void;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:218](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L218)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:218](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L218)
 
 Start a specific worker by queue name
 
@@ -2314,7 +2314,7 @@ Start a specific worker by queue name
 startAll(): void;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:192](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L192)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:192](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L192)
 
 Start all registered workers
 
@@ -2328,7 +2328,7 @@ Start all registered workers
 stop(queueName): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:233](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L233)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:233](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L233)
 
 Stop a specific worker by queue name
 
@@ -2348,7 +2348,7 @@ Stop a specific worker by queue name
 stopAll(): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/QueueManager.ts:205](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/QueueManager.ts#L205)
+Defined in: [packages/core/src/core/queue/QueueManager.ts:205](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/QueueManager.ts#L205)
 
 Stop all registered workers
 
@@ -2360,7 +2360,7 @@ Stop all registered workers
 
 ### IQueueClient
 
-Defined in: [packages/core/src/core/queue/types.ts:134](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L134)
+Defined in: [packages/core/src/core/queue/types.ts:134](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L134)
 
 Interface for Queue Client (used by API Service).
 Only responsible for adding jobs to queues - never consumes.
@@ -2373,7 +2373,7 @@ Only responsible for adding jobs to queues - never consumes.
 addBulk<T>(queueName, jobs): Promise<string[]>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:156](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L156)
+Defined in: [packages/core/src/core/queue/types.ts:156](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L156)
 
 Add multiple jobs to a queue in bulk
 
@@ -2413,7 +2413,7 @@ addJob<T>(
 options?): Promise<string>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:143](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L143)
+Defined in: [packages/core/src/core/queue/types.ts:143](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L143)
 
 Add a single job to a queue
 
@@ -2461,7 +2461,7 @@ Job ID
 close(): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:174](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L174)
+Defined in: [packages/core/src/core/queue/types.ts:174](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L174)
 
 Close all connections
 
@@ -2475,7 +2475,7 @@ Close all connections
 getJobStatus(queueName, jobId): Promise<JobStatus>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:163](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L163)
+Defined in: [packages/core/src/core/queue/types.ts:163](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L163)
 
 Get the status of a specific job
 
@@ -2503,7 +2503,7 @@ Job ID
 getQueueStatus(queueName): Promise<QueueStatus>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:169](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L169)
+Defined in: [packages/core/src/core/queue/types.ts:169](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L169)
 
 Get queue statistics
 
@@ -2523,7 +2523,7 @@ Name of the queue
 
 ### IQueueWorkerHandler
 
-Defined in: [packages/core/src/core/queue/types.ts:101](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L101)
+Defined in: [packages/core/src/core/queue/types.ts:101](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L101)
 
 Interface for queue worker handlers
 
@@ -2541,7 +2541,7 @@ Interface for queue worker handlers
 optional onCompleted(job, result): void;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:110](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L110)
+Defined in: [packages/core/src/core/queue/types.ts:110](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L110)
 
 Called when a job completes successfully
 
@@ -2565,7 +2565,7 @@ Called when a job completes successfully
 optional onFailed(job, error): void;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:115](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L115)
+Defined in: [packages/core/src/core/queue/types.ts:115](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L115)
 
 Called when a job fails
 
@@ -2589,7 +2589,7 @@ Called when a job fails
 optional onProgress(job, progress): void;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:120](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L120)
+Defined in: [packages/core/src/core/queue/types.ts:120](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L120)
 
 Called when job progress is updated
 
@@ -2613,7 +2613,7 @@ Called when job progress is updated
 process(job): Promise<any>;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:105](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L105)
+Defined in: [packages/core/src/core/queue/types.ts:105](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L105)
 
 Process a job from the queue
 
@@ -2631,7 +2631,7 @@ Process a job from the queue
 
 ### JobData
 
-Defined in: [packages/core/src/core/queue/types.ts:44](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L44)
+Defined in: [packages/core/src/core/queue/types.ts:44](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L44)
 
 Job data structure
 
@@ -2649,7 +2649,7 @@ Job data structure
 data: T;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:46](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L46)
+Defined in: [packages/core/src/core/queue/types.ts:46](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L46)
 
 ##### name
 
@@ -2657,7 +2657,7 @@ Defined in: [packages/core/src/core/queue/types.ts:46](https://github.com/theuni
 name: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:45](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L45)
+Defined in: [packages/core/src/core/queue/types.ts:45](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L45)
 
 ##### options?
 
@@ -2665,13 +2665,13 @@ Defined in: [packages/core/src/core/queue/types.ts:45](https://github.com/theuni
 optional options: JobOptions;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:47](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L47)
+Defined in: [packages/core/src/core/queue/types.ts:47](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L47)
 
 ***
 
 ### JobOptions
 
-Defined in: [packages/core/src/core/queue/types.ts:21](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L21)
+Defined in: [packages/core/src/core/queue/types.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L21)
 
 Options for adding a job to a queue
 
@@ -2683,7 +2683,7 @@ Options for adding a job to a queue
 optional attempts: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:25](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L25)
+Defined in: [packages/core/src/core/queue/types.ts:25](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L25)
 
 Number of retry attempts on failure
 
@@ -2693,7 +2693,7 @@ Number of retry attempts on failure
 optional backoff: object;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:27](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L27)
+Defined in: [packages/core/src/core/queue/types.ts:27](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L27)
 
 Backoff strategy for retries
 
@@ -2715,7 +2715,7 @@ type: "fixed" | "exponential";
 optional delay: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:23](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L23)
+Defined in: [packages/core/src/core/queue/types.ts:23](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L23)
 
 Delay before the job is processed (ms)
 
@@ -2725,7 +2725,7 @@ Delay before the job is processed (ms)
 optional jobId: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:38](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L38)
+Defined in: [packages/core/src/core/queue/types.ts:38](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L38)
 
 Unique job ID (prevents duplicates)
 
@@ -2735,7 +2735,7 @@ Unique job ID (prevents duplicates)
 optional priority: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:32](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L32)
+Defined in: [packages/core/src/core/queue/types.ts:32](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L32)
 
 Job priority (lower = higher priority)
 
@@ -2745,7 +2745,7 @@ Job priority (lower = higher priority)
 optional removeOnComplete: number | boolean;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:34](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L34)
+Defined in: [packages/core/src/core/queue/types.ts:34](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L34)
 
 Remove job from queue after completion
 
@@ -2755,7 +2755,7 @@ Remove job from queue after completion
 optional removeOnFail: number | boolean;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:36](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L36)
+Defined in: [packages/core/src/core/queue/types.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L36)
 
 Remove job from queue after failure
 
@@ -2763,7 +2763,7 @@ Remove job from queue after failure
 
 ### JobStatus
 
-Defined in: [packages/core/src/core/queue/types.ts:53](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L53)
+Defined in: [packages/core/src/core/queue/types.ts:53](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L53)
 
 Job status information
 
@@ -2775,7 +2775,7 @@ Job status information
 attemptsMade: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:61](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L61)
+Defined in: [packages/core/src/core/queue/types.ts:61](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L61)
 
 ##### data
 
@@ -2783,7 +2783,7 @@ Defined in: [packages/core/src/core/queue/types.ts:61](https://github.com/theuni
 data: any;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:58](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L58)
+Defined in: [packages/core/src/core/queue/types.ts:58](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L58)
 
 ##### failedReason?
 
@@ -2791,7 +2791,7 @@ Defined in: [packages/core/src/core/queue/types.ts:58](https://github.com/theuni
 optional failedReason: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:60](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L60)
+Defined in: [packages/core/src/core/queue/types.ts:60](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L60)
 
 ##### id
 
@@ -2799,7 +2799,7 @@ Defined in: [packages/core/src/core/queue/types.ts:60](https://github.com/theuni
 id: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:54](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L54)
+Defined in: [packages/core/src/core/queue/types.ts:54](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L54)
 
 ##### name
 
@@ -2807,7 +2807,7 @@ Defined in: [packages/core/src/core/queue/types.ts:54](https://github.com/theuni
 name: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:55](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L55)
+Defined in: [packages/core/src/core/queue/types.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L55)
 
 ##### progress
 
@@ -2815,7 +2815,7 @@ Defined in: [packages/core/src/core/queue/types.ts:55](https://github.com/theuni
 progress: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:57](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L57)
+Defined in: [packages/core/src/core/queue/types.ts:57](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L57)
 
 ##### returnValue?
 
@@ -2823,7 +2823,7 @@ Defined in: [packages/core/src/core/queue/types.ts:57](https://github.com/theuni
 optional returnValue: any;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:59](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L59)
+Defined in: [packages/core/src/core/queue/types.ts:59](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L59)
 
 ##### status
 
@@ -2831,7 +2831,7 @@ Defined in: [packages/core/src/core/queue/types.ts:59](https://github.com/theuni
 status: "waiting" | "active" | "completed" | "failed" | "delayed";
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:56](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L56)
+Defined in: [packages/core/src/core/queue/types.ts:56](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L56)
 
 ##### timestamp
 
@@ -2839,13 +2839,13 @@ Defined in: [packages/core/src/core/queue/types.ts:56](https://github.com/theuni
 timestamp: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:62](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L62)
+Defined in: [packages/core/src/core/queue/types.ts:62](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L62)
 
 ***
 
 ### QueueStatus
 
-Defined in: [packages/core/src/core/queue/types.ts:68](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L68)
+Defined in: [packages/core/src/core/queue/types.ts:68](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L68)
 
 Queue status information
 
@@ -2857,7 +2857,7 @@ Queue status information
 active: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:71](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L71)
+Defined in: [packages/core/src/core/queue/types.ts:71](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L71)
 
 ##### completed
 
@@ -2865,7 +2865,7 @@ Defined in: [packages/core/src/core/queue/types.ts:71](https://github.com/theuni
 completed: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:72](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L72)
+Defined in: [packages/core/src/core/queue/types.ts:72](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L72)
 
 ##### delayed
 
@@ -2873,7 +2873,7 @@ Defined in: [packages/core/src/core/queue/types.ts:72](https://github.com/theuni
 delayed: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:74](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L74)
+Defined in: [packages/core/src/core/queue/types.ts:74](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L74)
 
 ##### failed
 
@@ -2881,7 +2881,7 @@ Defined in: [packages/core/src/core/queue/types.ts:74](https://github.com/theuni
 failed: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L73)
+Defined in: [packages/core/src/core/queue/types.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L73)
 
 ##### name
 
@@ -2889,7 +2889,7 @@ Defined in: [packages/core/src/core/queue/types.ts:73](https://github.com/theuni
 name: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:69](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L69)
+Defined in: [packages/core/src/core/queue/types.ts:69](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L69)
 
 ##### paused
 
@@ -2897,7 +2897,7 @@ Defined in: [packages/core/src/core/queue/types.ts:69](https://github.com/theuni
 paused: boolean;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:75](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L75)
+Defined in: [packages/core/src/core/queue/types.ts:75](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L75)
 
 ##### waiting
 
@@ -2905,13 +2905,13 @@ Defined in: [packages/core/src/core/queue/types.ts:75](https://github.com/theuni
 waiting: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:70](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L70)
+Defined in: [packages/core/src/core/queue/types.ts:70](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L70)
 
 ***
 
 ### QueueWorkerMetadata
 
-Defined in: [packages/core/src/core/queue/types.ts:93](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L93)
+Defined in: [packages/core/src/core/queue/types.ts:93](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L93)
 
 Metadata for
 
@@ -2927,7 +2927,7 @@ decorator
 options: WorkerOptions;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:95](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L95)
+Defined in: [packages/core/src/core/queue/types.ts:95](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L95)
 
 ##### queueName
 
@@ -2935,13 +2935,13 @@ Defined in: [packages/core/src/core/queue/types.ts:95](https://github.com/theuni
 queueName: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:94](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L94)
+Defined in: [packages/core/src/core/queue/types.ts:94](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L94)
 
 ***
 
 ### RedisConfig
 
-Defined in: [packages/core/src/core/queue/types.ts:6](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L6)
+Defined in: [packages/core/src/core/queue/types.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L6)
 
 Redis connection configuration
 
@@ -2953,7 +2953,7 @@ Redis connection configuration
 optional db: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:10](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L10)
+Defined in: [packages/core/src/core/queue/types.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L10)
 
 ##### host
 
@@ -2961,7 +2961,7 @@ Defined in: [packages/core/src/core/queue/types.ts:10](https://github.com/theuni
 host: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:7](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L7)
+Defined in: [packages/core/src/core/queue/types.ts:7](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L7)
 
 ##### password?
 
@@ -2969,7 +2969,7 @@ Defined in: [packages/core/src/core/queue/types.ts:7](https://github.com/theunio
 optional password: string;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:9](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L9)
+Defined in: [packages/core/src/core/queue/types.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L9)
 
 ##### port
 
@@ -2977,13 +2977,13 @@ Defined in: [packages/core/src/core/queue/types.ts:9](https://github.com/theunio
 port: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:8](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L8)
+Defined in: [packages/core/src/core/queue/types.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L8)
 
 ***
 
 ### WorkerOptions
 
-Defined in: [packages/core/src/core/queue/types.ts:81](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L81)
+Defined in: [packages/core/src/core/queue/types.ts:81](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L81)
 
 Worker configuration options
 
@@ -2995,7 +2995,7 @@ Worker configuration options
 optional concurrency: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:83](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L83)
+Defined in: [packages/core/src/core/queue/types.ts:83](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L83)
 
 Number of concurrent jobs to process
 
@@ -3005,7 +3005,7 @@ Number of concurrent jobs to process
 optional lockDuration: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:85](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L85)
+Defined in: [packages/core/src/core/queue/types.ts:85](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L85)
 
 Lock duration for a job (ms)
 
@@ -3015,7 +3015,7 @@ Lock duration for a job (ms)
 optional maxStalledCount: number;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:87](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L87)
+Defined in: [packages/core/src/core/queue/types.ts:87](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L87)
 
 Maximum stalled count before failing
 
@@ -3027,7 +3027,7 @@ Maximum stalled count before failing
 type QueueWorkerConstructor = (...args) => IQueueWorkerHandler;
 ```
 
-Defined in: [packages/core/src/core/queue/types.ts:126](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/queue/types.ts#L126)
+Defined in: [packages/core/src/core/queue/types.ts:126](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/queue/types.ts#L126)
 
 Constructor type for queue worker classes
 

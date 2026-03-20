@@ -12,7 +12,7 @@ Use TypeORM repositories instead
 
 ### ~~MongoSetUpDatabaseAction~~
 
-Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:15
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L15)
 
 MongoDB-specific database setup action.
 
@@ -22,7 +22,7 @@ This class will be removed in a future version.
 
 #### Implements
 
-- [`SetUpDatabaseAction`](#setupdatabaseaction)
+- [`SetUpDatabaseAction`](../../../Types/namespaces/database/index.md#setupdatabaseaction)
 
 #### Constructors
 
@@ -32,7 +32,7 @@ This class will be removed in a future version.
 new MongoSetUpDatabaseAction(database, logger): MongoSetUpDatabaseAction;
 ```
 
-Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:19
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:19](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L19)
 
 ###### Parameters
 
@@ -56,7 +56,7 @@ Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:1
 onError(err): void;
 ```
 
-Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:62
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:62](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L62)
 
 ###### Parameters
 
@@ -70,7 +70,7 @@ Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:6
 
 ###### Implementation of
 
-[`SetUpDatabaseAction`](#setupdatabaseaction).[`onError`](#onerror-1)
+[`SetUpDatabaseAction`](../../../Types/namespaces/database/index.md#setupdatabaseaction).[`onError`](../../../Types/namespaces/database/index.md#onerror)
 
 ##### ~~onFileContent()~~
 
@@ -81,7 +81,7 @@ onFileContent(
 dropBeforeInsert?): Promise<void>;
 ```
 
-Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:29
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:29](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L29)
 
 ###### Parameters
 
@@ -103,77 +103,10 @@ Defined in: packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:2
 
 ###### Implementation of
 
-[`SetUpDatabaseAction`](#setupdatabaseaction).[`onFileContent`](#onfilecontent-1)
+[`SetUpDatabaseAction`](../../../Types/namespaces/database/index.md#setupdatabaseaction).[`onFileContent`](../../../Types/namespaces/database/index.md#onfilecontent)
 
-***
+## References
 
 ### ~~SetUpDatabaseAction~~
 
-Defined in: packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:8
-
-Base class for database setup actions.
-
-#### Deprecated
-
-This class will be removed in a future version.
-
-#### Constructors
-
-##### Constructor
-
-```ts
-new SetUpDatabaseAction(): SetUpDatabaseAction;
-```
-
-###### Returns
-
-[`SetUpDatabaseAction`](#setupdatabaseaction)
-
-#### Methods
-
-##### ~~onError()~~
-
-```ts
-onError(err): void;
-```
-
-Defined in: packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:14
-
-###### Parameters
-
-###### err
-
-`Error`
-
-###### Returns
-
-`void`
-
-##### ~~onFileContent()~~
-
-```ts
-onFileContent(
-   file, 
-   content, 
-   dropBeforeInsert): void;
-```
-
-Defined in: packages/core/src/core/databases/setup/SetUpDatabaseAction.ts:9
-
-###### Parameters
-
-###### file
-
-[`SetUpDatabaseRecord`](../../../Types/namespaces/database/index.md#setupdatabaserecord)
-
-###### content
-
-`string`
-
-###### dropBeforeInsert
-
-`boolean`
-
-###### Returns
-
-`void`
+Re-exports [SetUpDatabaseAction](../../../Types/namespaces/database/index.md#setupdatabaseaction)

@@ -4,15 +4,13 @@ sidebar_label: DatabaseManager
 
 # DatabaseManager
 
-## Description
-
-Database connection management factories for different database types.
+Database connection factories (PostgreSQL, CockroachDB, MongoDB)
 
 ## Classes
 
 ### CockRoachDBManagerFactory
 
-Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:36
+Defined in: [packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts#L36)
 
 CockroachDB database manager factory using TypeORM.
 
@@ -50,7 +48,7 @@ new CockRoachDBManagerFactory(
    logging?): CockRoachDBManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:46
+Defined in: [packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:53](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts#L53)
 
 ###### Parameters
 
@@ -82,7 +80,7 @@ Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManage
 dbConnection(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:59
+Defined in: [packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:65](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts#L65)
 
 Initialize the database connection.
 
@@ -101,7 +99,7 @@ getConnection(): Promise<{
 }>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:61
+Defined in: [packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:67](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts#L67)
 
 Get or create a database connection.
 
@@ -122,7 +120,7 @@ The database connection/manager instance
 getStatus(): Promise<boolean>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:109
+Defined in: [packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts:111](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/cockroachdb/CockroachDBManagerFactory.ts#L111)
 
 Get the current connection status.
 
@@ -140,7 +138,7 @@ Connection status
 
 ### ~~DummyDBManagerFactory~~
 
-Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:11
+Defined in: [packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/DummyDBManagerFactory.ts#L11)
 
 Dummy database manager factory for testing purposes.
 
@@ -161,7 +159,7 @@ Use PostgresDBManagerFactory or CockRoachDBManagerFactory instead.
 new DummyDBManagerFactory(connection): DummyDBManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:14
+Defined in: [packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/DummyDBManagerFactory.ts#L14)
 
 ###### Parameters
 
@@ -181,7 +179,7 @@ Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:14
 dbConnection(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:20
+Defined in: [packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/DummyDBManagerFactory.ts#L20)
 
 Initialize the database connection.
 
@@ -200,7 +198,7 @@ getConnection(): Promise<{
 }>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:22
+Defined in: [packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:22](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/DummyDBManagerFactory.ts#L22)
 
 Get or create a database connection.
 
@@ -221,7 +219,7 @@ The database connection/manager instance
 getStatus(): Promise<boolean>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:26
+Defined in: [packages/core/src/core/databasemanager/DummyDBManagerFactory.ts:26](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/DummyDBManagerFactory.ts#L26)
 
 Get the current connection status.
 
@@ -239,7 +237,7 @@ Connection status
 
 ### ~~EmbeddedMongoDBManagerFactory~~
 
-Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:13
+Defined in: [packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts#L13)
 
 Embedded MongoDB manager factory for testing purposes.
 
@@ -260,7 +258,7 @@ Use PostgresDBManagerFactory or CockRoachDBManagerFactory instead.
 new EmbeddedMongoDBManagerFactory(): EmbeddedMongoDBManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:17
+Defined in: [packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:17](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts#L17)
 
 ###### Returns
 
@@ -274,7 +272,7 @@ Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory
 dbConnection(): Promise<void>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:24
+Defined in: [packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:24](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts#L24)
 
 Initialize the database connection.
 
@@ -292,7 +290,7 @@ Initialize the database connection.
 getConnection(): Promise<__module>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:32
+Defined in: [packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:32](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts#L32)
 
 Get or create a database connection.
 
@@ -312,7 +310,7 @@ The database connection/manager instance
 getStatus(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:20
+Defined in: [packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/EmbeddedMongoDBManagerFactory.ts#L20)
 
 Get the current connection status.
 
@@ -330,7 +328,7 @@ Connection status
 
 ### ~~MongoDBEntityManagerFactory~~
 
-Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:13
+Defined in: [packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts#L13)
 
 MongoDB native driver manager factory.
 
@@ -351,7 +349,7 @@ Use PostgresDBManagerFactory or CockRoachDBManagerFactory instead.
 new MongoDBEntityManagerFactory(): MongoDBEntityManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:19
+Defined in: [packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:19](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts#L19)
 
 ###### Returns
 
@@ -365,7 +363,7 @@ Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.t
 dbConnection(): Promise<MongoClient>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:30
+Defined in: [packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts#L30)
 
 Initialize the database connection.
 
@@ -383,7 +381,7 @@ Initialize the database connection.
 getConnection(): Promise<MongoClient>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:36
+Defined in: [packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts#L36)
 
 Get or create a database connection.
 
@@ -403,7 +401,7 @@ The database connection/manager instance
 getStatus(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:26
+Defined in: [packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts:26](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongoDBEntityManagerFactory.ts#L26)
 
 Get the current connection status.
 
@@ -421,7 +419,7 @@ Connection status
 
 ### ~~MongooseDBManagerFactory~~
 
-Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:16
+Defined in: [packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts#L15)
 
 Mongoose database manager factory for MongoDB connections.
 
@@ -445,7 +443,7 @@ new MongooseDBManagerFactory(
    loggerFactory): MongooseDBManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:26
+Defined in: [packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:25](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts#L25)
 
 ###### Parameters
 
@@ -473,7 +471,7 @@ Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:2
 dbConnection(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:38
+Defined in: [packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:37](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts#L37)
 
 Initialize the database connection.
 
@@ -491,7 +489,7 @@ Initialize the database connection.
 getConnection(): Promise<__module>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:40
+Defined in: [packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts#L39)
 
 Get or create a database connection.
 
@@ -511,7 +509,7 @@ The database connection/manager instance
 getStatus(): Promise<string>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:60
+Defined in: [packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts:59](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/MongooseDBManagerFactory.ts#L59)
 
 Get the current connection status.
 
@@ -529,7 +527,7 @@ Connection status
 
 ### PostgresDBManagerFactory
 
-Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:38
+Defined in: [packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:38](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts#L38)
 
 PostgreSQL database manager factory using TypeORM.
 
@@ -569,7 +567,7 @@ new PostgresDBManagerFactory(
    logging?): PostgresDBManagerFactory;
 ```
 
-Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:50
+Defined in: [packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:60](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts#L60)
 
 ###### Parameters
 
@@ -601,7 +599,7 @@ Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFac
 dbConnection(): void;
 ```
 
-Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:63
+Defined in: [packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:72](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts#L72)
 
 Initialize the database connection.
 
@@ -620,7 +618,7 @@ getConnection(): Promise<{
 }>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:65
+Defined in: [packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:74](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts#L74)
 
 Get or create a database connection.
 
@@ -641,7 +639,7 @@ The database connection/manager instance
 getStatus(): Promise<boolean>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:109
+Defined in: [packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts:140](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/postgres/PostgresDBManagerFactory.ts#L140)
 
 Get the current connection status.
 
@@ -659,7 +657,7 @@ Connection status
 
 ### IDatabaseManagerFactory
 
-Defined in: packages/core/src/core/databasemanager/types.ts:5
+Defined in: [packages/core/src/core/databasemanager/types.ts:5](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/types.ts#L5)
 
 Interface for database manager factories.
 Implementations provide database connection management for different database types.
@@ -672,7 +670,7 @@ Implementations provide database connection management for different database ty
 dbConnection(): void | Promise<void> | Promise<unknown>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/types.ts:9
+Defined in: [packages/core/src/core/databasemanager/types.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/types.ts#L9)
 
 Initialize the database connection.
 
@@ -686,7 +684,7 @@ Initialize the database connection.
 getConnection(): Promise<unknown>;
 ```
 
-Defined in: packages/core/src/core/databasemanager/types.ts:15
+Defined in: [packages/core/src/core/databasemanager/types.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/types.ts#L15)
 
 Get or create a database connection.
 
@@ -702,7 +700,7 @@ The database connection/manager instance
 getStatus(): unknown;
 ```
 
-Defined in: packages/core/src/core/databasemanager/types.ts:21
+Defined in: [packages/core/src/core/databasemanager/types.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/databasemanager/types.ts#L21)
 
 Get the current connection status.
 

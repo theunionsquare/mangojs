@@ -6,7 +6,8 @@ sidebar_label: Databases
 
 ## Deprecated
 
-Use DatabaseManager instead
+Use DatabaseManager instead.
+This module will be removed in a future version.
 
 ## Namespaces
 

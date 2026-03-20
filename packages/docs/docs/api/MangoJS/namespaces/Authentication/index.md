@@ -10,7 +10,7 @@ Authentication strategies and middleware
 
 ### AuthContext
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:26](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L26)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:26](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L26)
 
 #### Implements
 
@@ -27,7 +27,7 @@ new AuthContext(
    authenticatedAt?): AuthContext;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:32](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L32)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:32](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L32)
 
 ###### Parameters
 
@@ -55,7 +55,7 @@ Defined in: [packages/core/src/core/auth/AuthContext.ts:32](https://github.com/t
 readonly optional authenticatedAt: Date;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:30](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L30)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L30)
 
 When authentication occurred
 
@@ -69,7 +69,7 @@ When authentication occurred
 readonly isAuthenticated: boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:29](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L29)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:29](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L29)
 
 Whether the user is authenticated
 
@@ -83,7 +83,7 @@ Whether the user is authenticated
 readonly strategy: string;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:28](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L28)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:28](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L28)
 
 Name of the strategy that authenticated the user
 
@@ -97,7 +97,7 @@ Name of the strategy that authenticated the user
 readonly user: IAuthUser;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:27](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L27)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:27](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L27)
 
 Authenticated user or null
 
@@ -113,7 +113,7 @@ Authenticated user or null
 belongsToAllGroups(groups): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:172](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L172)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:172](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L172)
 
 Check if user belongs to all of the specified groups
 
@@ -143,7 +143,7 @@ if (authContext.belongsToAllGroups(['verified', 'premium'])) { ... }
 belongsToAnyGroup(groups): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:159](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L159)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:159](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L159)
 
 Check if user belongs to any of the specified groups
 
@@ -173,7 +173,7 @@ if (authContext.belongsToAnyGroup(['admins', 'moderators'])) { ... }
 belongsToGroup(group): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:146](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L146)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:146](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L146)
 
 Check if user belongs to a specific group
 
@@ -203,7 +203,7 @@ if (authContext.belongsToGroup('premium_users')) { ... }
 getMetadata<T>(key): T;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:186](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L186)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:186](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L186)
 
 Get a user metadata field
 
@@ -235,7 +235,7 @@ const tenantId = authContext.getMetadata<string>('tenantId');
 getUserField<T>(key): T;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:198](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L198)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:198](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L198)
 
 Get a custom user field
 
@@ -267,7 +267,7 @@ const organizationId = authContext.getUserField<string>('organizationId');
 hasAllPermissions(permissions): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:107](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L107)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:107](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L107)
 
 Check if user has all of the specified permissions
 
@@ -297,7 +297,7 @@ if (authContext.hasAllPermissions(['users:read', 'users:write'])) { ... }
 hasAnyPermission(permissions): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:94](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L94)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:94](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L94)
 
 Check if user has any of the specified permissions
 
@@ -327,7 +327,7 @@ if (authContext.hasAnyPermission(['users:read', 'users:write'])) { ... }
 hasAnyUserType(types): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:133](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L133)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:133](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L133)
 
 Check if user has any of the specified user types
 
@@ -357,7 +357,7 @@ if (authContext.hasAnyUserType(['ADMIN', 'MODERATOR'])) { ... }
 hasPermission(permission): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:81](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L81)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:81](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L81)
 
 Check if user has a specific permission
 
@@ -387,7 +387,7 @@ if (authContext.hasPermission('users:delete')) { ... }
 hasUserType(type): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:121](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L121)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:121](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L121)
 
 Check if user has a specific user type
 
@@ -417,7 +417,7 @@ if (authContext.hasUserType('ADMIN')) { ... }
 toJSON(): Record<string, any>;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:206](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L206)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:206](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L206)
 
 Create a JSON-serializable representation
 
@@ -431,7 +431,7 @@ Create a JSON-serializable representation
 toString(): string;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:218](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L218)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:218](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L218)
 
 Create a log-friendly string representation
 
@@ -445,7 +445,7 @@ Create a log-friendly string representation
 static anonymous(): AuthContext;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:54](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L54)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:54](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L54)
 
 Create an unauthenticated context
 
@@ -465,7 +465,7 @@ req.authContext = AuthContext.anonymous();
 static authenticated(user, strategy): AuthContext;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthContext.ts:69](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthContext.ts#L69)
+Defined in: [packages/core/src/core/auth/AuthContext.ts:69](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthContext.ts#L69)
 
 Create an authenticated context
 
@@ -497,7 +497,7 @@ req.authContext = AuthContext.authenticated(user, 'jwt');
 
 ### AuthenticationError
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:13](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L13)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L13)
 
 Authentication error (distinct from AuthorizationError)
 
@@ -522,7 +522,7 @@ Use this error when:
 new AuthenticationError(message, code?): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:18](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L18)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:18](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L18)
 
 ###### Parameters
 
@@ -552,7 +552,7 @@ Error.constructor
 readonly code: string;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L14)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L14)
 
 ##### message
 
@@ -574,7 +574,7 @@ Error.message
 readonly name: "AuthenticationError" = "AuthenticationError";
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:16](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L16)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:16](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L16)
 
 ###### Overrides
 
@@ -602,7 +602,7 @@ Error.stack
 readonly statusCode: number = 401;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:15](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L15)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L15)
 
 ##### stackTraceLimit
 
@@ -636,7 +636,7 @@ Error.stackTraceLimit
 toClientResponse(): object;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:96](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L96)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:96](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L96)
 
 Get safe response for client (no internal details)
 
@@ -668,7 +668,7 @@ message: string;
 toLogString(): string;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:107](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L107)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:107](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L107)
 
 Get detailed log string
 
@@ -754,7 +754,7 @@ Error.captureStackTrace
 static custom(message, code): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:89](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L89)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:89](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L89)
 
 Create a custom authentication error
 
@@ -778,7 +778,7 @@ Create a custom authentication error
 static invalidApiKey(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:62](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L62)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:62](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L62)
 
 Create error for invalid API key
 
@@ -792,7 +792,7 @@ Create error for invalid API key
 static invalidCredentials(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:55](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L55)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L55)
 
 Create error for invalid credentials
 
@@ -806,7 +806,7 @@ Create error for invalid credentials
 static invalidSignature(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:69](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L69)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:69](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L69)
 
 Create error for invalid signature
 
@@ -820,7 +820,7 @@ Create error for invalid signature
 static invalidToken(details?): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:37](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L37)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:37](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L37)
 
 Create error for invalid token
 
@@ -840,7 +840,7 @@ Create error for invalid token
 static malformedToken(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:79](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L79)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:79](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L79)
 
 Create error for malformed token
 
@@ -854,7 +854,7 @@ Create error for malformed token
 static missingCredentials(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:45](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L45)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:45](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L45)
 
 Create error for missing credentials
 
@@ -900,7 +900,7 @@ Error.prepareStackTrace
 static tokenExpired(): AuthenticationError;
 ```
 
-Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:30](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/errors/AuthenticationError.ts#L30)
+Defined in: [packages/core/src/core/auth/errors/AuthenticationError.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/errors/AuthenticationError.ts#L30)
 
 Create error for expired token
 
@@ -912,7 +912,7 @@ Create error for expired token
 
 ### AuthStrategyRegistry
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:32](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L32)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:32](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L32)
 
 #### Constructors
 
@@ -922,7 +922,7 @@ Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:32](https://git
 new AuthStrategyRegistry(strategies?): AuthStrategyRegistry;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:35](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L35)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:35](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L35)
 
 ###### Parameters
 
@@ -942,7 +942,7 @@ Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:35](https://git
 authenticate(req): Promise<AuthContext>;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:91](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L91)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:91](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L91)
 
 Authenticate a request by trying strategies in priority order
 
@@ -982,7 +982,7 @@ generateCredentials(
 options?): Promise<AuthCredentials>;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:142](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L142)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:142](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L142)
 
 Generate credentials using a specific strategy
 
@@ -1034,7 +1034,7 @@ res.cookie(credentials.cookie.name, credentials.cookie.value, credentials.cookie
 getStrategies(): readonly IAuthStrategy[];
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:53](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L53)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:53](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L53)
 
 Get all registered strategies (sorted by priority)
 
@@ -1048,7 +1048,7 @@ readonly [`IAuthStrategy`](#iauthstrategy)[]
 getStrategy(name): IAuthStrategy;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:63](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L63)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:63](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L63)
 
 Get a strategy by name
 
@@ -1072,7 +1072,7 @@ Strategy or undefined if not found
 hasStrategy(name): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:72](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L72)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:72](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L72)
 
 Check if a strategy is registered
 
@@ -1094,7 +1094,7 @@ Strategy name
 revokeToken(strategyName, token): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:197](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L197)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:197](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L197)
 
 Revoke a token using a specific strategy
 
@@ -1124,7 +1124,7 @@ true if revoked, false otherwise
 verifyToken(strategyName, token): Promise<AuthContext>;
 ```
 
-Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:169](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/AuthStrategyRegistry.ts#L169)
+Defined in: [packages/core/src/core/auth/AuthStrategyRegistry.ts:169](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/AuthStrategyRegistry.ts#L169)
 
 Verify a token using a specific strategy
 
@@ -1152,7 +1152,7 @@ User info if valid, null if invalid
 
 ### ApiKeyStrategyOptions
 
-Defined in: [packages/core/src/core/auth/types.ts:204](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L204)
+Defined in: [packages/core/src/core/auth/types.ts:204](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L204)
 
 API Key Strategy configuration options
 
@@ -1164,7 +1164,7 @@ API Key Strategy configuration options
 optional headerName: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:206](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L206)
+Defined in: [packages/core/src/core/auth/types.ts:206](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L206)
 
 Header name to extract API key from (default: 'X-API-Key')
 
@@ -1174,7 +1174,7 @@ Header name to extract API key from (default: 'X-API-Key')
 optional queryParam: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:209](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L209)
+Defined in: [packages/core/src/core/auth/types.ts:209](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L209)
 
 Query parameter name (optional, for fallback)
 
@@ -1184,7 +1184,7 @@ Query parameter name (optional, for fallback)
 validator: (apiKey, req) => Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:217](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L217)
+Defined in: [packages/core/src/core/auth/types.ts:217](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L217)
 
 Validation function to verify the API key and return user info
 
@@ -1212,7 +1212,7 @@ User info if valid, null if invalid
 
 ### AuthCookieOptions
 
-Defined in: [packages/core/src/core/auth/types.ts:11](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L11)
+Defined in: [packages/core/src/core/auth/types.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L11)
 
 Cookie options for token storage
 
@@ -1224,7 +1224,7 @@ Cookie options for token storage
 optional domain: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:17](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L17)
+Defined in: [packages/core/src/core/auth/types.ts:17](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L17)
 
 ##### httpOnly?
 
@@ -1232,7 +1232,7 @@ Defined in: [packages/core/src/core/auth/types.ts:17](https://github.com/theunio
 optional httpOnly: boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:12](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L12)
+Defined in: [packages/core/src/core/auth/types.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L12)
 
 ##### maxAge?
 
@@ -1240,7 +1240,7 @@ Defined in: [packages/core/src/core/auth/types.ts:12](https://github.com/theunio
 optional maxAge: number;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:15](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L15)
+Defined in: [packages/core/src/core/auth/types.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L15)
 
 ##### path?
 
@@ -1248,7 +1248,7 @@ Defined in: [packages/core/src/core/auth/types.ts:15](https://github.com/theunio
 optional path: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:16](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L16)
+Defined in: [packages/core/src/core/auth/types.ts:16](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L16)
 
 ##### sameSite?
 
@@ -1256,7 +1256,7 @@ Defined in: [packages/core/src/core/auth/types.ts:16](https://github.com/theunio
 optional sameSite: "strict" | "lax" | "none";
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L14)
+Defined in: [packages/core/src/core/auth/types.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L14)
 
 ##### secure?
 
@@ -1264,13 +1264,13 @@ Defined in: [packages/core/src/core/auth/types.ts:14](https://github.com/theunio
 optional secure: boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:13](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L13)
+Defined in: [packages/core/src/core/auth/types.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L13)
 
 ***
 
 ### AuthCredentials
 
-Defined in: [packages/core/src/core/auth/types.ts:94](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L94)
+Defined in: [packages/core/src/core/auth/types.ts:94](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L94)
 
 Standardized token generation response
 All strategies return this format for consistency
@@ -1283,7 +1283,7 @@ All strategies return this format for consistency
 accessToken: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:96](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L96)
+Defined in: [packages/core/src/core/auth/types.ts:96](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L96)
 
 The access token
 
@@ -1293,7 +1293,7 @@ The access token
 optional cookie: object;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:111](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L111)
+Defined in: [packages/core/src/core/auth/types.ts:111](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L111)
 
 Cookie configuration (for cookie-based tokens)
 
@@ -1321,7 +1321,7 @@ value: string;
 optional expiresAt: Date;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:108](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L108)
+Defined in: [packages/core/src/core/auth/types.ts:108](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L108)
 
 Absolute expiration time
 
@@ -1331,7 +1331,7 @@ Absolute expiration time
 optional expiresIn: number;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:105](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L105)
+Defined in: [packages/core/src/core/auth/types.ts:105](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L105)
 
 Time until expiration in seconds
 
@@ -1341,7 +1341,7 @@ Time until expiration in seconds
 optional metadata: Record<string, any>;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:118](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L118)
+Defined in: [packages/core/src/core/auth/types.ts:118](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L118)
 
 Additional metadata
 
@@ -1351,7 +1351,7 @@ Additional metadata
 optional refreshToken: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:102](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L102)
+Defined in: [packages/core/src/core/auth/types.ts:102](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L102)
 
 Optional refresh token
 
@@ -1361,7 +1361,7 @@ Optional refresh token
 tokenType: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:99](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L99)
+Defined in: [packages/core/src/core/auth/types.ts:99](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L99)
 
 Type of token (Bearer, Cookie, ApiKey, or custom)
 
@@ -1369,7 +1369,7 @@ Type of token (Bearer, Cookie, ApiKey, or custom)
 
 ### GenerateTokenPayload
 
-Defined in: [packages/core/src/core/auth/types.ts:223](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L223)
+Defined in: [packages/core/src/core/auth/types.ts:223](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L223)
 
 Payload for generating tokens
 
@@ -1389,7 +1389,7 @@ Additional claims
 optional email: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:234](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L234)
+Defined in: [packages/core/src/core/auth/types.ts:234](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L234)
 
 User email
 
@@ -1399,7 +1399,7 @@ User email
 optional groups: string[];
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:237](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L237)
+Defined in: [packages/core/src/core/auth/types.ts:237](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L237)
 
 User groups
 
@@ -1409,7 +1409,7 @@ User groups
 optional id: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:225](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L225)
+Defined in: [packages/core/src/core/auth/types.ts:225](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L225)
 
 User ID (will become 'sub' claim in JWT)
 
@@ -1419,7 +1419,7 @@ User ID (will become 'sub' claim in JWT)
 optional permissions: string[];
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:240](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L240)
+Defined in: [packages/core/src/core/auth/types.ts:240](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L240)
 
 User permissions
 
@@ -1429,7 +1429,7 @@ User permissions
 optional sub: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:228](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L228)
+Defined in: [packages/core/src/core/auth/types.ts:228](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L228)
 
 Alternative: subject claim directly
 
@@ -1439,7 +1439,7 @@ Alternative: subject claim directly
 optional userType: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:231](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L231)
+Defined in: [packages/core/src/core/auth/types.ts:231](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L231)
 
 User type
 
@@ -1447,7 +1447,7 @@ User type
 
 ### IAuthContext
 
-Defined in: [packages/core/src/core/auth/types.ts:52](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L52)
+Defined in: [packages/core/src/core/auth/types.ts:52](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L52)
 
 Authentication context attached to requests
 Provides helper methods for authorization checks
@@ -1460,7 +1460,7 @@ Provides helper methods for authorization checks
 readonly optional authenticatedAt: Date;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:63](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L63)
+Defined in: [packages/core/src/core/auth/types.ts:63](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L63)
 
 When authentication occurred
 
@@ -1470,7 +1470,7 @@ When authentication occurred
 readonly isAuthenticated: boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:60](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L60)
+Defined in: [packages/core/src/core/auth/types.ts:60](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L60)
 
 Whether the user is authenticated
 
@@ -1480,7 +1480,7 @@ Whether the user is authenticated
 readonly strategy: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:57](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L57)
+Defined in: [packages/core/src/core/auth/types.ts:57](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L57)
 
 Name of the strategy that authenticated the user
 
@@ -1490,7 +1490,7 @@ Name of the strategy that authenticated the user
 readonly user: IAuthUser;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:54](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L54)
+Defined in: [packages/core/src/core/auth/types.ts:54](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L54)
 
 Authenticated user or null
 
@@ -1502,7 +1502,7 @@ Authenticated user or null
 belongsToAllGroups(groups): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:87](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L87)
+Defined in: [packages/core/src/core/auth/types.ts:87](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L87)
 
 Check if user belongs to all of the specified groups
 
@@ -1522,7 +1522,7 @@ Check if user belongs to all of the specified groups
 belongsToAnyGroup(groups): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:84](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L84)
+Defined in: [packages/core/src/core/auth/types.ts:84](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L84)
 
 Check if user belongs to any of the specified groups
 
@@ -1542,7 +1542,7 @@ Check if user belongs to any of the specified groups
 belongsToGroup(group): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:81](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L81)
+Defined in: [packages/core/src/core/auth/types.ts:81](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L81)
 
 Check if user belongs to a specific group
 
@@ -1562,7 +1562,7 @@ Check if user belongs to a specific group
 hasAllPermissions(permissions): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:72](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L72)
+Defined in: [packages/core/src/core/auth/types.ts:72](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L72)
 
 Check if user has all of the specified permissions
 
@@ -1582,7 +1582,7 @@ Check if user has all of the specified permissions
 hasAnyPermission(permissions): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:69](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L69)
+Defined in: [packages/core/src/core/auth/types.ts:69](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L69)
 
 Check if user has any of the specified permissions
 
@@ -1602,7 +1602,7 @@ Check if user has any of the specified permissions
 hasAnyUserType(types): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:78](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L78)
+Defined in: [packages/core/src/core/auth/types.ts:78](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L78)
 
 Check if user has any of the specified user types
 
@@ -1622,7 +1622,7 @@ Check if user has any of the specified user types
 hasPermission(permission): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:66](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L66)
+Defined in: [packages/core/src/core/auth/types.ts:66](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L66)
 
 Check if user has a specific permission
 
@@ -1642,7 +1642,7 @@ Check if user has a specific permission
 hasUserType(type): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:75](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L75)
+Defined in: [packages/core/src/core/auth/types.ts:75](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L75)
 
 Check if user has a specific user type
 
@@ -1660,7 +1660,7 @@ Check if user has a specific user type
 
 ### IAuthUser
 
-Defined in: [packages/core/src/core/auth/types.ts:25](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L25)
+Defined in: [packages/core/src/core/auth/types.ts:25](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L25)
 
 Extensible user interface - no hardcoded enum
 Developers can use any string for userType
@@ -1681,7 +1681,7 @@ Allow extension with custom fields
 optional email: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:33](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L33)
+Defined in: [packages/core/src/core/auth/types.ts:33](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L33)
 
 User email address
 
@@ -1691,7 +1691,7 @@ User email address
 optional groups: string[];
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:36](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L36)
+Defined in: [packages/core/src/core/auth/types.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L36)
 
 Groups the user belongs to
 
@@ -1701,7 +1701,7 @@ Groups the user belongs to
 id: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:27](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L27)
+Defined in: [packages/core/src/core/auth/types.ts:27](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L27)
 
 Unique identifier for the user
 
@@ -1711,7 +1711,7 @@ Unique identifier for the user
 optional metadata: Record<string, any>;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:42](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L42)
+Defined in: [packages/core/src/core/auth/types.ts:42](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L42)
 
 Additional metadata
 
@@ -1721,7 +1721,7 @@ Additional metadata
 optional permissions: string[];
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:39](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L39)
+Defined in: [packages/core/src/core/auth/types.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L39)
 
 Fine-grained permissions
 
@@ -1731,7 +1731,7 @@ Fine-grained permissions
 userType: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:30](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L30)
+Defined in: [packages/core/src/core/auth/types.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L30)
 
 User type/role - any string value (e.g., 'ADMIN', 'CUSTOMER', 'API_CLIENT')
 
@@ -1739,7 +1739,7 @@ User type/role - any string value (e.g., 'ADMIN', 'CUSTOMER', 'API_CLIENT')
 
 ### JWTStrategyOptions
 
-Defined in: [packages/core/src/core/auth/types.ts:124](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L124)
+Defined in: [packages/core/src/core/auth/types.ts:124](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L124)
 
 JWT Strategy configuration options
 
@@ -1760,7 +1760,7 @@ optional algorithm:
   | "ES512";
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:139](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L139)
+Defined in: [packages/core/src/core/auth/types.ts:139](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L139)
 
 JWT algorithm to use
 
@@ -1770,7 +1770,7 @@ JWT algorithm to use
 optional audience: string | string[];
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:159](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L159)
+Defined in: [packages/core/src/core/auth/types.ts:159](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L159)
 
 Token audience (aud claim)
 
@@ -1780,7 +1780,7 @@ Token audience (aud claim)
 optional clockTolerance: number;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:195](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L195)
+Defined in: [packages/core/src/core/auth/types.ts:195](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L195)
 
 Clock tolerance for expiration checks in seconds
 
@@ -1790,7 +1790,7 @@ Clock tolerance for expiration checks in seconds
 optional cookie: AuthCookieOptions;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:178](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L178)
+Defined in: [packages/core/src/core/auth/types.ts:178](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L178)
 
 Cookie options when generating tokens
 
@@ -1800,7 +1800,7 @@ Cookie options when generating tokens
 optional cookieName: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:173](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L173)
+Defined in: [packages/core/src/core/auth/types.ts:173](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L173)
 
 Cookie name (default: 'auth_token')
 
@@ -1810,7 +1810,7 @@ Cookie name (default: 'auth_token')
 optional expiresIn: number;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:153](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L153)
+Defined in: [packages/core/src/core/auth/types.ts:153](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L153)
 
 Token expiration time in seconds (default: 3600)
 
@@ -1820,7 +1820,7 @@ Token expiration time in seconds (default: 3600)
 optional extractFrom: "header" | "cookie" | "both";
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:164](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L164)
+Defined in: [packages/core/src/core/auth/types.ts:164](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L164)
 
 Where to extract the token from
 
@@ -1830,7 +1830,7 @@ Where to extract the token from
 optional headerName: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:167](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L167)
+Defined in: [packages/core/src/core/auth/types.ts:167](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L167)
 
 Header name (default: 'Authorization')
 
@@ -1840,7 +1840,7 @@ Header name (default: 'Authorization')
 optional headerScheme: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:170](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L170)
+Defined in: [packages/core/src/core/auth/types.ts:170](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L170)
 
 Header scheme (default: 'Bearer')
 
@@ -1850,7 +1850,7 @@ Header scheme (default: 'Bearer')
 optional ignoreExpiration: boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:198](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L198)
+Defined in: [packages/core/src/core/auth/types.ts:198](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L198)
 
 Ignore token expiration (not recommended for production)
 
@@ -1860,7 +1860,7 @@ Ignore token expiration (not recommended for production)
 optional issuer: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:156](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L156)
+Defined in: [packages/core/src/core/auth/types.ts:156](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L156)
 
 Token issuer (iss claim)
 
@@ -1870,7 +1870,7 @@ Token issuer (iss claim)
 optional privateKey: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:134](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L134)
+Defined in: [packages/core/src/core/auth/types.ts:134](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L134)
 
 Private key for asymmetric algorithms (RS256, ES256)
 
@@ -1880,7 +1880,7 @@ Private key for asymmetric algorithms (RS256, ES256)
 optional publicKey: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:131](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L131)
+Defined in: [packages/core/src/core/auth/types.ts:131](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L131)
 
 Public key for asymmetric algorithms (RS256, ES256)
 
@@ -1890,7 +1890,7 @@ Public key for asymmetric algorithms (RS256, ES256)
 optional refreshToken: object;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:183](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L183)
+Defined in: [packages/core/src/core/auth/types.ts:183](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L183)
 
 Refresh token configuration
 
@@ -1924,7 +1924,7 @@ Refresh token expiration in seconds (default: 604800 = 7 days)
 optional secret: string;
 ```
 
-Defined in: [packages/core/src/core/auth/types.ts:128](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/types.ts#L128)
+Defined in: [packages/core/src/core/auth/types.ts:128](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/types.ts#L128)
 
 Secret for symmetric algorithms (HS256, HS384, HS512)
 
@@ -1932,7 +1932,7 @@ Secret for symmetric algorithms (HS256, HS384, HS512)
 
 ### ApiKeyStrategy
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:59](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L59)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:59](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L59)
 
 API Key Authentication Strategy
 
@@ -1982,7 +1982,7 @@ container.bind(AUTH_STRATEGY_TAG).toConstantValue(apiKeyStrategy);
 new ApiKeyStrategy(options): ApiKeyStrategy;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:68](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L68)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:68](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L68)
 
 ###### Parameters
 
@@ -2006,7 +2006,7 @@ Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:68](https:
 readonly name: "apikey" = "apikey";
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:60](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L60)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:60](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L60)
 
 Unique name for this strategy (must be implemented)
 
@@ -2020,7 +2020,7 @@ Unique name for this strategy (must be implemented)
 readonly priority: number;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:61](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L61)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:61](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L61)
 
 Default priority (can be overridden)
 Lower numbers = higher priority
@@ -2037,7 +2037,7 @@ Lower numbers = higher priority
 authenticate(req): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:96](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L96)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:96](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L96)
 
 Authenticate the request by validating the API key
 
@@ -2061,7 +2061,7 @@ Authenticate the request by validating the API key
 canHandle(req): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:89](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L89)
+Defined in: [packages/core/src/core/auth/strategies/ApiKeyStrategy.ts:89](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/ApiKeyStrategy.ts#L89)
 
 Check if this strategy can handle the request
 Returns true if an API key is present in header or query
@@ -2086,7 +2086,7 @@ Returns true if an API key is present in header or query
 protected extractApiKey(req, headerName?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
 
 Extract API key from header
 
@@ -2130,7 +2130,7 @@ protected extractBearerToken(
    scheme?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
 
 Extract Bearer token from Authorization header
 
@@ -2177,7 +2177,7 @@ const token = this.extractBearerToken(req);
 protected extractCookieToken(req, cookieName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
 
 Extract token from cookie
 
@@ -2217,7 +2217,7 @@ const token = this.extractCookieToken(req, 'auth_token');
 protected extractQueryParam(req, paramName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
 
 Extract value from query parameter
 
@@ -2251,7 +2251,7 @@ Parameter value or null if not found
 protected getClientIp(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
 
 Get client IP address from request
 Handles common proxy headers
@@ -2276,7 +2276,7 @@ Handles common proxy headers
 protected getUserAgent(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
 
 Get user agent from request
 
@@ -2298,7 +2298,7 @@ Get user agent from request
 
 ### `abstract` BaseAuthStrategy
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:34](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L34)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:34](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L34)
 
 Abstract base class for authentication strategies
 
@@ -2350,7 +2350,7 @@ new BaseAuthStrategy(): BaseAuthStrategy;
 abstract readonly name: string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:38](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L38)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:38](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L38)
 
 Unique name for this strategy (must be implemented)
 
@@ -2364,7 +2364,7 @@ Unique name for this strategy (must be implemented)
 readonly priority: number = 100;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:44](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L44)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:44](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L44)
 
 Default priority (can be overridden)
 Lower numbers = higher priority
@@ -2381,7 +2381,7 @@ Lower numbers = higher priority
 abstract authenticate(req): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:49](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L49)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:49](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L49)
 
 Authenticate the request (must be implemented)
 
@@ -2405,7 +2405,7 @@ Authenticate the request (must be implemented)
 canHandle(req): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:55](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L55)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L55)
 
 Default implementation - strategy can handle any request
 Override to add request filtering for early bailout
@@ -2430,7 +2430,7 @@ Override to add request filtering for early bailout
 protected extractApiKey(req, headerName?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
 
 Extract API key from header
 
@@ -2470,7 +2470,7 @@ protected extractBearerToken(
    scheme?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
 
 Extract Bearer token from Authorization header
 
@@ -2513,7 +2513,7 @@ const token = this.extractBearerToken(req);
 protected extractCookieToken(req, cookieName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
 
 Extract token from cookie
 
@@ -2549,7 +2549,7 @@ const token = this.extractCookieToken(req, 'auth_token');
 protected extractQueryParam(req, paramName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
 
 Extract value from query parameter
 
@@ -2579,7 +2579,7 @@ Parameter value or null if not found
 protected getClientIp(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
 
 Get client IP address from request
 Handles common proxy headers
@@ -2600,7 +2600,7 @@ Handles common proxy headers
 protected getUserAgent(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
 
 Get user agent from request
 
@@ -2618,7 +2618,7 @@ Get user agent from request
 
 ### JWTStrategy
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:95](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L95)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:95](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L95)
 
 JWT Authentication Strategy
 
@@ -2670,7 +2670,7 @@ container.bind(AUTH_STRATEGY_TAG).toConstantValue(jwtStrategy);
 new JWTStrategy(options?): JWTStrategy;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:101](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L101)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:101](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L101)
 
 ###### Parameters
 
@@ -2694,7 +2694,7 @@ Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:101](https://
 readonly name: "jwt" = "jwt";
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:96](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L96)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:96](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L96)
 
 Unique name for this strategy (must be implemented)
 
@@ -2708,7 +2708,7 @@ Unique name for this strategy (must be implemented)
 readonly priority: number;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:97](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L97)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:97](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L97)
 
 Default priority (can be overridden)
 Lower numbers = higher priority
@@ -2725,7 +2725,7 @@ Lower numbers = higher priority
 authenticate(req): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:174](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L174)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:174](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L174)
 
 Authenticate the request by verifying the JWT
 
@@ -2749,7 +2749,7 @@ Authenticate the request by verifying the JWT
 canHandle(req): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:153](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L153)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:153](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L153)
 
 Check if this strategy can handle the request
 Returns true if the expected token source has a value
@@ -2774,7 +2774,7 @@ Returns true if the expected token source has a value
 protected extractApiKey(req, headerName?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:124](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L124)
 
 Extract API key from header
 
@@ -2818,7 +2818,7 @@ protected extractBearerToken(
    scheme?): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L73)
 
 Extract Bearer token from Authorization header
 
@@ -2865,7 +2865,7 @@ const token = this.extractBearerToken(req);
 protected extractCookieToken(req, cookieName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:102](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L102)
 
 Extract token from cookie
 
@@ -2905,7 +2905,7 @@ const token = this.extractCookieToken(req, 'auth_token');
 protected extractQueryParam(req, paramName): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:140](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L140)
 
 Extract value from query parameter
 
@@ -2939,7 +2939,7 @@ Parameter value or null if not found
 generateToken(payload, options?): Promise<AuthCredentials>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:247](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L247)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:248](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L248)
 
 Generate a JWT token
 
@@ -2965,7 +2965,7 @@ Generate a JWT token
 protected getClientIp(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:150](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L150)
 
 Get client IP address from request
 Handles common proxy headers
@@ -2990,7 +2990,7 @@ Handles common proxy headers
 protected getUserAgent(req): string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
+Defined in: [packages/core/src/core/auth/strategies/BaseAuthStrategy.ts:170](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/BaseAuthStrategy.ts#L170)
 
 Get user agent from request
 
@@ -3014,7 +3014,7 @@ Get user agent from request
 verifyToken(token): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:336](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/JWTStrategy.ts#L336)
+Defined in: [packages/core/src/core/auth/strategies/JWTStrategy.ts:337](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/JWTStrategy.ts#L337)
 
 Verify a token without request context
 
@@ -3032,7 +3032,7 @@ Verify a token without request context
 
 ### IAuthStrategy
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:39](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L39)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L39)
 
 Authentication strategy interface
 
@@ -3065,7 +3065,7 @@ class MyCustomStrategy implements IAuthStrategy {
 readonly name: string;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:44](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L44)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:44](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L44)
 
 Unique name for this strategy
 Used for logging and identification
@@ -3076,7 +3076,7 @@ Used for logging and identification
 readonly priority: number;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:55](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L55)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L55)
 
 Priority for strategy execution (lower = higher priority)
 Strategies are tried in priority order until one succeeds
@@ -3094,7 +3094,7 @@ Recommended ranges:
 authenticate(req): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L73)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:73](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L73)
 
 Attempt to authenticate the request
 
@@ -3131,7 +3131,7 @@ Throw AuthenticationError when:
 optional canHandle(req): boolean;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:121](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L121)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:121](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L121)
 
 Optional: Check if this strategy can handle this request
 Use this for early filtering before attempting authentication
@@ -3165,7 +3165,7 @@ canHandle(req: Request): boolean {
 optional generateToken(payload, options?): Promise<AuthCredentials>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:83](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L83)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:83](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L83)
 
 Optional: Generate credentials/tokens for a user
 Not all strategies support token generation (e.g., session-based)
@@ -3196,7 +3196,7 @@ AuthCredentials with token(s) and metadata
 optional revokeToken(token): Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:104](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L104)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:104](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L104)
 
 Optional: Revoke/invalidate a token
 Useful for logout, token rotation, or blacklisting
@@ -3221,7 +3221,7 @@ true if revoked, false if not found or already revoked
 optional verifyToken(token): Promise<IAuthUser>;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:95](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L95)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:95](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L95)
 
 Optional: Verify a token without the full request context
 Useful for token validation in non-HTTP contexts
@@ -3248,7 +3248,7 @@ User info if valid, null if invalid
 const AUTH_STRATEGY_TAG: typeof AUTH_STRATEGY_TAG;
 ```
 
-Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:14](https://github.com/theunionsquare/mangojs/blob/e9b931cfa8d37ff10d485490a7c7959b19e4bfb1/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L14)
+Defined in: [packages/core/src/core/auth/strategies/IAuthStrategy.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/auth/strategies/IAuthStrategy.ts#L14)
 
 Symbol for multi-inject binding
 Use this to bind multiple strategies to the container

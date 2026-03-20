@@ -4,9 +4,7 @@ sidebar_label: Integrations
 
 # Integrations
 
-## Description
-
-Third-party service integrations (email providers, etc.).
+External service integrations (email, etc.)
 
 ## Namespaces
 

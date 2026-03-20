@@ -52,11 +52,10 @@ Choose your learning path based on your goal:
 
 **Step-by-step workflow:**
 
-1. **[Service Setup](./guides/service-setup.context.md)** ⭐ START HERE
-   - Initialize package structure
-   - Configure TypeScript and dependencies
-   - Set up environment variables
-   - Create basic entry points
+1. **[Quick Start Tutorial](./quick-start-tutorial.context.md)** ⭐ START HERE
+   - Set up a MangoJS application
+   - Configure container and database
+   - Create your first endpoint
 
 2. **[Database Layer](./database/index.context.md)**
    - Define TypeORM entities
@@ -84,16 +83,25 @@ Choose your learning path based on your goal:
 
 **Dependency Injection & Container**
 
-- [Dependency Injection Guide](./architecture/injection.context.md)
+- [Dependency Injection Guide](./injection/index.context.md)
+- [Container Builder](./injection/container-builder.context.md)
 - [Architecture Overview](./architecture/index.context.md)
 
 **Decorators (Routing, Auth, Middleware)**
 
-- [Decorators Reference](./architecture/decorators.context.md)
+- [Decorators Overview](./decorators/index.context.md)
+- [HTTP & Routing Decorators](./decorators/http.context.md)
+- [Auth Decorators](./decorators/auth.context.md)
 
 **Type System & API Types**
 
 - [Type Organization Guide](./project-structure/types.context.md)
+
+**Authentication & Authorization**
+
+- [Authentication Overview](./authentication/index.context.md)
+- [Auth Strategies](./authentication/strategies.context.md)
+- [Auth Examples](./authentication/examples.context.md)
 
 **Error Handling**
 
@@ -102,6 +110,17 @@ Choose your learning path based on your goal:
 **Scheduled Tasks**
 
 - [Scheduler Guide](./scheduler/index.context.md)
+
+**Queue System (Background Jobs)**
+
+- [Queue Overview](./queue/index.context.md)
+- [Queue Architecture](./queue/architecture.context.md)
+- [Worker Handler](./queue/worker-handler.context.md)
+
+**Email Integration**
+
+- [Email Overview](./integrations/email/index.context.md)
+- [Email Providers](./integrations/email/providers.context.md)
 
 **Troubleshooting**
 
@@ -147,7 +166,40 @@ Choose your learning path based on your goal:
 
 - **[Overview](./scheduler/index.context.md)** - Scheduler introduction
 - **[Architecture](./scheduler/architecture.context.md)** - Scheduler architecture
+- **[Decorators](./scheduler/decorators.context.md)** - Scheduler decorators
 - **[Examples](./scheduler/examples.context.md)** - Complete examples
+
+### Authentication & Authorization
+
+**Purpose**: Protect endpoints with flexible auth strategies
+
+- **[Overview](./authentication/index.context.md)** - Authentication introduction
+- **[Architecture](./authentication/architecture.context.md)** - Auth system design
+- **[Strategies](./authentication/strategies.context.md)** - JWT, API Key, custom strategies
+- **[Types](./authentication/types.context.md)** - Auth interfaces and types
+- **[Examples](./authentication/examples.context.md)** - Complete examples
+
+### Queue System (Background Jobs)
+
+**Purpose**: Distributed asynchronous job processing with BullMQ
+
+- **[Overview](./queue/index.context.md)** - Queue system introduction
+- **[Architecture](./queue/architecture.context.md)** - Producer-consumer pattern
+- **[Decorators](./queue/decorators.context.md)** - `@QueueWorker` decorator
+- **[Worker Handler](./queue/worker-handler.context.md)** - Handler interface
+- **[Worker Builder](./queue/worker-builder.context.md)** - Worker setup
+- **[Types](./queue/types.context.md)** - Queue interfaces
+- **[Examples](./queue/examples.context.md)** - Complete examples
+
+### Email Integration
+
+**Purpose**: Send transactional emails through multiple providers
+
+- **[Overview](./integrations/email/index.context.md)** - Email integration introduction
+- **[Providers](./integrations/email/providers.context.md)** - Brevo, Resend providers
+- **[Binding Options](./integrations/email/binding-options.context.md)** - Configuration options
+- **[Custom Provider](./integrations/email/custom-provider.context.md)** - Create your own
+- **[Types](./integrations/email/types.context.md)** - Email interfaces
 
 ---
 
@@ -156,16 +208,20 @@ Choose your learning path based on your goal:
 - **[Architecture Overview](./architecture/index.context.md)** - Onion architecture explained
 - **[Onion Architecture](./architecture/onion-architecture.context.md)** - Detailed onion architecture
 - **[Layers](./architecture/layers.context.md)** - Layer responsibilities
-- **[Dependency Injection](./architecture/injection.context.md)** - Inversify configuration
-- **[Decorators Reference](./architecture/decorators.context.md)** - All decorators explained
+- **[Dependency Injection](./injection/index.context.md)** - Inversify configuration
+- **[Container Builder](./injection/container-builder.context.md)** - Fluent container setup API
+- **[Decorators Reference](./decorators/index.context.md)** - All decorators explained
 - **[Type Organization](./project-structure/types.context.md)** - TypeScript type patterns
+- **[Authentication](./authentication/index.context.md)** - Auth strategies and authorization
 - **[Scheduler](./scheduler/index.context.md)** - Background task scheduling
+- **[Queue System](./queue/index.context.md)** - Distributed job processing
+- **[Email Integration](./integrations/email/index.context.md)** - Transactional email providers
 
 ---
 
 ## 📖 Guides & Best Practices
 
-- **[Service Setup Guide](./guides/service-setup.context.md)** ⭐ Initialize new services
+- **[Quick Start Tutorial](./quick-start-tutorial.context.md)** ⭐ Set up a new service
 - **[Code Templates](./common/code-templates.context.md)** ⭐ Copy-paste boilerplate
 - **[Best Practices](./common/best-practices.context.md)** - Naming, organization, security
 - **[Error Handling](./common/error-handling.context.md)** - APIError patterns
@@ -190,6 +246,15 @@ Need to build a service?
 ├─ Creating API endpoints?
 │  └─> Read: Controller Layer Overview → Define types → Add decorators
 │
+├─ Adding authentication?
+│  └─> Read: Authentication Overview → Choose strategy → Configure container
+│
+├─ Adding background jobs?
+│  └─> Read: Queue Overview → Create worker handler → Configure WorkerBuilder
+│
+├─ Sending emails?
+│  └─> Read: Email Integration → Choose provider → Configure factory
+│
 ├─ Getting errors?
 │  └─> Check: Troubleshooting Guide → Review checklists
 │
@@ -200,6 +265,9 @@ Need to build a service?
    ├─ Decorators? → Decorators Reference
    ├─ Types? → Type Organization Guide
    ├─ DI? → Dependency Injection Guide
+   ├─ Auth? → Authentication Guide
+   ├─ Queues? → Queue System Guide
+   ├─ Emails? → Email Integration Guide
    ├─ Scheduler? → Scheduler Guide
    └─ Errors? → Error Handling Guide
 ```

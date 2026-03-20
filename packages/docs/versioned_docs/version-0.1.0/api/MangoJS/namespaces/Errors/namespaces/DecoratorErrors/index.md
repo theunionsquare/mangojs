@@ -12,7 +12,7 @@ Use AuthorizationError from decorators/auth instead
 
 ### ~~Unauthorized~~
 
-Defined in: packages/core/src/core/errors/decoratorErrors.ts:8
+Defined in: [packages/core/src/core/errors/decoratorErrors.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/decoratorErrors.ts#L8)
 
 Unauthorized error for decorator-based authorization.
 
@@ -32,7 +32,7 @@ Use AuthorizationError from decorators/auth instead.
 new Unauthorized(errorCode, errorMessage): Unauthorized;
 ```
 
-Defined in: packages/core/src/core/errors/decoratorErrors.ts:9
+Defined in: [packages/core/src/core/errors/decoratorErrors.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/decoratorErrors.ts#L9)
 
 ###### Parameters
 
@@ -60,7 +60,7 @@ Defined in: packages/core/src/core/errors/decoratorErrors.ts:9
 readonly errorCode: string;
 ```
 
-Defined in: packages/core/src/core/errors/baseErrors.ts:11
+Defined in: [packages/core/src/core/errors/baseErrors.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/baseErrors.ts#L11)
 
 ###### Inherited from
 
@@ -72,7 +72,7 @@ Defined in: packages/core/src/core/errors/baseErrors.ts:11
 readonly errorMessage: string;
 ```
 
-Defined in: packages/core/src/core/errors/baseErrors.ts:12
+Defined in: [packages/core/src/core/errors/baseErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/baseErrors.ts#L12)
 
 ###### Inherited from
 
@@ -84,7 +84,7 @@ Defined in: packages/core/src/core/errors/baseErrors.ts:12
 readonly errorName: string = 'APIError';
 ```
 
-Defined in: packages/core/src/core/errors/baseErrors.ts:13
+Defined in: [packages/core/src/core/errors/baseErrors.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/baseErrors.ts#L13)
 
 ###### Inherited from
 
@@ -132,7 +132,7 @@ Defined in: node\_modules/.pnpm/typescript@5.6.3/node\_modules/typescript/lib/li
 readonly statusCode: number;
 ```
 
-Defined in: packages/core/src/core/errors/baseErrors.ts:10
+Defined in: [packages/core/src/core/errors/baseErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/errors/baseErrors.ts#L10)
 
 ###### Inherited from
 

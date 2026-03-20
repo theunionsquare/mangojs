@@ -4,11 +4,13 @@ sidebar_label: Applications
 
 # Applications
 
+Application bootstrapping and lifecycle management
+
 ## Classes
 
 ### ApplicationExpress
 
-Defined in: packages/core/src/core/applications/ApplicationExpress.ts:15
+Defined in: [packages/core/src/core/applications/ApplicationExpress.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationExpress.ts#L15)
 
 **`Internal`**
 
@@ -26,7 +28,7 @@ be instantiated directly.
 new ApplicationExpress(routes): ApplicationExpress;
 ```
 
-Defined in: packages/core/src/core/applications/ApplicationExpress.ts:32
+Defined in: [packages/core/src/core/applications/ApplicationExpress.ts:32](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationExpress.ts#L32)
 
 Creates a new ApplicationExpress instance.
 
@@ -54,7 +56,7 @@ Array of controller classes decorated with
 get instance(): Application;
 ```
 
-Defined in: packages/core/src/core/applications/ApplicationExpress.ts:24
+Defined in: [packages/core/src/core/applications/ApplicationExpress.ts:24](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationExpress.ts#L24)
 
 Returns the underlying Express application instance.
 
@@ -70,7 +72,7 @@ Returns the underlying Express application instance.
 registerRouters(): void;
 ```
 
-Defined in: packages/core/src/core/applications/ApplicationExpress.ts:52
+Defined in: [packages/core/src/core/applications/ApplicationExpress.ts:52](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationExpress.ts#L52)
 
 Registers all routes from the controller classes.
 Reads metadata from decorators and creates Express routes accordingly.
@@ -84,7 +86,7 @@ Prints a table of registered routes to the console.
 
 ### ApplicationPreCheck
 
-Defined in: packages/core/src/core/applications/ApplicationPreCheck.ts:18
+Defined in: [packages/core/src/core/applications/ApplicationPreCheck.ts:18](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationPreCheck.ts#L18)
 
 Default implementation of application pre-flight checks.
 Verifies database connectivity before the application starts.
@@ -108,7 +110,7 @@ await preCheck.startCheck();
 new ApplicationPreCheck(entityManager, loggerFactory): ApplicationPreCheck;
 ```
 
-Defined in: packages/core/src/core/applications/ApplicationPreCheck.ts:22
+Defined in: [packages/core/src/core/applications/ApplicationPreCheck.ts:22](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationPreCheck.ts#L22)
 
 ###### Parameters
 
@@ -132,7 +134,7 @@ Defined in: packages/core/src/core/applications/ApplicationPreCheck.ts:22
 startCheck(): Promise<void>;
 ```
 
-Defined in: packages/core/src/core/applications/ApplicationPreCheck.ts:36
+Defined in: [packages/core/src/core/applications/ApplicationPreCheck.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/ApplicationPreCheck.ts#L36)
 
 Runs all pre-flight checks including database connectivity.
 Logs the status of each check.
@@ -149,7 +151,7 @@ Logs the status of each check.
 
 ### IApplicationPreCheck
 
-Defined in: packages/core/src/core/applications/types.ts:6
+Defined in: [packages/core/src/core/applications/types.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/types.ts#L6)
 
 Interface for application pre-flight checks.
 Implementations should verify that all required services (database, etc.) are available
@@ -163,7 +165,7 @@ before the application starts accepting requests.
 startCheck(): Promise<void>;
 ```
 
-Defined in: packages/core/src/core/applications/types.ts:11
+Defined in: [packages/core/src/core/applications/types.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/applications/types.ts#L11)
 
 Runs all pre-flight checks.
 Should throw an error if any check fails.

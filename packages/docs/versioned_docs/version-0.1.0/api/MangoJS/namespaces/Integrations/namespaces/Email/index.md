@@ -22,7 +22,7 @@ await emailService.send({ receiver: 'user@example.com', subject: 'Hello', htmlCo
 
 ### BrevoProvider
 
-Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:8
+Defined in: [packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/BrevoProvider.ts#L8)
 
 Base interface that all email providers must implement.
 
@@ -38,7 +38,7 @@ Base interface that all email providers must implement.
 new BrevoProvider(config): BrevoProvider;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:15
+Defined in: [packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/BrevoProvider.ts#L15)
 
 ###### Parameters
 
@@ -58,7 +58,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.t
 readonly providerName: "brevo" = "brevo";
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:9
+Defined in: [packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/BrevoProvider.ts#L9)
 
 ###### Implementation of
 
@@ -72,7 +72,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.t
 send(payload): Promise<EmailSendResult>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:21
+Defined in: [packages/core/src/core/integrations/emails/providers/BrevoProvider.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/BrevoProvider.ts#L21)
 
 ###### Parameters
 
@@ -92,7 +92,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/BrevoProvider.t
 
 ### DummyProvider
 
-Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.ts:8
+Defined in: [packages/core/src/core/integrations/emails/providers/DummyProvider.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/DummyProvider.ts#L8)
 
 Base interface that all email providers must implement.
 
@@ -108,7 +108,7 @@ Base interface that all email providers must implement.
 new DummyProvider(config?): DummyProvider;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.ts:12
+Defined in: [packages/core/src/core/integrations/emails/providers/DummyProvider.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/DummyProvider.ts#L12)
 
 ###### Parameters
 
@@ -128,7 +128,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.t
 readonly providerName: "dummy" = "dummy";
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.ts:9
+Defined in: [packages/core/src/core/integrations/emails/providers/DummyProvider.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/DummyProvider.ts#L9)
 
 ###### Implementation of
 
@@ -142,7 +142,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.t
 send(payload): Promise<EmailSendResult>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.ts:16
+Defined in: [packages/core/src/core/integrations/emails/providers/DummyProvider.ts:16](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/DummyProvider.ts#L16)
 
 ###### Parameters
 
@@ -162,7 +162,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/DummyProvider.t
 
 ### ~~EmailServiceBrevo~~
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:10
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L10)
 
 Legacy Brevo email service.
 
@@ -185,7 +185,7 @@ new EmailServiceBrevo(
    brevoApiKey): EmailServiceBrevo;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:17
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:17](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L17)
 
 ###### Parameters
 
@@ -213,7 +213,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:17
 brevoApiKey: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:12
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L12)
 
 ##### ~~provider~~
 
@@ -221,7 +221,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:12
 provider: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:11
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L11)
 
 ##### ~~senderEmail~~
 
@@ -229,7 +229,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:11
 senderEmail: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:13
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L13)
 
 ##### ~~senderName~~
 
@@ -237,7 +237,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:13
 senderName: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:14
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:14](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L14)
 
 ##### ~~url~~
 
@@ -245,7 +245,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:14
 url: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:15
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L15)
 
 #### Methods
 
@@ -260,7 +260,7 @@ sendTransactionEmail(
 }>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:28
+Defined in: [packages/core/src/core/integrations/emails/EmailService.brevo.ts:28](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.brevo.ts#L28)
 
 ###### Parameters
 
@@ -293,7 +293,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.brevo.ts:28
 
 ### ~~EmailServiceDummy~~
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:10
+Defined in: [packages/core/src/core/integrations/emails/EmailService.dummy.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.dummy.ts#L10)
 
 Legacy dummy email service for testing.
 
@@ -313,7 +313,7 @@ Use DummyProvider with EmailServiceFactory instead.
 new EmailServiceDummy(): EmailServiceDummy;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:13
+Defined in: [packages/core/src/core/integrations/emails/EmailService.dummy.ts:13](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.dummy.ts#L13)
 
 ###### Returns
 
@@ -327,7 +327,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:13
 provider: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:11
+Defined in: [packages/core/src/core/integrations/emails/EmailService.dummy.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.dummy.ts#L11)
 
 #### Methods
 
@@ -342,7 +342,7 @@ sendTransactionEmail(
 }>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:16
+Defined in: [packages/core/src/core/integrations/emails/EmailService.dummy.ts:16](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailService.dummy.ts#L16)
 
 ###### Parameters
 
@@ -375,7 +375,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailService.dummy.ts:16
 
 ### EmailServiceFactory
 
-Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:28
+Defined in: [packages/core/src/core/integrations/emails/EmailServiceFactory.ts:28](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailServiceFactory.ts#L28)
 
 Factory for sending emails through configurable providers.
 
@@ -411,7 +411,7 @@ await factory.send({ receiver: '...', subject: '...', htmlContent: '...' });
 new EmailServiceFactory(provider?): EmailServiceFactory;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:31
+Defined in: [packages/core/src/core/integrations/emails/EmailServiceFactory.ts:31](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailServiceFactory.ts#L31)
 
 ###### Parameters
 
@@ -431,7 +431,7 @@ Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:31
 getProvider(): IEmailProvider;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:51
+Defined in: [packages/core/src/core/integrations/emails/EmailServiceFactory.ts:51](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailServiceFactory.ts#L51)
 
 Gets the current provider instance.
 
@@ -447,7 +447,7 @@ The current provider or null if not set
 send(payload): Promise<EmailSendResult>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:61
+Defined in: [packages/core/src/core/integrations/emails/EmailServiceFactory.ts:61](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailServiceFactory.ts#L61)
 
 Sends an email using the configured provider.
 
@@ -475,7 +475,7 @@ Error if no provider has been set
 setProvider(provider): this;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/EmailServiceFactory.ts:42
+Defined in: [packages/core/src/core/integrations/emails/EmailServiceFactory.ts:42](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/EmailServiceFactory.ts#L42)
 
 Sets the email provider instance to use.
 
@@ -497,7 +497,7 @@ this - for method chaining
 
 ### ResendProvider
 
-Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.ts:8
+Defined in: [packages/core/src/core/integrations/emails/providers/ResendProvider.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/ResendProvider.ts#L8)
 
 Base interface that all email providers must implement.
 
@@ -513,7 +513,7 @@ Base interface that all email providers must implement.
 new ResendProvider(config): ResendProvider;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.ts:15
+Defined in: [packages/core/src/core/integrations/emails/providers/ResendProvider.ts:15](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/ResendProvider.ts#L15)
 
 ###### Parameters
 
@@ -533,7 +533,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.
 readonly providerName: "resend" = "resend";
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.ts:9
+Defined in: [packages/core/src/core/integrations/emails/providers/ResendProvider.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/ResendProvider.ts#L9)
 
 ###### Implementation of
 
@@ -547,7 +547,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.
 send(payload): Promise<EmailSendResult>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.ts:21
+Defined in: [packages/core/src/core/integrations/emails/providers/ResendProvider.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/providers/ResendProvider.ts#L21)
 
 ###### Parameters
 
@@ -567,7 +567,7 @@ Defined in: packages/core/src/core/integrations/emails/providers/ResendProvider.
 
 ### BrevoProviderConfig
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:36
+Defined in: [packages/core/src/core/integrations/emails/types.ts:36](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L36)
 
 Brevo provider configuration.
 
@@ -579,7 +579,7 @@ Brevo provider configuration.
 apiKey: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:37
+Defined in: [packages/core/src/core/integrations/emails/types.ts:37](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L37)
 
 ##### senderEmail
 
@@ -587,7 +587,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:37
 senderEmail: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:38
+Defined in: [packages/core/src/core/integrations/emails/types.ts:38](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L38)
 
 ##### senderName
 
@@ -595,13 +595,13 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:38
 senderName: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:39
+Defined in: [packages/core/src/core/integrations/emails/types.ts:39](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L39)
 
 ***
 
 ### DummyProviderConfig
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:54
+Defined in: [packages/core/src/core/integrations/emails/types.ts:54](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L54)
 
 Dummy provider configuration for testing.
 
@@ -613,13 +613,13 @@ Dummy provider configuration for testing.
 optional logToConsole: boolean;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:55
+Defined in: [packages/core/src/core/integrations/emails/types.ts:55](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L55)
 
 ***
 
 ### EmailPayload
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:8
+Defined in: [packages/core/src/core/integrations/emails/types.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L8)
 
 Email payload for sending transactional emails.
 
@@ -631,7 +631,7 @@ Email payload for sending transactional emails.
 optional attachments: object[];
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:12
+Defined in: [packages/core/src/core/integrations/emails/types.ts:12](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L12)
 
 ###### content
 
@@ -651,7 +651,7 @@ name: string;
 htmlContent: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:11
+Defined in: [packages/core/src/core/integrations/emails/types.ts:11](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L11)
 
 ##### receiver
 
@@ -659,7 +659,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:11
 receiver: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:9
+Defined in: [packages/core/src/core/integrations/emails/types.ts:9](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L9)
 
 ##### subject
 
@@ -667,13 +667,13 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:9
 subject: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:10
+Defined in: [packages/core/src/core/integrations/emails/types.ts:10](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L10)
 
 ***
 
 ### EmailSendResult
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:18
+Defined in: [packages/core/src/core/integrations/emails/types.ts:18](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L18)
 
 Result of sending an email.
 
@@ -685,7 +685,7 @@ Result of sending an email.
 optional error: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:21
+Defined in: [packages/core/src/core/integrations/emails/types.ts:21](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L21)
 
 ##### messageId?
 
@@ -693,7 +693,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:21
 optional messageId: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:20
+Defined in: [packages/core/src/core/integrations/emails/types.ts:20](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L20)
 
 ##### raw?
 
@@ -701,7 +701,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:20
 optional raw: unknown;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:22
+Defined in: [packages/core/src/core/integrations/emails/types.ts:22](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L22)
 
 ##### success
 
@@ -709,13 +709,13 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:22
 success: boolean;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:19
+Defined in: [packages/core/src/core/integrations/emails/types.ts:19](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L19)
 
 ***
 
 ### IEmailProvider
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:28
+Defined in: [packages/core/src/core/integrations/emails/types.ts:28](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L28)
 
 Base interface that all email providers must implement.
 
@@ -727,7 +727,7 @@ Base interface that all email providers must implement.
 readonly providerName: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:29
+Defined in: [packages/core/src/core/integrations/emails/types.ts:29](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L29)
 
 #### Methods
 
@@ -737,7 +737,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:29
 send(payload): Promise<EmailSendResult>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:30
+Defined in: [packages/core/src/core/integrations/emails/types.ts:30](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L30)
 
 ###### Parameters
 
@@ -753,7 +753,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:30
 
 ### ~~IEmailService~~
 
-Defined in: packages/core/src/core/integrations/emails/IEmailService.ts:6
+Defined in: [packages/core/src/core/integrations/emails/IEmailService.ts:6](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/IEmailService.ts#L6)
 
 Legacy email service interface.
 
@@ -774,7 +774,7 @@ sendTransactionEmail(
 }>;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/IEmailService.ts:8
+Defined in: [packages/core/src/core/integrations/emails/IEmailService.ts:8](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/IEmailService.ts#L8)
 
 ###### Parameters
 
@@ -803,7 +803,7 @@ Defined in: packages/core/src/core/integrations/emails/IEmailService.ts:8
 
 ### ResendProviderConfig
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:45
+Defined in: [packages/core/src/core/integrations/emails/types.ts:45](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L45)
 
 Resend provider configuration.
 
@@ -815,7 +815,7 @@ Resend provider configuration.
 apiKey: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:46
+Defined in: [packages/core/src/core/integrations/emails/types.ts:46](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L46)
 
 ##### fromEmail
 
@@ -823,7 +823,7 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:46
 fromEmail: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:47
+Defined in: [packages/core/src/core/integrations/emails/types.ts:47](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L47)
 
 ##### fromName?
 
@@ -831,4 +831,4 @@ Defined in: packages/core/src/core/integrations/emails/types.ts:47
 optional fromName: string;
 ```
 
-Defined in: packages/core/src/core/integrations/emails/types.ts:48
+Defined in: [packages/core/src/core/integrations/emails/types.ts:48](https://github.com/theunionsquare/mangojs/blob/2e89580cb8318934c1d350324df2c6685212ddd9/packages/core/src/core/integrations/emails/types.ts#L48)

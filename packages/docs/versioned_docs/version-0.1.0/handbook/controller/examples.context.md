@@ -14,11 +14,10 @@ import {
   Put,
   Delete,
   Decorators,
-  Request,
-  Response,
-  errors,
-  utils,
-} from "@mangojs/core";
+  Errors,
+  Utils,
+} from "@theunionsquare/mangojs-core";
+import { Request, Response } from "express";
 import type * as PBTypes from "@theunionsquare/pulcherbook-types";
 import { ShopService } from "../../../services";
 import { serviceNameContainer } from "../../../inversify.config.ts";
@@ -46,7 +45,7 @@ export class ShopController {
     >,
     res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { partner_uid } = req.query as { partner_uid: string };
       const shops = await shopService.getShopsByPartner(partner_uid);
@@ -58,7 +57,7 @@ export class ShopController {
         data: shops,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -79,7 +78,7 @@ export class ShopController {
     >,
     res: Response<PBTypes.partner.api.v1.shops.GET.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { shop_uid } = req.params;
       const shop = await shopService.getShopById(shop_uid);
@@ -91,7 +90,7 @@ export class ShopController {
         data: shop,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -112,7 +111,7 @@ export class ShopController {
     >,
     res: Response<PBTypes.partner.api.v1.shops.POST.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const shop = await shopService.createShop(req.body);
 
@@ -123,7 +122,7 @@ export class ShopController {
         data: shop,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -144,7 +143,7 @@ export class ShopController {
     >,
     res: Response<PBTypes.partner.api.v1.shops.PUT.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { shop_uid } = req.params;
       const shop = await shopService.updateShop(shop_uid, req.body);
@@ -156,7 +155,7 @@ export class ShopController {
         data: shop,
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 
@@ -177,7 +176,7 @@ export class ShopController {
     >,
     res: Response<PBTypes.partner.api.v1.shops.DELETE.ResponseBody>,
   ): Promise<Response> {
-    const logRequest = new utils.LogRequest(res);
+    const logRequest = new Utils.LogRequest(res);
     try {
       const { shop_uid } = req.params;
       await shopService.deleteShop(shop_uid);
@@ -189,7 +188,7 @@ export class ShopController {
         data: { message: "Shop deleted successfully" },
       });
     } catch (error: unknown) {
-      return errors.errorHandler(res, error as Error);
+      return Errors.errorHandler(res, error as Error);
     }
   }
 }
