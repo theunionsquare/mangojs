@@ -1,7 +1,11 @@
 import { Request } from "express";
 import { MetadataKeys } from "../../utils/metadata.keys";
 import { Types } from "../../";
-import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "../../authz/authOrchestrator";
+import {
+  ValidatorMetadata,
+  createAuthOrchestrator,
+  ValidationResult,
+} from "../../authz/authOrchestrator";
 import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
 /**
@@ -88,17 +92,17 @@ import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
  */
 export function HasUserType(
   userTypes: Types.enums.AuthUserType[],
-  options?: DecoratorOptions
+  options?: DecoratorOptions,
 ): MethodDecorator {
   return function (
     target: any,
     propertyKey: string | symbol,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     // Check if this decorator is disabled (useful for testing)
     if (options?.disabled) {
       console.warn(
-        `[HasUserType] Decorator disabled for ${String(propertyKey)}`
+        `[HasUserType] Decorator disabled for ${String(propertyKey)}`,
       );
       return descriptor;
     }
@@ -109,7 +113,7 @@ export function HasUserType(
       Reflect.getMetadata(
         MetadataKeys.AUTHORIZATION_VALIDATORS,
         target,
-        propertyKey
+        propertyKey,
       ) || [];
 
     validators.push({
@@ -121,7 +125,8 @@ export function HasUserType(
         if (!userContext || !userContext.userType) {
           return {
             passed: false,
-            reason: options?.errorMessage || "No valid user type found in request",
+            reason:
+              options?.errorMessage || "No valid user type found in request",
           };
         }
 
@@ -132,18 +137,19 @@ export function HasUserType(
 
         return {
           passed: false,
-          reason: options?.errorMessage ||
+          reason:
+            options?.errorMessage ||
             `User type '${actualUserType}' not in allowed types: ${userTypes.join(", ")}`,
         };
       },
-      options,  // Store options for orchestrator
+      options, // Store options for orchestrator
     });
 
     Reflect.defineMetadata(
       MetadataKeys.AUTHORIZATION_VALIDATORS,
       validators,
       target,
-      propertyKey
+      propertyKey,
     );
 
     // Create AND mode orchestrator by default
@@ -151,14 +157,14 @@ export function HasUserType(
     const orchestratorMiddleware = createAuthOrchestrator(
       validators,
       false, // AND mode by default
-      propertyKey
+      propertyKey,
     );
 
     Reflect.defineMetadata(
       MetadataKeys.AUTHORIZATION,
       [orchestratorMiddleware],
       target,
-      propertyKey
+      propertyKey,
     );
   };
 }

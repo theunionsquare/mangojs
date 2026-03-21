@@ -99,12 +99,12 @@ import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
  */
 export function HasGroups(
   groups: Array<string>,
-  options?: DecoratorOptions
+  options?: DecoratorOptions,
 ): MethodDecorator {
   return function (
     target: any,
     propertyKey: string | symbol,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     // Check if this decorator is disabled (useful for testing)
     if (options?.disabled) {
@@ -118,7 +118,7 @@ export function HasGroups(
       Reflect.getMetadata(
         MetadataKeys.AUTHORIZATION_VALIDATORS,
         target,
-        propertyKey
+        propertyKey,
       ) || [];
 
     validators.push({
@@ -146,7 +146,7 @@ export function HasGroups(
           reason:
             options?.errorMessage ||
             `User has groups [${userGroups.join(
-              ", "
+              ", ",
             )}] but needs one of [${groups.join(", ")}]`,
         };
       },
@@ -157,7 +157,7 @@ export function HasGroups(
       MetadataKeys.AUTHORIZATION_VALIDATORS,
       validators,
       target,
-      propertyKey
+      propertyKey,
     );
 
     // Create AND mode orchestrator by default
@@ -165,14 +165,14 @@ export function HasGroups(
     const orchestratorMiddleware = createAuthOrchestrator(
       validators,
       false, // AND mode by default
-      propertyKey
+      propertyKey,
     );
 
     Reflect.defineMetadata(
       MetadataKeys.AUTHORIZATION,
       [orchestratorMiddleware],
       target,
-      propertyKey
+      propertyKey,
     );
   };
 }

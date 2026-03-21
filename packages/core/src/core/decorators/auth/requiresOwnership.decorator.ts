@@ -1,7 +1,11 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { Errors } from "../..";
 import { MetadataKeys } from "../../utils/metadata.keys";
-import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "../../authz/authOrchestrator";
+import {
+  ValidatorMetadata,
+  createAuthOrchestrator,
+  ValidationResult,
+} from "../../authz/authOrchestrator";
 import { AuthErrorFactory, AuthorizationError } from "../../authz/authErrors";
 import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
@@ -20,7 +24,7 @@ export type ParameterSource = "params" | "query" | "body";
 export type OwnershipValidator = (
   userValue: any,
   resourceValue: any,
-  req: Request
+  req: Request,
 ) => boolean | Promise<boolean>;
 
 /**
@@ -174,17 +178,17 @@ export interface OwnershipOptions extends DecoratorOptions {
  */
 export function RequiresOwnership(
   resourceName: string,
-  options?: OwnershipOptions
+  options?: OwnershipOptions,
 ): MethodDecorator {
   return function (
     target: any,
     propertyKey: string | symbol,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     // Check if this decorator is disabled (useful for testing)
     if (options?.disabled) {
       console.warn(
-        `[RequiresOwnership] Decorator disabled for ${String(propertyKey)}`
+        `[RequiresOwnership] Decorator disabled for ${String(propertyKey)}`,
       );
       return descriptor;
     }
@@ -200,7 +204,7 @@ export function RequiresOwnership(
     const isOrMode = Reflect.getMetadata(
       MetadataKeys.AUTHORIZATION_OR_MODE,
       target,
-      propertyKey
+      propertyKey,
     );
 
     if (isOrMode) {
@@ -209,7 +213,7 @@ export function RequiresOwnership(
         Reflect.getMetadata(
           MetadataKeys.AUTHORIZATION_VALIDATORS,
           target,
-          propertyKey
+          propertyKey,
         ) || [];
 
       validators.push({
@@ -223,7 +227,7 @@ export function RequiresOwnership(
             paramSource,
             arrayField,
             customValidator,
-            options
+            options,
           );
         },
         options,
@@ -233,20 +237,20 @@ export function RequiresOwnership(
         MetadataKeys.AUTHORIZATION_VALIDATORS,
         validators,
         target,
-        propertyKey
+        propertyKey,
       );
 
       // Create orchestrator middleware (will be replaced by @OrAuth if present)
       const orchestratorMiddleware = createAuthOrchestrator(
         validators,
         false,
-        propertyKey
+        propertyKey,
       );
       Reflect.defineMetadata(
         MetadataKeys.AUTHORIZATION,
         [orchestratorMiddleware],
         target,
-        propertyKey
+        propertyKey,
       );
     } else {
       // AND mode (default): Store validators for potential OR mode
@@ -254,7 +258,7 @@ export function RequiresOwnership(
         Reflect.getMetadata(
           MetadataKeys.AUTHORIZATION_VALIDATORS,
           target,
-          propertyKey
+          propertyKey,
         ) || [];
 
       validators.push({
@@ -268,7 +272,7 @@ export function RequiresOwnership(
             paramSource,
             arrayField,
             customValidator,
-            options
+            options,
           );
         },
         options,
@@ -278,20 +282,20 @@ export function RequiresOwnership(
         MetadataKeys.AUTHORIZATION_VALIDATORS,
         validators,
         target,
-        propertyKey
+        propertyKey,
       );
 
       // Create AND orchestrator by default
       const orchestratorMiddleware = createAuthOrchestrator(
         validators,
         false,
-        propertyKey
+        propertyKey,
       );
       Reflect.defineMetadata(
         MetadataKeys.AUTHORIZATION,
         [orchestratorMiddleware],
         target,
-        propertyKey
+        propertyKey,
       );
     }
 
@@ -310,7 +314,7 @@ async function validateOwnership(
   paramSource: ParameterSource,
   arrayField: boolean,
   customValidator?: OwnershipValidator,
-  options?: OwnershipOptions
+  options?: OwnershipOptions,
 ): Promise<ValidationResult> {
   // Extract user context
   const userContext = AuthConfig.extractUserContext(req);

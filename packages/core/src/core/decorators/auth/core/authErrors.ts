@@ -162,6 +162,10 @@ export class AuthErrorFactory {
     userType?: string,
     userGroups?: string[],
   ): AuthorizationError {
+    const failedValidators = validators
+      .map((v) => `${v.name}: ${v.reason}`)
+      .join("; ");
+
     return new AuthorizationError(
       "Authorization failed - none of the required conditions were met",
       {

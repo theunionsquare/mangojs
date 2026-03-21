@@ -48,7 +48,7 @@ export interface UserCacheContext {
 export function generateCacheKey(
   userContext: UserCacheContext,
   methodName: string | symbol,
-  validatorName: string
+  validatorName: string,
 ): string {
   const userId = userContext.userId || "anonymous";
   const userType = userContext.userType || "unknown";
@@ -77,7 +77,7 @@ export function generateCacheKey(
  */
 export function clearUserCache(
   cache: Cache<ValidationResult>,
-  userId: string
+  userId: string,
 ): number {
   return cache.clearPattern(`user:${userId}:`);
 }

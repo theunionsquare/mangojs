@@ -2,7 +2,11 @@ import { NextFunction, Request, RequestHandler, Response } from "express";
 import { Errors } from "../..";
 import { MetadataKeys } from "../../utils/metadata.keys";
 import { Types } from "../..";
-import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "../../authz/authOrchestrator";
+import {
+  ValidatorMetadata,
+  createAuthOrchestrator,
+  ValidationResult,
+} from "../../authz/authOrchestrator";
 import { AuthErrorFactory } from "../../authz/authErrors";
 import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
@@ -49,8 +53,8 @@ function matchesPattern(groupName: string, pattern: string): boolean {
   // Convert wildcard pattern to regex
   // Escape special regex characters except *
   const regexPattern = pattern
-    .replace(/[.+?^${}()|[\]\\]/g, "\\$&")  // Escape special chars
-    .replace(/\*/g, ".*");                   // Replace * with .*
+    .replace(/[.+?^${}()|[\]\\]/g, "\\$&") // Escape special chars
+    .replace(/\*/g, ".*"); // Replace * with .*
 
   const regex = new RegExp(`^${regexPattern}$`);
   return regex.test(groupName);
@@ -183,17 +187,17 @@ function matchesPattern(groupName: string, pattern: string): boolean {
  */
 export function RequiresAccess(
   accessMap: AccessRequirements,
-  options?: DecoratorOptions
+  options?: DecoratorOptions,
 ): MethodDecorator {
   return function (
     target: any,
     propertyKey: string | symbol,
-    descriptor: PropertyDescriptor
+    descriptor: PropertyDescriptor,
   ) {
     // Check if this decorator is disabled (useful for testing)
     if (options?.disabled) {
       console.warn(
-        `[RequiresAccess] Decorator disabled for ${String(propertyKey)}`
+        `[RequiresAccess] Decorator disabled for ${String(propertyKey)}`,
       );
       return descriptor;
     }
@@ -202,7 +206,7 @@ export function RequiresAccess(
     const isOrMode = Reflect.getMetadata(
       MetadataKeys.AUTHORIZATION_OR_MODE,
       target,
-      propertyKey
+      propertyKey,
     );
 
     if (isOrMode) {
@@ -211,7 +215,7 @@ export function RequiresAccess(
         Reflect.getMetadata(
           MetadataKeys.AUTHORIZATION_VALIDATORS,
           target,
-          propertyKey
+          propertyKey,
         ) || [];
 
       const accessMapStr = Object.entries(accessMap)
@@ -238,15 +242,16 @@ export function RequiresAccess(
           if (!allowedPatterns) {
             return {
               passed: false,
-              reason: options?.errorMessage ||
+              reason:
+                options?.errorMessage ||
                 `User type '${userType}' is not in allowed access map`,
             };
           }
 
           const hasAccess = userGroups.some((userGroup: string) =>
             allowedPatterns.some((pattern) =>
-              matchesPattern(userGroup, pattern)
-            )
+              matchesPattern(userGroup, pattern),
+            ),
           );
 
           if (hasAccess) {
@@ -255,32 +260,33 @@ export function RequiresAccess(
 
           return {
             passed: false,
-            reason: options?.errorMessage ||
+            reason:
+              options?.errorMessage ||
               `User has groups [${userGroups.join(", ")}] but needs to match patterns [${allowedPatterns.join(", ")}] for type '${userType}'`,
           };
         },
-        options,  // Store options for orchestrator
+        options, // Store options for orchestrator
       });
 
       Reflect.defineMetadata(
         MetadataKeys.AUTHORIZATION_VALIDATORS,
         validators,
         target,
-        propertyKey
+        propertyKey,
       );
 
       // Create orchestrator middleware (will be replaced if more validators are added)
       const orchestratorMiddleware = createAuthOrchestrator(
         validators,
         true,
-        propertyKey
+        propertyKey,
       );
 
       Reflect.defineMetadata(
         MetadataKeys.AUTHORIZATION,
         [orchestratorMiddleware],
         target,
-        propertyKey
+        propertyKey,
       );
     } else {
       // AND mode (default): Add middleware as before
@@ -291,21 +297,25 @@ export function RequiresAccess(
       const middleware: RequestHandler = (
         req: Request,
         res: Response,
-        next: NextFunction
+        next: NextFunction,
       ) => {
         const accessMapStr = Object.entries(accessMap)
           .map(([type, patterns]) => `${type}:[${patterns?.join(", ")}]`)
           .join(", ");
-        console.log(`[RequiresAccess] Checking access. Required: {${accessMapStr}}`);
+        console.log(
+          `[RequiresAccess] Checking access. Required: {${accessMapStr}}`,
+        );
 
         // Use AuthConfig to extract user context
         const userContext = AuthConfig.extractUserContext(req);
 
         if (!userContext || !userContext.userType || !userContext.groups) {
           const authError = AuthErrorFactory.missingUserContext(
-            `RequiresAccess({${accessMapStr}})`
+            `RequiresAccess({${accessMapStr}})`,
           );
-          console.error(`[RequiresAccess] Access denied:\n${authError.toLogString()}`);
+          console.error(
+            `[RequiresAccess] Access denied:\n${authError.toLogString()}`,
+          );
 
           // Use custom error handler if configured
           const customErrorHandler = AuthConfig.getErrorHandler(options);
@@ -329,9 +339,11 @@ export function RequiresAccess(
             `User type must be one of: ${Object.keys(accessMap).join(", ")}`,
             userType,
             userGroups,
-            `RequiresAccess({${accessMapStr}})`
+            `RequiresAccess({${accessMapStr}})`,
           );
-          console.error(`[RequiresAccess] Access denied:\n${authError.toLogString()}`);
+          console.error(
+            `[RequiresAccess] Access denied:\n${authError.toLogString()}`,
+          );
 
           // Use custom error handler if configured
           const customErrorHandler = AuthConfig.getErrorHandler(options);
@@ -345,22 +357,24 @@ export function RequiresAccess(
 
         // Check if user has at least one group matching the allowed patterns
         const hasAllowedGroup = userGroups.some((userGroup: string) =>
-          allowedPatterns.some((pattern) =>
-            matchesPattern(userGroup, pattern)
-          )
+          allowedPatterns.some((pattern) => matchesPattern(userGroup, pattern)),
         );
 
         if (hasAllowedGroup) {
-          console.log(`[RequiresAccess] Access granted for ${userType} with groups: ${userGroups.join(", ")}`);
+          console.log(
+            `[RequiresAccess] Access granted for ${userType} with groups: ${userGroups.join(", ")}`,
+          );
           next();
         } else {
           const authError = AuthErrorFactory.accessDenied(
             `User type '${userType}' needs groups matching patterns: ${allowedPatterns.join(", ")}`,
             userType,
             userGroups,
-            `RequiresAccess({${accessMapStr}})`
+            `RequiresAccess({${accessMapStr}})`,
           );
-          console.error(`[RequiresAccess] Access denied:\n${authError.toLogString()}`);
+          console.error(
+            `[RequiresAccess] Access denied:\n${authError.toLogString()}`,
+          );
 
           // Use custom error handler if configured
           const customErrorHandler = AuthConfig.getErrorHandler(options);
@@ -377,7 +391,7 @@ export function RequiresAccess(
         MetadataKeys.AUTHORIZATION,
         middlewares,
         target,
-        propertyKey
+        propertyKey,
       );
     }
   };
