@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Errors } from "../../..";
+import { Errors } from "..";
 import { AuthorizationError, AuthErrorFactory } from "./authErrors";
 import { AuthConfig, DecoratorOptions } from "./authConfig";
 import { authCache, generateCacheKey } from "./authCacheUtils";
@@ -18,7 +18,7 @@ export interface ValidationResult {
  * Can be async for validators that need to perform async operations.
  */
 export type AuthValidator = (
-  req: Request
+  req: Request,
 ) => ValidationResult | Promise<ValidationResult>;
 
 /**
@@ -42,12 +42,12 @@ export interface ValidatorMetadata {
 export function createAuthOrchestrator(
   validators: ValidatorMetadata[],
   useOrMode: boolean,
-  methodName: string | symbol
+  methodName: string | symbol,
 ): (req: Request, res: Response, next: NextFunction) => Promise<void> {
   return async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<void> => {
     if (validators.length === 0) {
       // No validators - allow access
@@ -70,7 +70,6 @@ export function createAuthOrchestrator(
           let cacheSource = "";
 
           if (cachingEnabled && userContext) {
-            // Generate cache key
             const cacheKey = generateCacheKey(
               {
                 userId: userContext.raw?.id || userContext.raw?.userId,
@@ -78,10 +77,9 @@ export function createAuthOrchestrator(
                 groups: userContext.groups,
               },
               methodName,
-              v.name
+              v.name,
             );
 
-            // Try to get from cache
             const cachedResult = authCache.get(cacheKey);
             if (cachedResult) {
               result = cachedResult;
@@ -90,22 +88,19 @@ export function createAuthOrchestrator(
               result = await v.validator(req);
               cacheSource = " [COMPUTED]";
 
-              // Cache the result
               const ttl = AuthConfig.getCacheTTL(v.options);
               authCache.set(cacheKey, result, ttl);
             }
           } else {
-            // No caching - execute validator
             result = await v.validator(req);
             cacheSource = "";
           }
 
-          // Log if audit logging is enabled
           if (AuthConfig.isAuditLogEnabled(v.options)) {
             console.log(
               `[OrAuth] ${String(methodName)} - ${v.name}: ${
                 result.passed ? "PASS" : "FAIL"
-              }${cacheSource}${result.reason ? ` (${result.reason})` : ""}`
+              }${cacheSource}${result.reason ? ` (${result.reason})` : ""}`,
             );
           }
 
@@ -114,7 +109,7 @@ export function createAuthOrchestrator(
             passed: result.passed,
             reason: result.reason || "Validation failed",
           };
-        })
+        }),
       );
 
       const anyPassed = results.some((r) => r.passed);
@@ -124,39 +119,31 @@ export function createAuthOrchestrator(
           .filter((r) => r.passed)
           .map((r) => r.name);
 
-        // Log if audit logging is enabled (check any validator's options)
         if (validators.some((v) => AuthConfig.isAuditLogEnabled(v.options))) {
           console.log(
             `[OrAuth] ${String(
-              methodName
-            )} - Access granted via: ${passedValidators.join(", ")}`
+              methodName,
+            )} - Access granted via: ${passedValidators.join(", ")}`,
           );
         }
         next();
       } else {
-        // Create detailed error
-        const failedValidators = results.map((r) => ({
-          name: r.name,
-          reason: r.reason,
-        }));
-
         const authError = AuthErrorFactory.orModeFailure(
           results,
           userType,
-          userGroups
+          userGroups,
         );
 
-        // Log if audit logging is enabled
         if (validators.some((v) => AuthConfig.isAuditLogEnabled(v.options))) {
           console.error(
-            `[OrAuth] ${String(methodName)} - Access denied:
-${authError.toLogString()}`
+            `[OrAuth] ${String(methodName)} - Access denied:\n${authError.toLogString()}`,
           );
         }
 
-        // Use first validator's error handler or default
+        AuthConfig.trackUnauthorized(req, authError);
+
         const customErrorHandler = AuthConfig.getErrorHandler(
-          validators[0]?.options
+          validators[0]?.options,
         );
 
         if (customErrorHandler) {
@@ -168,13 +155,11 @@ ${authError.toLogString()}`
     } else {
       // AND logic: All validators must pass
       for (const v of validators) {
-        // Check if caching is enabled for this validator
         const cachingEnabled = AuthConfig.isCachingEnabled(v.options);
         let result: ValidationResult;
         let cacheSource = "";
 
         if (cachingEnabled && userContext) {
-          // Generate cache key
           const cacheKey = generateCacheKey(
             {
               userId: userContext.raw?.id || userContext.raw?.userId,
@@ -182,10 +167,9 @@ ${authError.toLogString()}`
               groups: userContext.groups,
             },
             methodName,
-            v.name
+            v.name,
           );
 
-          // Try to get from cache
           const cachedResult = authCache.get(cacheKey);
           if (cachedResult) {
             result = cachedResult;
@@ -194,43 +178,39 @@ ${authError.toLogString()}`
             result = await v.validator(req);
             cacheSource = " [COMPUTED]";
 
-            // Cache the result
             const ttl = AuthConfig.getCacheTTL(v.options);
             authCache.set(cacheKey, result, ttl);
           }
         } else {
-          // No caching - execute validator
           result = await v.validator(req);
           cacheSource = "";
         }
 
-        // Log if audit logging is enabled
         if (AuthConfig.isAuditLogEnabled(v.options)) {
           console.log(
             `[AndAuth] ${String(methodName)} - ${v.name}: ${
               result.passed ? "PASS" : "FAIL"
-            }${cacheSource}${result.reason ? ` (${result.reason})` : ""}`
+            }${cacheSource}${result.reason ? ` (${result.reason})` : ""}`,
           );
         }
 
         if (!result.passed) {
-          // Create detailed error
           const authError = AuthErrorFactory.andModeFailure(
             { name: v.name, reason: result.reason || "Validation failed" },
             userType,
-            userGroups
+            userGroups,
           );
 
-          // Log if audit logging is enabled
           if (AuthConfig.isAuditLogEnabled(v.options)) {
             console.error(
               `[AndAuth] ${String(methodName)} - Access denied by ${
                 v.name
-              }:\n${authError.toLogString()}`
+              }:\n${authError.toLogString()}`,
             );
           }
 
-          // Use configured error handler if available
+          AuthConfig.trackUnauthorized(req, authError);
+
           const customErrorHandler = AuthConfig.getErrorHandler(v.options);
 
           if (customErrorHandler) {
@@ -242,12 +222,11 @@ ${authError.toLogString()}`
         }
       }
 
-      // Log if audit logging is enabled (check any validator's options)
       if (validators.some((v) => AuthConfig.isAuditLogEnabled(v.options))) {
         console.log(
           `[AndAuth] ${String(
-            methodName
-          )} - Access granted. All validators passed.`
+            methodName,
+          )} - Access granted. All validators passed.`,
         );
       }
       next();

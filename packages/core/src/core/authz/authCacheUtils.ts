@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { Cache } from "../../../cache";
+import { Cache } from "../cache";
 import { ValidationResult } from "./authOrchestrator";
 
 /**
@@ -50,7 +50,6 @@ export function generateCacheKey(
   methodName: string | symbol,
   validatorName: string
 ): string {
-  // Create user identifier
   const userId = userContext.userId || "anonymous";
   const userType = userContext.userType || "unknown";
 
@@ -65,10 +64,7 @@ export function generateCacheKey(
           .substring(0, 8)
       : "none";
 
-  // Combine into cache key
-  return `auth:user:${userId}:${userType}:${groupsHash}:${String(
-    methodName
-  )}:${validatorName}`;
+  return `auth:user:${userId}:${userType}:${groupsHash}:${String(methodName)}:${validatorName}`;
 }
 
 /**

@@ -21,7 +21,7 @@ export interface AuthErrorDetails {
  */
 export class AuthorizationError extends Error {
   public readonly code = "NOT_AUTHORIZED";
-  public readonly statusCode = 401;
+  public readonly statusCode = 403;
   public readonly details: AuthErrorDetails;
 
   constructor(message: string, details: AuthErrorDetails) {
@@ -161,10 +161,6 @@ export class AuthErrorFactory {
     userType?: string,
     userGroups?: string[]
   ): AuthorizationError {
-    const failedValidators = validators
-      .map((v) => `${v.name}: ${v.reason}`)
-      .join("; ");
-
     return new AuthorizationError(
       "Authorization failed - none of the required conditions were met",
       {

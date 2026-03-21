@@ -23,15 +23,16 @@ export {
   AuthorizationError,
   AuthErrorFactory,
   AuthErrorDetails,
-} from "./core/authErrors";
+} from "../../authz/authErrors";
 export {
   AuthConfig,
   AuthConfigOptions,
   DecoratorOptions,
+  HasPermissionsOptions,
   AuthErrorHandler,
   UserContextExtractor,
   defaultUserContextExtractor,
-} from "./core/authConfig";
+} from "../../authz/authConfig";
 
 // Auth-specific cache utilities
 export {
@@ -39,7 +40,7 @@ export {
   generateCacheKey,
   clearUserCache,
   UserCacheContext,
-} from "./core/authCacheUtils";
+} from "../../authz/authCacheUtils";
 
 // Re-export generic cache types from core/cache for convenience
 export type { CacheStats, CacheOptions, CacheEntry } from "../../cache";

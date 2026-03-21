@@ -43,3 +43,6 @@ export { JWTStrategy } from "./strategies/JWTStrategy";
  * @group Strategies
  */
 export { ApiKeyStrategy } from "./strategies/ApiKeyStrategy";
+
+// Permission utilities
+export { patternToRegex, matchesPermissions } from "./permissions.utils";

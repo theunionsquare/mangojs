@@ -1,6 +1,16 @@
 import { Request, Response } from "express";
 import { AuthorizationError } from "./authErrors";
-import { IAuthContext } from "../../../auth/types";
+import { IAuthContext } from "../auth/types";
+
+/**
+ * Callback invoked whenever an authorization check fails.
+ * Receives the original request and the full authorization error.
+ * Use this to write audit logs, database records, metrics, etc.
+ */
+export type UnauthorizedTracker = (
+  req: Request,
+  error: AuthorizationError,
+) => void | Promise<void>;
 
 /**
  * Error handler function type
@@ -72,6 +82,26 @@ export interface AuthConfigOptions {
    * Default: process.env.NODE_ENV
    */
   environment?: string;
+
+  /**
+   * Callback invoked on every unauthorized request.
+   * Receives the original request and the AuthorizationError.
+   * Errors thrown inside this callback are silently swallowed.
+   *
+   * @example
+   * ```typescript
+   * AuthConfig.configure({
+   *   onUnauthorized: async (req, error) => {
+   *     await auditService.log({
+   *       userId: req.user?.id,
+   *       path: req.path,
+   *       reason: error.details.failedValidator,
+   *     });
+   *   },
+   * });
+   * ```
+   */
+  onUnauthorized?: UnauthorizedTracker;
 }
 
 /**
@@ -110,10 +140,15 @@ export interface DecoratorOptions {
    * Disable this auth check (useful for testing)
    */
   disabled?: boolean;
+}
 
+/**
+ * Options specific to the HasPermissions decorator.
+ * Extends DecoratorOptions with permission-pattern-related settings.
+ */
+export interface HasPermissionsOptions extends DecoratorOptions {
   /**
    * Separator character for permission patterns with wildcards.
-   * Used by HasPermissions decorator for wildcard matching.
    * Default: ":"
    *
    * @example
@@ -138,6 +173,7 @@ const DEFAULT_CONFIG: Required<AuthConfigOptions> = {
   cacheTTL: 60000,
   cacheMaxSize: 1000,
   environment: process.env.NODE_ENV || "development",
+  onUnauthorized: undefined as any,
 };
 
 /**
@@ -339,6 +375,37 @@ export class AuthConfig {
    */
   static getCacheMaxSize(): number {
     return this.config.cacheMaxSize;
+  }
+
+  /**
+   * Get the globally configured unauthorized tracker.
+   */
+  static getUnauthorizedTracker(): UnauthorizedTracker | undefined {
+    return this.config.onUnauthorized;
+  }
+
+  /**
+   * Fire the unauthorized tracker (if configured), swallowing any errors
+   * so that tracking issues never affect the HTTP response.
+   */
+  static trackUnauthorized(req: Request, error: AuthorizationError): void {
+    const tracker = this.getUnauthorizedTracker();
+    console.log(
+      "[AuthConfig] trackUnauthorized called. Tracker configured:",
+      !!tracker,
+    );
+    if (!tracker) return;
+    console.log("[AuthConfig] Invoking onUnauthorized tracker...");
+    try {
+      const result = tracker(req, error);
+      if (result instanceof Promise) {
+        result.catch((err) =>
+          console.error("[AuthConfig] onUnauthorized tracker threw:", err),
+        );
+      }
+    } catch (err) {
+      console.error("[AuthConfig] onUnauthorized tracker threw:", err);
+    }
   }
 }
 

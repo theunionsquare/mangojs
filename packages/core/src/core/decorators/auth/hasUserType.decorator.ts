@@ -1,8 +1,8 @@
 import { Request } from "express";
 import { MetadataKeys } from "../../utils/metadata.keys";
 import { Types } from "../../";
-import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "./core/authOrchestrator";
-import { AuthConfig, DecoratorOptions } from "./core/authConfig";
+import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "../../authz/authOrchestrator";
+import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
 /**
  * Method decorator that restricts access to routes based on user type.

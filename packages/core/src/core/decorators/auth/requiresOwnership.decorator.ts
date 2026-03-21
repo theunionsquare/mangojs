@@ -1,9 +1,9 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
 import { Errors } from "../..";
 import { MetadataKeys } from "../../utils/metadata.keys";
-import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "./core/authOrchestrator";
-import { AuthErrorFactory, AuthorizationError } from "./core/authErrors";
-import { AuthConfig, DecoratorOptions } from "./core/authConfig";
+import { ValidatorMetadata, createAuthOrchestrator, ValidationResult } from "../../authz/authOrchestrator";
+import { AuthErrorFactory, AuthorizationError } from "../../authz/authErrors";
+import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
 /**
  * Source of the resource identifier in the request

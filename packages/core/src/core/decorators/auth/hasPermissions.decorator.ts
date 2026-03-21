@@ -4,63 +4,14 @@ import {
   ValidatorMetadata,
   createAuthOrchestrator,
   ValidationResult,
-} from "./core/authOrchestrator";
-import { AuthConfig, DecoratorOptions } from "./core/authConfig";
+} from "../../authz/authOrchestrator";
+import { AuthConfig, HasPermissionsOptions } from "../../authz/authConfig";
+import { matchesPermissions } from "../../auth/permissions.utils";
 
 /**
  * Default separator for permission patterns
  */
 const DEFAULT_SEPARATOR = ":";
-
-/**
- * Converts a permission pattern with wildcards to a RegExp.
- *
- * @param pattern - Permission pattern (e.g., "idm:user:*" or "idm:*:read")
- * @param separator - The separator character used in permissions
- * @returns RegExp that matches the pattern
- *
- * @example
- * patternToRegex("idm:user:*", ":") // matches "idm:user:read", "idm:user:write"
- * patternToRegex("idm:*:read", ":") // matches "idm:user:read", "idm:group:read"
- * patternToRegex("*", ":") // matches anything
- */
-function patternToRegex(pattern: string, separator: string): RegExp {
-  // Escape special regex characters in the separator
-  const escapedSeparator = separator.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-  // Escape the pattern for regex, then replace escaped \* with regex pattern
-  const regexPattern = pattern
-    .replace(/[.*+?^${}()|[\]\\]/g, "\\$&") // Escape all special chars
-    .replace(/\\\*/g, `[^${escapedSeparator}]+`); // Replace \* with "one or more non-separator chars"
-
-  return new RegExp(`^${regexPattern}$`);
-}
-
-/**
- * Checks if user has any permission that matches the required patterns.
- * This handles the case where the PATTERN contains wildcards.
- *
- * @param userPermissions - Array of permissions the user has
- * @param requiredPatterns - Array of required permission patterns
- * @param separator - The separator character
- * @returns true if user has at least one matching permission
- */
-function userHasMatchingPermission(
-  userPermissions: string[],
-  requiredPatterns: string[],
-  separator: string,
-): boolean {
-  return requiredPatterns.some((pattern) => {
-    // If no wildcard in pattern, check if user has exact permission
-    if (!pattern.includes("*")) {
-      return userPermissions.includes(pattern);
-    }
-
-    // Pattern has wildcard - check if any user permission matches
-    const regex = patternToRegex(pattern, separator);
-    return userPermissions.some((userPerm) => regex.test(userPerm));
-  });
-}
 
 /**
  * Method decorator that restricts access to routes based on user permissions.
@@ -141,7 +92,7 @@ function userHasMatchingPermission(
  */
 export function HasPermissions(
   permissions: Array<string>,
-  options?: DecoratorOptions,
+  options?: HasPermissionsOptions,
 ): MethodDecorator {
   return function (
     target: any,
@@ -191,7 +142,7 @@ export function HasPermissions(
         }
 
         // Check if user has any matching permission
-        const hasPermission = userHasMatchingPermission(
+        const hasPermission = matchesPermissions(
           userPermissions,
           permissions,
           separator,

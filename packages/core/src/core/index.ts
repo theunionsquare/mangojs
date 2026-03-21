@@ -52,6 +52,9 @@ export * as Cache from "./cache";
 /** Authentication strategies and middleware */
 export * as Authentication from "./auth";
 
+/** Authorization configuration and utilities */
+export * as Authorization from "./authz";
+
 // =============================================================================
 // INTEGRATIONS & UTILITIES
 // =============================================================================

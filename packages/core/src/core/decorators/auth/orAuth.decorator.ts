@@ -71,7 +71,7 @@ export function OrAuth(): MethodDecorator {
       console.log(`[OrAuth] Found ${validators.length} validators, creating OR orchestrator`);
 
       // Import the orchestrator
-      const { createAuthOrchestrator } = require("./core/authOrchestrator");
+      const { createAuthOrchestrator } = require("../../authz/authOrchestrator");
 
       // Replace the middleware stack with the OR orchestrator
       const orchestratorMiddleware = createAuthOrchestrator(

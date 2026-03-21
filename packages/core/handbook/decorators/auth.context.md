@@ -10,16 +10,16 @@ Decorators for controlling access to endpoints based on user authentication and 
 
 ## Quick Reference
 
-| Decorator | Description |
-|-----------|-------------|
-| `@HasUserType(types[])` | Require specific user types |
-| `@ClassHasUserType(types[])` | Apply user type to all methods |
-| `@HasGroups(groups[])` | Require user in specific groups |
-| `@HasPermissions(perms[])` | Require specific permissions (wildcard supported) |
-| `@RequiresAccess(resource, action)` | Check resource/action permission |
-| `@RequiresOwnership(options)` | Verify user owns the resource |
-| `@NoAuth()` | Mark endpoint as public |
-| `@OrAuth()` | Apply OR logic to auth decorators |
+| Decorator                           | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
+| `@HasUserType(types[])`             | Require specific user types                       |
+| `@ClassHasUserType(types[])`        | Apply user type to all methods                    |
+| `@HasGroups(groups[])`              | Require user in specific groups                   |
+| `@HasPermissions(perms[])`          | Require specific permissions (wildcard supported) |
+| `@RequiresAccess(resource, action)` | Check resource/action permission                  |
+| `@RequiresOwnership(options)`       | Verify user owns the resource                     |
+| `@NoAuth()`                         | Mark endpoint as public                           |
+| `@OrAuth()`                         | Apply OR logic to auth decorators                 |
 
 ---
 
@@ -169,11 +169,11 @@ Verify user owns the resource being accessed.
 async updateOwnProfile(req: Request, res: Response) {}
 ```
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `resourceIdParam` | `string` | Request param containing resource ID |
-| `userIdField` | `string` | Field on resource containing owner ID |
-| `resourceLoader` | `function` | Async function to load the resource |
+| Option            | Type       | Description                           |
+| ----------------- | ---------- | ------------------------------------- |
+| `resourceIdParam` | `string`   | Request param containing resource ID  |
+| `userIdField`     | `string`   | Field on resource containing owner ID |
+| `resourceLoader`  | `function` | Async function to load the resource   |
 
 ---
 
@@ -240,6 +240,83 @@ async contentEndpoint(req: Request, res: Response) {
   // Has any admin permission OR belongs to superusers group
 }
 ```
+
+---
+
+## Configure Authorization Module
+
+Configure authorization behavior once at application startup using `AuthConfig.configure`.
+
+```typescript
+import { AuthConfig } from "@theunionsquare/mangojs-core";
+
+AuthConfig.configure({
+  userObjectPath: "user", // legacy user path if authContext is not used
+  enableAuditLog: false,
+  cacheValidationResults: true,
+  cacheTTL: 60_000,
+  cacheMaxSize: 1000,
+  onUnauthorized: async (req, error) => {
+    await auditRepository.insert({
+      path: req.originalUrl,
+      method: req.method,
+      validator: error.details.failedValidator,
+      code: error.code,
+      at: new Date().toISOString(),
+    });
+  },
+});
+```
+
+| Option                   | Type                                    | Description                                                   |
+| ------------------------ | --------------------------------------- | ------------------------------------------------------------- |
+| `userObjectPath`         | `string`                                | Dot path for legacy user extraction (example: `session.user`) |
+| `userContextExtractor`   | `(req) => context \| null`              | Custom user extraction strategy                               |
+| `errorHandler`           | `(res, error) => void`                  | Global handler for authorization errors                       |
+| `enableAuditLog`         | `boolean`                               | Enable built-in auth decision logs                            |
+| `cacheValidationResults` | `boolean`                               | Cache validator results                                       |
+| `cacheTTL`               | `number`                                | Cache entry TTL in milliseconds                               |
+| `cacheMaxSize`           | `number`                                | Maximum number of cache entries                               |
+| `onUnauthorized`         | `(req, error) => void \| Promise<void>` | Hook called on denied authorization requests                  |
+
+### Notes
+
+- Configuration is global and shared by all auth decorators.
+- `AuthConfig.reset()` restores defaults (useful in tests).
+
+---
+
+## Unauthorized Request Tracking (Global)
+
+Track denied authorization attempts once at application startup using `AuthConfig.configure`.
+This is global configuration and applies to all auth decorators automatically.
+
+```typescript
+import { AuthConfig } from "@theunionsquare/mangojs-core";
+
+AuthConfig.configure({
+  onUnauthorized: async (req, error) => {
+    // Example: write an audit entry to DB or external logging system
+    await auditRepository.insert({
+      userId: (req as any).authContext?.user?.id ?? null,
+      method: req.method,
+      path: req.originalUrl,
+      ip: req.ip,
+      code: error.code,
+      validator: error.details.failedValidator,
+      required: error.details.required,
+      actual: error.details.actual,
+      timestamp: new Date().toISOString(),
+    });
+  },
+});
+```
+
+### Notes
+
+- `onUnauthorized` runs when access is denied by auth decorators.
+- Tracking failures do not block the HTTP response flow.
+- You do not need to configure tracking on each endpoint.
 
 ---
 

@@ -4,8 +4,8 @@ import {
   ValidatorMetadata,
   createAuthOrchestrator,
   ValidationResult,
-} from "./core/authOrchestrator";
-import { AuthConfig, DecoratorOptions } from "./core/authConfig";
+} from "../../authz/authOrchestrator";
+import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
 
 /**
  * Method decorator that restricts access to routes based on user groups.
