@@ -454,8 +454,19 @@
                     <div class="install-step" data-aos="fade-up">
                         <span class="step-badge">1</span>
                         <h4>Install MangoJS</h4>
+                        <p class="step-instruction">A. Configure .npmrc to download from GitHub:</p>
                         <div class="code-block">
-                            <code>npm install mangojs-core</code>
+                            <code>@theunionsquare:registry=https://npm.pkg.github.com</code>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="step-instruction">B. Install the package:</p>
+                        <div class="code-block">
+                            <code>pnpm install @theunionsquare/mangojs-core</code>
                             <button class="copy-btn" onclick="copyCode(this)">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>

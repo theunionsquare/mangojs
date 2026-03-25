@@ -396,6 +396,7 @@ export class AuthConfig {
     );
     if (!tracker) return;
     console.log("[AuthConfig] Invoking onUnauthorized tracker...");
+    console.log((req as any).authContext)
     try {
       const result = tracker(req, error);
       if (result instanceof Promise) {
