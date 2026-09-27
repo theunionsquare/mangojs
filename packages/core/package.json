@@ -33,7 +33,7 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "prepublishOnly": "pnpm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-strip-types --test src/**/*.test.ts"
   },
   "keywords": [
     "nodejs",
