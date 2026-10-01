@@ -12,8 +12,8 @@ coverage
 *.js
 *.js.map
 *.d.ts
-*.test.ts
-*.spec.ts
+*.test.js
+*.spec.js
 
 # Allow scripts folder JS files
 !scripts/*.js

@@ -11,6 +11,8 @@ export { Controller } from "./http/controller.decorator";
 export { Methods, Get, Post, Put, Delete, Use } from "./http/handlers.decorator";
 export type { IRouter } from "./http/handlers.decorator";
 export { Middleware } from "./http/middleware.decorator";
+export { RateLimit } from "./http/rate-limit.decorator";
+export type { RateLimitOptions } from "../middlewares/rateLimit";
 
 // SCHEDULER
 export { Schedule } from "./scheduler";

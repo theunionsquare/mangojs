@@ -88,7 +88,7 @@ Examples:
   // Step 2: Build core package
   console.log('\n🔨 Step 2: Building @mangojs/core...');
   if (!dryRun) {
-    exec('pnpm --filter @mangojs/core build');
+    exec('pnpm --filter @theunionsquare/mangojs-core build');
   }
 
   // Step 3: Create Docusaurus version

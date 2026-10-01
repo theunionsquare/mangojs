@@ -15,3 +15,4 @@ export * from "./types";
 // Middlewares
 export * as userInfo from "./userInfo";
 export * as requestTime from "./requestTime";
+export * as rateLimit from "./rateLimit";
