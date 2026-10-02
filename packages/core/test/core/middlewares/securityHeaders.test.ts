@@ -88,3 +88,26 @@ test("createSecurityHeaders accepts raw helmet options and allows opting a branc
     server.close();
   }
 });
+
+test("createSecurityHeaders merges a partial override over the defaults instead of replacing them", async () => {
+  const server = startServer(
+    createSecurityHeaders({
+      api: { hsts: false },
+    }),
+  );
+  try {
+    await new Promise<void>((resolve) => server.once("listening", resolve));
+    const { port } = server.address() as AddressInfo;
+
+    const response = await get(port, "/");
+    // The override only touched hsts — the default strict CSP must survive.
+    assert.ok(
+      (response.headers.get("content-security-policy") ?? "").includes(
+        "default-src 'none'",
+      ),
+    );
+    assert.equal(response.headers.get("strict-transport-security"), null);
+  } finally {
+    server.close();
+  }
+});

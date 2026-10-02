@@ -29,6 +29,24 @@ export interface SecurityHeadersOptions {
 
 const DEFAULT_DOCS_PATH = "/docs";
 
+/**
+ * Shallow-merges helmet options per top-level key (e.g. `hsts`,
+ * `contentSecurityPolicy`). The explicit `HelmetOptions` return type keeps
+ * TypeScript from trying to infer a union/intersection of two already-huge
+ * conditional types, which it can't represent.
+ */
+function mergeHelmetOptions(
+  defaults: HelmetOptions,
+  overrides: HelmetOptions,
+): HelmetOptions {
+  // `HelmetOptions` is a union of mutually-exclusive shapes (it forbids
+  // mixing an option with its legacy alias via `?: never`), which TypeScript
+  // can't re-verify after a generic spread merge. The cast is safe as long
+  // as callers don't mix an option with its legacy alias across defaults
+  // and overrides — the same constraint `helmet()` itself enforces.
+  return { ...defaults, ...overrides } as unknown as HelmetOptions;
+}
+
 const defaultApiOptions: HelmetOptions = {
   contentSecurityPolicy: {
     useDefaults: false,
@@ -58,16 +76,22 @@ const defaultDocsOptions: HelmetOptions = {
  * Requests under `docsPath` get a relaxed policy so Swagger UI can render;
  * everything else gets the strict `api` policy.
  *
+ * `api`/`docs` options are shallow-merged over the defaults (per top-level
+ * helmet option, e.g. `contentSecurityPolicy`, `hsts`), not replaced
+ * wholesale — overriding `hsts` alone doesn't require re-declaring the
+ * default CSP too. Supply a full `contentSecurityPolicy` to replace that
+ * piece entirely; it isn't deep-merged with the default directives.
+ *
  * Use directly with `.expressUse(...)` for manual control, or configure via
  * `ServerBuilder.setSecurityHeaders(...)` — `ServerBuilder` applies this by
  * default, since forgetting to wire up security headers is a real recurring
  * failure mode, not a hypothetical one.
  *
  * @example
- * // Manual, API-only service with a custom CSP
+ * // Keep the default CSP, just scope HSTS to production
  * new ServerBuilder().expressUse(
  *   Middlewares.securityHeaders.createSecurityHeaders({
- *     api: { contentSecurityPolicy: { directives: { "default-src": ["'self'"] } } },
+ *     api: { hsts: isProduction ? { maxAge: 15552000, includeSubDomains: true } : false },
  *   }),
  * );
  */
@@ -76,8 +100,18 @@ export function createSecurityHeaders(
 ): RequestHandler {
   const docsPath = options.docsPath ?? DEFAULT_DOCS_PATH;
 
-  const apiOptions = options.api === undefined ? defaultApiOptions : options.api;
-  const docsOptions = options.docs === undefined ? defaultDocsOptions : options.docs;
+  const apiOptions =
+    options.api === undefined
+      ? defaultApiOptions
+      : options.api === false
+        ? false
+        : mergeHelmetOptions(defaultApiOptions, options.api);
+  const docsOptions =
+    options.docs === undefined
+      ? defaultDocsOptions
+      : options.docs === false
+        ? false
+        : mergeHelmetOptions(defaultDocsOptions, options.docs);
 
   const apiHandler = apiOptions === false ? undefined : helmet(apiOptions);
   const docsHandler = docsOptions === false ? undefined : helmet(docsOptions);
