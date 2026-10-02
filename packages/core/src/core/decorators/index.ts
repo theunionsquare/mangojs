@@ -14,6 +14,15 @@ export { Middleware } from "./http/middleware.decorator";
 export { RateLimit } from "./http/rate-limit.decorator";
 export type { RateLimitOptions } from "../middlewares/rateLimit";
 
+// AUDIT
+export { Audit, AuditOptions } from "./audit/audit.decorator";
+export {
+  AuditConfig,
+  AuditConfigOptions,
+  AuditEvent,
+  AuditTracker,
+} from "./audit/auditConfig";
+
 // SCHEDULER
 export { Schedule } from "./scheduler";
 
