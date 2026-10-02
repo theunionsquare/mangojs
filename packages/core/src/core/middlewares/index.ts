@@ -16,3 +16,4 @@ export * from "./types";
 export * as userInfo from "./userInfo";
 export * as requestTime from "./requestTime";
 export * as rateLimit from "./rateLimit";
+export * as securityHeaders from "./securityHeaders";

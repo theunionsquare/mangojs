@@ -5,8 +5,14 @@ import { IApplicationPreCheck } from '../applications/types'
 import swaggerUi from 'swagger-ui-express'
 import { middlewareRequestTime } from '../middlewares/requestTime'
 import { middlewareAuthContext } from '../middlewares/userInfo'
+import {
+    createSecurityHeaders,
+    SecurityHeadersOptions,
+} from '../middlewares/securityHeaders'
 import { ScheduleRegistry } from '../scheduler/ScheduleRegistry'
 import { ScheduledTaskConstructor } from '../scheduler/types'
+
+const DEFAULT_DOCS_PATH = '/docs'
 
 /**
  * ServerBuilder - Builder pattern for Express HTTP server configuration.
@@ -38,6 +44,7 @@ export class ServerBuilder {
     private __check: IApplicationPreCheck | undefined
     private __enableSwagger: boolean = false
     private __swaggerSpec: Record<string, unknown> = {}
+    private __securityHeaders: SecurityHeadersOptions | false | undefined
     private __scheduleRegistry: ScheduleRegistry | undefined
     express: ApplicationExpress | undefined
 
@@ -73,6 +80,19 @@ export class ServerBuilder {
             await this.__check.startCheck()
         }
         this.express = new ApplicationExpress(this.__routes)
+
+        // Security headers (CSP, HSTS, X-Frame-Options, etc.) are applied by
+        // default — ahead of everything else — so forgetting to wire them up
+        // isn't a way to end up with none. Pass `false` to setSecurityHeaders
+        // to opt out entirely.
+        if (this.__securityHeaders !== false) {
+            this.express.instance.use(
+                createSecurityHeaders({
+                    docsPath: DEFAULT_DOCS_PATH,
+                    ...this.__securityHeaders,
+                })
+            )
+        }
 
         // default config
         this.express.instance.use(express.json())
@@ -187,6 +207,20 @@ export class ServerBuilder {
      */
     public setSwaggerSpec(swaggerSpec: Record<string, unknown>): this {
         this.__swaggerSpec = swaggerSpec
+        return this
+    }
+
+    /**
+     * Configure HTTP security headers (CSP, HSTS, X-Frame-Options, etc.).
+     * Applied by default with a strict policy even if this is never called —
+     * pass `false` to disable them entirely, or an options object to override
+     * the defaults. See `Middlewares.securityHeaders.createSecurityHeaders`
+     * for the full set of options, including the `/docs` carve-out for
+     * Swagger UI.
+     * @param options - Security header overrides, or `false` to disable
+     */
+    public setSecurityHeaders(options: SecurityHeadersOptions | false): this {
+        this.__securityHeaders = options
         return this
     }
 }
