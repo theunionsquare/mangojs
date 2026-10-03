@@ -1,6 +1,5 @@
 import { Request } from "express";
 import { MetadataKeys } from "../../utils/metadata.keys";
-import { Types } from "../../";
 import {
   ValidatorMetadata,
   createAuthOrchestrator,
@@ -91,7 +90,7 @@ import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
  * @see {@link RequiresAccess} for combined user type and group validation
  */
 export function HasUserType(
-  userTypes: Types.enums.AuthUserType[],
+  userTypes: string[],
   options?: DecoratorOptions,
 ): MethodDecorator {
   return function (
@@ -130,7 +129,7 @@ export function HasUserType(
           };
         }
 
-        const actualUserType = userContext.userType as Types.enums.AuthUserType;
+        const actualUserType = userContext.userType;
         if (userTypes.includes(actualUserType)) {
           return { passed: true };
         }
