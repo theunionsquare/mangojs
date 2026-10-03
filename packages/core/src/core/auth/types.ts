@@ -242,3 +242,57 @@ export interface GenerateTokenPayload {
   /** Additional claims */
   [key: string]: any;
 }
+
+/**
+ * Marker interface for apps that sign their own JWTs directly (e.g. via
+ * `jsonwebtoken.sign()`), bypassing `JWTStrategy.generateToken()` and
+ * therefore {@link GenerateTokenPayload} too.
+ *
+ * `JWTStrategy.authenticate()` reads `payload.userType` (falling back to
+ * `payload.type`, then `payload.role`) to populate `IAuthUser.userType`,
+ * which every user-type-aware decorator (`HasUserType`, and
+ * `RequiresOwnership`'s admin-bypass patterns) depends on. If an app signs
+ * its own tokens and forgets this claim, those decorators don't error -
+ * they just always fail, since `userType` silently defaults to `"user"`.
+ *
+ * Extend your app's own token payload type from this interface so a
+ * missing `userType` claim is a compile error instead of a
+ * silently-always-failing authorization check.
+ *
+ * `userType` is intentionally a plain `string`, not an enum - this library
+ * has no opinion on what user types your app needs (`"ADMIN"`,
+ * `"platform_admin"`, `"PARTNER"`, ...); it only requires that *some* value
+ * is present.
+ *
+ * Deliberately NOT `extends Omit<GenerateTokenPayload, "userType">`: that
+ * type carries `GenerateTokenPayload`'s `[key: string]: any` index
+ * signature, and a string index signature on an interface makes TypeScript
+ * drop ALL named properties' requiredness once the interface is wrapped in
+ * another `Omit<...>` downstream (as app payload types commonly are, e.g.
+ * `Promise<Omit<MyTokenPayload, "type">>`) - silently defeating the one
+ * guarantee this type exists to provide. Keep this interface to exactly the
+ * one field it needs, with no index signature.
+ *
+ * @example
+ * ```typescript
+ * import type { RequiredAuthClaims } from "@theunionsquare/mangojs-core";
+ *
+ * interface MyTokenPayload extends RequiredAuthClaims {
+ *   sub: string;
+ *   email: string;
+ *   type: "access" | "refresh"; // app-specific claim, unrelated to userType
+ * }
+ *
+ * // Missing `userType` below is now a compile error, not a silent
+ * // runtime authorization bypass:
+ * const payload: MyTokenPayload = {
+ *   sub: user.uid,
+ *   email: user.email,
+ *   type: "access",
+ *   userType: user.isPlatformAdmin ? "ADMIN" : "USER",
+ * };
+ * ```
+ */
+export interface RequiredAuthClaims {
+  userType: string;
+}

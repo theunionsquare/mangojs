@@ -50,12 +50,28 @@ export interface OwnershipOptions extends DecoratorOptions {
   paramSource?: ParameterSource;
 
   /**
-   * Whether the user field contains an array of IDs
-   * If true, checks if resource ID is in the user's array
-   * If false, checks direct equality
-   * @default false
+   * When the resolved user field value is an array of objects (e.g.
+   * membership records) rather than scalar IDs, the key within each object
+   * to compare against the resource value.
+   *
+   * Array vs. scalar is detected automatically from the resolved user field
+   * value - no separate flag needed. A plain array of IDs (e.g.
+   * `["org1", "org2"]`) works with no `arrayKey`; an array of objects (e.g.
+   * `[{ tenant_id: "t1" }, ...]`) needs `arrayKey: "tenant_id"` to know which
+   * property to compare.
+   *
+   * @example
+   * ```typescript
+   * // req.user.memberships = [{ tenant_id: "t1" }, { tenant_id: "t2" }]
+   * @RequiresOwnership("tenant", {
+   *   userField: "memberships",
+   *   paramName: "uid",
+   *   arrayKey: "tenant_id",
+   * })
+   * // Checks: req.user.memberships.some(m => m.tenant_id === req.params.uid)
+   * ```
    */
-  arrayField?: boolean;
+  arrayKey?: string;
 
   /**
    * Custom validation function for complex ownership logic
@@ -107,13 +123,24 @@ export interface OwnershipOptions extends DecoratorOptions {
  *     // Checks: req.user.partnerUuid === req.params.id
  *   }
  *
- *   // Multi-organization access (array field)
+ *   // Multi-organization access - userField resolves to an array of IDs,
+ *   // detected automatically (no arrayField flag needed)
  *   @RequiresOwnership("organization", {
  *     userField: "organizationIds",
- *     arrayField: true
  *   })
  *   async getOrgData(@Param("organizationId") organizationId: string) {
  *     // Checks: req.user.organizationIds.includes(req.params.organizationId)
+ *   }
+ *
+ *   // Array of membership objects - arrayKey picks the field to compare
+ *   // req.user.memberships = [{ tenant_id: "t1" }, { tenant_id: "t2" }]
+ *   @RequiresOwnership("tenant", {
+ *     userField: "memberships",
+ *     paramName: "uid",
+ *     arrayKey: "tenant_id",
+ *   })
+ *   async getTenant(@Param("uid") uid: string) {
+ *     // Checks: req.user.memberships.some(m => m.tenant_id === req.params.uid)
  *   }
  *
  *   // Query parameter source
@@ -197,7 +224,6 @@ export function RequiresOwnership(
     const userField = options?.userField || `${resourceName}Id`;
     const paramName = options?.paramName || `${resourceName}Id`;
     const paramSource = options?.paramSource || "params";
-    const arrayField = options?.arrayField || false;
     const customValidator = options?.customValidator;
 
     // Check if OR mode is enabled
@@ -225,7 +251,6 @@ export function RequiresOwnership(
             userField,
             paramName,
             paramSource,
-            arrayField,
             customValidator,
             options,
           );
@@ -270,7 +295,6 @@ export function RequiresOwnership(
             userField,
             paramName,
             paramSource,
-            arrayField,
             customValidator,
             options,
           );
@@ -312,7 +336,6 @@ async function validateOwnership(
   userField: string,
   paramName: string,
   paramSource: ParameterSource,
-  arrayField: boolean,
   customValidator?: OwnershipValidator,
   options?: OwnershipOptions,
 ): Promise<ValidationResult> {
@@ -386,27 +409,29 @@ async function validateOwnership(
     }
   }
 
-  // Array field check
-  if (arrayField) {
-    if (!Array.isArray(userValue)) {
-      return {
-        passed: false,
-        reason:
-          options?.errorMessage ||
-          `Resource access denied: User field '${userField}' is not an array`,
-      };
-    }
+  // Array vs. scalar is inferred from the resolved user field value - no
+  // separate flag needed. `arrayKey` only matters when the value is an array.
+  if (Array.isArray(userValue)) {
+    const arrayKey = options?.arrayKey;
+    const hasAccess = arrayKey
+      ? userValue.some(
+          (item) => item != null && String(item[arrayKey]) === String(resourceValue),
+        )
+      : userValue.some((item) => String(item) === String(resourceValue));
 
-    const hasAccess = userValue.includes(resourceValue);
     if (hasAccess) {
       return { passed: true };
     }
+
+    const displayValues = arrayKey
+      ? userValue.map((item) => item?.[arrayKey])
+      : userValue;
 
     return {
       passed: false,
       reason:
         options?.errorMessage ||
-        `Resource access denied: ${resourceName}Id '${resourceValue}' not in user's accessible ${resourceName}s [${userValue.join(", ")}]`,
+        `Resource access denied: ${resourceName}Id '${resourceValue}' not in user's accessible ${resourceName}s [${displayValues.join(", ")}]`,
     };
   }
 
