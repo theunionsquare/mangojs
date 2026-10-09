@@ -1,6 +1,6 @@
 {
   "name": "@theunionsquare/mangojs-core",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A lightweight Node.js backend framework for microservices with code injection, Express API integration, and AI-driven development support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,7 +48,7 @@
     "node": ">=23.0.0"
   },
   "peerDependencies": {
-    "express": "^4.18.0"
+    "express": "^5.0.0"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.10",
@@ -58,7 +58,7 @@
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "dotenv": "^16.1.4",
-    "express": "^4.18.2",
+    "express": "^5.2.1",
     "express-rate-limit": "^7.4.0",
     "helmet": "^8.0.0",
     "inversify": "^7.10.6",
