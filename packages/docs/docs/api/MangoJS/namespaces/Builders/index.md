@@ -10,7 +10,7 @@ Builder patterns
 
 ### ServerBuilder
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:37](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L37)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:37](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L37)
 
 ServerBuilder - Builder pattern for Express HTTP server configuration.
 
@@ -40,7 +40,7 @@ server.run()
 new ServerBuilder(): ServerBuilder;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:51](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L51)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:51](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L51)
 
 ###### Returns
 
@@ -54,7 +54,7 @@ Defined in: [packages/core/src/core/builders/ServerBuilder.ts:51](https://github
 express: ApplicationExpress;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:49](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L49)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:49](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L49)
 
 #### Methods
 
@@ -64,7 +64,7 @@ Defined in: [packages/core/src/core/builders/ServerBuilder.ts:49](https://github
 build(): Promise<ServerBuilder>;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:78](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L78)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:78](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L78)
 
 Build the server with all configured options.
 Must be called before run().
@@ -79,7 +79,7 @@ Must be called before run().
 enableSwagger(enable): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:199](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L199)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:199](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L199)
 
 Enable or disable Swagger documentation.
 
@@ -101,7 +101,7 @@ Whether to enable Swagger UI at /docs
 expressUse(handler): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:69](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L69)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:69](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L69)
 
 Add an Express middleware handler.
 
@@ -123,7 +123,7 @@ Express middleware function
 getScheduleRegistry(): ScheduleRegistry;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:182](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L182)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:182](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L182)
 
 Get the schedule registry instance.
 
@@ -137,7 +137,7 @@ Get the schedule registry instance.
 run(): void;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:58](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L58)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:58](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L58)
 
 Start the HTTP server and begin listening for requests.
 
@@ -151,7 +151,7 @@ Start the HTTP server and begin listening for requests.
 setCheck(check): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:138](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L138)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:138](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L138)
 
 Set pre-flight check handler.
 
@@ -173,7 +173,7 @@ Application pre-check instance
 setName(name): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:156](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L156)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:156](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L156)
 
 Set the server name for logging.
 
@@ -195,7 +195,7 @@ Server name
 setPort(port): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:147](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L147)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:147](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L147)
 
 Set the server port.
 
@@ -217,7 +217,7 @@ Port number to listen on
 setRoutes(routes): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:165](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L165)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:165](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L165)
 
 Set controller classes for route registration.
 
@@ -241,7 +241,7 @@ Array of controller classes decorated with
 setSecurityHeaders(options): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:222](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L222)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:222](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L222)
 
 Configure HTTP security headers (CSP, HSTS, X-Frame-Options, etc.).
 Applied by default with a strict policy even if this is never called —
@@ -268,7 +268,7 @@ Security header overrides, or `false` to disable
 setSwaggerSpec(swaggerSpec): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:208](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L208)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:208](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L208)
 
 Set the Swagger/OpenAPI specification.
 
@@ -290,7 +290,7 @@ OpenAPI specification object
 setTasks(tasks): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:174](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L174)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:174](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L174)
 
 Set scheduled task classes.
 
@@ -314,7 +314,7 @@ Array of task classes decorated with
 setUserAuthentication(enable): this;
 ```
 
-Defined in: [packages/core/src/core/builders/ServerBuilder.ts:190](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/ServerBuilder.ts#L190)
+Defined in: [packages/core/src/core/builders/ServerBuilder.ts:190](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/ServerBuilder.ts#L190)
 
 Enable or disable user authentication middleware.
 
@@ -334,7 +334,7 @@ Whether to enable authentication
 
 ### WorkerBuilder
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:22](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L22)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:22](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L22)
 
 WorkerBuilder - Builder for Worker Service
 Similar to ServerBuilder but for queue workers
@@ -360,7 +360,7 @@ workerBuilder.run()
 new WorkerBuilder(): WorkerBuilder;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:30](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L30)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:30](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L30)
 
 ###### Returns
 
@@ -374,7 +374,7 @@ Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:30](https://github
 build(): Promise<WorkerBuilder>;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:60](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L60)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:60](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L60)
 
 Build the worker service
 
@@ -388,7 +388,7 @@ Build the worker service
 getQueueManager(): QueueManager;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:139](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L139)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:139](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L139)
 
 Get the queue manager instance
 
@@ -402,7 +402,7 @@ Get the queue manager instance
 run(): void;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:35](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L35)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:35](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L35)
 
 Start the worker service
 
@@ -416,7 +416,7 @@ Start the worker service
 setCheck(check): this;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:99](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L99)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:99](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L99)
 
 Set pre-check handler
 
@@ -436,7 +436,7 @@ Set pre-check handler
 setContainer(container): this;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:131](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L131)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:131](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L131)
 
 Set Inversify container for dependency injection
 
@@ -456,7 +456,7 @@ Set Inversify container for dependency injection
 setName(name): this;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:107](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L107)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:107](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L107)
 
 Set the worker service name
 
@@ -476,7 +476,7 @@ Set the worker service name
 setRedisConfig(config): this;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:115](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L115)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:115](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L115)
 
 Set Redis configuration
 
@@ -496,7 +496,7 @@ Set Redis configuration
 setWorkers(workers): this;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:123](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L123)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:123](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L123)
 
 Set worker classes to register
 
@@ -516,7 +516,7 @@ Set worker classes to register
 shutdown(): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:89](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/builders/WorkerBuilder.ts#L89)
+Defined in: [packages/core/src/core/builders/WorkerBuilder.ts:89](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/builders/WorkerBuilder.ts#L89)
 
 Gracefully shutdown all workers
 

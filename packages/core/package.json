@@ -1,6 +1,6 @@
 {
   "name": "@theunionsquare/mangojs-core",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A lightweight Node.js backend framework for microservices with code injection, Express API integration, and AI-driven development support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -46,9 +46,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=23.0.0"
-  },
-  "peerDependencies": {
-    "express": "^5.0.0"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.10",

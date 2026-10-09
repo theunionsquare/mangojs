@@ -8,7 +8,7 @@ sidebar_label: rateLimit
 
 ### RateLimitOptions
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:12](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L12)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:12](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L12)
 
 Configuration for a MangoJS rate limiter.
 
@@ -20,7 +20,7 @@ Configuration for a MangoJS rate limiter.
 optional keyGenerator: (req) => string;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:23](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L23)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:23](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L23)
 
 Derives the bucket key for a request. Defaults to the client IP.
 Combine the IP with an account identifier (email, user id) so a single
@@ -43,7 +43,7 @@ stay capped.
 limit: number;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:16](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L16)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:16](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L16)
 
 Maximum number of requests allowed per window, per key.
 
@@ -53,7 +53,7 @@ Maximum number of requests allowed per window, per key.
 optional redis: RedisConfig;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:32](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L32)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:32](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L32)
 
 Redis connection to share the limit across every instance of a
 service. Omit to fall back to an in-memory store (per-process only).
@@ -64,7 +64,7 @@ service. Omit to fall back to an in-memory store (per-process only).
 optional skipFailedRequests: boolean;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:25](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L25)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:25](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L25)
 
 Only count failed (\>=400) responses toward the limit.
 
@@ -74,7 +74,7 @@ Only count failed (\>=400) responses toward the limit.
 optional skipSuccessfulRequests: boolean;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:27](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L27)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:27](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L27)
 
 Only count successful (\<400) responses toward the limit.
 
@@ -84,7 +84,7 @@ Only count successful (\<400) responses toward the limit.
 optional storeKeyPrefix: string;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:34](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L34)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:34](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L34)
 
 Namespaces the Redis keys when several limiters share one Redis instance.
 
@@ -94,7 +94,7 @@ Namespaces the Redis keys when several limiters share one Redis instance.
 windowMs: number;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:14](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L14)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:14](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L14)
 
 How long to remember requests, in milliseconds.
 
@@ -106,7 +106,7 @@ How long to remember requests, in milliseconds.
 function createRateLimiter(options): RequestHandler;
 ```
 
-Defined in: [packages/core/src/core/middlewares/rateLimit.ts:126](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/rateLimit.ts#L126)
+Defined in: [packages/core/src/core/middlewares/rateLimit.ts:126](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/rateLimit.ts#L126)
 
 Creates a rate-limiting Express middleware with MangoJS's standard error
 response shape (via `Errors.errorHandler`, so a 429 looks like every

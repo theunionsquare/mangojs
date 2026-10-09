@@ -15,7 +15,7 @@ function middlewareAuthContext(
 next): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/middlewares/userInfo.ts:31](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/middlewares/userInfo.ts#L31)
+Defined in: [packages/core/src/core/middlewares/userInfo.ts:31](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/userInfo.ts#L31)
 
 Middleware using AuthStrategyRegistry
 

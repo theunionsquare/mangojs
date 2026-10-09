@@ -12,7 +12,7 @@ Use TypeORM repositories instead
 
 ### ~~MongoSetUpDatabaseAction~~
 
-Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:15](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L15)
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:15](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L15)
 
 MongoDB-specific database setup action.
 
@@ -32,7 +32,7 @@ This class will be removed in a future version.
 new MongoSetUpDatabaseAction(database, logger): MongoSetUpDatabaseAction;
 ```
 
-Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:19](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L19)
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:19](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L19)
 
 ###### Parameters
 
@@ -56,7 +56,7 @@ Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:
 onError(err): void;
 ```
 
-Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:62](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L62)
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:62](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L62)
 
 ###### Parameters
 
@@ -81,7 +81,7 @@ onFileContent(
 dropBeforeInsert?): Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:29](https://github.com/theunionsquare/mangojs/blob/43379e6b8ea215df9ec2c15fdcb010f216ceb499/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L29)
+Defined in: [packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts:29](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/databases/setup/MongoSetUpDatabaseAction.ts#L29)
 
 ###### Parameters
 
