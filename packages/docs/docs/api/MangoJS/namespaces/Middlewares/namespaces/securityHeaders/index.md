@@ -8,7 +8,7 @@ sidebar_label: securityHeaders
 
 ### SecurityHeadersOptions
 
-Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:8](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/securityHeaders.ts#L8)
+Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:8](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/securityHeaders.ts#L8)
 
 Configuration for MangoJS's HTTP security headers.
 
@@ -20,7 +20,7 @@ Configuration for MangoJS's HTTP security headers.
 optional api: false | HelmetOptions;
 ```
 
-Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:15](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/securityHeaders.ts#L15)
+Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:15](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/securityHeaders.ts#L15)
 
 Helmet options applied to every request outside of `docsPath`. Passed
 straight through to `helmet()` with no narrowing, so every directive and
@@ -33,7 +33,7 @@ headers on API routes entirely.
 optional docs: false | HelmetOptions;
 ```
 
-Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:22](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/securityHeaders.ts#L22)
+Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:22](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/securityHeaders.ts#L22)
 
 Helmet options applied only to requests under `docsPath`, relaxed enough
 for `swagger-ui-express` to render (it bootstraps via inline scripts and
@@ -46,7 +46,7 @@ to apply the `api` policy there too.
 optional docsPath: string;
 ```
 
-Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:27](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/securityHeaders.ts#L27)
+Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:27](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/securityHeaders.ts#L27)
 
 Path prefix routed to the `docs` policy instead of `api`. Defaults to
 the path `ServerBuilder` mounts Swagger UI at.
@@ -59,7 +59,7 @@ the path `ServerBuilder` mounts Swagger UI at.
 function createSecurityHeaders(options?): RequestHandler;
 ```
 
-Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:98](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/securityHeaders.ts#L98)
+Defined in: [packages/core/src/core/middlewares/securityHeaders.ts:98](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/securityHeaders.ts#L98)
 
 Creates a route-aware HTTP security-headers middleware (CSP, HSTS,
 X-Content-Type-Options, X-Frame-Options, etc. — see the `helmet` package).

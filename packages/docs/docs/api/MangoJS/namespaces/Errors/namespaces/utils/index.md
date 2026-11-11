@@ -16,7 +16,7 @@ Use native instanceof Error check instead
 function isError(obj): boolean;
 ```
 
-Defined in: [packages/core/src/core/errors/utils.ts:6](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/errors/utils.ts#L6)
+Defined in: [packages/core/src/core/errors/utils.ts:6](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/errors/utils.ts#L6)
 
 Checks if an object is an Error instance.
 

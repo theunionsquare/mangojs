@@ -14,7 +14,7 @@ Decorator utilities for HTTP, auth, queue, and scheduler
 
 ### AuditConfig
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:78](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L78)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:78](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L78)
 
 Global audit-tracking configuration.
 
@@ -42,7 +42,7 @@ new AuditConfig(): AuditConfig;
 static configure(options): void;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L84)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L84)
 
 Configure global audit-tracking settings.
 
@@ -62,7 +62,7 @@ Configure global audit-tracking settings.
 static getTracker(): AuditTracker;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:98](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L98)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:98](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L98)
 
 Get the currently configured audit tracker, if any.
 
@@ -76,7 +76,7 @@ Get the currently configured audit tracker, if any.
 static reset(): void;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:91](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L91)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:91](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L91)
 
 Reset to default (no-op) configuration. Useful for testing.
 
@@ -93,7 +93,7 @@ static track(
    res): void;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:106](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L106)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:106](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L106)
 
 Fire the configured audit tracker (if any), swallowing any error so
 that audit-tracking issues never affect the HTTP response.
@@ -120,7 +120,7 @@ that audit-tracking issues never affect the HTTP response.
 
 ### AuditConfigOptions
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:44](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L44)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:44](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L44)
 
 #### Properties
 
@@ -130,7 +130,7 @@ Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:44](https://
 optional onAudit: AuditTracker;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:68](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L68)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:68](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L68)
 
 Callback invoked after every `@Audit`-decorated method completes.
 Errors thrown inside this callback are caught and logged to stderr -
@@ -159,7 +159,7 @@ AuditConfig.configure({
 
 ### AuditEvent
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:7](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L7)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:7](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L7)
 
 A single audit event captured by the `@Audit` decorator once a controller
 method has finished handling a request (successfully or not).
@@ -172,7 +172,7 @@ method has finished handling a request (successfully or not).
 action: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:9](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L9)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:9](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L9)
 
 Caller-supplied action identifier, e.g. "user.platform_admin.granted"
 
@@ -182,7 +182,7 @@ Caller-supplied action identifier, e.g. "user.platform_admin.granted"
 actorId: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:15](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L15)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:15](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L15)
 
 Authenticated actor id (`IAuthUser.id`), or null if unauthenticated
 
@@ -192,7 +192,7 @@ Authenticated actor id (`IAuthUser.id`), or null if unauthenticated
 actorUserType: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:17](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L17)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:17](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L17)
 
 Authenticated actor's `userType` (`IAuthUser.userType`), or null
 
@@ -202,7 +202,7 @@ Authenticated actor's `userType` (`IAuthUser.userType`), or null
 ipAddress: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:22](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L22)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:22](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L22)
 
 ##### metadata?
 
@@ -210,7 +210,7 @@ Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:22](https://
 optional metadata: Record<string, unknown>;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:30](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L30)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:30](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L30)
 
 Opaque, caller-supplied data passed through untouched. Use this for
 app-specific concepts the framework has no notion of (audit scope,
@@ -223,7 +223,7 @@ reads it back out.
 resource: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:11](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L11)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:11](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L11)
 
 Caller-supplied resource identifier, e.g. "user"
 
@@ -233,7 +233,7 @@ Caller-supplied resource identifier, e.g. "user"
 resourceUid: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:13](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L13)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:13](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L13)
 
 Resource UID, resolved from a route param or the JSON response body
 
@@ -243,7 +243,7 @@ Resource UID, resolved from a route param or the JSON response body
 status: "success" | "failure";
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:21](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L21)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:21](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L21)
 
 "success" for a 2xx/3xx response, "failure" otherwise
 
@@ -253,7 +253,7 @@ Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:21](https://
 statusCode: number;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:19](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L19)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:19](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L19)
 
 HTTP status code the response was sent with
 
@@ -263,13 +263,13 @@ HTTP status code the response was sent with
 userAgent: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:23](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L23)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:23](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L23)
 
 ***
 
 ### AuditOptions
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:4](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L4)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:4](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L4)
 
 #### Properties
 
@@ -279,7 +279,7 @@ Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:4](https
 action: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:6](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L6)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:6](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L6)
 
 Action identifier recorded on the audit event, e.g. "user.deleted"
 
@@ -289,7 +289,7 @@ Action identifier recorded on the audit event, e.g. "user.deleted"
 optional metadata: Record<string, unknown>;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:26](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L26)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:26](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L26)
 
 Opaque data passed through untouched to the configured `onAudit`
 tracker. Use this for app-specific concepts the framework doesn't
@@ -301,7 +301,7 @@ know about (audit scope, actor-type enums, etc.).
 resource: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L8)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:8](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L8)
 
 Resource identifier recorded on the audit event, e.g. "user"
 
@@ -311,7 +311,7 @@ Resource identifier recorded on the audit event, e.g. "user"
 optional resourceUidFromResponse: (body) => string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:20](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L20)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:20](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L20)
 
 Extract the resource uid from the JSON response body instead of a
 route param - needed for create endpoints where the uid doesn't exist
@@ -334,7 +334,7 @@ it returns a non-null value.
 optional resourceUidParam: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:13](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L13)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:13](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L13)
 
 Route param holding the affected resource's uid (e.g. "uid" for
 `/users/:uid`). Default: "uid".
@@ -347,7 +347,7 @@ Route param holding the affected resource's uid (e.g. "uid" for
 type AuditTracker = (event, req, res) => void | Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:38](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/auditConfig.ts#L38)
+Defined in: [packages/core/src/core/decorators/audit/auditConfig.ts:38](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/auditConfig.ts#L38)
 
 Callback invoked whenever an `@Audit`-decorated method finishes handling
 a request. Register one via `AuditConfig.configure` to persist audit
@@ -379,7 +379,7 @@ events however the app sees fit (database, log stream, etc.).
 const QUEUE_WORKER_METADATA_KEY: typeof QUEUE_WORKER_METADATA_KEY;
 ```
 
-Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L5)
+Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/queue/queueWorker.decorator.ts#L5)
 
 ## Functions
 
@@ -389,7 +389,7 @@ Defined in: [packages/core/src/core/decorators/queue/queueWorker.decorator.ts:5]
 function Audit(options): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:58](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/audit/audit.decorator.ts#L58)
+Defined in: [packages/core/src/core/decorators/audit/audit.decorator.ts:58](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/audit/audit.decorator.ts#L58)
 
 Method decorator that records an audit event once the handler has
 finished producing a response, via the tracker registered with
@@ -438,7 +438,7 @@ class UserController {
 function loggedMethod(): any;
 ```
 
-Defined in: [packages/core/src/core/decorators/logger.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/logger.decorator.ts#L7)
+Defined in: [packages/core/src/core/decorators/logger.decorator.ts:7](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/logger.decorator.ts#L7)
 
 Method decorator that logs method calls with timestamps.
 
@@ -459,7 +459,7 @@ This decorator uses console.log which is not suitable for production.
 function RateLimit(options): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/http/rate-limit.decorator.ts:18](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/http/rate-limit.decorator.ts#L18)
+Defined in: [packages/core/src/core/decorators/http/rate-limit.decorator.ts:18](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/http/rate-limit.decorator.ts#L18)
 
 Applies a rate limit to a single route, using MangoJS's standard error
 response shape for the 429.

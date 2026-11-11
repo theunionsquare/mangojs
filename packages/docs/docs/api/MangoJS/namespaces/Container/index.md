@@ -10,7 +10,7 @@ Dependency injection container (Inversify)
 
 ### ContainerBuilder
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:208](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L208)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:208](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L208)
 
 Fluent builder for creating and configuring dependency injection containers.
 
@@ -48,7 +48,7 @@ ContainerBuilder.create("other")
 bind<T>(identifier): BindingBuilder<T>;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:250](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L250)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:250](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L250)
 
 Start a binding for a service identifier
 
@@ -82,7 +82,7 @@ builder.bind(TYPES.Factory).toFactory(() => new MyClass())
 bindAll(bindings): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:265](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L265)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:265](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L265)
 
 Bind multiple classes at once
 
@@ -111,7 +111,7 @@ builder.bindAll({
 bindAllTagged<T>(tag, implementations): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:309](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L309)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:309](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L309)
 
 Bind multiple tagged implementations at once
 
@@ -151,7 +151,7 @@ builder.bindAllTagged(AUTH_STRATEGY_TAG, [
 bindTagged<T>(tag, implementation): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:292](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L292)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:292](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L292)
 
 Bind a tagged implementation (for multi-inject patterns)
 
@@ -189,7 +189,7 @@ builder
 build(): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:554](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L554)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:554](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L554)
 
 Build and register the configured ContainerManager
 
@@ -203,7 +203,7 @@ Build and register the configured ContainerManager
 setAsDefault(): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:231](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L231)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:231](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L231)
 
 Mark this container to be set as the default when built
 
@@ -217,7 +217,7 @@ Mark this container to be set as the default when built
 useModule(module): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:330](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L330)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:330](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L330)
 
 Use a custom module to configure bindings
 
@@ -249,7 +249,7 @@ builder.useModule(PaymentModule)
 withAuth(strategies): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:501](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L501)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:501](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L501)
 
 Configure authentication with strategies
 
@@ -278,7 +278,7 @@ builder.withAuth([JWTStrategy, ApiKeyStrategy])
 withCockroachDB(options): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:404](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L404)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:404](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L404)
 
 Configure CockroachDB database and persistence
 
@@ -307,7 +307,7 @@ builder.withCockroachDB({
 withCore(options?): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:347](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L347)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:347](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L347)
 
 Add core framework bindings (logger)
 
@@ -333,7 +333,7 @@ builder.withCore({ loggerName: 'my-app', logLevel: 'info' })
 withDummyDB(): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:474](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L474)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:474](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L474)
 
 Configure a dummy/in-memory database (useful for testing)
 
@@ -353,7 +353,7 @@ builder.withDummyDB()
 withMongoDB(options): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:439](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L439)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:439](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L439)
 
 Configure MongoDB database and persistence
 
@@ -386,7 +386,7 @@ builder.withMongoDB({
 withPostgres(options): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:371](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L371)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:371](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L371)
 
 Configure PostgreSQL database and persistence
 
@@ -416,7 +416,7 @@ builder.withPostgres({
 withQueueClient(options): this;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:532](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L532)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:532](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L532)
 
 Configure QueueClient with Redis connection
 
@@ -447,7 +447,7 @@ builder.withQueueClient({
 static create(name?, parent?): ContainerBuilder;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:224](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L224)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:224](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L224)
 
 Create a new ContainerBuilder
 
@@ -473,7 +473,7 @@ Optional parent container for hierarchical DI
 
 ### ContainerManager
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:18](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L18)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:18](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L18)
 
 Wrapper class for an Inversify container.
 
@@ -497,7 +497,7 @@ if (containerManager.isBound(TYPES.MyService)) { ... }
 new ContainerManager(container, name): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:22](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L22)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:22](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L22)
 
 ###### Parameters
 
@@ -521,7 +521,7 @@ Defined in: [packages/core/src/core/container/ContainerManager.ts:22](https://gi
 createChild(childName): ContainerManager;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:65](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L65)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:65](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L65)
 
 Create a child container
 
@@ -541,7 +541,7 @@ Create a child container
 get<T>(serviceIdentifier, options?): T;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:30](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L30)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:30](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L30)
 
 Get a service from this container
 
@@ -571,7 +571,7 @@ Get a service from this container
 getAll<T>(serviceIdentifier, options?): T[];
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:44](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L44)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:44](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L44)
 
 Get all services bound to an identifier
 
@@ -601,7 +601,7 @@ Get all services bound to an identifier
 getName(): string;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:58](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L58)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:58](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L58)
 
 Get the container name
 
@@ -615,7 +615,7 @@ Get the container name
 getRawContainer(): Container;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:51](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L51)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:51](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L51)
 
 Get the underlying Inversify container
 
@@ -629,7 +629,7 @@ Get the underlying Inversify container
 isBound(serviceIdentifier): boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerManager.ts:37](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerManager.ts#L37)
+Defined in: [packages/core/src/core/container/ContainerManager.ts:37](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerManager.ts#L37)
 
 Check if a service is bound
 
@@ -647,7 +647,7 @@ Check if a service is bound
 
 ### CockroachDBOptions
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:75](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L75)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:75](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L75)
 
 Options for CockroachDB connection
 
@@ -659,7 +659,7 @@ Options for CockroachDB connection
 connection: CockroachUrl | CockroachConnection;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:76](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L76)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:76](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L76)
 
 ##### entities
 
@@ -667,7 +667,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:76](https://gi
 entities: any[];
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:77](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L77)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:77](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L77)
 
 ##### logging?
 
@@ -675,7 +675,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:77](https://gi
 optional logging: boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:79](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L79)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:79](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L79)
 
 ##### synchronize?
 
@@ -683,13 +683,13 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:79](https://gi
 optional synchronize: boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:78](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L78)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:78](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L78)
 
 ***
 
 ### CoreOptions
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:47](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L47)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:47](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L47)
 
 Options for core module
 
@@ -701,7 +701,7 @@ Options for core module
 optional loggerName: string;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:49](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L49)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:49](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L49)
 
 Logger name (default: 'server')
 
@@ -711,7 +711,7 @@ Logger name (default: 'server')
 optional logLevel: "error" | "debug" | "info" | "warn";
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:51](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L51)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:51](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L51)
 
 Log level (default: 'debug')
 
@@ -719,7 +719,7 @@ Log level (default: 'debug')
 
 ### MongoDBOptions
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:57](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L57)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:57](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L57)
 
 Options for MongoDB connection
 
@@ -731,7 +731,7 @@ Options for MongoDB connection
 databaseName: string;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:59](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L59)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:59](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L59)
 
 ##### uri
 
@@ -739,13 +739,13 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:59](https://gi
 uri: string;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:58](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L58)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:58](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L58)
 
 ***
 
 ### PostgresOptions
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:65](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L65)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:65](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L65)
 
 Options for Postgres connection
 
@@ -757,7 +757,7 @@ Options for Postgres connection
 connection: PostgresUrl | PostgresConnection;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:66](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L66)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:66](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L66)
 
 ##### entities
 
@@ -765,7 +765,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:66](https://gi
 entities: any[];
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:67](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L67)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:67](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L67)
 
 ##### logging?
 
@@ -773,7 +773,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:67](https://gi
 optional logging: boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:69](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L69)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:69](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L69)
 
 ##### synchronize?
 
@@ -781,7 +781,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:69](https://gi
 optional synchronize: boolean;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:68](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L68)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:68](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L68)
 
 ## Type Aliases
 
@@ -791,7 +791,7 @@ Defined in: [packages/core/src/core/container/ContainerBuilder.ts:68](https://gi
 type ContainerModule = (builder) => void;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerBuilder.ts:99](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerBuilder.ts#L99)
+Defined in: [packages/core/src/core/container/ContainerBuilder.ts:99](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerBuilder.ts#L99)
 
 Container module function type
 
@@ -813,7 +813,7 @@ Container module function type
 type ServiceIdentifier<TInstance> = string | symbol | Newable<TInstance> | Function;
 ```
 
-Defined in: [packages/core/src/core/container/types.ts:8](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/types.ts#L8)
+Defined in: [packages/core/src/core/container/types.ts:8](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/types.ts#L8)
 
 Service identifier for dependency injection.
 Can be a string, symbol, constructor, or function.
@@ -834,6 +834,6 @@ The type of the service instance
 const ContainerRegistry: ContainerRegistryImpl;
 ```
 
-Defined in: [packages/core/src/core/container/ContainerRegistry.ts:104](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/container/ContainerRegistry.ts#L104)
+Defined in: [packages/core/src/core/container/ContainerRegistry.ts:104](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/container/ContainerRegistry.ts#L104)
 
 Singleton instance

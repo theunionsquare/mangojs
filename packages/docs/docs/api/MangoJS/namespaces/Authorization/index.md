@@ -10,7 +10,7 @@ Authorization configuration and utilities
 
 ### AuthConfig
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:182](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L182)
+Defined in: [packages/core/src/core/authz/authConfig.ts:182](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L182)
 
 Global authentication configuration
 
@@ -34,7 +34,7 @@ new AuthConfig(): AuthConfig;
 static configure(options): void;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:198](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L198)
+Defined in: [packages/core/src/core/authz/authConfig.ts:198](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L198)
 
 Configure global auth settings
 
@@ -65,7 +65,7 @@ AuthConfig.configure({
 static extractUserContext(req): object;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:232](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L232)
+Defined in: [packages/core/src/core/authz/authConfig.ts:232](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L232)
 
 Extract user context from request using configured extractor
 
@@ -118,7 +118,7 @@ optional userType: string;
 static getCacheMaxSize(): number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:376](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L376)
+Defined in: [packages/core/src/core/authz/authConfig.ts:376](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L376)
 
 Get cache max size
 
@@ -134,7 +134,7 @@ Maximum number of cache entries
 static getCacheTTL(decoratorOptions?): number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:349](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L349)
+Defined in: [packages/core/src/core/authz/authConfig.ts:349](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L349)
 
 Get cache TTL
 
@@ -158,7 +158,7 @@ Cache TTL in milliseconds
 static getConfig(): Readonly<Required<AuthConfigOptions>>;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:210](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L210)
+Defined in: [packages/core/src/core/authz/authConfig.ts:210](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L210)
 
 Get current configuration
 
@@ -172,7 +172,7 @@ Get current configuration
 static getErrorHandler(decoratorOptions?): AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:362](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L362)
+Defined in: [packages/core/src/core/authz/authConfig.ts:362](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L362)
 
 Get error handler
 
@@ -196,7 +196,7 @@ Custom error handler if configured
 static getUnauthorizedTracker(): UnauthorizedTracker;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:383](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L383)
+Defined in: [packages/core/src/core/authz/authConfig.ts:383](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L383)
 
 Get the globally configured unauthorized tracker.
 
@@ -210,7 +210,7 @@ Get the globally configured unauthorized tracker.
 static isAuditLogEnabled(decoratorOptions?): boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:323](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L323)
+Defined in: [packages/core/src/core/authz/authConfig.ts:323](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L323)
 
 Check if audit logging is enabled
 
@@ -234,7 +234,7 @@ true if audit logging should be enabled
 static isCachingEnabled(decoratorOptions?): boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:336](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L336)
+Defined in: [packages/core/src/core/authz/authConfig.ts:336](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L336)
 
 Check if caching is enabled
 
@@ -258,7 +258,7 @@ true if caching should be enabled
 static reset(): void;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:217](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L217)
+Defined in: [packages/core/src/core/authz/authConfig.ts:217](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L217)
 
 Reset to default configuration (useful for testing)
 
@@ -272,7 +272,7 @@ Reset to default configuration (useful for testing)
 static trackUnauthorized(req, error): void;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:391](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L391)
+Defined in: [packages/core/src/core/authz/authConfig.ts:391](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L391)
 
 Fire the unauthorized tracker (if configured), swallowing any errors
 so that tracking issues never affect the HTTP response.
@@ -295,7 +295,7 @@ so that tracking issues never affect the HTTP response.
 
 ### AuthErrorFactory
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:88](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L88)
+Defined in: [packages/core/src/core/authz/authErrors.ts:88](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L88)
 
 Factory functions for creating common authorization errors
 
@@ -323,7 +323,7 @@ static accessDenied(
    validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:129](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L129)
+Defined in: [packages/core/src/core/authz/authErrors.ts:129](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L129)
 
 Create error for access requirements mismatch
 
@@ -358,7 +358,7 @@ static andModeFailure(
    userGroups?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:185](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L185)
+Defined in: [packages/core/src/core/authz/authErrors.ts:185](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L185)
 
 Create error for AND mode validation failure
 
@@ -396,7 +396,7 @@ static groupMismatch(
    userType?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:108](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L108)
+Defined in: [packages/core/src/core/authz/authErrors.ts:108](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L108)
 
 Create error for group mismatch
 
@@ -428,7 +428,7 @@ Create error for group mismatch
 static missingUserContext(validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:149](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L149)
+Defined in: [packages/core/src/core/authz/authErrors.ts:149](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L149)
 
 Create error for missing user context
 
@@ -451,7 +451,7 @@ static orModeFailure(
    userGroups?): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:160](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L160)
+Defined in: [packages/core/src/core/authz/authErrors.ts:160](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L160)
 
 Create error for OR mode validation failure
 
@@ -482,7 +482,7 @@ static userTypeMismatch(
    validatorName): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:92](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L92)
+Defined in: [packages/core/src/core/authz/authErrors.ts:92](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L92)
 
 Create error for user type mismatch
 
@@ -508,7 +508,7 @@ Create error for user type mismatch
 
 ### AuthorizationError
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:22](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L22)
+Defined in: [packages/core/src/core/authz/authErrors.ts:22](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L22)
 
 Authorization error class with detailed information
 
@@ -524,7 +524,7 @@ Authorization error class with detailed information
 new AuthorizationError(message, details): AuthorizationError;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:27](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L27)
+Defined in: [packages/core/src/core/authz/authErrors.ts:27](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L27)
 
 ###### Parameters
 
@@ -554,7 +554,7 @@ Error.constructor
 readonly code: "NOT_AUTHORIZED" = "NOT_AUTHORIZED";
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:23](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L23)
+Defined in: [packages/core/src/core/authz/authErrors.ts:23](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L23)
 
 ##### details
 
@@ -562,7 +562,7 @@ Defined in: [packages/core/src/core/authz/authErrors.ts:23](https://github.com/t
 readonly details: AuthErrorDetails;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:25](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L25)
+Defined in: [packages/core/src/core/authz/authErrors.ts:25](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L25)
 
 ##### message
 
@@ -612,7 +612,7 @@ Error.stack
 readonly statusCode: 403 = 403;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:24](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L24)
+Defined in: [packages/core/src/core/authz/authErrors.ts:24](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L24)
 
 ##### stackTraceLimit
 
@@ -646,7 +646,7 @@ Error.stackTraceLimit
 toClientResponse(): object;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:57](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L57)
+Defined in: [packages/core/src/core/authz/authErrors.ts:57](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L57)
 
 Get a safe error response for client (without sensitive details)
 
@@ -678,7 +678,7 @@ message: string;
 toFullResponse(): object;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:68](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L68)
+Defined in: [packages/core/src/core/authz/authErrors.ts:68](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L68)
 
 Get full error details (for internal logging/debugging)
 
@@ -722,7 +722,7 @@ statusCode: number;
 toLogString(): string;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:41](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L41)
+Defined in: [packages/core/src/core/authz/authErrors.ts:41](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L41)
 
 Get a formatted error message for logging
 
@@ -838,7 +838,7 @@ Error.prepareStackTrace
 
 ### AuthConfigOptions
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:36](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L36)
+Defined in: [packages/core/src/core/authz/authConfig.ts:36](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L36)
 
 Global configuration options
 
@@ -850,7 +850,7 @@ Global configuration options
 optional cacheMaxSize: number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:78](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L78)
+Defined in: [packages/core/src/core/authz/authConfig.ts:78](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L78)
 
 Maximum number of cache entries
 Default: 1000
@@ -861,7 +861,7 @@ Default: 1000
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:72](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L72)
+Defined in: [packages/core/src/core/authz/authConfig.ts:72](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L72)
 
 Cache TTL in milliseconds
 Default: 60000 (1 minute)
@@ -872,7 +872,7 @@ Default: 60000 (1 minute)
 optional cacheValidationResults: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:66](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L66)
+Defined in: [packages/core/src/core/authz/authConfig.ts:66](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L66)
 
 Enable caching of validation results
 Default: false
@@ -883,7 +883,7 @@ Default: false
 optional enableAuditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:60](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L60)
+Defined in: [packages/core/src/core/authz/authConfig.ts:60](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L60)
 
 Enable audit logging for all auth decisions
 Default: false
@@ -895,7 +895,7 @@ Note: Logging implementation will be added in future
 optional environment: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L84)
+Defined in: [packages/core/src/core/authz/authConfig.ts:84](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L84)
 
 Environment (used for conditional behavior)
 Default: process.env.NODE_ENV
@@ -906,7 +906,7 @@ Default: process.env.NODE_ENV
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:53](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L53)
+Defined in: [packages/core/src/core/authz/authConfig.ts:53](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L53)
 
 Custom error handler
 Default: uses core error handler
@@ -917,7 +917,7 @@ Default: uses core error handler
 optional onUnauthorized: UnauthorizedTracker;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:104](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L104)
+Defined in: [packages/core/src/core/authz/authConfig.ts:104](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L104)
 
 Callback invoked on every unauthorized request.
 Receives the original request and the AuthorizationError.
@@ -943,7 +943,7 @@ AuthConfig.configure({
 optional userContextExtractor: UserContextExtractor;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:47](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L47)
+Defined in: [packages/core/src/core/authz/authConfig.ts:47](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L47)
 
 Custom function to extract user context from request
 If provided, overrides userObjectPath
@@ -954,7 +954,7 @@ If provided, overrides userObjectPath
 optional userObjectPath: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:41](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L41)
+Defined in: [packages/core/src/core/authz/authConfig.ts:41](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L41)
 
 Path to user object in request (e.g., "user", "session.user")
 Default: "user"
@@ -963,7 +963,7 @@ Default: "user"
 
 ### AuthErrorDetails
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:4](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L4)
+Defined in: [packages/core/src/core/authz/authErrors.ts:4](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L4)
 
 Detailed authorization error information
 
@@ -975,7 +975,7 @@ Detailed authorization error information
 actual: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:8](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L8)
+Defined in: [packages/core/src/core/authz/authErrors.ts:8](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L8)
 
 What the user actually has
 
@@ -985,7 +985,7 @@ What the user actually has
 optional context: Record<string, any>;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:16](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L16)
+Defined in: [packages/core/src/core/authz/authErrors.ts:16](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L16)
 
 Additional context
 
@@ -995,7 +995,7 @@ Additional context
 failedValidator: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L10)
+Defined in: [packages/core/src/core/authz/authErrors.ts:10](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L10)
 
 Which decorator/validator failed
 
@@ -1005,7 +1005,7 @@ Which decorator/validator failed
 required: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L6)
+Defined in: [packages/core/src/core/authz/authErrors.ts:6](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L6)
 
 What authorization was required
 
@@ -1015,7 +1015,7 @@ What authorization was required
 optional userGroups: string[];
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:14](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L14)
+Defined in: [packages/core/src/core/authz/authErrors.ts:14](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L14)
 
 User groups if available
 
@@ -1025,7 +1025,7 @@ User groups if available
 optional userType: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authErrors.ts#L12)
+Defined in: [packages/core/src/core/authz/authErrors.ts:12](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authErrors.ts#L12)
 
 User type if available
 
@@ -1033,7 +1033,7 @@ User type if available
 
 ### DecoratorOptions
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:110](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L110)
+Defined in: [packages/core/src/core/authz/authConfig.ts:110](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L110)
 
 Per-decorator configuration options
 
@@ -1050,7 +1050,7 @@ Per-decorator configuration options
 optional auditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L120)
+Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L120)
 
 Enable audit logging for this endpoint
 Overrides global setting
@@ -1061,7 +1061,7 @@ Overrides global setting
 optional cache: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L126)
+Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L126)
 
 Enable caching for this endpoint
 Overrides global setting
@@ -1072,7 +1072,7 @@ Overrides global setting
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L132)
+Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L132)
 
 Cache TTL for this endpoint in milliseconds
 Overrides global setting
@@ -1083,7 +1083,7 @@ Overrides global setting
 optional disabled: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L142)
+Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L142)
 
 Disable this auth check (useful for testing)
 
@@ -1093,7 +1093,7 @@ Disable this auth check (useful for testing)
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L137)
+Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L137)
 
 Custom error handler for this endpoint
 
@@ -1103,7 +1103,7 @@ Custom error handler for this endpoint
 optional errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L114)
+Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L114)
 
 Custom error message for this endpoint
 
@@ -1111,7 +1111,7 @@ Custom error message for this endpoint
 
 ### HasPermissionsOptions
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:149](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L149)
+Defined in: [packages/core/src/core/authz/authConfig.ts:149](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L149)
 
 Options specific to the HasPermissions decorator.
 Extends DecoratorOptions with permission-pattern-related settings.
@@ -1128,7 +1128,7 @@ Extends DecoratorOptions with permission-pattern-related settings.
 optional auditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L120)
+Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L120)
 
 Enable audit logging for this endpoint
 Overrides global setting
@@ -1143,7 +1143,7 @@ Overrides global setting
 optional cache: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L126)
+Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L126)
 
 Enable caching for this endpoint
 Overrides global setting
@@ -1158,7 +1158,7 @@ Overrides global setting
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L132)
+Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L132)
 
 Cache TTL for this endpoint in milliseconds
 Overrides global setting
@@ -1173,7 +1173,7 @@ Overrides global setting
 optional disabled: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L142)
+Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L142)
 
 Disable this auth check (useful for testing)
 
@@ -1187,7 +1187,7 @@ Disable this auth check (useful for testing)
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L137)
+Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L137)
 
 Custom error handler for this endpoint
 
@@ -1201,7 +1201,7 @@ Custom error handler for this endpoint
 optional errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L114)
+Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L114)
 
 Custom error message for this endpoint
 
@@ -1215,7 +1215,7 @@ Custom error message for this endpoint
 optional separator: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:161](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L161)
+Defined in: [packages/core/src/core/authz/authConfig.ts:161](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L161)
 
 Separator character for permission patterns with wildcards.
 Default: ":"
@@ -1234,7 +1234,7 @@ Default: ":"
 
 ### UserCacheContext
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:8](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L8)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:8](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L8)
 
 User context for cache key generation
 
@@ -1246,7 +1246,7 @@ User context for cache key generation
 optional groups: string[];
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:11](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L11)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:11](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L11)
 
 ##### userId?
 
@@ -1254,7 +1254,7 @@ Defined in: [packages/core/src/core/authz/authCacheUtils.ts:11](https://github.c
 optional userId: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:9](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L9)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:9](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L9)
 
 ##### userType?
 
@@ -1262,13 +1262,13 @@ Defined in: [packages/core/src/core/authz/authCacheUtils.ts:9](https://github.co
 optional userType: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:10](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L10)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:10](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L10)
 
 ***
 
 ### ValidationResult
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:10](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L10)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:10](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L10)
 
 Result from an authorization validator
 
@@ -1280,7 +1280,7 @@ Result from an authorization validator
 passed: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:11](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L11)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:11](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L11)
 
 ##### reason?
 
@@ -1288,13 +1288,13 @@ Defined in: [packages/core/src/core/authz/authOrchestrator.ts:11](https://github
 optional reason: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:12](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L12)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:12](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L12)
 
 ***
 
 ### ValidatorMetadata
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:27](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L27)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:27](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L27)
 
 Type definition for validator metadata stored on methods.
 
@@ -1306,7 +1306,7 @@ Type definition for validator metadata stored on methods.
 name: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:28](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L28)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:28](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L28)
 
 ##### options?
 
@@ -1314,7 +1314,7 @@ Defined in: [packages/core/src/core/authz/authOrchestrator.ts:28](https://github
 optional options: DecoratorOptions;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:30](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L30)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:30](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L30)
 
 ##### validator
 
@@ -1322,7 +1322,7 @@ Defined in: [packages/core/src/core/authz/authOrchestrator.ts:30](https://github
 validator: AuthValidator;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:29](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L29)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:29](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L29)
 
 ## Type Aliases
 
@@ -1332,7 +1332,7 @@ Defined in: [packages/core/src/core/authz/authOrchestrator.ts:29](https://github
 type AuthErrorHandler = (res, error) => void;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:18](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L18)
+Defined in: [packages/core/src/core/authz/authConfig.ts:18](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L18)
 
 Error handler function type
 
@@ -1360,7 +1360,7 @@ type AuthValidator = (req) =>
 | Promise<ValidationResult>;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:20](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L20)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:20](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L20)
 
 Type definition for an authorization validator function.
 Returns validation result with pass/fail and optional reason.
@@ -1385,7 +1385,7 @@ Can be async for validators that need to perform async operations.
 type UnauthorizedTracker = (req, error) => void | Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:10](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L10)
+Defined in: [packages/core/src/core/authz/authConfig.ts:10](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L10)
 
 Callback invoked whenever an authorization check fails.
 Receives the original request and the full authorization error.
@@ -1423,7 +1423,7 @@ type UserContextExtractor = (req) =>
   | null;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:27](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L27)
+Defined in: [packages/core/src/core/authz/authConfig.ts:27](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L27)
 
 User context extractor function
 Allows custom logic for extracting user from request
@@ -1455,7 +1455,7 @@ Allows custom logic for extracting user from request
 const authCache: Cache<ValidationResult>;
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:104](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L104)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:104](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L104)
 
 Singleton cache instance for authorization results.
 Use this instance throughout your application.
@@ -1484,7 +1484,7 @@ authCache.clear();
 const defaultUserContextExtractor: UserContextExtractor;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:417](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L417)
+Defined in: [packages/core/src/core/authz/authConfig.ts:417](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L417)
 
 Default user context extractor
 Extracts user from req.user (standard Express pattern)
@@ -1497,7 +1497,7 @@ Extracts user from req.user (standard Express pattern)
 function clearUserCache(cache, userId): number;
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:78](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L78)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:78](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L78)
 
 Clear cache entries for a specific user.
 Useful when user permissions change.
@@ -1533,7 +1533,7 @@ function createAuthOrchestrator(
 methodName): (req, res, next) => Promise<void>;
 ```
 
-Defined in: [packages/core/src/core/authz/authOrchestrator.ts:42](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authOrchestrator.ts#L42)
+Defined in: [packages/core/src/core/authz/authOrchestrator.ts:42](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authOrchestrator.ts#L42)
 
 Creates an orchestrator middleware that runs multiple authorization validators
 with either AND or OR logic.
@@ -1598,7 +1598,7 @@ function generateCacheKey(
    validatorName): string;
 ```
 
-Defined in: [packages/core/src/core/authz/authCacheUtils.ts:48](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authCacheUtils.ts#L48)
+Defined in: [packages/core/src/core/authz/authCacheUtils.ts:48](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authCacheUtils.ts#L48)
 
 Generate cache key for validation result.
 

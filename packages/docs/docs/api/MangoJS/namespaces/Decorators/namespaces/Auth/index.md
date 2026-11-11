@@ -12,7 +12,7 @@ Authorization decorators for Express route protection.
 
 ### OwnershipOptions
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:33](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L33)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:33](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L33)
 
 Configuration options for the RequiresOwnership decorator
 
@@ -28,7 +28,7 @@ Configuration options for the RequiresOwnership decorator
 optional arrayKey: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:74](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L74)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:74](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L74)
 
 When the resolved user field value is an array of objects (e.g.
 membership records) rather than scalar IDs, the key within each object
@@ -58,7 +58,7 @@ property to compare.
 optional auditLog: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L120)
+Defined in: [packages/core/src/core/authz/authConfig.ts:120](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L120)
 
 Enable audit logging for this endpoint
 Overrides global setting
@@ -73,7 +73,7 @@ Overrides global setting
 optional cache: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L126)
+Defined in: [packages/core/src/core/authz/authConfig.ts:126](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L126)
 
 Enable caching for this endpoint
 Overrides global setting
@@ -88,7 +88,7 @@ Overrides global setting
 optional cacheTTL: number;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L132)
+Defined in: [packages/core/src/core/authz/authConfig.ts:132](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L132)
 
 Cache TTL for this endpoint in milliseconds
 Overrides global setting
@@ -103,7 +103,7 @@ Overrides global setting
 optional customValidator: OwnershipValidator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:80](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L80)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:80](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L80)
 
 Custom validation function for complex ownership logic
 If provided, overrides the default equality/array checks
@@ -114,7 +114,7 @@ If provided, overrides the default equality/array checks
 optional disabled: boolean;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L142)
+Defined in: [packages/core/src/core/authz/authConfig.ts:142](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L142)
 
 Disable this auth check (useful for testing)
 
@@ -128,7 +128,7 @@ Disable this auth check (useful for testing)
 optional errorHandler: AuthErrorHandler;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L137)
+Defined in: [packages/core/src/core/authz/authConfig.ts:137](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L137)
 
 Custom error handler for this endpoint
 
@@ -142,7 +142,7 @@ Custom error handler for this endpoint
 optional errorMessage: string;
 ```
 
-Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/authz/authConfig.ts#L114)
+Defined in: [packages/core/src/core/authz/authConfig.ts:114](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/authz/authConfig.ts#L114)
 
 Custom error message for this endpoint
 
@@ -156,7 +156,7 @@ Custom error message for this endpoint
 optional paramName: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L44)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L44)
 
 Parameter name in the request (params/query/body)
 
@@ -170,7 +170,7 @@ Parameter name in the request (params/query/body)
 optional paramSource: ParameterSource;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:50](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L50)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:50](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L50)
 
 Source of the parameter in the request
 
@@ -186,7 +186,7 @@ Source of the parameter in the request
 optional userField: string;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:38](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L38)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:38](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L38)
 
 Field name in the user context to check
 
@@ -202,7 +202,7 @@ Field name in the user context to check
 type OwnershipValidator = (userValue, resourceValue, req) => boolean | Promise<boolean>;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:24](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L24)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:24](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L24)
 
 Custom ownership validator function
 
@@ -240,7 +240,7 @@ true if user owns the resource, false otherwise
 type ParameterSource = "params" | "query" | "body";
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:15](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L15)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:15](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L15)
 
 Source of the resource identifier in the request
 
@@ -252,7 +252,7 @@ Source of the resource identifier in the request
 function ClassHasUserType(userTypes): ClassDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/classHasUserType.decorator.ts:43](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/classHasUserType.decorator.ts#L43)
+Defined in: [packages/core/src/core/decorators/auth/classHasUserType.decorator.ts:43](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/classHasUserType.decorator.ts#L43)
 
 Class decorator that applies user type authorization to all methods in a class.
 
@@ -320,7 +320,7 @@ export class PartnerUserController {
 function HasGroups(groups, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/hasGroups.decorator.ts:100](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/hasGroups.decorator.ts#L100)
+Defined in: [packages/core/src/core/decorators/auth/hasGroups.decorator.ts:100](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/hasGroups.decorator.ts#L100)
 
 Method decorator that restricts access to routes based on user groups.
 
@@ -437,7 +437,7 @@ instead
 function HasPermissions(permissions, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/hasPermissions.decorator.ts:93](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/hasPermissions.decorator.ts#L93)
+Defined in: [packages/core/src/core/decorators/auth/hasPermissions.decorator.ts:93](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/hasPermissions.decorator.ts#L93)
 
 Method decorator that restricts access to routes based on user permissions.
 
@@ -536,7 +536,7 @@ class UserController {
 function HasUserType(userTypes, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/hasUserType.decorator.ts:92](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/hasUserType.decorator.ts#L92)
+Defined in: [packages/core/src/core/decorators/auth/hasUserType.decorator.ts:92](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/hasUserType.decorator.ts#L92)
 
 Method decorator that restricts access to routes based on user type.
 
@@ -643,7 +643,7 @@ class UserController {
 function NoAuth(): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/noAuth.decorator.ts:35](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/noAuth.decorator.ts#L35)
+Defined in: [packages/core/src/core/decorators/auth/noAuth.decorator.ts:35](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/noAuth.decorator.ts#L35)
 
 Method decorator that removes all authorization requirements from a method.
 
@@ -690,7 +690,7 @@ export class PartnerUserController {
 function OrAuth(): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/orAuth.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/orAuth.decorator.ts#L44)
+Defined in: [packages/core/src/core/decorators/auth/orAuth.decorator.ts:44](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/orAuth.decorator.ts#L44)
 
 Method decorator that enables OR logic for multiple authorization decorators.
 
@@ -746,7 +746,7 @@ class PartnerUserController {
 function RequiresAccess(accessMap, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresAccess.decorator.ts:188](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresAccess.decorator.ts#L188)
+Defined in: [packages/core/src/core/decorators/auth/requiresAccess.decorator.ts:188](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresAccess.decorator.ts#L188)
 
 Method decorator that restricts access to routes based on user type and group combinations.
 
@@ -902,7 +902,7 @@ decorators use AND logic by default
 function RequiresOwnership(resourceName, options?): MethodDecorator;
 ```
 
-Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:206](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L206)
+Defined in: [packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts:206](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/decorators/auth/requiresOwnership.decorator.ts#L206)
 
 Method decorator that validates resource ownership based on user context.
 

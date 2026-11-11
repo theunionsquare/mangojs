@@ -15,7 +15,7 @@ function middlewareRequestTime(
    next): void;
 ```
 
-Defined in: [packages/core/src/core/middlewares/requestTime.ts:12](https://github.com/theunionsquare/mangojs/blob/1e877cf79543eb57cd9e1460528343025dd90bcb/packages/core/src/core/middlewares/requestTime.ts#L12)
+Defined in: [packages/core/src/core/middlewares/requestTime.ts:12](https://github.com/theunionsquare/mangojs/blob/9698af46b30dd7bff593c1c92b04a52030ebd5b3/packages/core/src/core/middlewares/requestTime.ts#L12)
 
 Adds request timestamp to the request object.
 
