@@ -17,7 +17,14 @@ export default defineConfig({
     'src/core/middlewares/securityHeaders.ts',
   ],
   format: ['esm'],
-  dts: true,
+  // Declarations are generated separately via `tsc --emitDeclarationOnly`
+  // (see the `build` script). tsup's dts bundler (rollup-plugin-dts)
+  // mis-renders some re-exported types through nested namespace barrels
+  // as value declarations (`declare const X: typeof Y`) instead of type
+  // aliases, which breaks consumers using those types in type position.
+  // tsc's per-file declaration emit mirrors the old tsc-only build and
+  // doesn't hit that bug.
+  dts: false,
   clean: true,
   sourcemap: true,
 });
