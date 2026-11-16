@@ -1,5 +1,5 @@
 /**
- * @deprecated Use types from '../../api' instead.
+ * @deprecated Use types from '../../api/index.js' instead.
  */
 
 export type {
@@ -7,4 +7,4 @@ export type {
   PaginatedData,
   Request,
   Response,
-} from "../../api";
+} from "../../api/index.js";

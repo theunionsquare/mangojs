@@ -11,7 +11,7 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Implementation
-export { LoggerPino } from "./LoggerPino";
+export { LoggerPino } from "./LoggerPino.js";

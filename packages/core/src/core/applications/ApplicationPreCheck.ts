@@ -1,8 +1,8 @@
 import { inject, injectable } from "inversify";
-import type { IDatabaseManagerFactory } from "../databasemanager/types";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import { IApplicationPreCheck } from "./types";
-import { Loggers } from "..";
+import type { IDatabaseManagerFactory } from "../databasemanager/types.js";
+import { INVERSITY_TYPES } from "../types/inversifyTypes.js";
+import { IApplicationPreCheck } from "./types.js";
+import { Loggers } from "../index.js";
 
 /**
  * Default implementation of application pre-flight checks.

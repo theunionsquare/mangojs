@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import { IEmailService } from "./IEmailService";
+import { IEmailService } from "./IEmailService.js";
 
 /**
  * Legacy Brevo email service.

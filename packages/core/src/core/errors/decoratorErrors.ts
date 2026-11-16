@@ -1,4 +1,4 @@
-import { APIError } from './baseErrors'
+import { APIError } from './baseErrors.js'
 
 /**
  * Unauthorized error for decorator-based authorization.

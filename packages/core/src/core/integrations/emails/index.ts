@@ -11,18 +11,18 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Factory
-export { EmailServiceFactory } from "./EmailServiceFactory";
+export { EmailServiceFactory } from "./EmailServiceFactory.js";
 
 // Providers
-export * from "./providers";
+export * from "./providers/index.js";
 
 // Legacy exports (deprecated)
 /** @deprecated Use BrevoProvider with EmailServiceFactory instead */
-export { EmailServiceBrevo } from "./EmailService.brevo";
+export { EmailServiceBrevo } from "./EmailService.brevo.js";
 /** @deprecated Use DummyProvider with EmailServiceFactory instead */
-export { EmailServiceDummy } from "./EmailService.dummy";
+export { EmailServiceDummy } from "./EmailService.dummy.js";
 /** @deprecated Use IEmailProvider from ./types instead */
-export type { IEmailService } from "./IEmailService";
+export type { IEmailService } from "./IEmailService.js";

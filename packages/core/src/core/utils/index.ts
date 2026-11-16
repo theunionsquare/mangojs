@@ -11,23 +11,23 @@
  */
 
 // Generators
-export * from "./generics";
-export * from "./crypto";
+export * from "./generics.js";
+export * from "./crypto.js";
 
 // Templates
-export * from "./renderHtmlTemplate";
+export * from "./renderHtmlTemplate.js";
 
 // Secrets
-export * from "./loadSecrets";
+export * from "./loadSecrets.js";
 
 // Request tracking
-export * from "./logRequest";
+export * from "./logRequest.js";
 
 // Database setup
-export * from "./processSetUpDataBaseFiles";
+export * from "./processSetUpDataBaseFiles.js";
 
 // Mappers
-export * from "./base.mapper";
+export * from "./base.mapper.js";
 
 // Metadata keys (for decorator internals)
-export { MetadataKeys } from "./metadata.keys";
+export { MetadataKeys } from "./metadata.keys.js";

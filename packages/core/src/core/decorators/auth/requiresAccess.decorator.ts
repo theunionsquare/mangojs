@@ -1,14 +1,14 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import { Errors } from "../..";
-import { MetadataKeys } from "../../utils/metadata.keys";
-import { Types } from "../..";
+import { Errors } from "../../index.js";
+import { MetadataKeys } from "../../utils/metadata.keys.js";
+import { Types } from "../../index.js";
 import {
   ValidatorMetadata,
   createAuthOrchestrator,
   ValidationResult,
-} from "../../authz/authOrchestrator";
-import { AuthErrorFactory } from "../../authz/authErrors";
-import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
+} from "../../authz/authOrchestrator.js";
+import { AuthErrorFactory } from "../../authz/authErrors.js";
+import { AuthConfig, DecoratorOptions } from "../../authz/authConfig.js";
 
 /**
  * Access requirements mapping user types to their allowed groups.

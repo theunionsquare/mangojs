@@ -2,4 +2,4 @@
  * @module SchedulerDecorators
  * @description Decorators for cron-based task scheduling.
  */
-export { Schedule } from "./schedule.decorator";
+export { Schedule } from "./schedule.decorator.js";

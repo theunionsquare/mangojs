@@ -3,14 +3,14 @@
  * @description Dependency injection container management using Inversify.
  */
 
-export { ContainerRegistry } from "./ContainerRegistry";
-export { ContainerManager } from "./ContainerManager";
-export { ContainerBuilder } from "./ContainerBuilder";
-export type { ServiceIdentifier } from "./types";
+export { ContainerRegistry } from "./ContainerRegistry.js";
+export { ContainerManager } from "./ContainerManager.js";
+export { ContainerBuilder } from "./ContainerBuilder.js";
+export type { ServiceIdentifier } from "./types.js";
 export type {
   CoreOptions,
   MongoDBOptions,
   PostgresOptions,
   CockroachDBOptions,
   ContainerModule,
-} from "./ContainerBuilder";
+} from "./ContainerBuilder.js";

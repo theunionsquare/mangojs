@@ -2,8 +2,8 @@ import "reflect-metadata";
 import express, { Application as ExApplication, Handler } from "express";
 import { printTable, Table } from "console-table-printer";
 
-import { MetadataKeys } from "../utils/metadata.keys";
-import { IRouter } from "../decorators/http/handlers.decorator";
+import { MetadataKeys } from "../utils/metadata.keys.js";
+import { IRouter } from "../decorators/http/handlers.decorator.js";
 
 /**
  * Internal Express application wrapper that handles route registration

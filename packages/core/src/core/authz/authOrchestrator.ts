@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { Errors } from "..";
-import { AuthorizationError, AuthErrorFactory } from "./authErrors";
-import { AuthConfig, DecoratorOptions } from "./authConfig";
-import { authCache, generateCacheKey } from "./authCacheUtils";
+import { Errors } from "../index.js";
+import { AuthorizationError, AuthErrorFactory } from "./authErrors.js";
+import { AuthConfig, DecoratorOptions } from "./authConfig.js";
+import { authCache, generateCacheKey } from "./authCacheUtils.js";
 
 /**
  * Result from an authorization validator

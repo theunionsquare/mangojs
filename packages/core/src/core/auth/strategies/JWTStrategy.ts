@@ -1,14 +1,14 @@
 import { injectable } from "inversify";
 import { Request } from "express";
-import { BaseAuthStrategy } from "./BaseAuthStrategy";
+import { BaseAuthStrategy } from "./BaseAuthStrategy.js";
 import type {
   IAuthUser,
   AuthCredentials,
   JWTStrategyOptions,
   GenerateTokenPayload,
   AuthCookieOptions,
-} from "../types";
-import { AuthenticationError } from "../errors/AuthenticationError";
+} from "../types.js";
+import { AuthenticationError } from "../errors/AuthenticationError.js";
 
 /**
  * @module Authentication

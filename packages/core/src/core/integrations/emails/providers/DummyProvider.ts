@@ -3,7 +3,7 @@ import {
   EmailPayload,
   EmailSendResult,
   DummyProviderConfig,
-} from "../types";
+} from "../types.js";
 
 export class DummyProvider implements IEmailProvider {
   readonly providerName = "dummy";

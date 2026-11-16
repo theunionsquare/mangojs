@@ -1,16 +1,16 @@
 import http from 'http'
 import express, { Handler } from 'express'
-import { ApplicationExpress } from '../applications/ApplicationExpress'
-import { IApplicationPreCheck } from '../applications/types'
+import { ApplicationExpress } from '../applications/ApplicationExpress.js'
+import { IApplicationPreCheck } from '../applications/types.js'
 import swaggerUi from 'swagger-ui-express'
-import { middlewareRequestTime } from '../middlewares/requestTime'
-import { middlewareAuthContext } from '../middlewares/userInfo'
+import { middlewareRequestTime } from '../middlewares/requestTime.js'
+import { middlewareAuthContext } from '../middlewares/userInfo.js'
 import {
     createSecurityHeaders,
     SecurityHeadersOptions,
-} from '../middlewares/securityHeaders'
-import { ScheduleRegistry } from '../scheduler/ScheduleRegistry'
-import { ScheduledTaskConstructor } from '../scheduler/types'
+} from '../middlewares/securityHeaders.js'
+import { ScheduleRegistry } from '../scheduler/ScheduleRegistry.js'
+import { ScheduledTaskConstructor } from '../scheduler/types.js'
 
 const DEFAULT_DOCS_PATH = '/docs'
 

@@ -1,4 +1,4 @@
-import { MetadataKeys } from "../../utils/metadata.keys";
+import { MetadataKeys } from "../../utils/metadata.keys.js";
 
 /**
  * Method decorator that enables OR logic for multiple authorization decorators.

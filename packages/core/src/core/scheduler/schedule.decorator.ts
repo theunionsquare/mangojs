@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from '../decorators/scheduler' instead.
+ * @deprecated Import from '../decorators/scheduler/index.js' instead.
  */
-export { Schedule } from "../decorators/scheduler";
+export { Schedule } from "../decorators/scheduler/index.js";

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AuthorizationError } from "./authErrors";
-import { IAuthContext } from "../auth/types";
+import { AuthorizationError } from "./authErrors.js";
+import { IAuthContext } from "../auth/types.js";
 
 /**
  * Callback invoked whenever an authorization check fails.

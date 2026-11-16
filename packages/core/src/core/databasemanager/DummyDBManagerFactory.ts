@@ -1,5 +1,5 @@
 import { injectable } from 'inversify'
-import { IDatabaseManagerFactory } from './types'
+import { IDatabaseManagerFactory } from './types.js'
 
 /**
  * Dummy database manager factory for testing purposes.

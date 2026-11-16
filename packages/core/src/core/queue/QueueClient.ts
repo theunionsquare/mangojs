@@ -7,7 +7,7 @@ import type {
   JobData,
   JobStatus,
   QueueStatus,
-} from "./types";
+} from "./types.js";
 
 /**
  * QueueClient - Wrapper for BullMQ Queue (Producer side)

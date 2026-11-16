@@ -9,4 +9,4 @@
  * // New:
  * import { BaseMapper } from '@mangojs/core/utils';
  */
-export { BaseMapper } from "../utils/base.mapper";
+export { BaseMapper } from "../utils/base.mapper.js";

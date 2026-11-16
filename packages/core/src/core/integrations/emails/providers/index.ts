@@ -1,3 +1,3 @@
-export * from "./BrevoProvider";
-export * from "./ResendProvider";
-export * from "./DummyProvider";
+export * from "./BrevoProvider.js";
+export * from "./ResendProvider.js";
+export * from "./DummyProvider.js";

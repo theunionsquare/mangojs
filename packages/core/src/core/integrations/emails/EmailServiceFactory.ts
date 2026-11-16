@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import type { IEmailProvider, EmailPayload, EmailSendResult } from "./types";
+import type { IEmailProvider, EmailPayload, EmailSendResult } from "./types.js";
 
 /**
  * Factory for sending emails through configurable providers.

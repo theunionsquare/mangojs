@@ -6,4 +6,4 @@
  */
 
 /** @deprecated Use TypeORM repositories instead */
-export * as setupDatabase from './setup'
+export * as setupDatabase from './setup/index.js'

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { WorkerOptions, QueueWorkerMetadata } from "../../queue/types";
+import { WorkerOptions, QueueWorkerMetadata } from "../../queue/types.js";
 
 export const QUEUE_WORKER_METADATA_KEY = Symbol.for("queue:worker:metadata");
 

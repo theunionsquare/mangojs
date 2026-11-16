@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
 import * as schedule from 'node-schedule'
-import { MetadataKeys } from '../utils/metadata.keys'
+import { MetadataKeys } from '../utils/metadata.keys.js'
 import {
     IScheduleRegistry,
     ScheduledTaskConstructor,
@@ -8,8 +8,8 @@ import {
     TaskEntry,
     TaskInfo,
     SchedulerStatus,
-} from './types'
-import { TaskRunner } from './TaskRunner'
+} from './types.js'
+import { TaskRunner } from './TaskRunner.js'
 
 /**
  * Registry for managing scheduled tasks.

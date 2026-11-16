@@ -1,38 +1,38 @@
 import { Container } from "inversify";
 import type { Newable } from "inversify";
-import type { ServiceIdentifier } from "./types";
-import { ContainerManager } from "./ContainerManager";
-import { ContainerRegistry } from "./ContainerRegistry";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import type { ServiceIdentifier } from "./types.js";
+import { ContainerManager } from "./ContainerManager.js";
+import { ContainerRegistry } from "./ContainerRegistry.js";
+import { INVERSITY_TYPES } from "../types/inversifyTypes.js";
 
 // Import types for presets
-import { ILoggerFactory, LoggerPino } from "../loggers";
-import { IDatabaseManagerFactory } from "../databasemanager/types";
-import { IPersistenceContext } from "../persistence/types";
+import { ILoggerFactory, LoggerPino } from "../loggers/index.js";
+import { IDatabaseManagerFactory } from "../databasemanager/types.js";
+import { IPersistenceContext } from "../persistence/types.js";
 
 // Database managers and persistence contexts
-import { PostgresDBManagerFactory } from "../databasemanager/postgres/PostgresDBManagerFactory";
-import { PostgresPersistenceContext } from "../persistence/PersistenceContext.postgres";
-import { CockRoachDBManagerFactory } from "../databasemanager/cockroachdb/CockroachDBManagerFactory";
-import { CockroachPersistenceContext } from "../persistence/PersistenceContext.cockroach";
-import { MongooseDBManagerFactory } from "../databasemanager/MongooseDBManagerFactory";
-import { MongoosePersistenceContext } from "../persistence/PersistenceContext.mongoose";
-import { DummyDBManagerFactory } from "../databasemanager/DummyDBManagerFactory";
-import { DummyPersistenceContext } from "../persistence/PersistenceContext.dummy";
+import { PostgresDBManagerFactory } from "../databasemanager/postgres/PostgresDBManagerFactory.js";
+import { PostgresPersistenceContext } from "../persistence/PersistenceContext.postgres.js";
+import { CockRoachDBManagerFactory } from "../databasemanager/cockroachdb/CockroachDBManagerFactory.js";
+import { CockroachPersistenceContext } from "../persistence/PersistenceContext.cockroach.js";
+import { MongooseDBManagerFactory } from "../databasemanager/MongooseDBManagerFactory.js";
+import { MongoosePersistenceContext } from "../persistence/PersistenceContext.mongoose.js";
+import { DummyDBManagerFactory } from "../databasemanager/DummyDBManagerFactory.js";
+import { DummyPersistenceContext } from "../persistence/PersistenceContext.dummy.js";
 
 // CockroachDB connection types
-import type { CockroachUrl, CockroachConnection } from "../types/database/cockroach";
+import type { CockroachUrl, CockroachConnection } from "../types/database/cockroach.js";
 
 // Auth
-import { AUTH_STRATEGY_TAG, IAuthStrategy } from "../auth/strategies/IAuthStrategy";
-import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry";
+import { AUTH_STRATEGY_TAG, IAuthStrategy } from "../auth/strategies/IAuthStrategy.js";
+import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry.js";
 
 // Queue
-import { IQueueClient, RedisConfig } from "../queue/types";
-import { QueueClient } from "../queue/QueueClient";
+import { IQueueClient, RedisConfig } from "../queue/types.js";
+import { QueueClient } from "../queue/QueueClient.js";
 
 // Database connection types
-import type { PostgresUrl, PostgresConnection } from "../types/database/postgres";
+import type { PostgresUrl, PostgresConnection } from "../types/database/postgres.js";
 
 /** Default container name when none is provided */
 const DEFAULT_CONTAINER_NAME = "default";

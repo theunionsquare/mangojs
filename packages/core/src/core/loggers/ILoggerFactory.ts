@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from './types' instead.
+ * @deprecated Import from './types.js' instead.
  */
-export type { ILoggerFactory } from "./types";
+export type { ILoggerFactory } from "./types.js";

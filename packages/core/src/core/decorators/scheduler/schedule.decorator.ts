@@ -1,5 +1,5 @@
-import { MetadataKeys } from "../../utils/metadata.keys";
-import { ScheduleOptions, ScheduleMetadata } from "../../scheduler/types";
+import { MetadataKeys } from "../../utils/metadata.keys.js";
+import { ScheduleOptions, ScheduleMetadata } from "../../scheduler/types.js";
 
 /**
  * Decorator to mark a class as a scheduled task.

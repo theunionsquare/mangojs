@@ -10,10 +10,10 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Middlewares
-export * as userInfo from "./userInfo";
-export * as requestTime from "./requestTime";
-export * as rateLimit from "./rateLimit";
-export * as securityHeaders from "./securityHeaders";
+export * as userInfo from "./userInfo.js";
+export * as requestTime from "./requestTime.js";
+export * as rateLimit from "./rateLimit.js";
+export * as securityHeaders from "./securityHeaders.js";

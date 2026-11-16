@@ -4,7 +4,7 @@
  */
 
 import type { Request as ExpressRequest, Response as ExpressResponse } from "express";
-import type { MiddlewareUserInfo } from "../entities/middlewareUserInfo.type";
+import type { MiddlewareUserInfo } from "../entities/middlewareUserInfo.type.js";
 
 // ============================================================================
 // Base Response Types

@@ -1,4 +1,4 @@
-import { generateRandomString } from "./generics";
+import { generateRandomString } from "./generics.js";
 import type { Response } from "express";
 
 /**

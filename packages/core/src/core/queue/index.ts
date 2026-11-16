@@ -22,11 +22,11 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Implementations
-export { QueueClient } from "./QueueClient";
-export { QueueManager } from "./QueueManager";
+export { QueueClient } from "./QueueClient.js";
+export { QueueManager } from "./QueueManager.js";
 
 // Decorators
-export { QueueWorker, QUEUE_WORKER_METADATA_KEY } from "../decorators/queue";
+export { QueueWorker, QUEUE_WORKER_METADATA_KEY } from "../decorators/queue/index.js";

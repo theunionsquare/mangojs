@@ -1,8 +1,8 @@
-import { Middleware } from "./middleware.decorator";
+import { Middleware } from "./middleware.decorator.js";
 import {
   createRateLimiter,
   RateLimitOptions,
-} from "../../middlewares/rateLimit";
+} from "../../middlewares/rateLimit.js";
 
 /**
  * Applies a rate limit to a single route, using MangoJS's standard error

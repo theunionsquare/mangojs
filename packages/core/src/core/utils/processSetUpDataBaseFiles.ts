@@ -1,6 +1,6 @@
 import * as fs from 'fs'
-import { SetUpDatabaseRecord } from '../types/database/SetUpDataBaseRecord'
-import { SetUpDatabaseAction } from '../databases/setup/SetUpDatabaseAction'
+import { SetUpDatabaseRecord } from '../types/database/SetUpDataBaseRecord.js'
+import { SetUpDatabaseAction } from '../databases/setup/SetUpDatabaseAction.js'
 
 export function processSetUpDataBaseService(
     fileList: Array<SetUpDatabaseRecord>,

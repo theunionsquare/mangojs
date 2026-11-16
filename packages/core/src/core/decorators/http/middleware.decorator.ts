@@ -1,5 +1,5 @@
 import { RequestHandler } from 'express'
-import { MetadataKeys } from '../../utils/metadata.keys'
+import { MetadataKeys } from '../../utils/metadata.keys.js'
 
 /**
  * Generic Middleware decoratoor

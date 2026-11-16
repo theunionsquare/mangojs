@@ -1,11 +1,11 @@
 import type { Response, NextFunction } from "express";
-import { ContainerRegistry } from "../container";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry";
-import { AuthContext } from "../auth/AuthContext";
-import { AuthenticatedRequest } from "./types";
-import { AuthConfig } from "../authz/authConfig";
-import { AuthorizationError } from "../authz/authErrors";
+import { ContainerRegistry } from "../container/index.js";
+import { INVERSITY_TYPES } from "../types/inversifyTypes.js";
+import { AuthStrategyRegistry } from "../auth/AuthStrategyRegistry.js";
+import { AuthContext } from "../auth/AuthContext.js";
+import { AuthenticatedRequest } from "./types.js";
+import { AuthConfig } from "../authz/authConfig.js";
+import { AuthorizationError } from "../authz/authErrors.js";
 
 /**
  * Middleware using AuthStrategyRegistry

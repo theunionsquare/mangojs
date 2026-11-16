@@ -1,4 +1,4 @@
-import { IAuthContext, IAuthUser } from "./types";
+import { IAuthContext, IAuthUser } from "./types.js";
 
 /**
  * Immutable authentication context

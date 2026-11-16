@@ -7,8 +7,8 @@ import type {
     QueueWorkerMetadata,
     IQueueWorkerHandler,
     QueueWorkerConstructor,
-} from './types'
-import { QUEUE_WORKER_METADATA_KEY } from "../decorators/queue";
+} from './types.js'
+import { QUEUE_WORKER_METADATA_KEY } from "../decorators/queue/index.js";
 import type { Container } from 'inversify'
 
 /**

@@ -1,5 +1,5 @@
 import pino, { Logger, LoggerOptions } from "pino";
-import { ILoggerFactory } from "./types";
+import { ILoggerFactory } from "./types.js";
 import { injectable } from "inversify";
 
 /**

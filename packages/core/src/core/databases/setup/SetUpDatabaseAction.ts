@@ -1,4 +1,4 @@
-import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord'
+import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord.js'
 
 /**
  * Base class for database setup actions.

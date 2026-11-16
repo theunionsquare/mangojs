@@ -4,18 +4,18 @@
  */
 
 // Interface
-export type { IDatabaseManagerFactory } from "./types";
+export type { IDatabaseManagerFactory } from "./types.js";
 
 // Active implementations
-export { CockRoachDBManagerFactory } from "./cockroachdb/CockroachDBManagerFactory";
-export { PostgresDBManagerFactory } from "./postgres/PostgresDBManagerFactory";
+export { CockRoachDBManagerFactory } from "./cockroachdb/CockroachDBManagerFactory.js";
+export { PostgresDBManagerFactory } from "./postgres/PostgresDBManagerFactory.js";
 
 // Deprecated implementations
 /** @deprecated Use PostgresDBManagerFactory or CockRoachDBManagerFactory */
-export { DummyDBManagerFactory } from "./DummyDBManagerFactory";
+export { DummyDBManagerFactory } from "./DummyDBManagerFactory.js";
 /** @deprecated Use PostgresDBManagerFactory or CockRoachDBManagerFactory */
-export { MongoDBEntityManagerFactory } from "./MongoDBEntityManagerFactory";
+export { MongoDBEntityManagerFactory } from "./MongoDBEntityManagerFactory.js";
 /** @deprecated Use PostgresDBManagerFactory or CockRoachDBManagerFactory */
-export { MongooseDBManagerFactory } from "./MongooseDBManagerFactory";
+export { MongooseDBManagerFactory } from "./MongooseDBManagerFactory.js";
 /** @deprecated Use PostgresDBManagerFactory or CockRoachDBManagerFactory */
-export { EmbeddedMongoDBManagerFactory } from "./EmbeddedMongoDBManagerFactory";
+export { EmbeddedMongoDBManagerFactory } from "./EmbeddedMongoDBManagerFactory.js";

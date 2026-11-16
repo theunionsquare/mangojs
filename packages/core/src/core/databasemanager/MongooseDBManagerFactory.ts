@@ -1,9 +1,9 @@
 import { inject, injectable } from "inversify";
-import { IDatabaseManagerFactory } from "./types";
+import { IDatabaseManagerFactory } from "./types.js";
 import mongoose, { Mongoose } from "mongoose";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
-import { Loggers } from "..";
-import { ConnectionError } from "../errors/databaseErrors";
+import { INVERSITY_TYPES } from "../types/inversifyTypes.js";
+import { Loggers } from "../index.js";
+import { ConnectionError } from "../errors/databaseErrors.js";
 
 /**
  * Mongoose database manager factory for MongoDB connections.

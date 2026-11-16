@@ -4,35 +4,35 @@
  */
 
 // Decorators
-export { HasUserType } from "./hasUserType.decorator";
-export { HasGroups } from "./hasGroups.decorator";
-export { HasPermissions } from "./hasPermissions.decorator";
-export { RequiresAccess } from "./requiresAccess.decorator";
-export { RequiresOwnership } from "./requiresOwnership.decorator";
+export { HasUserType } from "./hasUserType.decorator.js";
+export { HasGroups } from "./hasGroups.decorator.js";
+export { HasPermissions } from "./hasPermissions.decorator.js";
+export { RequiresAccess } from "./requiresAccess.decorator.js";
+export { RequiresOwnership } from "./requiresOwnership.decorator.js";
 export type {
   OwnershipOptions,
   ParameterSource,
   OwnershipValidator,
-} from "./requiresOwnership.decorator";
-export { ClassHasUserType } from "./classHasUserType.decorator";
-export { NoAuth } from "./noAuth.decorator";
-export { OrAuth } from "./orAuth.decorator";
+} from "./requiresOwnership.decorator.js";
+export { ClassHasUserType } from "./classHasUserType.decorator.js";
+export { NoAuth } from "./noAuth.decorator.js";
+export { OrAuth } from "./orAuth.decorator.js";
 
 // Core
-export { AuthorizationError, AuthErrorFactory } from "../../authz/authErrors";
-export type { AuthErrorDetails } from "../../authz/authErrors";
-export { AuthConfig, defaultUserContextExtractor } from "../../authz/authConfig";
+export { AuthorizationError, AuthErrorFactory } from "../../authz/authErrors.js";
+export type { AuthErrorDetails } from "../../authz/authErrors.js";
+export { AuthConfig, defaultUserContextExtractor } from "../../authz/authConfig.js";
 export type {
   AuthConfigOptions,
   DecoratorOptions,
   HasPermissionsOptions,
   AuthErrorHandler,
   UserContextExtractor,
-} from "../../authz/authConfig";
+} from "../../authz/authConfig.js";
 
 // Auth-specific cache utilities
-export { authCache, generateCacheKey, clearUserCache } from "../../authz/authCacheUtils";
-export type { UserCacheContext } from "../../authz/authCacheUtils";
+export { authCache, generateCacheKey, clearUserCache } from "../../authz/authCacheUtils.js";
+export type { UserCacheContext } from "../../authz/authCacheUtils.js";
 
 // Re-export generic cache types from core/cache for convenience
-export type { CacheStats, CacheOptions, CacheEntry } from "../../cache";
+export type { CacheStats, CacheOptions, CacheEntry } from "../../cache/index.js";

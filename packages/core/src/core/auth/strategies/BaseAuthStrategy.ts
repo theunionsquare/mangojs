@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { Request } from "express";
-import { IAuthStrategy } from "./IAuthStrategy";
-import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types";
+import { IAuthStrategy } from "./IAuthStrategy.js";
+import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types.js";
 
 /**
  *  @module Authentication

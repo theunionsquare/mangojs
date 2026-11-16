@@ -1,4 +1,4 @@
-import { CacheEntry, CacheOptions, CacheStats } from "./types";
+import { CacheEntry, CacheOptions, CacheStats } from "./types.js";
 
 /**
  * Generic TTL cache with LRU eviction.

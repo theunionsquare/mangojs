@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
-import { IDatabaseManagerFactory } from './types'
+import { IDatabaseManagerFactory } from './types.js'
 import mongoose from 'mongoose'
-import { ConnectionError } from '../errors/databaseErrors'
+import { ConnectionError } from '../errors/databaseErrors.js'
 
 /**
  * Embedded MongoDB manager factory for testing purposes.

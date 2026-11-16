@@ -3,7 +3,7 @@ import {
   EmailPayload,
   EmailSendResult,
   ResendProviderConfig,
-} from "../types";
+} from "../types.js";
 
 export class ResendProvider implements IEmailProvider {
   readonly providerName = "resend";

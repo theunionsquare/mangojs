@@ -4,46 +4,46 @@
  */
 
 // Core types and interfaces
-export * from "./types";
+export * from "./types.js";
 
 /**
  * @group Context
  */
-export { AuthContext } from "./AuthContext";
+export { AuthContext } from "./AuthContext.js";
 
 /**
  * @group Registry
  */
-export { AuthStrategyRegistry } from "./AuthStrategyRegistry";
+export { AuthStrategyRegistry } from "./AuthStrategyRegistry.js";
 
 // Errors
 /**
  * @group Errors
  */
-export { AuthenticationError } from "./errors/AuthenticationError";
+export { AuthenticationError } from "./errors/AuthenticationError.js";
 
 // Strategy interfaces and base class
 /**
  * @group Strategies
  */
-export type { IAuthStrategy } from "./strategies/IAuthStrategy";
-export { AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy";
+export type { IAuthStrategy } from "./strategies/IAuthStrategy.js";
+export { AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy.js";
 
 /**
  * @group Strategies
  */
-export { BaseAuthStrategy } from "./strategies/BaseAuthStrategy";
+export { BaseAuthStrategy } from "./strategies/BaseAuthStrategy.js";
 
 // Built-in strategies
 /**
  * @group Strategies
  */
-export { JWTStrategy } from "./strategies/JWTStrategy";
+export { JWTStrategy } from "./strategies/JWTStrategy.js";
 
 /**
  * @group Strategies
  */
-export { ApiKeyStrategy } from "./strategies/ApiKeyStrategy";
+export { ApiKeyStrategy } from "./strategies/ApiKeyStrategy.js";
 
 // Permission utilities
-export { patternToRegex, matchesPermissions } from "./permissions.utils";
+export { patternToRegex, matchesPermissions } from "./permissions.utils.js";

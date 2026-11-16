@@ -1,6 +1,6 @@
 import { injectable } from 'inversify'
-import { IRead } from './IRead'
-import { IWrite } from './IWrite'
+import { IRead } from './IRead.js'
+import { IWrite } from './IWrite.js'
 
 /**
  * Abstract base repository implementing basic CRUD operations.

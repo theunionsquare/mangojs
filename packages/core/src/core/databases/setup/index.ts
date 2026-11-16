@@ -3,6 +3,6 @@
  */
 
 /** @deprecated */
-export * from './MongoSetUpDatabaseAction'
+export * from './MongoSetUpDatabaseAction.js'
 /** @deprecated */
-export * from './SetUpDatabaseAction'
+export * from './SetUpDatabaseAction.js'

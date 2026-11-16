@@ -1,13 +1,13 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import { Errors } from "../..";
-import { MetadataKeys } from "../../utils/metadata.keys";
+import { Errors } from "../../index.js";
+import { MetadataKeys } from "../../utils/metadata.keys.js";
 import {
   ValidatorMetadata,
   createAuthOrchestrator,
   ValidationResult,
-} from "../../authz/authOrchestrator";
-import { AuthErrorFactory, AuthorizationError } from "../../authz/authErrors";
-import { AuthConfig, DecoratorOptions } from "../../authz/authConfig";
+} from "../../authz/authOrchestrator.js";
+import { AuthErrorFactory, AuthorizationError } from "../../authz/authErrors.js";
+import { AuthConfig, DecoratorOptions } from "../../authz/authConfig.js";
 
 /**
  * Source of the resource identifier in the request

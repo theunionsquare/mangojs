@@ -2,9 +2,9 @@ import type { Request, RequestHandler } from "express";
 import { rateLimit } from "express-rate-limit";
 import type { IncrementResponse, Options, Store } from "express-rate-limit";
 import { Redis } from "ioredis";
-import { APIError } from "../errors/baseErrors";
-import { errorHandler } from "../errors/errorHandler";
-import type { RedisConfig } from "../queue/types";
+import { APIError } from "../errors/baseErrors.js";
+import { errorHandler } from "../errors/errorHandler.js";
+import type { RedisConfig } from "../queue/types.js";
 
 /**
  * Configuration for a MangoJS rate limiter.

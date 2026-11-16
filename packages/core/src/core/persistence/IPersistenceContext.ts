@@ -1,4 +1,4 @@
 /**
- * @deprecated Import from './types' instead.
+ * @deprecated Import from './types.js' instead.
  */
-export type { IPersistenceContext, Context } from "./types";
+export type { IPersistenceContext, Context } from "./types.js";

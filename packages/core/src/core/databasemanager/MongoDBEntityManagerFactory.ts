@@ -1,7 +1,7 @@
 import { injectable } from 'inversify'
-import { IDatabaseManagerFactory } from './types'
+import { IDatabaseManagerFactory } from './types.js'
 import * as mongoDB from 'mongodb'
-import { ConnectionError } from '../errors/databaseErrors'
+import { ConnectionError } from '../errors/databaseErrors.js'
 
 /**
  * MongoDB native driver manager factory.

@@ -1,7 +1,7 @@
-import { Errors } from "..";
+import { Errors } from "../index.js";
 import type { Response } from "express";
-import { apiResponses } from "../types";
-import { APIError } from "./baseErrors";
+import { apiResponses } from "../types/index.js";
+import { APIError } from "./baseErrors.js";
 
 /**
  * Express error handler that formats API error responses.

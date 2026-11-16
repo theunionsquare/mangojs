@@ -1,4 +1,4 @@
-import { MetadataKeys } from '../../utils/metadata.keys'
+import { MetadataKeys } from '../../utils/metadata.keys.js'
 
 /**
  * Define the base API address

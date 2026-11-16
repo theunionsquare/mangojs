@@ -1,4 +1,4 @@
-import type { ContainerManager } from "./ContainerManager";
+import type { ContainerManager } from "./ContainerManager.js";
 
 /**
  * Singleton registry for managing multiple named containers.

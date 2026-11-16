@@ -1,4 +1,4 @@
-import { Types } from "../..";
+import { Types } from "../../index.js";
 
 /**
  * Class decorator that applies user type authorization to all methods in a class.

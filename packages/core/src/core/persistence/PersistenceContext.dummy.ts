@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import type { IPersistenceContext, Context } from "./types";
-import type { IDatabaseManagerFactory } from "../databasemanager/types";
-import { INVERSITY_TYPES } from "../types/inversifyTypes";
+import type { IPersistenceContext, Context } from "./types.js";
+import type { IDatabaseManagerFactory } from "../databasemanager/types.js";
+import { INVERSITY_TYPES } from "../types/inversifyTypes.js";
 
 /**
  * Dummy persistence context for testing without a real database.

@@ -1,6 +1,6 @@
 import { Container } from "inversify";
 import type { GetOptions } from "inversify";
-import type { ServiceIdentifier } from "./types";
+import type { ServiceIdentifier } from "./types.js";
 
 /**
  * Wrapper class for an Inversify container.

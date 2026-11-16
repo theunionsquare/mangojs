@@ -1,5 +1,5 @@
 /**
- * @deprecated Import from './types' instead.
+ * @deprecated Import from './types.js' instead.
  * Re-exports for backward compatibility.
  */
 export type {
@@ -9,5 +9,5 @@ export type {
   BrevoProviderConfig,
   ResendProviderConfig,
   DummyProviderConfig,
-} from "./types";
+} from "./types.js";
 

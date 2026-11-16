@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify'
-import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord'
-import { INVERSITY_TYPES } from '../../types/inversifyTypes'
-import type { IDatabaseManagerFactory } from '../../databasemanager/types'
-import type { ILoggerFactory } from '../../loggers'
-import { SetUpDatabaseAction } from '../../types/database'
+import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord.js'
+import { INVERSITY_TYPES } from '../../types/inversifyTypes.js'
+import type { IDatabaseManagerFactory } from '../../databasemanager/types.js'
+import type { ILoggerFactory } from '../../loggers/index.js'
+import { SetUpDatabaseAction } from '../../types/database/index.js'
 import { Mongoose } from 'mongoose'
 
 /**

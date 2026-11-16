@@ -1,9 +1,9 @@
 import { injectable, multiInject, optional } from "inversify";
 import { Request } from "express";
-import { IAuthStrategy, AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy";
-import { AuthContext } from "./AuthContext";
-import { AuthCredentials, GenerateTokenPayload } from "./types";
-import { AuthenticationError } from "./errors/AuthenticationError";
+import { IAuthStrategy, AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy.js";
+import { AuthContext } from "./AuthContext.js";
+import { AuthCredentials, GenerateTokenPayload } from "./types.js";
+import { AuthenticationError } from "./errors/AuthenticationError.js";
 
 /**
  * Registry for authentication strategies

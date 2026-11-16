@@ -1,7 +1,7 @@
-export { AuthorizationError, AuthErrorFactory } from "./authErrors";
-export type { AuthErrorDetails } from "./authErrors";
+export { AuthorizationError, AuthErrorFactory } from "./authErrors.js";
+export type { AuthErrorDetails } from "./authErrors.js";
 
-export { AuthConfig, defaultUserContextExtractor } from "./authConfig";
+export { AuthConfig, defaultUserContextExtractor } from "./authConfig.js";
 export type {
   AuthConfigOptions,
   DecoratorOptions,
@@ -9,14 +9,14 @@ export type {
   AuthErrorHandler,
   UnauthorizedTracker,
   UserContextExtractor,
-} from "./authConfig";
+} from "./authConfig.js";
 
-export { createAuthOrchestrator } from "./authOrchestrator";
+export { createAuthOrchestrator } from "./authOrchestrator.js";
 export type {
   ValidationResult,
   AuthValidator,
   ValidatorMetadata,
-} from "./authOrchestrator";
+} from "./authOrchestrator.js";
 
-export { authCache, generateCacheKey, clearUserCache } from "./authCacheUtils";
-export type { UserCacheContext } from "./authCacheUtils";
+export { authCache, generateCacheKey, clearUserCache } from "./authCacheUtils.js";
+export type { UserCacheContext } from "./authCacheUtils.js";

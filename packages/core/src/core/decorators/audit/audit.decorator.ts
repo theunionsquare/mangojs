@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { AuditConfig, AuditEvent } from "./auditConfig";
+import { AuditConfig, AuditEvent } from "./auditConfig.js";
 
 export interface AuditOptions {
   /** Action identifier recorded on the audit event, e.g. "user.deleted" */

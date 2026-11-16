@@ -1,4 +1,4 @@
 /**
- * @deprecated Use types from '../api' instead.
+ * @deprecated Use types from '../api/index.js' instead.
  */
-export * as api from "./api";
+export * as api from "./api/index.js";

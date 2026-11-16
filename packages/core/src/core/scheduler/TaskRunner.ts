@@ -5,7 +5,7 @@ import {
     ScheduledTaskConstructor,
     ScheduleMetadata,
     TaskEntry,
-} from './types'
+} from './types.js'
 
 /**
  * Message sent to worker thread

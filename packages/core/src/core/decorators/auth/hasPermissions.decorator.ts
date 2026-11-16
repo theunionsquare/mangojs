@@ -1,12 +1,12 @@
 import { Request } from "express";
-import { MetadataKeys } from "../../utils/metadata.keys";
+import { MetadataKeys } from "../../utils/metadata.keys.js";
 import {
   ValidatorMetadata,
   createAuthOrchestrator,
   ValidationResult,
-} from "../../authz/authOrchestrator";
-import { AuthConfig, HasPermissionsOptions } from "../../authz/authConfig";
-import { matchesPermissions } from "../../auth/permissions.utils";
+} from "../../authz/authOrchestrator.js";
+import { AuthConfig, HasPermissionsOptions } from "../../authz/authConfig.js";
+import { matchesPermissions } from "../../auth/permissions.utils.js";
 
 /**
  * Default separator for permission patterns

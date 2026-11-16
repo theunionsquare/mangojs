@@ -1,4 +1,4 @@
-import { IScheduledTask } from './types'
+import { IScheduledTask } from './types.js'
 
 /**
  * Abstract base class for scheduled tasks.

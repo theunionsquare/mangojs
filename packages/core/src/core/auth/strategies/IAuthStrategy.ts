@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types";
+import { IAuthUser, AuthCredentials, GenerateTokenPayload } from "../types.js";
 
 /**
  * Symbol for multi-inject binding

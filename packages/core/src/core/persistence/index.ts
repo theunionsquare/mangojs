@@ -24,13 +24,13 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Implementations
-export { CockroachPersistenceContext } from "./PersistenceContext.cockroach";
-export { MongoosePersistenceContext } from "./PersistenceContext.mongoose";
-export { PostgresPersistenceContext } from "./PersistenceContext.postgres";
-export { DummyPersistenceContext } from "./PersistenceContext.dummy";
+export { CockroachPersistenceContext } from "./PersistenceContext.cockroach.js";
+export { MongoosePersistenceContext } from "./PersistenceContext.mongoose.js";
+export { PostgresPersistenceContext } from "./PersistenceContext.postgres.js";
+export { DummyPersistenceContext } from "./PersistenceContext.dummy.js";
 
 /** @deprecated Use MongoosePersistenceContext instead */
-export { PersistenceContext2 } from "./PersistenceContext";
+export { PersistenceContext2 } from "./PersistenceContext.js";

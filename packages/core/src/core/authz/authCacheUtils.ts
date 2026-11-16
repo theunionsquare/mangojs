@@ -1,6 +1,6 @@
 import crypto from "crypto";
-import { Cache } from "../cache";
-import { ValidationResult } from "./authOrchestrator";
+import { Cache } from "../cache/index.js";
+import { ValidationResult } from "./authOrchestrator.js";
 
 /**
  * User context for cache key generation

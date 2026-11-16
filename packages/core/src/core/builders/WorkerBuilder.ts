@@ -1,7 +1,7 @@
 import { Container } from 'inversify'
-import { QueueManager } from '../queue/QueueManager'
-import { RedisConfig, QueueWorkerConstructor } from '../queue/types'
-import { IApplicationPreCheck } from '../applications/types'
+import { QueueManager } from '../queue/QueueManager.js'
+import { RedisConfig, QueueWorkerConstructor } from '../queue/types.js'
+import { IApplicationPreCheck } from '../applications/types.js'
 
 /**
  * WorkerBuilder - Builder for Worker Service

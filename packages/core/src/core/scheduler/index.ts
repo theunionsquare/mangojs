@@ -22,13 +22,13 @@
  */
 
 // Types
-export * from "./types";
+export * from "./types.js";
 
 // Decorator
-export { Schedule } from "../decorators/scheduler";
+export { Schedule } from "../decorators/scheduler/index.js";
 
 // Base class
-export { ScheduledTask } from "./ScheduledTask";
+export { ScheduledTask } from "./ScheduledTask.js";
 
 // Registry
-export { ScheduleRegistry } from "./ScheduleRegistry";
+export { ScheduleRegistry } from "./ScheduleRegistry.js";

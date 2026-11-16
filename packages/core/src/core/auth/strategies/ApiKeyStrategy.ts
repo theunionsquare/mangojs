@@ -1,8 +1,8 @@
 import { injectable } from "inversify";
 import { Request } from "express";
-import { BaseAuthStrategy } from "./BaseAuthStrategy";
-import type { IAuthUser, ApiKeyStrategyOptions } from "../types";
-import { AuthenticationError } from "../errors/AuthenticationError";
+import { BaseAuthStrategy } from "./BaseAuthStrategy.js";
+import type { IAuthUser, ApiKeyStrategyOptions } from "../types.js";
+import { AuthenticationError } from "../errors/AuthenticationError.js";
 
 /**
  * @module Authentication

@@ -28,5 +28,5 @@
  * ```
  */
 
-export { Cache } from "./Cache";
-export type { CacheEntry, CacheOptions, CacheStats } from "./types";
+export { Cache } from "./Cache.js";
+export type { CacheEntry, CacheOptions, CacheStats } from "./types.js";

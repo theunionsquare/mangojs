@@ -1,16 +1,16 @@
 import { injectable } from "inversify";
-import { IDatabaseManagerFactory } from "../types";
-import { ContainerRegistry } from "../../container";
-import { INVERSITY_TYPES } from "../../types/inversifyTypes";
-import { Loggers } from "../..";
-import { ConnectionError } from "../../errors/databaseErrors";
+import { IDatabaseManagerFactory } from "../types.js";
+import { ContainerRegistry } from "../../container/index.js";
+import { INVERSITY_TYPES } from "../../types/inversifyTypes.js";
+import { Loggers } from "../../index.js";
+import { ConnectionError } from "../../errors/databaseErrors.js";
 import { DataSource } from "typeorm";
 import { URL } from "url";
 
 import type {
   PostgresUrl,
   PostgresConnection,
-} from "../../types/database/postgres";
+} from "../../types/database/postgres.js";
 
 /**
  * PostgreSQL database manager factory using TypeORM.
