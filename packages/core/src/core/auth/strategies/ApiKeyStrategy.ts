@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { Request } from "express";
 import { BaseAuthStrategy } from "./BaseAuthStrategy";
-import { IAuthUser, ApiKeyStrategyOptions } from "../types";
+import type { IAuthUser, ApiKeyStrategyOptions } from "../types";
 import { AuthenticationError } from "../errors/AuthenticationError";
 
 /**
@@ -58,7 +58,7 @@ const DEFAULT_OPTIONS = {
 @injectable()
 export class ApiKeyStrategy extends BaseAuthStrategy {
   readonly name = "apikey";
-  readonly priority: number;
+  declare readonly priority: number;
 
   private options: Required<
     Pick<ApiKeyStrategyOptions, "headerName" | "queryParam">

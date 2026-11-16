@@ -1,4 +1,4 @@
 /**
  * @deprecated Import from './types' instead.
  */
-export { IQueueClient } from "./types";
+export type { IQueueClient } from "./types";

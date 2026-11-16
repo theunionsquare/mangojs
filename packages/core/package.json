@@ -2,17 +2,16 @@
   "name": "@theunionsquare/mangojs-core",
   "version": "0.3.2",
   "description": "A lightweight Node.js backend framework for microservices with code injection, Express API integration, and AI-driven development support",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./types/enums": {
       "import": "./dist/core/types/enums/index.js",
-      "require": "./dist/core/types/enums/index.js",
       "types": "./dist/core/types/enums/index.d.ts"
     }
   },
@@ -30,8 +29,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build",
     "pretest": "pnpm run build",
     "test": "node --experimental-strip-types --test src/**/*.test.ts test/**/*.test.ts"
@@ -58,7 +58,7 @@
     "express": "^5.2.1",
     "express-rate-limit": "^7.4.0",
     "helmet": "^8.0.0",
-    "inversify": "^7.10.6",
+    "inversify": "^8.2.4",
     "ioredis": "^5.4.0",
     "jsonwebtoken": "^9.0.3",
     "mongodb": "^5.9.2",
@@ -82,6 +82,8 @@
     "@types/passport": "^1.0.12",
     "@types/pino": "^7.0.5",
     "@types/swagger-ui-express": "^4.1.6",
+    "@swc/core": "^1.9.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.3.0"
   }
 }

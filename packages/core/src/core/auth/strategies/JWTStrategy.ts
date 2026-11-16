@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import { Request } from "express";
 import { BaseAuthStrategy } from "./BaseAuthStrategy";
-import {
+import type {
   IAuthUser,
   AuthCredentials,
   JWTStrategyOptions,
@@ -94,7 +94,7 @@ const DEFAULT_OPTIONS: Required<
 @injectable()
 export class JWTStrategy extends BaseAuthStrategy {
   readonly name = "jwt";
-  readonly priority: number;
+  declare readonly priority: number;
 
   private options: JWTStrategyOptions & typeof DEFAULT_OPTIONS;
 

@@ -1,5 +1,6 @@
-import { Container, Newable } from "inversify";
-import { ServiceIdentifier } from "./types";
+import { Container } from "inversify";
+import type { Newable } from "inversify";
+import type { ServiceIdentifier } from "./types";
 import { ContainerManager } from "./ContainerManager";
 import { ContainerRegistry } from "./ContainerRegistry";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";

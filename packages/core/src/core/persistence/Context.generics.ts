@@ -1,4 +1,4 @@
 /**
  * @deprecated Import from './types' instead.
  */
-export { Context } from "./types";
+export type { Context } from "./types";

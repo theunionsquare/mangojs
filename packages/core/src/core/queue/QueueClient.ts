@@ -1,6 +1,6 @@
 import { Queue } from "bullmq";
 import { injectable } from "inversify";
-import {
+import type {
   IQueueClient,
   RedisConfig,
   JobOptions,

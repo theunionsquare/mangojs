@@ -1,6 +1,6 @@
 import { Worker, Job, Queue } from 'bullmq'
 import { injectable } from 'inversify'
-import {
+import type {
     RedisConfig,
     WorkerOptions,
     QueueStatus,
@@ -9,7 +9,7 @@ import {
     QueueWorkerConstructor,
 } from './types'
 import { QUEUE_WORKER_METADATA_KEY } from "../decorators/queue";
-import { Container } from 'inversify'
+import type { Container } from 'inversify'
 
 /**
  * Worker entry tracking

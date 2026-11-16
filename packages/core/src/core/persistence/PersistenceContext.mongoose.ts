@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
-import { IPersistenceContext, Context } from "./types";
-import { IDatabaseManagerFactory } from "../databasemanager/types";
+import type { IPersistenceContext, Context } from "./types";
+import type { IDatabaseManagerFactory } from "../databasemanager/types";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import mongoose from "mongoose";
 

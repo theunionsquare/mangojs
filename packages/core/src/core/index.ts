@@ -111,10 +111,8 @@ export * as Mappers from "./mappers";
  * @deprecated Use Persistence namespace instead.
  * Individual persistence exports maintained for backwards compatibility.
  */
-export {
-  IPersistenceContext,
-  PersistenceContext2,
-} from "./persistence";
+export type { IPersistenceContext } from "./persistence";
+export { PersistenceContext2 } from "./persistence";
 
 /**
  * @deprecated Use Container.INVERSITY_TYPES or import from types directly.
@@ -124,12 +122,12 @@ export { INVERSITY_TYPES } from "./types/inversifyTypes";
 /**
  * @deprecated Use Types.api.Request instead.
  */
-export { Request } from "./types/v1/api";
+export type { Request } from "./types/v1/api";
 
 /**
  * @deprecated Use Types.api.Response instead.
  */
-export { Response } from "./types/v1/api";
+export type { Response } from "./types/v1/api";
 
 /**
  * @deprecated Use Databases namespace instead.

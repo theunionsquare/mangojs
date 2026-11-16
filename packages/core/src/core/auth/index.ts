@@ -26,7 +26,8 @@ export { AuthenticationError } from "./errors/AuthenticationError";
 /**
  * @group Strategies
  */
-export { IAuthStrategy, AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy";
+export type { IAuthStrategy } from "./strategies/IAuthStrategy";
+export { AUTH_STRATEGY_TAG } from "./strategies/IAuthStrategy";
 
 /**
  * @group Strategies

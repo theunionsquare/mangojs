@@ -1,5 +1,6 @@
-import { Container, GetOptions } from "inversify";
-import { ServiceIdentifier } from "./types";
+import { Container } from "inversify";
+import type { GetOptions } from "inversify";
+import type { ServiceIdentifier } from "./types";
 
 /**
  * Wrapper class for an Inversify container.

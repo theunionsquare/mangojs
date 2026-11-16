@@ -1,4 +1,4 @@
 /**
  * @deprecated Import from './types' instead.
  */
-export { IPersistenceContext, Context } from "./types";
+export type { IPersistenceContext, Context } from "./types";

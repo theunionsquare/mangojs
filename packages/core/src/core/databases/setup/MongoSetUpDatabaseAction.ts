@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify'
 import { SetUpDatabaseRecord } from '../../types/database/SetUpDataBaseRecord'
 import { INVERSITY_TYPES } from '../../types/inversifyTypes'
-import { IDatabaseManagerFactory } from '../../databasemanager/types'
-import { ILoggerFactory } from '../../loggers'
+import type { IDatabaseManagerFactory } from '../../databasemanager/types'
+import type { ILoggerFactory } from '../../loggers'
 import { SetUpDatabaseAction } from '../../types/database'
 import { Mongoose } from 'mongoose'
 

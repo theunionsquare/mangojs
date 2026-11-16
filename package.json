@@ -33,6 +33,12 @@
     "pnpm": ">=10.0.0"
   },
   "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@swc/core"
+    ]
+  },
   "devDependencies": {
     "release-it": "^19.0.5"
   }

@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { IDatabaseManagerFactory } from "../databasemanager/types";
+import type { IDatabaseManagerFactory } from "../databasemanager/types";
 import { INVERSITY_TYPES } from "../types/inversifyTypes";
 import { IApplicationPreCheck } from "./types";
 import { Loggers } from "..";

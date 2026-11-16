@@ -1,30 +1,22 @@
-export {
-  AuthorizationError,
-  AuthErrorFactory,
-  AuthErrorDetails,
-} from "./authErrors";
+export { AuthorizationError, AuthErrorFactory } from "./authErrors";
+export type { AuthErrorDetails } from "./authErrors";
 
-export {
-  AuthConfig,
+export { AuthConfig, defaultUserContextExtractor } from "./authConfig";
+export type {
   AuthConfigOptions,
   DecoratorOptions,
   HasPermissionsOptions,
   AuthErrorHandler,
   UnauthorizedTracker,
   UserContextExtractor,
-  defaultUserContextExtractor,
 } from "./authConfig";
 
-export {
+export { createAuthOrchestrator } from "./authOrchestrator";
+export type {
   ValidationResult,
   AuthValidator,
   ValidatorMetadata,
-  createAuthOrchestrator,
 } from "./authOrchestrator";
 
-export {
-  authCache,
-  generateCacheKey,
-  clearUserCache,
-  UserCacheContext,
-} from "./authCacheUtils";
+export { authCache, generateCacheKey, clearUserCache } from "./authCacheUtils";
+export type { UserCacheContext } from "./authCacheUtils";

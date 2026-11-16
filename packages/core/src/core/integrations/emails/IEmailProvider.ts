@@ -2,7 +2,7 @@
  * @deprecated Import from './types' instead.
  * Re-exports for backward compatibility.
  */
-export {
+export type {
   EmailPayload,
   IEmailProvider,
   EmailSendResult,

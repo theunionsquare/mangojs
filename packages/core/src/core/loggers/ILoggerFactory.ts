@@ -1,4 +1,4 @@
 /**
  * @deprecated Import from './types' instead.
  */
-export { ILoggerFactory } from "./types";
+export type { ILoggerFactory } from "./types";

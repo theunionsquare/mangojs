@@ -2,7 +2,7 @@
  * @deprecated Use types from '../../api' instead.
  */
 
-export {
+export type {
   BaseResponse as Base,
   PaginatedData,
   Request,
