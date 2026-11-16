@@ -12,7 +12,7 @@ export class DummyDBManagerFactory implements IDatabaseManagerFactory {
     private connection: string;
 
     constructor(
-        connection: string,
+        connection: string = "dummy",
     ) {
         this.connection = connection
     }
